@@ -1,30 +1,32 @@
-import React, {
-    Dispatch,
-    FC,
-    createContext,
-    useContext,
-    useReducer,
-} from 'react'
+import { createContext, useContext, useState } from 'react'
+import { schema } from 'prosemirror-schema-basic'
 
-import { Actions, State, initialState } from './modules'
-
-export const Context = createContext<[State, Dispatch<Actions>]>([
-    initialState,
-    (action: Actions) => {},
-])
+type State = {
+    doc: any
+    setDoc: Function
+    handleSave: Function
+}
+const Context = createContext<Partial<State>>({})
 
 type Props = {
-    reducer: (state: State, action: Actions) => State
-    initialState: State
+    children: React.ReactNode
+}
+const Provider = ({ children }: Props) => {
+    const data = JSON.parse(localStorage.getItem('data') ?? 'null')
+    const initialDoc = data ? schema.nodeFromJSON(data) : undefined
+    const [doc, setDoc] = useState(initialDoc)
+    const handleSave = (data: any) => {
+        console.log(data)
+        localStorage.setItem('data', JSON.stringify(data))
+    }
+    return (
+        <Context.Provider value={{ doc, setDoc, handleSave }}>
+            {children}
+        </Context.Provider>
+    )
 }
 
-export const Provider: FC<Props> = ({ reducer, initialState, children }) => (
-    <Context.Provider value={useReducer(reducer, initialState)}>
-        {children}
-    </Context.Provider>
-)
-
-export const useStore = (): [State, Dispatch<Actions>] => useContext(Context)
+const useStore = () => useContext(Context)
 
 export default Context
-export { actions, initialState, reducer } from './modules'
+export { Provider, useStore }
