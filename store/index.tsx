@@ -1,26 +1,30 @@
-import { createContext, useContext, useState } from 'react'
-import { schema } from 'prosemirror-schema-basic'
+import { ReactNode, createContext, useContext, useState } from 'react'
+import { parseCookies, setCookie } from 'nookies'
 
 type State = {
-    doc: any
-    setDoc: Function
-    handleSave: Function
+    content: any
+    setContent: Function
+    handleChange: Function
 }
 const Context = createContext<Partial<State>>({})
 
 type Props = {
-    children: React.ReactNode
+    children: ReactNode
 }
 const Provider = ({ children }: Props) => {
-    const data = JSON.parse(localStorage.getItem('data') ?? 'null')
-    const initialDoc = data ? schema.nodeFromJSON(data) : undefined
-    const [doc, setDoc] = useState(initialDoc)
-    const handleSave = (data: any) => {
-        console.log(data)
-        localStorage.setItem('data', JSON.stringify(data))
+    const cookies = parseCookies()
+    const initialContent = JSON.parse(cookies?.content ?? 'null')
+    const [content, setContent] = useState(initialContent)
+
+    function handleChange(content: JSON) {
+        setCookie(null, 'content', JSON.stringify(content), {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/',
+        })
     }
+
     return (
-        <Context.Provider value={{ doc, setDoc, handleSave }}>
+        <Context.Provider value={{ content, setContent, handleChange }}>
             {children}
         </Context.Provider>
     )

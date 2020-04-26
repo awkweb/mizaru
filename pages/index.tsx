@@ -3,15 +3,17 @@ import dynamic from 'next/dynamic'
 
 import { useStore } from '@/store'
 
+const Editor = dynamic(() => import('@/components/editor'), { ssr: false })
+
 interface Props {}
 
-const Editor = dynamic(() => import('@/components/editor'), {
-    ssr: false,
-})
-
 const Home: FC<Props> = () => {
-    const { doc, handleSave } = useStore()
-    return <Editor doc={doc} onSave={handleSave} />
+    const { content, handleChange } = useStore()
+    return (
+        <div>
+            <Editor autofocus content={content} onChange={handleChange} />
+        </div>
+    )
 }
 
 export default Home
