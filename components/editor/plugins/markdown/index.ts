@@ -1,7 +1,7 @@
 import { Decoration, DecorationSet } from 'prosemirror-view'
 import { Plugin, PluginKey } from 'prosemirror-state'
 
-import schema from '../schema'
+import schema from '../../schema'
 
 // From https://github.com/erikvullings/slimdown-js
 const boldEm = /(\*\*|__)(.*?)\1/g
@@ -43,40 +43,50 @@ function lintDeco(doc) {
 }
 
 function maybeAddRemoveMarks(childNode, childOffset, parentPos, tr) {
-    const mark = schema.mark('strong')
+    const mark = schema.mark('bold')
     const text = childNode.text
     const hasMarks = childNode.marks.length > 0
 
-    console.log('====================')
-    console.log(typeof text, text)
-    console.log(childNode)
+    // Reset regex index
+    const lastIndex = boldEm.lastIndex
+    boldEm.lastIndex = 0
+
     if (hasMarks) {
-        console.log('hasMarks')
-        const markSyntaxValid = boldEm.test(text)
+        const markSyntaxValid = boldEm.exec(text)
         if (!markSyntaxValid) {
-            console.log('Remove')
             const from = parentPos + childOffset
             const to = from + text.length + 1
             tr.removeMark(from, to, mark)
+        } else if (markSyntaxValid?.[0] !== text) {
+            // If mark is broken, fix them
+            // For example, if `**hello world**` changes to `**hello** world**`
+            console.log('Update marks')
         }
     } else {
         let m: any
         while ((m = boldEm.exec(text))) {
-            console.log('Add')
             const from = parentPos + childOffset + m.index + 1
             const to = from + m[0].length
             tr.addMark(from, to, mark)
         }
+        // If text is equal to * or _ look to combine with preceding mark.
+        // For example, `**hello***` with receive `*` and should output to
+        // `<strong><span>**</span>hello*<span>**</span></strong>`
+        if (text === '*' || text === '_') {
+            console.log('Try to combine with preceding mark!')
+        }
     }
+
+    boldEm.lastIndex = lastIndex
 
     return tr
 }
 
-const lintKey = new PluginKey('lint')
+const markdownKey = new PluginKey('markdownKey')
 
-function lint(): Plugin {
+function markdown(): Plugin {
     return new Plugin({
-        key: lintKey,
+        key: markdownKey,
         state: {
             init(_, { apply, tr, doc }) {
                 // console.log('init', doc)
@@ -130,4 +140,5 @@ function lint(): Plugin {
     })
 }
 
-export default lint
+export default markdown
+export { markdownKey }

@@ -19,7 +19,7 @@ const schema = new Schema({
         },
     },
     marks: {
-        strong: {
+        bold: {
             inclusive: false,
             parseDOM: [{ tag: 'strong' }],
             toDOM() {

@@ -6,7 +6,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start"
+        "start": "next start",
+        "test": "jest --watch"
     },
     "dependencies": {
         "next": "9.3.5",
@@ -36,6 +37,7 @@
         "@types/react": "^16.9.34",
         "@typescript-eslint/eslint-plugin": "^2.29.0",
         "@typescript-eslint/parser": "^2.29.0",
+        "babel-jest": "^25.4.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.10.1",
         "eslint-import-resolver-typescript": "^2.0.0",
@@ -45,10 +47,12 @@
         "eslint-plugin-react": "^7.19.0",
         "eslint-plugin-react-hooks": "^3.0.0",
         "husky": "^4.2.5",
+        "jest": "^25.4.0",
         "lint-staged": "^10.1.6",
         "postcss-import": "^12.0.1",
         "postcss-preset-env": "^6.7.0",
         "prettier": "^2.0.4",
+        "prosemirror-test-builder": "^1.0.3",
         "tailwindcss": "^1.2.0",
         "typescript": "^3.8.3"
     },
