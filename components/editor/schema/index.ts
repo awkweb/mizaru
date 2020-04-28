@@ -1,32 +1,33 @@
-import { DOMParser, Schema } from 'prosemirror-model'
+import { DOMParser, MarkSpec, NodeSpec, Schema } from 'prosemirror-model'
 
+const doc: NodeSpec = {
+    content: 'block+',
+}
+const paragraph: NodeSpec = {
+    content: 'inline*',
+    group: 'block',
+    parseDOM: [{ tag: 'p' }],
+    toDOM() {
+        return ['p', 0]
+    },
+}
+const text: NodeSpec = {
+    group: 'inline',
+}
+
+const bold: MarkSpec = {
+    parseDOM: [{ tag: 'strong' }],
+    toDOM() {
+        return ['strong', 0]
+    },
+}
+
+const nodes = { doc, paragraph, text }
+const marks = { bold }
 const schema = new Schema({
     topNode: 'doc',
-    nodes: {
-        doc: {
-            content: 'block+',
-        },
-        paragraph: {
-            content: 'inline*',
-            group: 'block',
-            parseDOM: [{ tag: 'p' }],
-            toDOM() {
-                return ['p', 0]
-            },
-        },
-        text: {
-            group: 'inline',
-        },
-    },
-    marks: {
-        bold: {
-            inclusive: false,
-            parseDOM: [{ tag: 'strong' }],
-            toDOM() {
-                return ['strong', 0]
-            },
-        },
-    },
+    nodes,
+    marks,
 })
 
 function createDocument(content: any, parseOptions = {}) {

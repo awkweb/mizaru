@@ -5,6 +5,8 @@ import schema from '../../schema'
 
 // From https://github.com/erikvullings/slimdown-js
 const boldEm = /(\*\*|__)(.*?)\1/g
+const italicEm = /(\*|_)(.*?)\1/g
+const inlineCode = /`(.*?)`/g
 
 function lintDoc(doc) {
     let result = []
@@ -68,6 +70,7 @@ function maybeAddRemoveMarks(childNode, childOffset, parentPos, tr) {
             const from = parentPos + childOffset + m.index + 1
             const to = from + m[0].length
             tr.addMark(from, to, mark)
+            tr.removeStoredMark(mark)
         }
         // If text is equal to * or _ look to combine with preceding mark.
         // For example, `**hello***` with receive `*` and should output to

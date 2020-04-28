@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/named
 import { builders } from 'prosemirror-test-builder'
+import { EditorState } from 'prosemirror-state'
 
 import schema from '../components/editor/schema'
 
@@ -12,8 +13,8 @@ function type(state, text) {
     return state.apply(state.tr.insertText(text))
 }
 
-function backspace(state, numSpaces) {
-    return state.apply(state.tr.insertText(numSpaces))
+function remove(state, from, to) {
+    return state.apply(state.tr.delete(from, to))
 }
 
 function command(state, command) {
@@ -21,4 +22,11 @@ function command(state, command) {
     return state
 }
 
-export { out, type, backspace, command }
+function mkState(config) {
+    return EditorState.create({
+        schema,
+        ...config,
+    })
+}
+
+export { out, type, remove, command, mkState }

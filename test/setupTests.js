@@ -1,6 +1,7 @@
-import { backspace, command, out, type } from './prosemirror'
+import { command, mkState, out, remove, type } from './prosemirror'
 
-global.backspace = backspace
+global.remove = remove
 global.command = command
+global.mkState = mkState
 global.out = out
 global.type = type
