@@ -4,7 +4,7 @@ import { parseCookies, setCookie } from 'nookies'
 type State = {
     content: any
     setContent: Function
-    handleChange: Function
+    handleChange: (content: JSON) => void
 }
 const Context = createContext<Partial<State>>({})
 
@@ -16,7 +16,7 @@ const Provider = ({ children }: Props) => {
     const initialContent = JSON.parse(cookies?.content ?? 'null')
     const [content, setContent] = useState(initialContent)
 
-    function handleChange(content: JSON) {
+    const handleChange = (content: JSON) => {
         setCookie(null, 'content', JSON.stringify(content), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',

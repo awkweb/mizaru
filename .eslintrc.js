@@ -50,7 +50,7 @@ module.exports = {
     },
     settings: {
         'import/parsers': {
-            '@typescript-eslint/parser': ['.ts', '.tsx'],
+            '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx'],
         },
         'import/resolver': {
             typescript: {

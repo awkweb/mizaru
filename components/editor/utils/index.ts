@@ -1,0 +1,5 @@
+export { default as Extension } from './extension'
+export { default as Mark } from './mark'
+export { default as Node } from './node'
+export { default as createDocument } from './create-document'
+export { default as minMax } from './min-max'

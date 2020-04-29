@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import { FC } from 'react'
 import dynamic from 'next/dynamic'
 
@@ -11,7 +12,11 @@ const Home: FC<Props> = () => {
     const { content, handleChange } = useStore()
     return (
         <div>
-            <Editor autofocus content={content} onChange={handleChange} />
+            <Editor
+                autoFocus
+                content={content}
+                onChange={handleChange as Function}
+            />
         </div>
     )
 }
