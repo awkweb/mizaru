@@ -1,6 +1,6 @@
-import { Fragment, Schema } from 'prosemirror-model'
+import { Schema } from 'prosemirror-model'
 
-function createDocument(schema: Schema, content: Fragment) {
+function createDocument(schema: Schema, content: JSON) {
     try {
         return schema.nodeFromJSON(content)
     } catch (error) {

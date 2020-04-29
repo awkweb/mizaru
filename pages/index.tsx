@@ -14,7 +14,7 @@ const Home: FC<Props> = () => {
         <div>
             <Editor
                 autoFocus
-                content={content}
+                content={content as JSON}
                 onChange={handleChange as Function}
             />
         </div>

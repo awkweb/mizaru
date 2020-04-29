@@ -1,7 +1,7 @@
 import { FC, useRef, useState } from 'react'
 import { EditorState, TextSelection, Transaction } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
-import { Fragment, Schema } from 'prosemirror-model'
+import { Schema } from 'prosemirror-model'
 import applyDevTools from 'prosemirror-dev-tools'
 
 import { baseKeymap } from 'prosemirror-commands'
@@ -10,14 +10,15 @@ import { keymap } from 'prosemirror-keymap'
 
 import useMount from '@/hooks/use-mount'
 
+import { History } from './extensions'
 import { Doc, Paragraph, Text } from './nodes'
 import { Bold } from './marks'
 import { createDocument, minMax } from './utils'
-import { FocusPosition } from './types'
+import { EditorSchema, ExtensionType, FocusPosition } from './types'
 
 interface Props {
     autoFocus?: boolean
-    content: Fragment
+    content: JSON
     onChange: Function
 }
 
@@ -27,37 +28,84 @@ const Editor: FC<Props> = (props) => {
     const [selection] = useState({ from: 0, to: 0 })
 
     useMount(() => {
-        const nodes = [new Doc(), new Paragraph(), new Text()].reduce(
-            (nodes, { name, schema }) => ({
-                ...nodes,
-                [name]: schema,
-            }),
-            {},
-        )
-        const marks = [new Bold()].reduce(
-            (marks, { name, schema }) => ({
-                ...marks,
-                [name]: schema,
-            }),
-            {},
-        )
+        const extensions = [
+            new Bold(),
+            new Doc(),
+            new History(),
+            new Paragraph(),
+            new Text(),
+        ]
+        const nodes = extensions
+            .filter((extension) => extension.type === ExtensionType.Node)
+            .reduce(
+                // @ts-ignore
+                (nodes, { name, schema }) => ({
+                    ...nodes,
+                    [name]: schema,
+                }),
+                {},
+            )
+        const marks = extensions
+            .filter((extension) => extension.type === ExtensionType.Mark)
+            .reduce(
+                // @ts-ignore
+                (marks, { name, schema }) => ({
+                    ...marks,
+                    [name]: schema,
+                }),
+                {},
+            )
         const schema = new Schema({
             nodes,
             marks,
-        })
+        }) as EditorSchema
+
+        const plugins = extensions
+            .filter((extension) => extension.plugins)
+            .reduce(
+                // @ts-ignore
+                (allPlugins, { plugins }) => [...allPlugins, ...plugins],
+                [],
+            )
+
+        const extensionKeymaps = extensions
+            .filter((extension) =>
+                [ExtensionType.Extension].includes(extension.type),
+            )
+            .filter((extension) => extension.keys)
+            .map((extension) => extension.keys({ schema }))
+        const nodeMarkKeymaps = extensions
+            .filter((extension) =>
+                [ExtensionType.Mark, ExtensionType.Node].includes(
+                    extension.type,
+                ),
+            )
+            .filter((extension) => extension.keys)
+            .map((extension) =>
+                extension.keys({
+                    type: (schema as { [key: string]: any })[
+                        `${extension.type}s`
+                    ][extension.name],
+                    schema,
+                }),
+            )
+        const keymaps = [...extensionKeymaps, ...nodeMarkKeymaps].map((keys) =>
+            keymap(keys),
+        )
+
         const state = EditorState.create({
             doc: createDocument(schema, props.content),
             schema,
-            plugins: [keymap(baseKeymap)],
+            plugins: [...plugins, ...keymaps, keymap(baseKeymap)],
         })
         view.current = new EditorView(viewHost.current as any, {
             state,
             dispatchTransaction,
         })
+
         if (props.autoFocus) {
             focus(FocusPosition.End)
         }
-
         if (process.env.NODE_ENV === 'development') {
             applyDevTools(view.current as EditorView<any>)
         }
@@ -87,8 +135,8 @@ const Editor: FC<Props> = (props) => {
         if (position === FocusPosition.End) {
             const { doc } = view.current?.state as EditorState<any>
             return {
-                from: doc.content.size,
-                to: doc.content.size,
+                from: doc.content.size - 1,
+                to: doc.content.size - 1,
             }
         }
 
