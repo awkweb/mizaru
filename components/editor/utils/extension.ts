@@ -7,6 +7,10 @@ class Extension {
         return ExtensionType.Extension
     }
 
+    get defaultOptions() {
+        return {}
+    }
+
     get plugins(): Plugin<any, any>[] {
         return []
     }

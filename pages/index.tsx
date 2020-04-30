@@ -1,20 +1,22 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import { FC } from 'react'
-import dynamic from 'next/dynamic'
+import { useRef } from 'react'
+import { NextPage } from 'next'
 
-import { useStore } from '@/store'
-
-const Editor = dynamic(() => import('@/components/editor'), { ssr: false })
+import { Editor, EditorRef } from '@/components'
+import { useStore } from '@/hooks'
 
 interface Props {}
 
-const Home: FC<Props> = () => {
+const Home: NextPage<Props> = () => {
     const { content, handleChange } = useStore()
+    const editorRef: EditorRef = useRef(null)
+
     return (
         <div>
             <Editor
                 autoFocus
-                content={content as JSON}
+                ref={editorRef}
+                value={content as JSON}
                 onChange={handleChange as Function}
             />
         </div>

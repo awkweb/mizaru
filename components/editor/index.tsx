@@ -1,4 +1,10 @@
-import { FC, useRef, useState } from 'react'
+import {
+    Ref as RefType,
+    forwardRef,
+    useImperativeHandle,
+    useRef,
+    useState,
+} from 'react'
 import { EditorState, TextSelection, Transaction } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { Schema } from 'prosemirror-model'
@@ -10,7 +16,7 @@ import { keymap } from 'prosemirror-keymap'
 
 import useMount from '@/hooks/use-mount'
 
-import { History } from './extensions'
+import { Highlight, History } from './extensions'
 import { Doc, Paragraph, Text } from './nodes'
 import { Bold } from './marks'
 import { createDocument, minMax } from './utils'
@@ -18,19 +24,29 @@ import { EditorSchema, ExtensionType, FocusPosition } from './types'
 
 interface Props {
     autoFocus?: boolean
-    content: JSON
+    value: JSON
     onChange: Function
 }
+export type Ref = RefType<{
+    focus: () => void
+}>
 
-const Editor: FC<Props> = (props) => {
+const Editor = forwardRef((props: Props, ref: Ref) => {
     const viewHost = useRef<HTMLDivElement>(null)
     const view = useRef<EditorView<any> | null>(null)
     const [selection] = useState({ from: 0, to: 0 })
+
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            focus(FocusPosition.End)
+        },
+    }))
 
     useMount(() => {
         const extensions = [
             new Bold(),
             new Doc(),
+            new Highlight(),
             new History(),
             new Paragraph(),
             new Text(),
@@ -94,7 +110,7 @@ const Editor: FC<Props> = (props) => {
         )
 
         const state = EditorState.create({
-            doc: createDocument(schema, props.content),
+            doc: createDocument(schema, props.value),
             schema,
             plugins: [...plugins, ...keymaps, keymap(baseKeymap)],
         })
@@ -170,6 +186,6 @@ const Editor: FC<Props> = (props) => {
     }
 
     return <div ref={viewHost} />
-}
+})
 
 export default Editor
