@@ -11,7 +11,7 @@ module.exports = {
         },
         colors: {
             background: 'var(--colors-background)',
-            border: 'var(--colors-border)',
+            muted: 'var(--colors-muted)',
             body: 'var(--colors-body)',
         },
         spacing: {
@@ -54,7 +54,7 @@ module.exports = {
         },
         borderColor: (theme) => ({
             ...theme('colors'),
-            default: theme('colors.border', 'currentColor'),
+            default: theme('colors.muted', 'currentColor'),
         }),
         borderRadius: {
             none: '0',

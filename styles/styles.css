@@ -8,7 +8,7 @@
 /* purgecss start ignore */
 :root {
     --colors-background: hsl(104, 100%, 100%);
-    --colors-border: hsl(204, 0%, 80%);
+    --colors-muted: hsl(204, 0%, 80%);
     --colors-body: hsl(109, 0%, 10%);
 }
 
@@ -42,5 +42,9 @@ body {
     @apply outline-none;
     @apply px-3;
     max-height: calc(100% - 1rem);
+}
+
+.find {
+    @apply bg-muted;
 }
 /* purgecss end ignore */

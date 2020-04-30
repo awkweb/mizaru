@@ -1,8 +1,8 @@
 import { history, redo, undo } from 'prosemirror-history'
 
-import { Extension } from '../utils'
+import { Plugin } from '../utils'
 
-class History extends Extension {
+class History extends Plugin {
     get name() {
         return 'history'
     }

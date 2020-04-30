@@ -2,7 +2,11 @@ import { Plugin } from 'prosemirror-state'
 
 import { ExtensionType } from '../types'
 
-class Extension {
+abstract class Extension {
+    get name(): string {
+        return ''
+    }
+
     get type(): ExtensionType {
         return ExtensionType.Extension
     }
@@ -17,6 +21,10 @@ class Extension {
 
     keys(keys: { [key: string]: any }) {
         return { ...keys }
+    }
+
+    commands(): { [key: string]: Function } {
+        return {}
     }
 }
 

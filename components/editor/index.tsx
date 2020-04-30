@@ -1,6 +1,7 @@
 import {
-    Ref as RefType,
     forwardRef,
+    useCallback,
+    useEffect,
     useImperativeHandle,
     useRef,
     useState,
@@ -9,31 +10,28 @@ import { EditorState, TextSelection, Transaction } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { Schema } from 'prosemirror-model'
 import applyDevTools from 'prosemirror-dev-tools'
-
 import { baseKeymap } from 'prosemirror-commands'
-
 import { keymap } from 'prosemirror-keymap'
 
-import useMount from '@/hooks/use-mount'
+import { useMount } from '@/hooks'
 
-import { Highlight, History } from './extensions'
+import { Highlight, History } from './plugins'
 import { Doc, Paragraph, Text } from './nodes'
 import { Bold } from './marks'
-import { createDocument, minMax } from './utils'
-import { EditorSchema, ExtensionType, FocusPosition } from './types'
+import { ExtensionManager, createDocument, minMax } from './utils'
+import { EditorRef, EditorSchema, FocusPosition } from './types'
 
 interface Props {
     autoFocus?: boolean
+    searchTerm?: string
     value: JSON
     onChange: Function
 }
-export type Ref = RefType<{
-    focus: () => void
-}>
 
-const Editor = forwardRef((props: Props, ref: Ref) => {
+const Editor = forwardRef((props: Props, ref: EditorRef) => {
     const viewHost = useRef<HTMLDivElement>(null)
     const view = useRef<EditorView<any> | null>(null)
+    const commands = useRef<{ [key: string]: Function }>(null)
     const [selection] = useState({ from: 0, to: 0 })
 
     useImperativeHandle(ref, () => ({
@@ -43,80 +41,38 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
     }))
 
     useMount(() => {
-        const extensions = [
+        const extensions = new ExtensionManager([
             new Bold(),
             new Doc(),
             new Highlight(),
             new History(),
             new Paragraph(),
             new Text(),
-        ]
-        const nodes = extensions
-            .filter((extension) => extension.type === ExtensionType.Node)
-            .reduce(
-                // @ts-ignore
-                (nodes, { name, schema }) => ({
-                    ...nodes,
-                    [name]: schema,
-                }),
-                {},
-            )
-        const marks = extensions
-            .filter((extension) => extension.type === ExtensionType.Mark)
-            .reduce(
-                // @ts-ignore
-                (marks, { name, schema }) => ({
-                    ...marks,
-                    [name]: schema,
-                }),
-                {},
-            )
+        ])
+        const nodes = extensions.nodes
+        const marks = extensions.marks
         const schema = new Schema({
             nodes,
             marks,
         }) as EditorSchema
 
-        const plugins = extensions
-            .filter((extension) => extension.plugins)
-            .reduce(
-                // @ts-ignore
-                (allPlugins, { plugins }) => [...allPlugins, ...plugins],
-                [],
-            )
-
-        const extensionKeymaps = extensions
-            .filter((extension) =>
-                [ExtensionType.Extension].includes(extension.type),
-            )
-            .filter((extension) => extension.keys)
-            .map((extension) => extension.keys({ schema }))
-        const nodeMarkKeymaps = extensions
-            .filter((extension) =>
-                [ExtensionType.Mark, ExtensionType.Node].includes(
-                    extension.type,
-                ),
-            )
-            .filter((extension) => extension.keys)
-            .map((extension) =>
-                extension.keys({
-                    type: (schema as { [key: string]: any })[
-                        `${extension.type}s`
-                    ][extension.name],
-                    schema,
-                }),
-            )
-        const keymaps = [...extensionKeymaps, ...nodeMarkKeymaps].map((keys) =>
-            keymap(keys),
-        )
-
         const state = EditorState.create({
             doc: createDocument(schema, props.value),
             schema,
-            plugins: [...plugins, ...keymaps, keymap(baseKeymap)],
+            plugins: [
+                ...extensions.plugins,
+                ...extensions.keymaps({ schema }),
+                keymap(baseKeymap),
+            ],
         })
         view.current = new EditorView(viewHost.current as any, {
             state,
             dispatchTransaction,
+        })
+        // @ts-ignore
+        commands.current = extensions.commands({
+            schema,
+            view: view.current,
         })
 
         if (props.autoFocus) {
@@ -134,6 +90,10 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
         >
         props.onChange(newState?.doc.toJSON())
         view.current?.updateState(newState)
+
+        if (transaction.docChanged) {
+            search()
+        }
     }
 
     const resolveSelection = (position?: FocusPosition | boolean) => {
@@ -184,6 +144,18 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
 
         view.current?.dispatch(transaction)
     }
+
+    const search = useCallback(() => {
+        if (props.searchTerm) {
+            commands.current?.find(props.searchTerm)
+        } else {
+            commands.current?.clearSearch()
+        }
+    }, [props.searchTerm])
+
+    useEffect(() => {
+        search()
+    }, [search, props.searchTerm])
 
     return <div ref={viewHost} />
 })
