@@ -1,8 +1,10 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { EditorState, Plugin } from 'prosemirror-state'
+import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { Plugin as PluginExtension } from '../utils'
+
+const key = new PluginKey('highlight')
 
 class Highlight extends PluginExtension {
     options: { [key: string]: any }
@@ -97,7 +99,6 @@ class Highlight extends PluginExtension {
             this.searchTerm = this.options.disableRegex
                 ? searchTerm.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
                 : searchTerm
-
             this.updateView(state, dispatch)
         }
     }
@@ -105,7 +106,6 @@ class Highlight extends PluginExtension {
     clear() {
         return (state: EditorState, dispatch: any) => {
             this.searchTerm = undefined
-
             this.updateView(state, dispatch)
         }
     }
@@ -126,6 +126,7 @@ class Highlight extends PluginExtension {
     get plugins() {
         return [
             new Plugin({
+                key,
                 state: {
                     init() {
                         return DecorationSet.empty

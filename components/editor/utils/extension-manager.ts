@@ -104,7 +104,6 @@ export default class ExtensionManager {
                     if (!view.editable) {
                         return false
                     }
-                    view.focus()
                     return cb(attrs)(view.state, view.dispatch, view)
                 }
 

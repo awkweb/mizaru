@@ -15,7 +15,7 @@ import { keymap } from 'prosemirror-keymap'
 
 import { useMount } from '@/hooks'
 
-import { Highlight, History } from './plugins'
+import { Highlight, History, ReactProps } from './plugins'
 import { Doc, Paragraph, Text } from './nodes'
 import { Bold } from './marks'
 import { ExtensionManager, createDocument, minMax } from './utils'
@@ -30,13 +30,16 @@ interface Props {
 
 const Editor = forwardRef((props: Props, ref: EditorRef) => {
     const viewHost = useRef<HTMLDivElement>(null)
-    const view = useRef<EditorView<any> | null>(null)
-    const commands = useRef<{ [key: string]: Function }>(null)
+    const view = useRef<EditorView<any> | null>()
+    const commands = useRef<{ [key: string]: Function }>()
     const [selection] = useState({ from: 0, to: 0 })
 
     useImperativeHandle(ref, () => ({
         focus: () => {
             focus(FocusPosition.End)
+        },
+        updateInternalProps: (props: { [key: string]: any }) => {
+            commands.current?.updateReactProps(props)
         },
     }))
 
@@ -44,9 +47,12 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         const extensions = new ExtensionManager([
             new Bold(),
             new Doc(),
-            new Highlight(),
+            new Highlight({
+                caseSensitive: false,
+            }),
             new History(),
             new Paragraph(),
+            new ReactProps(props),
             new Text(),
         ])
         const nodes = extensions.nodes
@@ -69,7 +75,6 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
             state,
             dispatchTransaction,
         })
-        // @ts-ignore
         commands.current = extensions.commands({
             schema,
             view: view.current,
@@ -92,7 +97,8 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         view.current?.updateState(newState)
 
         if (transaction.docChanged) {
-            search()
+            const { searchTerm } = commands.current?.getReactProps()
+            search(searchTerm)
         }
     }
 
@@ -131,11 +137,11 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         }
 
         const { from, to } = resolveSelection(position)
-        setSelection(from as number, to as number)
-        setTimeout(() => view.current?.focus(), 10)
+        updateSelection(from as number, to as number)
+        view.current?.focus()
     }
 
-    const setSelection = (from = 0, to = 0) => {
+    const updateSelection = (from = 0, to = 0) => {
         const { doc, tr } = view.current?.state as EditorState<any>
         const resolvedFrom = minMax(from, 0, doc.content.size)
         const resolvedEnd = minMax(to, 0, doc.content.size)
@@ -145,16 +151,17 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         view.current?.dispatch(transaction)
     }
 
-    const search = useCallback(() => {
-        if (props.searchTerm) {
-            commands.current?.find(props.searchTerm)
+    const search = useCallback((searchTerm: string) => {
+        if (searchTerm) {
+            commands.current?.find(searchTerm)
         } else {
             commands.current?.clearSearch()
         }
-    }, [props.searchTerm])
+    }, [])
 
     useEffect(() => {
-        search()
+        if (props.searchTerm === undefined) return
+        search(props.searchTerm)
     }, [search, props.searchTerm])
 
     return <div ref={viewHost} />

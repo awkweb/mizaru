@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 
-import Context from '../store'
+import Context, { State } from '../store'
 
 function useStore() {
-    return useContext(Context)
+    return useContext(Context) as State
 }
 
 export default useStore

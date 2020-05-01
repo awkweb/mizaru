@@ -16,7 +16,7 @@ const Provider = ({ children }: Props) => {
     const cookies = parseCookies()
     const initialContent = JSON.parse(cookies?.content ?? 'null')
     const [content, setContent] = useState<JSON>(initialContent)
-    const [searchTerm, setSearchTerm] = useState<string>('')
+    const [searchTerm, setSearchTerm] = useState<string>()
 
     const handleChange = (content: JSON) => {
         setCookie(null, 'content', JSON.stringify(content), {
@@ -45,3 +45,4 @@ const Provider = ({ children }: Props) => {
 
 export default Context
 export { Provider }
+export type { State }
