@@ -26,7 +26,7 @@ class Bold extends Mark {
                         null,
                 },
             ],
-            toDOM: (): DOMOutputSpec => ['strong', 0],
+            toDOM: (): DOMOutputSpec => ['strong'],
         }
     }
 }

@@ -1,6 +1,6 @@
 import { EditorState, TextSelection, Transaction } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
-import { Schema } from 'prosemirror-model'
+import { DOMParser, Schema } from 'prosemirror-model'
 import { keymap } from 'prosemirror-keymap'
 import { baseKeymap } from 'prosemirror-commands'
 
@@ -16,9 +16,9 @@ interface Events {
 
 interface Props extends Events {
     autoFocus?: boolean
-    extensions: Extension[]
+    content: JSON | string
     element: HTMLDivElement
-    content: JSON
+    extensions: Extension[]
 }
 
 class Editor {
@@ -31,19 +31,22 @@ class Editor {
     view: EditorView<any>
 
     constructor(props: Props) {
-        const {
-            autoFocus,
-            extensions,
-            element,
-            content,
-            onChange,
-            onTransaction,
-        } = props
+        const defaultProps = {
+            autoFocus: false,
+            extensions: [],
+            content: null,
+            onChange: () => {},
+            onTransaction: () => {},
+        }
+        const options = {
+            ...defaultProps,
+            ...props,
+        }
         const extensionManager = new ExtensionManager([
             new Doc(),
             new Text(),
             new Paragraph(),
-            ...extensions,
+            ...options.extensions,
         ])
         const { nodes, plugins, marks } = extensionManager
         const schema = new Schema({
@@ -56,10 +59,10 @@ class Editor {
 
         const state = EditorState.create({
             schema,
-            doc: this.createDocument(schema, content),
+            doc: this.createDocument(schema, options.content),
             plugins: [...plugins, ...keymaps, keymap(baseKeymap)],
         })
-        const view = new EditorView(element, {
+        const view = new EditorView(options.element, {
             state,
             dispatchTransaction: this.dispatchTransaction.bind(this),
         })
@@ -70,11 +73,11 @@ class Editor {
         this.schema = schema
         this.extensionManager = extensionManager
         this.events = {
-            onChange,
-            onTransaction,
+            onChange: options.onChange,
+            onTransaction: options.onTransaction,
         }
 
-        if (autoFocus !== null) {
+        if (options.autoFocus !== null) {
             this.focus(FocusPosition.End)
         }
     }
@@ -83,19 +86,36 @@ class Editor {
         return this.view.state
     }
 
-    createDocument(schema: EditorSchema, content: JSON) {
-        try {
-            return schema.nodeFromJSON(content)
-        } catch (error) {
-            const emptyDocument = {
-                type: 'doc',
-                content: [
-                    {
-                        type: 'paragraph',
-                    },
-                ],
+    get json() {
+        return this.state.doc.toJSON() as JSON
+    }
+
+    createDocument(schema: EditorSchema, content: JSON | string) {
+        const emptyDocument = {
+            type: 'doc',
+            content: [
+                {
+                    type: 'paragraph',
+                },
+            ],
+        }
+        switch (typeof content) {
+            case 'string': {
+                const element = document.createElement('div')
+                element.innerHTML = (content as string).trim()
+                return DOMParser.fromSchema(schema).parse(element)
             }
-            return schema.nodeFromJSON(emptyDocument)
+            case 'object': {
+                try {
+                    return schema.nodeFromJSON(content as JSON)
+                } catch (error) {
+                    return schema.nodeFromJSON(emptyDocument)
+                }
+            }
+            case null:
+            default: {
+                return schema.nodeFromJSON(emptyDocument)
+            }
         }
     }
 
@@ -106,8 +126,12 @@ class Editor {
             from: newState.selection.from,
             to: newState.selection.to,
         }
-        this.events.onChange(newState.doc.toJSON() as JSON)
         this.events.onTransaction(transaction)
+
+        if (!transaction.docChanged || transaction.getMeta('preventUpdate')) {
+            return
+        }
+        this.events.onChange(this.json)
     }
 
     resolveSelection(position?: FocusPosition | boolean) {
@@ -153,6 +177,18 @@ class Editor {
         const resolvedEnd = minMax(to, 0, doc.content.size)
         const selection = TextSelection.create(doc, resolvedFrom, resolvedEnd)
         const transaction = tr.setSelection(selection)
+
+        this.view.dispatch(transaction)
+    }
+
+    setContent(content: JSON | string, emitUpdate: boolean = false) {
+        const { doc, tr } = this.state
+        const document = this.createDocument(this.schema, content)
+        const selection = TextSelection.create(doc, 0, doc.content.size)
+        const transaction = tr
+            .setSelection(selection)
+            .replaceSelectionWith(document, false)
+            .setMeta('preventUpdate', !emitUpdate)
 
         this.view.dispatch(transaction)
     }

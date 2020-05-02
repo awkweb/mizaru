@@ -25,7 +25,7 @@ class Highlight extends PluginExtension {
     searchTerm?: string
     private updating: boolean = false
 
-    constructor(props: Props) {
+    constructor(props: Partial<Props>) {
         super()
 
         this.props = {

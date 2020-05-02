@@ -15,8 +15,8 @@ import { default as EditorInstance } from './editor'
 type Props = {
     autoFocus?: boolean
     searchTerm?: string
-    value: JSON
-    onChange: (content: JSON) => void
+    value: JSON | string
+    onChange: (content: JSON | string) => void
 }
 
 const Editor = forwardRef((props: Props, ref: EditorRef) => {
@@ -51,7 +51,7 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         editor.current = editorInstance
 
         if (process.env.NODE_ENV === 'development') {
-            applyDevTools(editor.current.view as EditorView<any>)
+            applyDevTools(editor.current?.view as EditorView<any>)
         }
         return () => editor.current?.view.destroy()
     })

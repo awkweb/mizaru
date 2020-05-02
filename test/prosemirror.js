@@ -2,12 +2,12 @@
 import { builders } from 'prosemirror-test-builder'
 import { EditorState } from 'prosemirror-state'
 
-import schema from '../components/editor/schema'
-
-const out = builders(schema, {
-    p: { nodeType: 'paragraph' },
-    b: { markType: 'bold' },
-})
+function out(schema) {
+    return builders(schema, {
+        p: { nodeType: 'paragraph' },
+        b: { markType: 'bold' },
+    })
+}
 
 function type(state, text) {
     return state.apply(state.tr.insertText(text))
