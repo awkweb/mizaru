@@ -3,6 +3,7 @@ import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { Plugin as PluginExtension } from '../utils'
+import { Dispatch } from '../types'
 
 type Props = {
     findClass: string
@@ -112,7 +113,7 @@ class Highlight extends PluginExtension {
     }
 
     find(searchTerm: string) {
-        return (state: EditorState, dispatch: any) => {
+        return (state: EditorState, dispatch: Dispatch) => {
             this.searchTerm = this.props.disableRegex
                 ? searchTerm.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
                 : searchTerm
@@ -121,13 +122,13 @@ class Highlight extends PluginExtension {
     }
 
     clear() {
-        return (state: EditorState, dispatch: any) => {
+        return (state: EditorState, dispatch: Dispatch) => {
             this.searchTerm = undefined
             this.updateView(state, dispatch)
         }
     }
 
-    updateView({ tr }: EditorState, dispatch: any) {
+    updateView({ tr }: EditorState, dispatch: Dispatch) {
         this.updating = true
         dispatch(tr)
         this.updating = false

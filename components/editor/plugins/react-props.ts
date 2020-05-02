@@ -2,6 +2,7 @@ import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
 
 import { Plugin as PluginExtension } from '../utils'
 import { EditorProps } from '../'
+import { Dispatch } from '../types'
 
 type Props = Partial<EditorProps>
 
@@ -32,14 +33,14 @@ class ReactProps extends PluginExtension {
     }
 
     updateProps(props: Props) {
-        return ({ tr }: EditorState, dispatch: any) => {
+        return ({ tr }: EditorState, dispatch: Dispatch) => {
             tr.setMeta(key, props)
             dispatch(tr)
         }
     }
 
     getProps() {
-        return (state: EditorState, _: any) => {
+        return (state: EditorState, _: Dispatch) => {
             return key.getState(state) as Props
         }
     }

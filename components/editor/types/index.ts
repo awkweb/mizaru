@@ -1,5 +1,8 @@
 import { Schema } from 'prosemirror-model'
 import { Ref } from 'react'
+import { Transaction } from 'prosemirror-state'
+
+export type Dispatch = (tr: Transaction) => void
 
 export type EditorSchema<
     GNodes extends string = string,
