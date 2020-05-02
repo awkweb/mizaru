@@ -4,24 +4,36 @@ import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { Plugin as PluginExtension } from '../utils'
 
+type Props = {
+    findClass: string
+    searching: boolean
+    caseSensitive: boolean
+    disableRegex: boolean
+    alwaysSearch: boolean
+}
+
+type Commands = {
+    search: (searchTerm?: string) => void
+}
+
 const key = new PluginKey('highlight')
 
 class Highlight extends PluginExtension {
-    options: { [key: string]: any }
+    props: Props
     results: any[] = []
     searchTerm?: string
     private updating: boolean = false
 
-    constructor(options = {}) {
+    constructor(props: Props) {
         super()
 
-        this.options = {
+        this.props = {
             findClass: 'find',
             searching: false,
             caseSensitive: false,
             disableRegex: true,
             alwaysSearch: false,
-            ...options,
+            ...props,
         }
     }
 
@@ -29,24 +41,29 @@ class Highlight extends PluginExtension {
         return 'highlight'
     }
 
-    commands() {
+    commands(): Commands {
         return {
-            find: (searchTerm: string) => this.find(searchTerm),
-            clearSearch: () => this.clear(),
+            search: (searchTerm?: string) => {
+                if (searchTerm) {
+                    return this.find(searchTerm)
+                } else {
+                    return this.clear()
+                }
+            },
         }
     }
 
     get findRegExp() {
         return RegExp(
             this.searchTerm ?? '',
-            !this.options.caseSensitive ? 'gui' : 'gu',
+            !this.props.caseSensitive ? 'gui' : 'gu',
         )
     }
 
     get decorations() {
         return this.results.map((deco) =>
             Decoration.inline(deco.from, deco.to, {
-                class: this.options.findClass,
+                class: this.props.findClass,
             }),
         )
     }
@@ -96,7 +113,7 @@ class Highlight extends PluginExtension {
 
     find(searchTerm: string) {
         return (state: EditorState, dispatch: any) => {
-            this.searchTerm = this.options.disableRegex
+            this.searchTerm = this.props.disableRegex
                 ? searchTerm.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
                 : searchTerm
             this.updateView(state, dispatch)
@@ -134,8 +151,8 @@ class Highlight extends PluginExtension {
                     apply: (tr, old) => {
                         if (
                             this.updating ||
-                            this.options.searching ||
-                            (tr.docChanged && this.options.alwaysSearch)
+                            this.props.searching ||
+                            (tr.docChanged && this.props.alwaysSearch)
                         ) {
                             return this.createDeco(tr.doc)
                         }
@@ -159,3 +176,4 @@ class Highlight extends PluginExtension {
 }
 
 export default Highlight
+export type { Commands as HighlightCommands }

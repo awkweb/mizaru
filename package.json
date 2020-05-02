@@ -68,6 +68,10 @@
             "prettier --write",
             "eslint --max-warnings 0 --cache"
         ],
+        "*.{js}": [
+            "prettier --write",
+            "eslint --max-warnings 0 --cache"
+        ],
         "{*.md}": [
             "prettier --write"
         ]

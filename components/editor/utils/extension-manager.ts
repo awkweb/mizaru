@@ -7,7 +7,7 @@ import Mark from './mark'
 import Node from './node'
 
 export default class ExtensionManager {
-    extensions: Extension[] = []
+    extensions: Extension[]
 
     constructor(extensions: Extension[] = []) {
         this.extensions = extensions
@@ -107,15 +107,12 @@ export default class ExtensionManager {
                     return cb(attrs)(view.state, view.dispatch, view)
                 }
 
-                const handle = (
-                    _name: string,
-                    _value: Array<any> | Function,
-                ) => {
-                    if (Array.isArray(_value)) {
-                        commands[_name] = (attrs: any) =>
-                            _value.forEach((callback) => apply(callback, attrs))
-                    } else if (typeof _value === 'function') {
-                        commands[_name] = (attrs: any) => apply(_value, attrs)
+                const handle = (name: string, value: Array<any> | Function) => {
+                    if (Array.isArray(value)) {
+                        commands[name] = (attrs: any) =>
+                            value.forEach((callback) => apply(callback, attrs))
+                    } else if (typeof value === 'function') {
+                        commands[name] = (attrs: any) => apply(value, attrs)
                     }
                 }
 

@@ -1,29 +1,37 @@
 import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
 
 import { Plugin as PluginExtension } from '../utils'
+import { EditorProps } from '../'
+
+type Props = Partial<EditorProps>
+
+type Commands = {
+    updateReactProps: (props: Props) => void
+    getReactProps: () => any
+}
 
 const key = new PluginKey('reactProps')
 
 class ReactProps extends PluginExtension {
-    initialProps: { [key: string]: any }
+    props: Props
 
-    constructor(initialProps = {}) {
+    constructor(props: Props) {
         super()
-        this.initialProps = initialProps
+        this.props = props
     }
 
     get name() {
         return 'reactProps'
     }
 
-    commands() {
+    commands(): Commands {
         return {
-            updateReactProps: (props: any) => this.updateProps(props),
+            updateReactProps: (props: Props) => this.updateProps(props),
             getReactProps: () => this.getProps(),
         }
     }
 
-    updateProps(props: any) {
+    updateProps(props: Props) {
         return ({ tr }: EditorState, dispatch: any) => {
             tr.setMeta(key, props)
             dispatch(tr)
@@ -31,8 +39,8 @@ class ReactProps extends PluginExtension {
     }
 
     getProps() {
-        return (state: EditorState, _dispatch: any) => {
-            return key.getState(state)
+        return (state: EditorState, _: any) => {
+            return key.getState(state) as Props
         }
     }
 
@@ -41,7 +49,7 @@ class ReactProps extends PluginExtension {
             new Plugin({
                 key,
                 state: {
-                    init: () => this.initialProps,
+                    init: () => this.props,
                     apply(tr, old) {
                         return tr.getMeta(key) || old
                     },
@@ -52,3 +60,4 @@ class ReactProps extends PluginExtension {
 }
 
 export default ReactProps
+export type { Commands as ReactPropsCommands }

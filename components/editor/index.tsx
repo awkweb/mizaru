@@ -1,170 +1,81 @@
-import {
-    forwardRef,
-    useCallback,
-    useEffect,
-    useImperativeHandle,
-    useRef,
-    useState,
-} from 'react'
-import { EditorState, TextSelection, Transaction } from 'prosemirror-state'
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 import { EditorView } from 'prosemirror-view'
-import { Schema } from 'prosemirror-model'
 import applyDevTools from 'prosemirror-dev-tools'
-import { baseKeymap } from 'prosemirror-commands'
-import { keymap } from 'prosemirror-keymap'
+
+import { Transaction } from 'prosemirror-state'
 
 import { useMount } from '@/hooks'
 
 import { Highlight, History, ReactProps } from './plugins'
 import { Doc, Paragraph, Text } from './nodes'
 import { Bold } from './marks'
-import { ExtensionManager, createDocument, minMax } from './utils'
-import { EditorRef, EditorSchema, FocusPosition } from './types'
+import { EditorRef } from './types'
+import { default as EditorInstance } from './editor'
 
-interface Props {
+type Props = {
     autoFocus?: boolean
     searchTerm?: string
     value: JSON
-    onChange: Function
+    onChange: (content: JSON) => void
 }
 
 const Editor = forwardRef((props: Props, ref: EditorRef) => {
     const viewHost = useRef<HTMLDivElement>(null)
-    const view = useRef<EditorView<any> | null>()
-    const commands = useRef<{ [key: string]: Function }>()
-    const [selection] = useState({ from: 0, to: 0 })
+    const editor = useRef<EditorInstance>()
 
     useImperativeHandle(ref, () => ({
         focus: () => {
-            focus(FocusPosition.End)
-        },
-        updateInternalProps: (props: { [key: string]: any }) => {
-            commands.current?.updateReactProps(props)
+            editor.current?.focus()
         },
     }))
 
     useMount(() => {
-        const extensions = new ExtensionManager([
-            new Bold(),
-            new Doc(),
-            new Highlight({
-                caseSensitive: false,
-            }),
-            new History(),
-            new Paragraph(),
-            new ReactProps(props),
-            new Text(),
-        ])
-        const nodes = extensions.nodes
-        const marks = extensions.marks
-        const schema = new Schema({
-            nodes,
-            marks,
-        }) as EditorSchema
-
-        const state = EditorState.create({
-            doc: createDocument(schema, props.value),
-            schema,
-            plugins: [
-                ...extensions.plugins,
-                ...extensions.keymaps({ schema }),
-                keymap(baseKeymap),
+        const editorInstance = new EditorInstance({
+            autoFocus: props.autoFocus,
+            extensions: [
+                new Bold(),
+                new Doc(),
+                new Highlight({
+                    caseSensitive: false,
+                }),
+                new History(),
+                new Paragraph(),
+                new ReactProps(props),
+                new Text(),
             ],
+            element: viewHost.current as HTMLDivElement,
+            content: props.value,
+            onChange: props.onChange,
+            onTransaction,
         })
-        view.current = new EditorView(viewHost.current as any, {
-            state,
-            dispatchTransaction,
-        })
-        commands.current = extensions.commands({
-            schema,
-            view: view.current,
-        })
+        editor.current = editorInstance
 
-        if (props.autoFocus) {
-            focus(FocusPosition.End)
-        }
         if (process.env.NODE_ENV === 'development') {
-            applyDevTools(view.current as EditorView<any>)
+            applyDevTools(editor.current.view as EditorView<any>)
         }
-        return () => view.current?.destroy()
+        return () => editor.current?.view.destroy()
     })
-
-    const dispatchTransaction = (transaction: Transaction) => {
-        const newState = view.current?.state.apply(transaction) as EditorState<
-            any
-        >
-        props.onChange(newState?.doc.toJSON())
-        view.current?.updateState(newState)
-
-        if (transaction.docChanged) {
-            const { searchTerm } = commands.current?.getReactProps()
-            search(searchTerm)
-        }
-    }
-
-    const resolveSelection = (position?: FocusPosition | boolean) => {
-        if (selection && position === null) {
-            return selection
-        }
-
-        if (position === FocusPosition.Start || position === true) {
-            return {
-                from: 0,
-                to: 0,
-            }
-        }
-
-        if (position === FocusPosition.End) {
-            const { doc } = view.current?.state as EditorState<any>
-            return {
-                from: doc.content.size - 1,
-                to: doc.content.size - 1,
-            }
-        }
-
-        return {
-            from: position,
-            to: position,
-        }
-    }
-
-    const focus = (position?: FocusPosition | boolean) => {
-        if (
-            (view.current?.hasFocus() && position === null) ||
-            position === false
-        ) {
-            return
-        }
-
-        const { from, to } = resolveSelection(position)
-        updateSelection(from as number, to as number)
-        view.current?.focus()
-    }
-
-    const updateSelection = (from = 0, to = 0) => {
-        const { doc, tr } = view.current?.state as EditorState<any>
-        const resolvedFrom = minMax(from, 0, doc.content.size)
-        const resolvedEnd = minMax(to, 0, doc.content.size)
-        const selection = TextSelection.create(doc, resolvedFrom, resolvedEnd)
-        const transaction = tr.setSelection(selection)
-
-        view.current?.dispatch(transaction)
-    }
-
-    const search = useCallback((searchTerm: string) => {
-        if (searchTerm) {
-            commands.current?.find(searchTerm)
-        } else {
-            commands.current?.clearSearch()
-        }
-    }, [])
 
     useEffect(() => {
         if (props.searchTerm === undefined) return
-        search(props.searchTerm)
-    }, [search, props.searchTerm])
+        editor.current?.commands.search(props.searchTerm)
+    }, [props.searchTerm])
+
+    useEffect(() => {
+        editor.current?.commands.updateReactProps({
+            searchTerm: props.searchTerm,
+        })
+    }, [props.searchTerm])
+
+    const onTransaction = (transaction: Transaction) => {
+        if (transaction.docChanged) {
+            const { searchTerm } = editor.current?.commands.getReactProps()
+            editor.current?.commands.search(searchTerm)
+        }
+    }
 
     return <div ref={viewHost} />
 })
 
 export default Editor
+export type { Props as EditorProps }

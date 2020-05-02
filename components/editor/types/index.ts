@@ -8,8 +8,12 @@ export type EditorSchema<
 
 export type EditorRef = Ref<{
     focus: () => void
-    updateInternalProps: (props: { [key: string]: any }) => void
 }>
+
+export type EditorSelection = {
+    from: number
+    to: number
+}
 
 export enum ExtensionType {
     Extension = 'extension',
