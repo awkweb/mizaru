@@ -1,0 +1,23 @@
+import { history, redo, undo } from 'prosemirror-history'
+
+import { Plugin } from '../utils'
+
+class History extends Plugin {
+    get name() {
+        return 'history'
+    }
+
+    plugins() {
+        return [history()]
+    }
+
+    keys() {
+        return {
+            'Mod-z': undo,
+            'Mod-y': redo,
+            'Shift-Mod-z': redo,
+        }
+    }
+}
+
+export default History

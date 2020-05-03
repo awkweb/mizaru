@@ -1,17 +1,31 @@
-import { FC } from 'react'
-import dynamic from 'next/dynamic'
+/* eslint-disable jsx-a11y/no-autofocus */
+import { useRef } from 'react'
+import { NextPage } from 'next'
 
-import { useStore } from '@/store'
-
-const Editor = dynamic(() => import('@/components/editor'), { ssr: false })
+import { Editor, EditorRef } from '@/components'
+import { useStore } from '@/hooks'
 
 interface Props {}
 
-const Home: FC<Props> = () => {
-    const { content, handleChange } = useStore()
+const Home: NextPage<Props> = () => {
+    const { content, searchTerm, handleChange, handleSearch } = useStore()
+    const editorRef: EditorRef = useRef(null)
+
     return (
         <div>
-            <Editor autofocus content={content} onChange={handleChange} />
+            <input
+                className="mb-2 pt-1 px-3"
+                placeholder="Search"
+                value={searchTerm ?? ''}
+                onChange={(event) => handleSearch(event.target.value)}
+            />
+            <Editor
+                autoFocus
+                ref={editorRef}
+                searchTerm={searchTerm}
+                value={content}
+                onChange={handleChange}
+            />
         </div>
     )
 }

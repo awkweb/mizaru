@@ -18,7 +18,6 @@ module.exports = {
                 'newlines-between': 'always-and-inside-groups',
             },
         ],
-        'import/no-unresolved': ['error', { ignore: ['^~/', '^next/'] }],
         'jsx-a11y/anchor-is-valid': 'off',
         'react/jsx-boolean-value': ['warn', 'never'],
         'react/no-array-index-key': 'error',
@@ -50,7 +49,7 @@ module.exports = {
     },
     settings: {
         'import/parsers': {
-            '@typescript-eslint/parser': ['.ts', '.tsx'],
+            '@typescript-eslint/parser': ['.js', '.ts', '.tsx'],
         },
         'import/resolver': {
             typescript: {

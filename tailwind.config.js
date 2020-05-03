@@ -11,8 +11,9 @@ module.exports = {
         },
         colors: {
             background: 'var(--colors-background)',
-            border: 'var(--colors-border)',
             body: 'var(--colors-body)',
+            highlight: 'var(--colors-highlight)',
+            muted: 'var(--colors-muted)',
         },
         spacing: {
             px: '1px',
@@ -54,7 +55,7 @@ module.exports = {
         },
         borderColor: (theme) => ({
             ...theme('colors'),
-            default: theme('colors.border', 'currentColor'),
+            default: theme('colors.muted', 'currentColor'),
         }),
         borderRadius: {
             none: '0',
@@ -127,6 +128,14 @@ module.exports = {
                 '"Segoe UI Emoji"',
                 '"Segoe UI Symbol"',
                 '"Noto Color Emoji"',
+            ],
+            mono: [
+                'Menlo',
+                'Monaco',
+                'Consolas',
+                '"Liberation Mono"',
+                '"Courier New"',
+                'monospace',
             ],
         },
         fontSize: {

@@ -1,16 +1,8 @@
-import { history } from 'prosemirror-history'
-import { keymap } from 'prosemirror-keymap'
+import { HighlightCommands } from './highlight'
+import { ReactPropsCommands } from './react-props'
 
-import baseKeymap from '../keymap'
-import reactProps, { reactPropsKey } from './react-props'
-import markdown from './markdown'
+export { default as Highlight } from './highlight'
+export { default as History } from './history'
+export { default as ReactProps } from './react-props'
 
-const pluginKeys = {
-    reactPropsKey,
-}
-
-function createPlugins(props: any) {
-    return [history(), reactProps(props), keymap(baseKeymap), markdown()]
-}
-
-export { pluginKeys, createPlugins }
+export type Commands = HighlightCommands & ReactPropsCommands

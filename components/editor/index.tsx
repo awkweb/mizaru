@@ -1,71 +1,83 @@
-import { FC, useEffect, useMemo, useRef } from 'react'
-import { EditorState } from 'prosemirror-state'
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 import { EditorView } from 'prosemirror-view'
 import applyDevTools from 'prosemirror-dev-tools'
 
-import useMount from '@/hooks/use-mount'
+import { Transaction } from 'prosemirror-state'
 
-import schema, { createDocument } from './schema'
-import { createPlugins, pluginKeys } from './plugins'
+import { useMount } from '@/hooks'
 
-interface Props {
-    autofocus?: boolean
-    content: any
-    onChange: Function
+import { Highlight, History, ReactProps } from './plugins'
+import { Doc, Paragraph, Text } from './nodes'
+import { Bold, Code, Italic } from './marks'
+import { EditorRef } from './types'
+import { default as EditorInstance } from './editor'
+
+type Props = {
+    autoFocus?: boolean
+    searchTerm?: string
+    value: JSON | string
+    onChange: (content: JSON | string) => void
 }
 
-const Editor: FC<Props> = (props) => {
-    const viewHost = useRef()
-    const view = useRef(null)
-    const rProps = useMemo(() => {}, [])
+const Editor = forwardRef((props: Props, ref: EditorRef) => {
+    const viewHost = useRef<HTMLDivElement>(null)
+    const editor = useRef<EditorInstance>()
 
-    /*
-     * Lifecycle
-     */
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            editor.current?.focus()
+        },
+    }))
 
     useMount(() => {
-        // Initial render
-        const state = EditorState.create({
-            doc: createDocument(props.content),
-            schema,
-            plugins: createPlugins(rProps),
+        const editorInstance = new EditorInstance({
+            autoFocus: props.autoFocus,
+            extensions: [
+                new Bold({}),
+                new Code({}),
+                new Italic({}),
+                new Doc(),
+                new Highlight({
+                    caseSensitive: false,
+                }),
+                new History(),
+                new Paragraph(),
+                new ReactProps(props),
+                new Text(),
+            ],
+            element: viewHost.current as HTMLDivElement,
+            content: props.value,
+            onChange: props.onChange,
+            onTransaction,
         })
-        view.current = new EditorView(viewHost.current, {
-            state,
-            dispatchTransaction,
-        })
+        editor.current = editorInstance
 
-        if (props.autofocus) {
-            view.current.focus()
-        }
         if (process.env.NODE_ENV === 'development') {
-            applyDevTools(view.current)
+            applyDevTools(editor.current?.view as EditorView<any>)
         }
-        return () => view.current.destroy()
+        return () => editor.current?.view.destroy()
     })
 
     useEffect(() => {
-        // Whenever `props` passed to `reactProps` plugin change
-        const { reactPropsKey } = pluginKeys
-        const tr = view.current.state.tr.setMeta(reactPropsKey, rProps)
-        view.current.dispatch(tr)
-    }, [rProps])
+        if (props.searchTerm === undefined) return
+        editor.current?.commands.search(props.searchTerm)
+    }, [props.searchTerm])
 
-    /*
-     * Functions
-     */
+    useEffect(() => {
+        editor.current?.commands.updateReactProps({
+            searchTerm: props.searchTerm,
+        })
+    }, [props.searchTerm])
 
-    function dispatchTransaction(transaction) {
-        const newState = view.current.state.apply(transaction)
-        props.onChange(newState.doc.toJSON())
-        view.current.updateState(newState)
+    const onTransaction = (transaction: Transaction) => {
+        if (transaction.docChanged) {
+            const { searchTerm } = editor.current?.commands.getReactProps()
+            editor.current?.commands.search(searchTerm)
+        }
     }
 
-    /*
-     * Render
-     */
-
     return <div ref={viewHost} />
-}
+})
 
 export default Editor
+export type { Props as EditorProps }

@@ -20,7 +20,7 @@
         },
         "resolveJsonModule": true,
         "skipLibCheck": true,
-        "strict": false,
+        "strict": true,
         "target": "esnext",
         "typeRoots": ["./node_modules/@types", "@types"]
     },

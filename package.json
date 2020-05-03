@@ -31,8 +31,10 @@
         "@types/prosemirror-history": "^1.0.1",
         "@types/prosemirror-inputrules": "^1.0.2",
         "@types/prosemirror-keymap": "^1.0.1",
+        "@types/prosemirror-model": "^1.7.2",
         "@types/prosemirror-schema-basic": "^1.0.1",
         "@types/prosemirror-state": "^1.2.3",
+        "@types/prosemirror-transform": "^1.1.1",
         "@types/prosemirror-view": "^1.11.4",
         "@types/react": "^16.9.34",
         "@typescript-eslint/eslint-plugin": "^2.29.0",
@@ -63,6 +65,10 @@
     },
     "lint-staged": {
         "*.{ts,tsx}": [
+            "prettier --write",
+            "eslint --max-warnings 0 --cache"
+        ],
+        "*.{js}": [
             "prettier --write",
             "eslint --max-warnings 0 --cache"
         ],
