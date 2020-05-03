@@ -11,7 +11,7 @@ type Commands = {
     getReactProps: () => any
 }
 
-const key = new PluginKey('reactProps')
+const key = new PluginKey('react-props')
 
 class ReactProps extends PluginExtension {
     props: Props
@@ -45,14 +45,14 @@ class ReactProps extends PluginExtension {
         }
     }
 
-    get plugins() {
+    plugins() {
         return [
             new Plugin({
                 key,
                 state: {
                     init: () => this.props,
-                    apply(tr, old) {
-                        return tr.getMeta(key) || old
+                    apply: (tr, oldState) => {
+                        return tr.getMeta(key) || oldState
                     },
                 },
             }),

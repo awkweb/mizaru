@@ -7,10 +7,8 @@ import { Dispatch } from '../types'
 
 type Props = {
     findClass: string
-    searching: boolean
     caseSensitive: boolean
     disableRegex: boolean
-    alwaysSearch: boolean
 }
 
 type Commands = {
@@ -29,11 +27,9 @@ class Highlight extends PluginExtension {
         super()
 
         this.props = {
-            findClass: 'find',
-            searching: false,
+            findClass: 'highlight',
             caseSensitive: false,
             disableRegex: true,
-            alwaysSearch: false,
             ...props,
         }
     }
@@ -112,7 +108,7 @@ class Highlight extends PluginExtension {
         })
     }
 
-    find(searchTerm: string) {
+    private find(searchTerm: string) {
         return (state: EditorState, dispatch: Dispatch) => {
             this.searchTerm = this.props.disableRegex
                 ? searchTerm.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
@@ -121,27 +117,27 @@ class Highlight extends PluginExtension {
         }
     }
 
-    clear() {
+    private clear() {
         return (state: EditorState, dispatch: Dispatch) => {
             this.searchTerm = undefined
             this.updateView(state, dispatch)
         }
     }
 
-    updateView({ tr }: EditorState, dispatch: Dispatch) {
+    private updateView({ tr }: EditorState, dispatch: Dispatch) {
         this.updating = true
         dispatch(tr)
         this.updating = false
     }
 
-    createDeco(doc: ProsemirrorNode) {
+    private createDeco(doc: ProsemirrorNode) {
         this.search(doc)
         return this.decorations
             ? DecorationSet.create(doc, this.decorations)
             : []
     }
 
-    get plugins() {
+    plugins() {
         return [
             new Plugin({
                 key,
@@ -149,20 +145,16 @@ class Highlight extends PluginExtension {
                     init() {
                         return DecorationSet.empty
                     },
-                    apply: (tr, old) => {
-                        if (
-                            this.updating ||
-                            this.props.searching ||
-                            (tr.docChanged && this.props.alwaysSearch)
-                        ) {
+                    apply: (tr, oldState) => {
+                        if (this.updating || tr.docChanged) {
                             return this.createDeco(tr.doc)
                         }
 
                         if (tr.docChanged) {
-                            return old.map(tr.mapping, tr.doc)
+                            return oldState.map(tr.mapping, tr.doc)
                         }
 
-                        return old
+                        return oldState
                     },
                 },
                 props: {

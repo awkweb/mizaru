@@ -13,9 +13,9 @@ type Props = {
     syntaxClass: string
 }
 
-const key = new PluginKey('markdown-bold')
+const key = new PluginKey('markdown-italic')
 
-class Bold extends Mark {
+class Italic extends Mark {
     props: Props
     matches: { from: number; to: number }[] = []
     private updating: boolean = false
@@ -30,47 +30,35 @@ class Bold extends Mark {
     }
 
     get name() {
-        return 'bold'
+        return 'italic'
     }
 
     get schema() {
         return {
             parseDOM: [
-                {
-                    tag: 'strong',
-                },
-                {
-                    tag: 'b',
-                    getAttrs: (node: string | Node) =>
-                        (node as HTMLElement).style.fontWeight !== 'normal' &&
-                        null,
-                },
-                {
-                    style: 'font-weight',
-                    getAttrs: (value: string | Node) =>
-                        /^(bold(er)?|[5-9]\d{2,})$/.test(value as string) &&
-                        null,
-                },
+                { tag: 'i' },
+                { tag: 'em' },
+                { style: 'font-style=italic' },
             ],
-            toDOM: (): DOMOutputSpec => ['strong'],
+            toDOM: (): DOMOutputSpec => ['em'],
         }
     }
 
     get syntaxRegExp() {
-        return RegExp(/(\*\*|__)(.*?)\1/, 'gu')
+        return RegExp(/(\*|_)(.*?)\1/, 'gu')
     }
 
     get decorations() {
         let decorations: Decoration<any>[] = []
         this.matches.forEach((deco) =>
             decorations.push(
-                Decoration.inline(deco.from, deco.from + 2, {
+                Decoration.inline(deco.from, deco.from + 1, {
                     class: this.props.syntaxClass,
                 }),
                 Decoration.inline(deco.from, deco.to, {
-                    class: 'font-bold',
+                    class: 'italic',
                 }),
-                Decoration.inline(deco.to - 2, deco.to, {
+                Decoration.inline(deco.to - 1, deco.to, {
                     class: this.props.syntaxClass,
                 }),
             ),
@@ -150,18 +138,9 @@ class Bold extends Mark {
                         return this.getState(state)
                     },
                 },
-                appendTransaction: (_, _oldState, newState) => {
-                    const tr = newState.tr
-                    // const mark = type.create({})
-                    // this.matches.forEach((match) => {
-                    //     tr.addMark(match.from, match.to, mark)
-                    //     tr.removeStoredMark(mark)
-                    // })
-                    return tr
-                },
             }),
         ]
     }
 }
 
-export default Bold
+export default Italic

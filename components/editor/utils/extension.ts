@@ -1,6 +1,7 @@
 import { Plugin } from 'prosemirror-state'
+import { MarkType } from 'prosemirror-model'
 
-import { ExtensionType } from '../types'
+import { EditorSchema, ExtensionType } from '../types'
 
 abstract class Extension {
     get name(): string {
@@ -15,7 +16,7 @@ abstract class Extension {
         return {}
     }
 
-    get plugins(): Plugin<any, any>[] {
+    plugins(_: { schema?: EditorSchema; type?: MarkType }): Plugin<any, any>[] {
         return []
     }
 

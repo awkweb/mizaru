@@ -8,7 +8,7 @@ import { useMount } from '@/hooks'
 
 import { Highlight, History, ReactProps } from './plugins'
 import { Doc, Paragraph, Text } from './nodes'
-import { Bold } from './marks'
+import { Bold, Code, Italic } from './marks'
 import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
 
@@ -33,7 +33,9 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,
             extensions: [
-                new Bold(),
+                new Bold({}),
+                new Code({}),
+                new Italic({}),
                 new Doc(),
                 new Highlight({
                     caseSensitive: false,

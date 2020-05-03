@@ -39,14 +39,20 @@ export default class ExtensionManager {
         )
     }
 
-    get plugins() {
+    plugins({ schema }: { schema: EditorSchema<string, string> }) {
         return this.extensions
             .filter((extension) => extension.plugins)
-            .reduce(
-                // @ts-ignore
-                (allPlugins, { plugins }) => [...allPlugins, ...plugins],
-                [],
-            )
+            .map((extension) => {
+                const type = [ExtensionType.Mark, ExtensionType.Node].includes(
+                    extension.type,
+                )
+                    ? (schema as { [key: string]: any })[`${extension.type}s`][
+                          extension.name
+                      ]
+                    : undefined
+                return extension.plugins({ schema, type })
+            })
+            .reduce((allPlugins, plugins) => [...allPlugins, ...plugins], [])
     }
 
     keymaps({ schema }: { schema: EditorSchema<string, string> }) {
