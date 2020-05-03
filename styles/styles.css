@@ -35,14 +35,15 @@ body {
     @apply bg-background;
     @apply leading-normal;
     @apply m-0;
+    @apply max-w-xl;
+    @apply mx-auto;
     @apply text-body;
 }
 
 .ProseMirror {
-    @apply h-full;
     @apply outline-none;
     @apply px-3;
-    max-height: calc(100% - 1rem);
+    min-height: calc(100vh - 2.5rem);
 }
 
 .highlight {
