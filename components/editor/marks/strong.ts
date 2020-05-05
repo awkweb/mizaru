@@ -2,9 +2,9 @@ import { DOMOutputSpec } from 'prosemirror-model'
 
 import { Mark } from '../utils'
 
-class Bold extends Mark {
+class Strong extends Mark {
     get name() {
-        return 'bold'
+        return 'strong'
     }
 
     get schema() {
@@ -31,4 +31,4 @@ class Bold extends Mark {
     }
 }
 
-export default Bold
+export default Strong

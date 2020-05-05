@@ -2,9 +2,9 @@ import { DOMOutputSpec } from 'prosemirror-model'
 
 import { Mark } from '../utils'
 
-class Code extends Mark {
+class Codespan extends Mark {
     get name() {
-        return 'code'
+        return 'codespan'
     }
 
     get schema() {
@@ -16,4 +16,4 @@ class Code extends Mark {
     }
 }
 
-export default Code
+export default Codespan

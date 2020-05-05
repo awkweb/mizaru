@@ -8,9 +8,9 @@ import { useMount } from '@/hooks'
 
 import { Highlight, History, Markdown, ReactProps } from './plugins'
 import { Doc, Paragraph, Text } from './nodes'
-import { Bold, Code, Italic } from './marks'
 import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
+import { Codespan, Del, Em, Link, Strong } from './marks'
 
 type Props = {
     autoFocus?: boolean
@@ -30,22 +30,25 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
     }))
 
     useMount(() => {
+        const marks = [
+            new Link(),
+            new Del(),
+            new Strong(),
+            new Codespan(),
+            new Em(),
+        ]
+        const nodes = [new Doc(), new Paragraph(), new Text()]
+        const plugins = [
+            new Highlight({
+                caseSensitive: false,
+            }),
+            new History(),
+            new Markdown(),
+            new ReactProps(props),
+        ]
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,
-            extensions: [
-                new Bold(),
-                new Code(),
-                new Italic(),
-                new Doc(),
-                new Highlight({
-                    caseSensitive: false,
-                }),
-                new History(),
-                new Markdown(),
-                new Paragraph(),
-                new ReactProps(props),
-                new Text(),
-            ],
+            extensions: [...marks, ...nodes, ...plugins],
             element: viewHost.current as HTMLDivElement,
             content: props.value,
             onChange: props.onChange,

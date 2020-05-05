@@ -1,14 +1,8 @@
-import {
-    MarkedOptions,
-    Renderer,
-    Slugger,
-    TextRenderer,
-    defaults,
-} from 'marked'
+import { Slugger } from 'marked'
 // @ts-ignore
 import { unescape } from 'marked/src/helpers'
 
-type MarkedToken = {
+export type MarkedToken = {
     type: string
     text: string
     raw: string
@@ -41,26 +35,33 @@ type MarkedLinkToken = MarkedToken & {
     title: string
 }
 
+export type Marks = {
+    from: number
+    to: number
+    type: string
+    attrs?: { [key: string]: any }
+}[]
+export type Decorations = { from: number; to: number }[]
+
+interface Props {
+    offset: number
+    silent: boolean
+}
+
 /**
  * Parsing & Compiling
  */
 class Parser {
-    options: MarkedOptions
+    props: Props
     slugger: Slugger
-    renderer: Renderer
-    textRenderer: TextRenderer
     counter: number
-    marks: { from: number; to: number; type: string }[]
-    decorations: { from: number; to: number }[]
+    marks: Marks
+    decorations: Decorations
 
-    constructor(options: MarkedOptions) {
-        this.options = options || defaults
-        this.options.renderer = this.options.renderer || new Renderer()
-        this.renderer = this.options.renderer
-        this.renderer.options = this.options
-        this.textRenderer = new TextRenderer()
+    constructor(props: Partial<Props>) {
+        this.props = { offset: 1, silent: true, ...props }
         this.slugger = new Slugger()
-        this.counter = 0
+        this.counter = this.props.offset
         this.marks = []
         this.decorations = []
     }
@@ -68,17 +69,22 @@ class Parser {
     /**
      * Static Parse Method
      */
-    static parse(tokens: MarkedToken[], options: MarkedOptions) {
-        const parser = new Parser(options)
+    static parse(
+        tokens: MarkedToken[],
+        props: Props,
+    ): { decorations: Decorations; marks: Marks } {
+        const parser = new Parser(props)
         return parser.parse(tokens)
     }
 
     /**
      * Parse Loop
      */
-    parse(tokens: MarkedToken[], top = true) {
-        let out = '',
-            i,
+    parse(
+        tokens: MarkedToken[],
+        top = true,
+    ): { decorations: Decorations; marks: Marks } {
+        let i,
             j,
             l2,
             body,
@@ -205,9 +211,12 @@ class Parser {
                 // }
                 default: {
                     const errMsg = `Token with "${token.type}" type was not found.`
-                    if (this.options.silent) {
+                    if (this.props.silent) {
                         console.error(errMsg)
-                        return
+                        return {
+                            marks: [],
+                            decorations: [],
+                        }
                     } else {
                         throw new Error(errMsg)
                     }
@@ -227,7 +236,7 @@ class Parser {
         const l = tokens.length
         for (i = 0; i < l; i++) {
             token = tokens[i]
-            const from = this.counter + 1
+            const from = this.counter
             const type = token.type
             switch (type) {
                 // case 'escape': {
@@ -239,33 +248,34 @@ class Parser {
                 //     break
                 // }
                 case 'link': {
-                    // out += renderer.link(
-                    //     (token as MarkedLinkToken).href,
-                    //     (token as MarkedLinkToken).title,
-                    //     this.parseInline(token.tokens, renderer),
-                    // )
                     this.counter += 1 // [
                     this.parseInline(token.tokens)
-                    const decorationClosingStart = this.counter + 1
+                    const decorationClosingStart = this.counter
                     this.counter += 2 // ](
-                    this.counter += (token as MarkedLinkToken).href.length
-                    if ((token as MarkedLinkToken).title) {
+                    const { href, title } = token as MarkedLinkToken
+                    this.counter += href.length
+                    if (title) {
                         this.counter += 1
-                        this.counter += (token as MarkedLinkToken).title.length
+                        this.counter += title.length
                         this.counter += 1
                     }
                     this.counter += 1 // )
+                    const to = this.counter
                     this.marks.push({
                         from,
-                        to: this.counter,
+                        to,
                         type,
+                        attrs: {
+                            title,
+                            href,
+                        },
                     })
                     this.decorations.push(
                         {
                             from,
-                            to: from,
+                            to: from + 1,
                         },
-                        { from: decorationClosingStart, to: this.counter },
+                        { from: decorationClosingStart, to },
                     )
                     break
                 }
@@ -278,57 +288,72 @@ class Parser {
                 //     break
                 // }
                 case 'strong': {
-                    this.counter += 2
+                    const syntaxCharLength = 2
+                    this.counter += syntaxCharLength
                     this.parseInline(token.tokens)
-                    this.counter += 2
+                    this.counter += syntaxCharLength
+                    const to = this.counter
                     this.marks.push({
                         from,
-                        to: this.counter,
+                        to,
                         type,
                     })
                     this.decorations.push(
                         {
                             from,
-                            to: from + 1,
+                            to: from + syntaxCharLength,
                         },
-                        { from: this.counter - 1, to: this.counter },
+                        {
+                            from: this.counter - syntaxCharLength,
+                            to,
+                        },
                     )
                     break
                 }
                 case 'del':
                 case 'em': {
-                    this.counter += 1
+                    const syntaxCharLength = 1
+                    this.counter += syntaxCharLength
                     this.parseInline(token.tokens)
-                    this.counter += 1
+                    this.counter += syntaxCharLength
+                    const to = this.counter
                     this.marks.push({
                         from,
-                        to: this.counter,
+                        to,
                         type,
                     })
                     this.decorations.push(
                         {
                             from,
-                            to: from,
+                            to: from + syntaxCharLength,
                         },
-                        { from: this.counter, to: this.counter },
+                        {
+                            from: this.counter - syntaxCharLength,
+                            to,
+                        },
                     )
                     break
                 }
                 case 'codespan': {
-                    this.counter += 1
+                    const syntaxCharLength = 1
+                    this.counter += syntaxCharLength
                     this.counter += token.text.length
-                    this.counter += 1
+                    this.counter += syntaxCharLength
+                    const to = this.counter
                     this.marks.push({
                         from,
-                        to: this.counter,
+                        to,
                         type,
                     })
                     this.decorations.push(
                         {
                             from,
-                            to: from,
+                            to: from + syntaxCharLength,
                         },
-                        { from: this.counter, to: this.counter },
+                        {
+                            from: this.counter - syntaxCharLength,
+                            to,
+                        },
                     )
                     break
                 }
@@ -342,7 +367,7 @@ class Parser {
                 }
                 default: {
                     const errMsg = `Token with "${token.type}" type was not found.`
-                    if (this.options.silent) {
+                    if (this.props.silent) {
                         console.error(errMsg)
                         return
                     } else {

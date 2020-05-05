@@ -8,10 +8,10 @@ test('strong', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 7, type: 'strong' }])
+    expect(marks).toEqual([{ from: 1, to: 8, type: 'strong' }])
     expect(decorations).toEqual([
-        { from: 1, to: 2 },
-        { from: 6, to: 7 },
+        { from: 1, to: 3 },
+        { from: 6, to: 8 },
     ])
 })
 
@@ -21,10 +21,10 @@ test('em', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 5, type: 'em' }])
+    expect(marks).toEqual([{ from: 1, to: 6, type: 'em' }])
     expect(decorations).toEqual([
-        { from: 1, to: 1 },
-        { from: 5, to: 5 },
+        { from: 1, to: 2 },
+        { from: 5, to: 6 },
     ])
 })
 
@@ -34,10 +34,10 @@ test('del', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 5, type: 'del' }])
+    expect(marks).toEqual([{ from: 1, to: 6, type: 'del' }])
     expect(decorations).toEqual([
-        { from: 1, to: 1 },
-        { from: 5, to: 5 },
+        { from: 1, to: 2 },
+        { from: 5, to: 6 },
     ])
 })
 
@@ -47,10 +47,10 @@ test('codespan', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 5, type: 'codespan' }])
+    expect(marks).toEqual([{ from: 1, to: 6, type: 'codespan' }])
     expect(decorations).toEqual([
-        { from: 1, to: 1 },
-        { from: 5, to: 5 },
+        { from: 1, to: 2 },
+        { from: 5, to: 6 },
     ])
 })
 
@@ -60,10 +60,17 @@ test('link', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 26, type: 'link' }])
+    expect(marks).toEqual([
+        {
+            from: 1,
+            to: 27,
+            type: 'link',
+            attrs: { href: 'https://example.com', title: null },
+        },
+    ])
     expect(decorations).toEqual([
-        { from: 1, to: 1 },
-        { from: 5, to: 26 },
+        { from: 1, to: 2 },
+        { from: 5, to: 27 },
     ])
 })
 
@@ -73,10 +80,17 @@ test('link with title', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 31, type: 'link' }])
+    expect(marks).toEqual([
+        {
+            from: 1,
+            to: 32,
+            type: 'link',
+            attrs: { href: 'https://example.com', title: 'bar' },
+        },
+    ])
     expect(decorations).toEqual([
-        { from: 1, to: 1 },
-        { from: 5, to: 31 },
+        { from: 1, to: 2 },
+        { from: 5, to: 32 },
     ])
 })
 
@@ -86,10 +100,12 @@ test('link without link', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 7, type: 'link' }])
+    expect(marks).toEqual([
+        { from: 1, to: 8, type: 'link', attrs: { href: '', title: null } },
+    ])
     expect(decorations).toEqual([
-        { from: 1, to: 1 },
-        { from: 5, to: 7 },
+        { from: 1, to: 2 },
+        { from: 5, to: 8 },
     ])
 })
 
@@ -100,14 +116,14 @@ test('strong with nested em', () => {
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
     expect(marks).toEqual([
-        { from: 7, to: 11, type: 'em' },
-        { from: 1, to: 13, type: 'strong' },
+        { from: 7, to: 12, type: 'em' },
+        { from: 1, to: 14, type: 'strong' },
     ])
     expect(decorations).toEqual([
-        { from: 7, to: 7 },
-        { from: 11, to: 11 },
-        { from: 1, to: 2 },
-        { from: 12, to: 13 },
+        { from: 7, to: 8 },
+        { from: 11, to: 12 },
+        { from: 1, to: 3 },
+        { from: 12, to: 14 },
     ])
 })
 
@@ -118,14 +134,22 @@ test('link with nested code', () => {
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
     expect(marks).toEqual([
-        { from: 2, to: 6, type: 'codespan' },
-        { from: 1, to: 28, type: 'link' },
+        { from: 2, to: 7, type: 'codespan' },
+        {
+            from: 1,
+            to: 29,
+            type: 'link',
+            attrs: {
+                href: 'https://example.com',
+                title: null,
+            },
+        },
     ])
     expect(decorations).toEqual([
-        { from: 2, to: 2 },
-        { from: 6, to: 6 },
-        { from: 1, to: 1 },
-        { from: 7, to: 28 },
+        { from: 2, to: 3 },
+        { from: 6, to: 7 },
+        { from: 1, to: 2 },
+        { from: 7, to: 29 },
     ])
 })
 
@@ -135,10 +159,10 @@ test('wonky strong', () => {
     const tokens = lexer.lex(doc)
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
-    expect(marks).toEqual([{ from: 1, to: 12, type: 'strong' }])
+    expect(marks).toEqual([{ from: 1, to: 13, type: 'strong' }])
     expect(decorations).toEqual([
-        { from: 1, to: 2 },
-        { from: 11, to: 12 },
+        { from: 1, to: 3 },
+        { from: 11, to: 13 },
     ])
 })
 
@@ -149,19 +173,27 @@ test('all inline marks', () => {
     const parser = new Parser()
     const { marks, decorations } = parser.parse(tokens)
     expect(marks).toEqual([
-        { from: 2, to: 6, type: 'codespan' },
-        { from: 1, to: 28, type: 'link' },
-        { from: 30, to: 34, type: 'em' },
-        { from: 40, to: 52, type: 'strong' },
+        { from: 2, to: 7, type: 'codespan' },
+        {
+            from: 1,
+            to: 29,
+            type: 'link',
+            attrs: {
+                href: 'https://example.com',
+                title: null,
+            },
+        },
+        { from: 30, to: 35, type: 'em' },
+        { from: 40, to: 53, type: 'strong' },
     ])
     expect(decorations).toEqual([
-        { from: 2, to: 2 },
-        { from: 6, to: 6 },
-        { from: 1, to: 1 },
-        { from: 7, to: 28 },
-        { from: 30, to: 30 },
-        { from: 34, to: 34 },
-        { from: 40, to: 41 },
-        { from: 51, to: 52 },
+        { from: 2, to: 3 },
+        { from: 6, to: 7 },
+        { from: 1, to: 2 },
+        { from: 7, to: 29 },
+        { from: 30, to: 31 },
+        { from: 34, to: 35 },
+        { from: 40, to: 42 },
+        { from: 51, to: 53 },
     ])
 })
