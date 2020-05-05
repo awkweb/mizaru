@@ -6,7 +6,7 @@ import { Transaction } from 'prosemirror-state'
 
 import { useMount } from '@/hooks'
 
-import { Highlight, History, ReactProps } from './plugins'
+import { Highlight, History, Markdown, ReactProps } from './plugins'
 import { Doc, Paragraph, Text } from './nodes'
 import { Bold, Code, Italic } from './marks'
 import { EditorRef } from './types'
@@ -33,14 +33,15 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,
             extensions: [
-                new Bold({}),
-                new Code({}),
-                new Italic({}),
+                new Bold(),
+                new Code(),
+                new Italic(),
                 new Doc(),
                 new Highlight({
                     caseSensitive: false,
                 }),
                 new History(),
+                new Markdown(),
                 new Paragraph(),
                 new ReactProps(props),
                 new Text(),

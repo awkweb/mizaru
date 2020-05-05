@@ -1,11 +1,6 @@
-import {
-    EditorState,
-    Plugin,
-    TextSelection,
-    Transaction,
-} from 'prosemirror-state'
-import { Decoration, DecorationSet, EditorView } from 'prosemirror-view'
-import { DOMParser, Node as ProsemirrorNode, Schema } from 'prosemirror-model'
+import { EditorState, TextSelection, Transaction } from 'prosemirror-state'
+import { EditorView } from 'prosemirror-view'
+import { DOMParser, Schema } from 'prosemirror-model'
 import { keymap } from 'prosemirror-keymap'
 import { baseKeymap } from 'prosemirror-commands'
 
@@ -63,35 +58,10 @@ class Editor {
             schema,
         })
 
-        const syntaxPlugin = new Plugin({
-            props: {
-                decorations(state: EditorState) {
-                    const selection = state.selection
-                    const decorations: Decoration<any>[] = []
-
-                    state.doc.nodesBetween(
-                        selection.from,
-                        selection.to,
-                        (node: ProsemirrorNode, position) => {
-                            if (node.isBlock) {
-                                decorations.push(
-                                    Decoration.node(
-                                        position,
-                                        position + node.nodeSize,
-                                        { class: 'selected' },
-                                    ),
-                                )
-                            }
-                        },
-                    )
-                    return DecorationSet.create(state.doc, decorations)
-                },
-            },
-        })
         const state = EditorState.create({
             schema,
             doc: this.createDocument(schema, options.content),
-            plugins: [...plugins, syntaxPlugin, ...keymaps, keymap(baseKeymap)],
+            plugins: [...plugins, ...keymaps, keymap(baseKeymap)],
         })
         const view = new EditorView(options.element, {
             state,
