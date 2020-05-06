@@ -2,6 +2,16 @@ import { Lexer } from 'marked'
 
 import Parser from '../'
 
+test('text', () => {
+    const doc = 'foo'
+    const lexer = new Lexer()
+    const tokens = lexer.lex(doc)
+    const parser = new Parser()
+    const { marks, decorations } = parser.parse(tokens)
+    expect(marks).toEqual([])
+    expect(decorations).toEqual([])
+})
+
 test('strong', () => {
     const doc = '**foo**'
     const lexer = new Lexer()

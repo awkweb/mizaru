@@ -76,7 +76,6 @@ class Markdown extends PluginExtension {
                     },
                 },
                 appendTransaction: (transactions, oldState, newState) => {
-                    console.log('=============appendTransaction=============')
                     const tr = newState.tr
                     const schema = newState.schema
                     this.results.marks.forEach(({ attrs, from, to, type }) => {

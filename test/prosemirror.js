@@ -5,7 +5,7 @@ import { EditorState } from 'prosemirror-state'
 function out(schema) {
     return builders(schema, {
         p: { nodeType: 'paragraph' },
-        b: { markType: 'bold' },
+        a: { nodeType: 'link', href: 'https://example.com' },
     })
 }
 
@@ -23,10 +23,7 @@ function command(state, command) {
 }
 
 function mkState(config) {
-    return EditorState.create({
-        schema,
-        ...config,
-    })
+    return EditorState.create(config)
 }
 
 export { out, type, remove, command, mkState }
