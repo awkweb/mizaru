@@ -5,6 +5,8 @@ import { Doc, Paragraph, Text } from '../../nodes'
 import { Codespan, Del, Em, Link, Strong } from '../../marks'
 import { ExtensionManager } from '../../utils'
 
+const { out, type, mkState } = prosemirror
+
 const extensionManager = new ExtensionManager([
     new Link(),
     new Del(),
@@ -22,7 +24,16 @@ const schema = new Schema({
     marks,
 })
 const plugins = extensionManager.plugins({ schema })
-const { doc, codespan, del, a, p, strong, em } = out(schema)
+const { doc, p, em } = out(schema)
+const {
+    codespan: codespanSelected,
+    del: delSelected,
+    link: linkSelected,
+    strong: strongSelected,
+    em: emSelected,
+} = out(schema, {
+    markAttrs: { class: 'selected' },
+})
 
 test('text', () => {
     const md = 'foo'
@@ -35,39 +46,41 @@ test('strong', () => {
     const md = '**foo**'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(strong(md))))
+    expect(state.doc).toEqual(doc(p(strongSelected(md))))
 })
 
 test('em', () => {
     const md = '*foo*'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(em(md))))
+    expect(state.doc).toEqual(doc(p(emSelected(md))))
 })
 
 test('del', () => {
     const md = '~foo~'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(del(md))))
+    expect(state.doc).toEqual(doc(p(delSelected(md))))
 })
 
 test('codespan', () => {
     const md = '`foo`'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(codespan(md))))
+    expect(state.doc).toEqual(doc(p(codespanSelected(md))))
 })
 
 test('link', () => {
     const md = '[foo](https://example.com)'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(a(md))))
+    expect(state.doc).toEqual(doc(p(linkSelected(md))))
 })
 
 test('strong with nested em', () => {
     let state = mkState({ schema, plugins })
     state = type(state, '**foo *bar***')
-    expect(state.doc).toEqual(doc(p(strong('**foo ', em('*bar*'), '**'))))
+    expect(state.doc).toEqual(
+        doc(p(strongSelected('**foo ', em('*bar*'), '**'))),
+    )
 })

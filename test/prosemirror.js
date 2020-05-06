@@ -2,10 +2,14 @@
 import { builders } from 'prosemirror-test-builder'
 import { EditorState } from 'prosemirror-state'
 
-function out(schema) {
+function out(schema, { markAttrs } = {}) {
     return builders(schema, {
+        strong: { markType: 'strong', ...markAttrs },
+        codespan: { markType: 'codespan', ...markAttrs },
+        del: { markType: 'del', ...markAttrs },
+        em: { markType: 'em', ...markAttrs },
         p: { nodeType: 'paragraph' },
-        a: { nodeType: 'link', href: 'https://example.com' },
+        link: { markType: 'link', href: 'https://example.com', ...markAttrs },
     })
 }
 

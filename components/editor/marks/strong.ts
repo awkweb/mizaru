@@ -1,4 +1,4 @@
-import { DOMOutputSpec } from 'prosemirror-model'
+import { DOMOutputSpec, Mark as ProsemirrorMark } from 'prosemirror-model'
 
 import { Mark } from '../utils'
 
@@ -9,6 +9,11 @@ class Strong extends Mark {
 
     get schema() {
         return {
+            attrs: {
+                class: {
+                    default: null,
+                },
+            },
             parseDOM: [
                 {
                     tag: 'strong',
@@ -26,7 +31,10 @@ class Strong extends Mark {
                         null,
                 },
             ],
-            toDOM: (): DOMOutputSpec => ['strong'],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
+                'strong',
+                node.attrs,
+            ],
         }
     }
 }

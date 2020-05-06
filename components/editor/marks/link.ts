@@ -14,6 +14,9 @@ class Link extends Mark {
     get schema(): MarkSpec {
         return {
             attrs: {
+                class: {
+                    default: null,
+                },
                 href: {
                     default: null,
                 },

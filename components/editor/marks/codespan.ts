@@ -1,4 +1,4 @@
-import { DOMOutputSpec } from 'prosemirror-model'
+import { DOMOutputSpec, Mark as ProsemirrorMark } from 'prosemirror-model'
 
 import { Mark } from '../utils'
 
@@ -9,9 +9,17 @@ class Codespan extends Mark {
 
     get schema() {
         return {
+            attrs: {
+                class: {
+                    default: null,
+                },
+            },
             excludes: '_',
             parseDOM: [{ tag: 'code' }],
-            toDOM: (): DOMOutputSpec => ['code'],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
+                'code',
+                node.attrs,
+            ],
         }
     }
 }

@@ -62,7 +62,7 @@ class Markdown extends PluginExtension {
                     init: (_config, instance) => {
                         return this.createDeco(instance.doc)
                     },
-                    apply: (tr, value, oldState, newState) => {
+                    apply: (tr, value, _oldState, _newState) => {
                         if (tr.docChanged) {
                             return this.createDeco(tr.doc)
                         }
@@ -75,48 +75,30 @@ class Markdown extends PluginExtension {
                         return this.getState(state)
                     },
                 },
-                appendTransaction: (transactions, oldState, newState) => {
+                appendTransaction: (_transactions, _oldState, newState) => {
                     const tr = newState.tr
                     const schema = newState.schema
                     this.results.marks.forEach(({ attrs, from, to, type }) => {
-                        const mark = schema.mark(type, attrs)
+                        const {
+                            from: cursorFrom,
+                            to: cursorTo,
+                            anchor,
+                            head,
+                        } = newState.selection
+                        const anchored =
+                            // @ts-ignore
+                            (anchor >= from && head <= to) ||
+                            // @ts-ignore
+                            (head >= from && anchor <= to)
+                        const selected =
+                            (cursorFrom >= from && cursorTo <= to) || anchored
+                        const mark = schema.mark(type, {
+                            ...attrs,
+                            ...(selected ? { class: 'selected' } : {}),
+                        })
                         tr.addMark(from, to, mark)
                         tr.removeStoredMark(mark)
                     })
-
-                    // transactions.forEach((transaction) => {
-                    //     transaction.steps.forEach((step) => {
-                    //         step.getMap().forEach(
-                    //             (oldStart, oldEnd, newStart, newEnd) => {
-                    //                 oldState.doc.nodesBetween(
-                    //                     oldStart,
-                    //                     oldEnd,
-                    //                     (parentNode, parentPos) => {
-                    //                         parentNode.text &&
-                    //                             console.log(
-                    //                                 'old',
-                    //                                 parentNode.text,
-                    //                             )
-                    //                     },
-                    //                 )
-                    //                 newState.doc.nodesBetween(
-                    //                     newStart,
-                    //                     newEnd,
-                    //                     (parentNode, parentPos) => {
-                    //                         parentNode.text &&
-                    //                             console.log(
-                    //                                 'new',
-                    //                                 parentNode.text,
-                    //                             )
-                    //                         parentNode.forEach(
-                    //                             (childNode, childOffset) => {},
-                    //                         )
-                    //                     },
-                    //                 )
-                    //             },
-                    //         )
-                    //     })
-                    // })
 
                     return tr
                 },

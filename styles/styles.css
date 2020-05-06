@@ -40,6 +40,10 @@ body {
     @apply text-body;
 }
 
+a {
+    @apply underline;
+}
+
 .ProseMirror {
     @apply outline-none;
     @apply px-3;
@@ -53,5 +57,16 @@ body {
 .syntax {
     @apply text-muted;
     @apply no-underline;
+    @apply hidden;
 }
+.selected .syntax {
+    @apply inline;
+}
+/* strong:hover .syntax, */
+/* em:hover .syntax, */
+/* del:hover .syntax, */
+/* code:hover .syntax, */
+/* a:hover .syntax { */
+/*     @apply inline; */
+/* } */
 /* purgecss end ignore */
