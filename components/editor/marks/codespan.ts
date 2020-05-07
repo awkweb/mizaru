@@ -10,16 +10,27 @@ class Codespan extends Mark {
     get schema() {
         return {
             attrs: {
-                class: {
-                    default: null,
+                active: {
+                    default: false,
                 },
             },
             excludes: '_',
             parseDOM: [{ tag: 'code' }],
-            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
-                'code',
-                node.attrs,
-            ],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
+                const activeClasses = node.attrs.active ? ['active'] : ['px-1']
+                const classes = [
+                    ...activeClasses,
+                    'bg-muted',
+                    'leading-normal',
+                    'py-px',
+                    'rounded-sm',
+                    'text-sm',
+                ]
+                const attrs = {
+                    class: classes.join(' '),
+                }
+                return ['code', attrs]
+            },
         }
     }
 }

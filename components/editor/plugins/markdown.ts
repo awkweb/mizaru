@@ -5,8 +5,9 @@ import { Lexer } from 'marked'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension, checkSelected } from '../utils'
+import { Plugin as PluginExtension, checkActive } from '../utils'
 import Parser, { Decorations, Marks } from '../parser'
+import { DecorationType } from '../types'
 
 const key = new PluginKey('markdown')
 
@@ -38,11 +39,12 @@ class Markdown extends PluginExtension {
     }
 
     get decorations() {
-        return this.results.decorations.map((deco) =>
-            Decoration.inline(deco.from, deco.to, {
-                class: 'syntax',
-            }),
-        )
+        return this.results.decorations.map((deco) => {
+            const attrs = {
+                class: deco.type ?? DecorationType.Syntax,
+            }
+            return Decoration.inline(deco.from, deco.to, attrs)
+        })
     }
 
     private createDeco(doc: ProsemirrorNode) {
@@ -80,10 +82,10 @@ class Markdown extends PluginExtension {
                     tr.removeMark(0, doc.textContent.length)
                     this.results.marks.forEach(({ type, ...rest }) => {
                         const { from, to } = rest
-                        const selected = checkSelected(from, to, selection)
+                        const active = checkActive(from, to, selection)
                         const attrs = {
                             ...rest.attrs,
-                            ...(selected ? { class: 'selected' } : {}),
+                            active,
                         }
                         const mark = schema.mark(type, attrs)
 

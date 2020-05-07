@@ -26,13 +26,13 @@ const schema = new Schema({
 const plugins = extensionManager.plugins({ schema })
 const { doc, p, em } = out(schema)
 const {
-    codespan: codespanSelected,
-    del: delSelected,
-    link: linkSelected,
-    strong: strongSelected,
-    em: emSelected,
+    codespan: codespanActive,
+    del: delActive,
+    link: linkActive,
+    strong: strongActive,
+    em: emActive,
 } = out(schema, {
-    markAttrs: { class: 'selected' },
+    markAttrs: { active: true },
 })
 
 test('text', () => {
@@ -46,41 +46,39 @@ test('strong', () => {
     const md = '**foo**'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(strongSelected(md))))
+    expect(state.doc).toEqual(doc(p(strongActive(md))))
 })
 
 test('em', () => {
     const md = '*foo*'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(emSelected(md))))
+    expect(state.doc).toEqual(doc(p(emActive(md))))
 })
 
 test('del', () => {
     const md = '~foo~'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(delSelected(md))))
+    expect(state.doc).toEqual(doc(p(delActive(md))))
 })
 
 test('codespan', () => {
     const md = '`foo`'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(codespanSelected(md))))
+    expect(state.doc).toEqual(doc(p(codespanActive(md))))
 })
 
 test('link', () => {
     const md = '[foo](https://example.com)'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(linkSelected(md))))
+    expect(state.doc).toEqual(doc(p(linkActive(md))))
 })
 
 test('strong with nested em', () => {
     let state = mkState({ schema, plugins })
     state = type(state, '**foo *bar***')
-    expect(state.doc).toEqual(
-        doc(p(strongSelected('**foo ', em('*bar*'), '**'))),
-    )
+    expect(state.doc).toEqual(doc(p(strongActive('**foo ', em('*bar*'), '**'))))
 })

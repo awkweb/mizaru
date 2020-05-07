@@ -10,19 +10,22 @@ class Del extends Mark {
     get schema() {
         return {
             attrs: {
-                class: {
-                    default: null,
+                active: {
+                    default: false,
                 },
             },
             parseDOM: [
+                { tag: 's' },
                 { tag: 'strike' },
                 { tag: 'del' },
                 { style: 'text-decoration=line-through' },
             ],
-            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
-                'del',
-                node.attrs,
-            ],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
+                const attrs = {
+                    ...(node.attrs.active ? { class: 'active' } : null),
+                }
+                return ['del', attrs]
+            },
         }
     }
 }

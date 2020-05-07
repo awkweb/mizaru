@@ -1,6 +1,6 @@
 import { Selection } from 'prosemirror-state'
 
-function checkSelected(from: number, to: number, selection: Selection) {
+function checkActive(from: number, to: number, selection: Selection) {
     const { from: selectionFrom, to: selectionTo, anchor, head } = selection
     const anchored =
         // @ts-ignore
@@ -10,4 +10,4 @@ function checkSelected(from: number, to: number, selection: Selection) {
     return (selectionFrom >= from && selectionTo <= to) || anchored
 }
 
-export default checkSelected
+export default checkActive

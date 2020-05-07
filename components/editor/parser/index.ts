@@ -2,6 +2,8 @@ import { Slugger } from 'marked'
 // @ts-ignore
 import { unescape } from 'marked/src/helpers'
 
+import { DecorationType } from '../types'
+
 export type MarkedToken = {
     type: string
     text: string
@@ -41,7 +43,7 @@ export type Marks = {
     type: string
     attrs?: { [key: string]: any }
 }[]
-export type Decorations = { from: number; to: number }[]
+export type Decorations = { from: number; to: number; type?: string }[]
 
 interface Props {
     offset: number
@@ -274,8 +276,19 @@ class Parser {
                         {
                             from,
                             to: from + 1,
+                            type: DecorationType.Syntax,
                         },
-                        { from: decorationClosingStart, to },
+                        {
+                            from: from + 1,
+                            to: decorationClosingStart,
+                            type: DecorationType.Preview,
+                        },
+
+                        {
+                            from: decorationClosingStart,
+                            to,
+                            type: DecorationType.Syntax,
+                        },
                     )
                     break
                 }
@@ -310,7 +323,6 @@ class Parser {
                     )
                     break
                 }
-                case 'del':
                 case 'em': {
                     const syntaxCharLength = 1
                     this.counter += syntaxCharLength
@@ -353,6 +365,36 @@ class Parser {
                         {
                             from: this.counter - syntaxCharLength,
                             to,
+                        },
+                    )
+                    break
+                }
+                case 'del': {
+                    const syntaxCharLength = 1
+                    this.counter += syntaxCharLength
+                    this.parseInline(token.tokens)
+                    this.counter += syntaxCharLength
+                    const to = this.counter
+                    this.marks.push({
+                        from,
+                        to,
+                        type,
+                    })
+                    this.decorations.push(
+                        {
+                            from,
+                            to: from + syntaxCharLength,
+                            type: DecorationType.Syntax,
+                        },
+                        {
+                            from: from + syntaxCharLength,
+                            to: this.counter - syntaxCharLength,
+                            type: DecorationType.Preview,
+                        },
+                        {
+                            from: this.counter - syntaxCharLength,
+                            to,
+                            type: DecorationType.Syntax,
                         },
                     )
                     break

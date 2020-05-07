@@ -10,8 +10,8 @@ class Strong extends Mark {
     get schema() {
         return {
             attrs: {
-                class: {
-                    default: null,
+                active: {
+                    default: false,
                 },
             },
             parseDOM: [
@@ -31,10 +31,12 @@ class Strong extends Mark {
                         null,
                 },
             ],
-            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
-                'strong',
-                node.attrs,
-            ],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
+                const attrs = {
+                    ...(node.attrs.active ? { class: 'active' } : null),
+                }
+                return ['strong', attrs]
+            },
         }
     }
 }

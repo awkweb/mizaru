@@ -46,8 +46,9 @@ test('del', () => {
     const { marks, decorations } = parser.parse(tokens)
     expect(marks).toEqual([{ from: 1, to: 6, type: 'del' }])
     expect(decorations).toEqual([
-        { from: 1, to: 2 },
-        { from: 5, to: 6 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 5, type: 'preview' },
+        { from: 5, to: 6, type: 'syntax' },
     ])
 })
 
@@ -79,8 +80,9 @@ test('link', () => {
         },
     ])
     expect(decorations).toEqual([
-        { from: 1, to: 2 },
-        { from: 5, to: 27 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 5, type: 'preview' },
+        { from: 5, to: 27, type: 'syntax' },
     ])
 })
 
@@ -99,8 +101,9 @@ test('link with title', () => {
         },
     ])
     expect(decorations).toEqual([
-        { from: 1, to: 2 },
-        { from: 5, to: 32 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 5, type: 'preview' },
+        { from: 5, to: 32, type: 'syntax' },
     ])
 })
 
@@ -114,8 +117,9 @@ test('link without link', () => {
         { from: 1, to: 8, type: 'link', attrs: { href: '', title: null } },
     ])
     expect(decorations).toEqual([
-        { from: 1, to: 2 },
-        { from: 5, to: 8 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 5, type: 'preview' },
+        { from: 5, to: 8, type: 'syntax' },
     ])
 })
 
@@ -158,8 +162,9 @@ test('link with nested code', () => {
     expect(decorations).toEqual([
         { from: 2, to: 3 },
         { from: 6, to: 7 },
-        { from: 1, to: 2 },
-        { from: 7, to: 29 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 7, type: 'preview' },
+        { from: 7, to: 29, type: 'syntax' },
     ])
 })
 
@@ -177,7 +182,7 @@ test('wonky strong', () => {
 })
 
 test('all inline marks', () => {
-    const doc = '[`foo`](https://example.com) *bar* baz __merp moop__'
+    const doc = '[`foo`](https://example.com) *bar* baz __merp moop__ ~meep~'
     const lexer = new Lexer()
     const tokens = lexer.lex(doc)
     const parser = new Parser()
@@ -195,15 +200,20 @@ test('all inline marks', () => {
         },
         { from: 30, to: 35, type: 'em' },
         { from: 40, to: 53, type: 'strong' },
+        { from: 54, to: 60, type: 'del' },
     ])
     expect(decorations).toEqual([
         { from: 2, to: 3 },
         { from: 6, to: 7 },
-        { from: 1, to: 2 },
-        { from: 7, to: 29 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 7, type: 'preview' },
+        { from: 7, to: 29, type: 'syntax' },
         { from: 30, to: 31 },
         { from: 34, to: 35 },
         { from: 40, to: 42 },
         { from: 51, to: 53 },
+        { from: 54, to: 55, type: 'syntax' },
+        { from: 55, to: 59, type: 'preview' },
+        { from: 59, to: 60, type: 'syntax' },
     ])
 })

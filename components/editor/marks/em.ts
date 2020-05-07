@@ -10,8 +10,8 @@ class Em extends Mark {
     get schema() {
         return {
             attrs: {
-                class: {
-                    default: null,
+                active: {
+                    default: false,
                 },
             },
             parseDOM: [
@@ -19,10 +19,12 @@ class Em extends Mark {
                 { tag: 'em' },
                 { style: 'font-style=italic' },
             ],
-            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
-                'em',
-                node.attrs,
-            ],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
+                const attrs = {
+                    ...(node.attrs.active ? { class: 'active' } : null),
+                }
+                return ['em', attrs]
+            },
         }
     }
 }

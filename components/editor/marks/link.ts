@@ -4,7 +4,10 @@ import {
     Mark as ProsemirrorMark,
 } from 'prosemirror-model'
 
-import { Mark } from '../utils'
+import { Plugin } from 'prosemirror-state'
+
+import { Mark, getMarkAttrs } from '../utils'
+import { DecorationType, EditorSchema } from '../types'
 
 class Link extends Mark {
     get name() {
@@ -14,8 +17,8 @@ class Link extends Mark {
     get schema(): MarkSpec {
         return {
             attrs: {
-                class: {
-                    default: null,
+                active: {
+                    default: false,
                 },
                 href: {
                     default: null,
@@ -33,11 +36,47 @@ class Link extends Mark {
                     }),
                 },
             ],
-            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => [
-                'a',
-                { ...node.attrs, rel: 'noopener noreferrer nofollow' },
-            ],
+            toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
+                const { active, ...rest } = node.attrs
+                const attrs = {
+                    ...(active ? { class: 'active' } : null),
+                    ...rest,
+                    rel: 'noopener noreferrer nofollow',
+                }
+                return ['a', attrs]
+            },
         }
+    }
+
+    plugins({ schema }: { schema: EditorSchema }) {
+        return [
+            new Plugin({
+                props: {
+                    handleClick: (view, _pos, event): boolean => {
+                        if (!event.metaKey) {
+                            return false
+                        }
+
+                        const mark = schema.marks.link
+                        const attrs = getMarkAttrs(view.state, mark)
+
+                        const target = event.target as HTMLElement
+                        const parentIsAnchor =
+                            target.parentElement instanceof HTMLAnchorElement
+                        const targetIsNotSyntax = !target.classList.contains(
+                            DecorationType.Syntax,
+                        )
+
+                        if (attrs.href && parentIsAnchor && targetIsNotSyntax) {
+                            event.stopPropagation()
+                            window.open(attrs.href, '_blank')
+                            return true
+                        }
+                        return false
+                    },
+                },
+            }),
+        ]
     }
 }
 
