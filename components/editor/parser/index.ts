@@ -252,19 +252,39 @@ class Parser {
                 //     break
                 // }
                 case 'link': {
-                    const inlineLink = inline.gfm.url.test(token.raw)
                     const { href, title } = token as MarkedLinkToken
-
                     let decorations: Decorations
                     let to: number
-                    if (inlineLink) {
-                        this.counter += token.text.length
+                    if (inline.gfm.url.test(token.raw)) {
+                        // Need to use raw because of mangling
+                        this.counter += token.raw.length
                         to = this.counter
                         decorations = [
                             {
                                 from,
                                 to,
                                 type: DecorationType.Preview,
+                            },
+                        ]
+                    } else if (inline.autolink.test(token.raw)) {
+                        const syntaxCharLength = 1 // <
+                        this.counter += token.raw.length
+                        to = this.counter
+                        decorations = [
+                            {
+                                from,
+                                to: from + syntaxCharLength,
+                                type: DecorationType.Syntax,
+                            },
+                            {
+                                from: from + syntaxCharLength,
+                                to: this.counter - syntaxCharLength,
+                                type: DecorationType.Preview,
+                            },
+                            {
+                                from: this.counter - syntaxCharLength,
+                                to,
+                                type: DecorationType.Syntax,
                             },
                         ]
                     } else {
@@ -274,9 +294,9 @@ class Parser {
                         this.counter += 2 // ](
                         this.counter += href.length
                         if (title) {
-                            this.counter += 1
+                            this.counter += 2 // space"'(
                             this.counter += title.length
-                            this.counter += 1
+                            this.counter += 1 // "')
                         }
                         this.counter += 1 // )
                         to = this.counter
