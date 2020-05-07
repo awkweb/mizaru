@@ -1,6 +1,8 @@
 import { Slugger } from 'marked'
 // @ts-ignore
 import { unescape } from 'marked/src/helpers'
+// @ts-ignore
+import { inline } from 'marked/src/rules'
 
 import { DecorationType } from '../types'
 
@@ -250,19 +252,54 @@ class Parser {
                 //     break
                 // }
                 case 'link': {
-                    this.counter += 1 // [
-                    this.parseInline(token.tokens)
-                    const decorationClosingStart = this.counter
-                    this.counter += 2 // ](
+                    const inlineLink = inline.gfm.url.test(token.raw)
                     const { href, title } = token as MarkedLinkToken
-                    this.counter += href.length
-                    if (title) {
-                        this.counter += 1
-                        this.counter += title.length
-                        this.counter += 1
+
+                    let decorations: Decorations
+                    let to: number
+                    if (inlineLink) {
+                        this.counter += token.text.length
+                        to = this.counter
+                        decorations = [
+                            {
+                                from,
+                                to,
+                                type: DecorationType.Preview,
+                            },
+                        ]
+                    } else {
+                        this.counter += 1 // [
+                        this.parseInline(token.tokens)
+                        const decorationClosingStart = this.counter
+                        this.counter += 2 // ](
+                        this.counter += href.length
+                        if (title) {
+                            this.counter += 1
+                            this.counter += title.length
+                            this.counter += 1
+                        }
+                        this.counter += 1 // )
+                        to = this.counter
+                        decorations = [
+                            {
+                                from,
+                                to: from + 1,
+                                type: DecorationType.Syntax,
+                            },
+                            {
+                                from: from + 1,
+                                to: decorationClosingStart,
+                                type: DecorationType.Preview,
+                            },
+
+                            {
+                                from: decorationClosingStart,
+                                to,
+                                type: DecorationType.Syntax,
+                            },
+                        ]
                     }
-                    this.counter += 1 // )
-                    const to = this.counter
+
                     this.marks.push({
                         from,
                         to,
@@ -272,24 +309,7 @@ class Parser {
                             href,
                         },
                     })
-                    this.decorations.push(
-                        {
-                            from,
-                            to: from + 1,
-                            type: DecorationType.Syntax,
-                        },
-                        {
-                            from: from + 1,
-                            to: decorationClosingStart,
-                            type: DecorationType.Preview,
-                        },
-
-                        {
-                            from: decorationClosingStart,
-                            to,
-                            type: DecorationType.Syntax,
-                        },
-                    )
+                    this.decorations.push(...decorations)
                     break
                 }
                 // case 'image': {
