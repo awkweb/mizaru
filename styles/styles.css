@@ -59,7 +59,7 @@ a {
     @apply no-underline;
     @apply hidden;
 }
-.selected .syntax {
+.selected > .syntax {
     @apply inline;
 }
 /* strong:hover .syntax, */

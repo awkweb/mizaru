@@ -5,7 +5,7 @@ import { Lexer } from 'marked'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension } from '../utils'
+import { Plugin as PluginExtension, checkSelected } from '../utils'
 import Parser, { Decorations, Marks } from '../parser'
 
 const key = new PluginKey('markdown')
@@ -22,11 +22,10 @@ class Markdown extends PluginExtension {
 
     render(doc: ProsemirrorNode) {
         doc.descendants((node, pos) => {
-            // TODO use `pos`
-            if (node.isText && node.text) {
+            if (node.isBlock) {
                 const lexer = new Lexer()
-                const tokens = lexer.lex(node.text)
-                const parser = new Parser({ offset: pos })
+                const tokens = lexer.lex(node.textContent)
+                const parser = new Parser({ offset: pos + 1 })
                 // @ts-ignore
                 const elements = parser.parse(tokens)
                 const { marks, decorations } = elements
@@ -77,25 +76,17 @@ class Markdown extends PluginExtension {
                 },
                 appendTransaction: (_transactions, _oldState, newState) => {
                     const tr = newState.tr
-                    const schema = newState.schema
-                    this.results.marks.forEach(({ attrs, from, to, type }) => {
-                        const {
-                            from: cursorFrom,
-                            to: cursorTo,
-                            anchor,
-                            head,
-                        } = newState.selection
-                        const anchored =
-                            // @ts-ignore
-                            (anchor >= from && head <= to) ||
-                            // @ts-ignore
-                            (head >= from && anchor <= to)
-                        const selected =
-                            (cursorFrom >= from && cursorTo <= to) || anchored
-                        const mark = schema.mark(type, {
-                            ...attrs,
+                    const { doc, selection, schema } = newState
+                    tr.removeMark(0, doc.textContent.length)
+                    this.results.marks.forEach(({ type, ...rest }) => {
+                        const { from, to } = rest
+                        const selected = checkSelected(from, to, selection)
+                        const attrs = {
+                            ...rest.attrs,
                             ...(selected ? { class: 'selected' } : {}),
-                        })
+                        }
+                        const mark = schema.mark(type, attrs)
+
                         tr.addMark(from, to, mark)
                         tr.removeStoredMark(mark)
                     })
