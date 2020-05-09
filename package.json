@@ -7,9 +7,11 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "test": "jest --watch"
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "dependencies": {
+        "marked": "^1.0.0",
         "next": "9.3.5",
         "nookies": "^2.2.3",
         "prosemirror-commands": "^1.1.4",
@@ -25,6 +27,7 @@
     },
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^2.1.2",
+        "@types/marked": "^0.7.4",
         "@types/node": "^13.13.1",
         "@types/prosemirror-commands": "^1.0.1",
         "@types/prosemirror-dev-tools": "^2.1.0",

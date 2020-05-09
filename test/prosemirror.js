@@ -2,10 +2,14 @@
 import { builders } from 'prosemirror-test-builder'
 import { EditorState } from 'prosemirror-state'
 
-function out(schema) {
+function out(schema, { markAttrs } = {}) {
     return builders(schema, {
+        strong: { markType: 'strong', ...markAttrs },
+        codespan: { markType: 'codespan', ...markAttrs },
+        del: { markType: 'del', ...markAttrs },
+        em: { markType: 'em', ...markAttrs },
         p: { nodeType: 'paragraph' },
-        b: { markType: 'bold' },
+        link: { markType: 'link', href: 'https://example.com', ...markAttrs },
     })
 }
 
@@ -23,10 +27,7 @@ function command(state, command) {
 }
 
 function mkState(config) {
-    return EditorState.create({
-        schema,
-        ...config,
-    })
+    return EditorState.create(config)
 }
 
 export { out, type, remove, command, mkState }

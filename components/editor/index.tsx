@@ -6,11 +6,11 @@ import { Transaction } from 'prosemirror-state'
 
 import { useMount } from '@/hooks'
 
-import { Highlight, History, ReactProps } from './plugins'
-import { Doc, Paragraph, Text } from './nodes'
-import { Bold, Code, Italic } from './marks'
+import { Highlight, History, Markdown, ReactProps } from './plugins'
+import { Doc, Heading, Hr, Paragraph, Text } from './nodes'
 import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
+import { Codespan, Del, Em, Link, Strong } from './marks'
 
 type Props = {
     autoFocus?: boolean
@@ -30,21 +30,31 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
     }))
 
     useMount(() => {
+        const marks = [
+            new Codespan(),
+            new Del(),
+            new Em(),
+            new Link(),
+            new Strong(),
+        ]
+        const nodes = [
+            new Doc(),
+            new Heading(),
+            new Hr(),
+            new Paragraph(),
+            new Text(),
+        ]
+        const plugins = [
+            new Highlight({
+                caseSensitive: false,
+            }),
+            new History(),
+            new Markdown(),
+            new ReactProps(props),
+        ]
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,
-            extensions: [
-                new Bold({}),
-                new Code({}),
-                new Italic({}),
-                new Doc(),
-                new Highlight({
-                    caseSensitive: false,
-                }),
-                new History(),
-                new Paragraph(),
-                new ReactProps(props),
-                new Text(),
-            ],
+            extensions: [...marks, ...nodes, ...plugins],
             element: viewHost.current as HTMLDivElement,
             content: props.value,
             onChange: props.onChange,

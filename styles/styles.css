@@ -10,7 +10,8 @@
     --colors-background: hsl(104, 100%, 100%);
     --colors-body: hsl(109, 0%, 10%);
     --colors-highlight: hsl(167, 100%, 74%);
-    --colors-muted: hsl(204, 0%, 80%);
+    --colors-muted: hsl(109, 0%, 95%);
+    --colors-syntax: hsl(204, 0%, 80%);
 }
 
 ::selection {
@@ -40,8 +41,24 @@ body {
     @apply text-body;
 }
 
+a {
+    @apply no-underline;
+}
+a span:not(.syntax) {
+    @apply underline;
+}
+
+del {
+    @apply no-underline;
+}
+del span:not(.syntax) {
+    @apply line-through;
+}
+
 .ProseMirror {
     @apply outline-none;
+    @apply pb-10;
+    @apply pt-3;
     @apply px-3;
     min-height: calc(100vh - 2.5rem);
 }
@@ -51,10 +68,11 @@ body {
 }
 
 .syntax {
-    @apply text-muted;
+    @apply text-syntax;
+    @apply no-underline;
     @apply hidden;
 }
-.selected .syntax {
+.active > .syntax {
     @apply inline;
 }
 /* purgecss end ignore */

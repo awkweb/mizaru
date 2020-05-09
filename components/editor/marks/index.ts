@@ -1,3 +1,5 @@
-export { default as Bold } from './bold'
-export { default as Code } from './code'
-export { default as Italic } from './italic'
+export { default as Link } from './link'
+export { default as Del } from './del'
+export { default as Strong } from './strong'
+export { default as Codespan } from './codespan'
+export { default as Em } from './em'
