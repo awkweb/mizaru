@@ -220,6 +220,24 @@ test('strong with nested em', () => {
     ])
 })
 
+test('em with nested strong', () => {
+    const doc = '*foo **bar***'
+    const lexer = new Lexer()
+    const tokens = lexer.lex(doc)
+    const parser = new Parser()
+    const { marks, decorations } = parser.parse(tokens)
+    expect(marks).toEqual([
+        { from: 6, to: 13, type: 'strong' },
+        { from: 1, to: 14, type: 'em' },
+    ])
+    expect(decorations).toEqual([
+        { from: 6, to: 8 },
+        { from: 11, to: 13 },
+        { from: 1, to: 2 },
+        { from: 13, to: 14 },
+    ])
+})
+
 test('link with nested code', () => {
     const doc = '[`foo`](https://example.com)'
     const lexer = new Lexer()
@@ -330,3 +348,4 @@ test('all inline marks', () => {
         { from: 59, to: 60, type: 'syntax' },
     ])
 })
+

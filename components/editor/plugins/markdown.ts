@@ -6,15 +6,16 @@ import { Lexer } from 'marked'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { Plugin as PluginExtension, checkActive } from '../utils'
-import Parser, { Decorations, Marks } from '../parser'
+import Parser, { Decorations, Marks, Nodes } from '../parser'
 import { DecorationType } from '../types'
 
 const key = new PluginKey('markdown')
 
 class Markdown extends PluginExtension {
-    results: { decorations: Decorations; marks: Marks } = {
+    results: { decorations: Decorations; marks: Marks; nodes: Nodes } = {
         decorations: [],
         marks: [],
+        nodes: [],
     }
 
     get name() {
@@ -29,10 +30,11 @@ class Markdown extends PluginExtension {
                 const parser = new Parser({ offset: pos + 1 })
                 // @ts-ignore
                 const elements = parser.parse(tokens)
-                const { marks, decorations } = elements
+                const { decorations, marks, nodes } = elements
                 this.results = {
                     decorations: [...this.results.decorations, ...decorations],
                     marks: [...this.results.marks, ...marks],
+                    nodes: [...this.results.nodes, ...nodes],
                 }
             }
         })
@@ -48,7 +50,7 @@ class Markdown extends PluginExtension {
     }
 
     private createDeco(doc: ProsemirrorNode) {
-        this.results = { decorations: [], marks: [] }
+        this.results = { decorations: [], marks: [], nodes: [] }
         this.render(doc)
         return this.decorations
             ? DecorationSet.create(doc, this.decorations)
@@ -79,8 +81,13 @@ class Markdown extends PluginExtension {
                 appendTransaction: (_transactions, _oldState, newState) => {
                     const tr = newState.tr
                     const { doc, selection, schema } = newState
-                    tr.removeMark(0, doc.textContent.length)
-                    this.results.marks.forEach(({ type, ...rest }) => {
+                    const { marks, nodes } = this.results
+                    tr.removeMark(0, doc.textContent.length + 1)
+                    nodes.forEach(({ type, from, to, attrs }) => {
+                        const node = schema.node(type, attrs)
+                        tr.setBlockType(from, to, node.type, attrs)
+                    })
+                    marks.forEach(({ type, ...rest }) => {
                         const { from, to } = rest
                         const active = checkActive(from, to, selection)
                         const attrs = {

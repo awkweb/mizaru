@@ -57,6 +57,8 @@ del span:not(.syntax) {
 
 .ProseMirror {
     @apply outline-none;
+    @apply pb-10;
+    @apply pt-3;
     @apply px-3;
     min-height: calc(100vh - 2.5rem);
 }

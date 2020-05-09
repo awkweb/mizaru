@@ -13,12 +13,6 @@ const Home: NextPage<Props> = () => {
 
     return (
         <div>
-            <input
-                className="mb-2 pt-1 px-3"
-                placeholder="Search"
-                value={searchTerm ?? ''}
-                onChange={(event) => handleSearch(event.target.value)}
-            />
             <Editor
                 autoFocus
                 ref={editorRef}
