@@ -7,7 +7,7 @@ import { Transaction } from 'prosemirror-state'
 import { useMount } from '@/hooks'
 
 import { Highlight, History, Markdown, ReactProps } from './plugins'
-import { Doc, Heading, Hr, Paragraph, Text } from './nodes'
+import { Doc, Heading, Paragraph, Text } from './nodes'
 import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
 import { Codespan, Del, Em, Link, Strong } from './marks'
@@ -37,13 +37,7 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
             new Link(),
             new Strong(),
         ]
-        const nodes = [
-            new Doc(),
-            new Heading(),
-            new Hr(),
-            new Paragraph(),
-            new Text(),
-        ]
+        const nodes = [new Doc(), new Heading(), new Paragraph(), new Text()]
         const plugins = [
             new Highlight({
                 caseSensitive: false,

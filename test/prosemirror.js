@@ -2,8 +2,18 @@
 import { builders } from 'prosemirror-test-builder'
 import { EditorState } from 'prosemirror-state'
 
-function out(schema, { markAttrs } = {}) {
+const headings = (attrs) =>
+    [1, 2, 3, 4, 5, 6].reduce(
+        (obj, cur, _i) => ({
+            ...obj,
+            [`h${cur}`]: { nodeType: 'heading', level: cur, ...attrs },
+        }),
+        {},
+    )
+
+function out(schema, { markAttrs, nodeAttrs } = {}) {
     return builders(schema, {
+        ...headings(nodeAttrs),
         strong: { markType: 'strong', ...markAttrs },
         codespan: { markType: 'codespan', ...markAttrs },
         del: { markType: 'del', ...markAttrs },
