@@ -24,7 +24,6 @@ class Codespan extends Mark {
                     'leading-normal',
                     'py-px',
                     'rounded-sm',
-                    'text-sm',
                 ]
                 const attrs = {
                     class: classes.join(' '),
