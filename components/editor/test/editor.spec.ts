@@ -8,7 +8,7 @@ test('create editor', () => {
 
 test('check empty content', () => {
     const editor = new Editor({
-        content: null,
+        content: undefined,
     })
 
     expect(editor.json).toEqual({
@@ -57,7 +57,7 @@ test('check json content', () => {
 
 test('change callback', (done) => {
     const editor = new Editor({
-        content: null,
+        content: undefined,
         onChange: (c) => {
             expect(c).toEqual({
                 content: [
@@ -77,7 +77,7 @@ test('change callback', (done) => {
 
 test('transaction callback', (done) => {
     const editor = new Editor({
-        content: null,
+        content: undefined,
         onTransaction: (t) => {
             expect(t).toBeDefined()
             done()

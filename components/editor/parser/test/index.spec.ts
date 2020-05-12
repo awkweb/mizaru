@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Lexer } from 'marked'
 
 import Parser from '../'
@@ -286,6 +287,35 @@ test('link without href', () => {
         { from: 1, to: 2, type: 'syntax' },
         { from: 2, to: 5, type: 'preview' },
         { from: 5, to: 8, type: 'syntax' },
+    ])
+})
+
+test('link nested code', () => {
+    const doc = '[`foo`](https://example.com)'
+    const tokens = Lexer.lex(doc)
+    const { nodes, decorations } = Parser.parse(tokens)
+    expect(nodes).toEqual([
+        {
+            from: 0,
+            to: 30,
+            type: 'paragraph',
+            marks: [
+                { from: 2, to: 7, type: 'codespan' },
+                {
+                    from: 1,
+                    to: 29,
+                    type: 'link',
+                    attrs: { href: 'https://example.com', title: null },
+                },
+            ],
+        },
+    ])
+    expect(decorations).toEqual([
+        { from: 2, to: 3 },
+        { from: 6, to: 7 },
+        { from: 1, to: 2, type: 'syntax' },
+        { from: 2, to: 7, type: 'preview' },
+        { from: 7, to: 29, type: 'syntax' },
     ])
 })
 

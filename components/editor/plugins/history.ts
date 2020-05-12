@@ -7,7 +7,7 @@ class History extends Plugin {
         return 'history'
     }
 
-    plugins() {
+    get plugins() {
         return [history()]
     }
 

@@ -30,7 +30,7 @@ class Editor {
     selection: EditorSelection = { from: 0, to: 0 }
     view: EditorView<any>
 
-    constructor(props: Props) {
+    constructor(props?: Partial<Props>) {
         const defaultProps = {
             autoFocus: false,
             extensions: [],
@@ -48,12 +48,11 @@ class Editor {
             new Paragraph(),
             ...options.extensions,
         ])
-        const { nodes, marks } = extensionManager
+        const { nodes, marks, plugins } = extensionManager
         const schema = new Schema({
             nodes,
             marks,
         })
-        const plugins = extensionManager.plugins({ schema })
         const keymaps = extensionManager.keymaps({
             schema,
         })

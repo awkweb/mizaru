@@ -6,7 +6,7 @@ import { Lexer } from 'marked'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { Plugin as PluginExtension, checkActive } from '../utils'
-import Parser, { Mark, Node, Decoration as ParserDecoration } from '../parser'
+import Parser, { Node, Decoration as ParserDecoration } from '../parser'
 import { DecorationType } from '../types'
 
 const key = new PluginKey('markdown')
@@ -54,7 +54,7 @@ class Markdown extends PluginExtension {
             : []
     }
 
-    plugins() {
+    get plugins() {
         return [
             new Plugin({
                 key,

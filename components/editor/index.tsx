@@ -31,11 +31,11 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
 
     useMount(() => {
         const marks = [
-            new Codespan(),
-            new Del(),
-            new Em(),
             new Link(),
+            new Em(),
             new Strong(),
+            new Del(),
+            new Codespan(),
         ]
         const nodes = [new Doc(), new Heading(), new Paragraph(), new Text()]
         const plugins = [
@@ -84,4 +84,4 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
 })
 
 export default Editor
-export type { Props as EditorProps }
+export type { Props as EditorProps, EditorRef }

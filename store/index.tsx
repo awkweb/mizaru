@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react'
+import { ReactNode, createContext, useContext, useState } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 
 type State = {
@@ -43,6 +43,10 @@ const Provider = ({ children }: Props) => {
     )
 }
 
+function useStore() {
+    return useContext(Context) as State
+}
+
 export default Context
-export { Provider }
+export { Provider, useStore }
 export type { State }

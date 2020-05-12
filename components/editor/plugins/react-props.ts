@@ -45,7 +45,7 @@ class ReactProps extends PluginExtension {
         }
     }
 
-    plugins() {
+    get plugins() {
         return [
             new Plugin({
                 key,

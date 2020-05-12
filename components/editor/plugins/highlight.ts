@@ -137,7 +137,7 @@ class Highlight extends PluginExtension {
             : []
     }
 
-    plugins() {
+    get plugins() {
         return [
             new Plugin({
                 key,

@@ -222,7 +222,7 @@ class Parser {
                     } else {
                         // Adding on opening [
                         counter = counter + 1
-                        const out = this.parseInline(token.tokens, counter)
+                        out = this.parseInline(token.tokens, counter)
                         const decorationClosingStart = out.counter
                         // Adding on `](href.length`
                         counter = decorationClosingStart + 2 + href.length

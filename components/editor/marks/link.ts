@@ -7,7 +7,7 @@ import {
 import { Plugin } from 'prosemirror-state'
 
 import { Mark, getMarkAttrs } from '../utils'
-import { DecorationType, EditorSchema } from '../types'
+import { DecorationType } from '../types'
 
 class Link extends Mark {
     get name() {
@@ -48,7 +48,7 @@ class Link extends Mark {
         }
     }
 
-    plugins({ schema }: { schema: EditorSchema }) {
+    get plugins() {
         return [
             new Plugin({
                 props: {
@@ -57,6 +57,7 @@ class Link extends Mark {
                             return false
                         }
 
+                        const { schema } = view.state
                         const mark = schema.marks.link
                         const attrs = getMarkAttrs(view.state, mark)
 

@@ -5,6 +5,7 @@ import { Doc, Heading, Paragraph, Text } from '../../nodes'
 import { Codespan, Del, Em, Link, Strong } from '../../marks'
 import { ExtensionManager } from '../../utils'
 
+// @ts-ignore
 const { out, type, mkState } = prosemirror
 
 const extensionManager = new ExtensionManager([
@@ -19,16 +20,15 @@ const extensionManager = new ExtensionManager([
     new Text(),
     new Markdown(),
 ])
-const { nodes, marks } = extensionManager
+const { nodes, marks, plugins } = extensionManager
 const schema = new Schema({
     nodes,
     marks,
 })
-const plugins = extensionManager.plugins({ schema })
 const { doc, p, em } = out(schema)
 const active = out(schema, {
-    markAttrs: { active: true },
-    nodeAttrs: { active: true },
+    mark: { active: true },
+    node: { active: true },
 })
 
 test('text', () => {
@@ -87,8 +87,32 @@ test('h1', () => {
     expect(state.doc).toEqual(doc(active.h1('# foo')))
 })
 
+test('h2', () => {
+    let state = mkState({ schema, plugins })
+    state = type(state, '## foo')
+    expect(state.doc).toEqual(doc(active.h2('## foo')))
+})
+
+test('h3', () => {
+    let state = mkState({ schema, plugins })
+    state = type(state, '### foo')
+    expect(state.doc).toEqual(doc(active.h3('### foo')))
+})
+
 test('h4', () => {
     let state = mkState({ schema, plugins })
     state = type(state, '#### foo')
     expect(state.doc).toEqual(doc(active.h4('#### foo')))
+})
+
+test('h5', () => {
+    let state = mkState({ schema, plugins })
+    state = type(state, '##### foo')
+    expect(state.doc).toEqual(doc(active.h5('##### foo')))
+})
+
+test('h6', () => {
+    let state = mkState({ schema, plugins })
+    state = type(state, '###### foo')
+    expect(state.doc).toEqual(doc(active.h6('###### foo')))
 })
