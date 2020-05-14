@@ -1,11 +1,11 @@
 /* purgecss start ignore */
 @import 'prosemirror-view/style/prosemirror.css';
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
 /* purgecss end ignore */
-@import 'tailwindcss/utilities';
 
 /* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+
 :root {
     --colors-background: hsl(104, 100%, 100%);
     --colors-body: hsl(109, 0%, 10%);
@@ -104,3 +104,5 @@ h6 {
     @apply inline;
 }
 /* purgecss end ignore */
+
+@tailwind utilities;

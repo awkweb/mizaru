@@ -10,7 +10,6 @@
         "test:watch": "jest --watch"
     },
     "dependencies": {
-        "marked": "^1.0.0",
         "next": "^9.4.0",
         "nookies": "^2.2.3",
         "prosemirror-commands": "^1.1.4",
@@ -22,7 +21,10 @@
         "prosemirror-state": "^1.3.3",
         "prosemirror-view": "^1.14.7",
         "react": "16.13.1",
-        "react-dom": "16.13.1"
+        "react-dom": "16.13.1",
+        "remark": "^12.0.0",
+        "unist-util-modify-children": "^2.0.0",
+        "unist-util-remove-position": "^2.0.1"
     },
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",
@@ -30,7 +32,6 @@
         "@fullhuman/postcss-purgecss": "^2.1.2",
         "@testing-library/react": "^10.0.4",
         "@types/jest": "^25.2.1",
-        "@types/marked": "^0.7.4",
         "@types/node": "^13.13.1",
         "@types/prosemirror-commands": "^1.0.1",
         "@types/prosemirror-dev-tools": "^2.1.0",
@@ -45,6 +46,7 @@
         "@types/prosemirror-view": "^1.11.4",
         "@types/react": "^16.9.34",
         "@types/testing-library__react": "^10.0.1",
+        "@types/unist": "^2.0.3",
         "@typescript-eslint/eslint-plugin": "^2.29.0",
         "@typescript-eslint/parser": "^2.29.0",
         "eslint": "^6.8.0",
@@ -91,6 +93,23 @@
             "eslint --max-warnings 0 --cache"
         ]
     },
+    "jest": {
+        "collectCoverageFrom": [
+            "**/*.{ts,tsx}",
+            "!**/*.d.ts",
+            "!**/node_modules/**"
+        ],
+        "moduleNameMapper": {
+            "@/(.*)": "<rootDir>/$1"
+        },
+        "setupFiles": [
+            "<rootDir>/test/setupTests"
+        ],
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/.next/"
+        ]
+    },
     "prettier": {
         "tabWidth": 4,
         "trailingComma": "all",
@@ -99,5 +118,88 @@
         "arrowParens": "always",
         "semi": false,
         "singleQuote": true
+    },
+    "eslintConfig": {
+        "parser": "@typescript-eslint/parser",
+        "extends": [
+            "plugin:react/recommended",
+            "plugin:jsx-a11y/recommended",
+            "plugin:import/errors",
+            "prettier/@typescript-eslint",
+            "plugin:react-hooks/recommended",
+            "plugin:prettier/recommended"
+        ],
+        "plugins": [
+            "@typescript-eslint",
+            "import",
+            "react"
+        ],
+        "rules": {
+            "import/no-unresolved": "error",
+            "import/order": [
+                "error",
+                {
+                    "groups": [
+                        "external",
+                        "internal"
+                    ],
+                    "newlines-between": "always-and-inside-groups"
+                }
+            ],
+            "jsx-a11y/anchor-is-valid": "off",
+            "react/jsx-boolean-value": [
+                "warn",
+                "never"
+            ],
+            "react/no-array-index-key": "error",
+            "react/no-did-mount-set-state": "error",
+            "react/no-did-update-set-state": "error",
+            "react/no-multi-comp": "warn",
+            "react/prop-types": "off",
+            "react/react-in-jsx-scope": "off",
+            "react/self-closing-comp": "warn",
+            "react/jsx-sort-props": [
+                "error",
+                {
+                    "callbacksLast": true
+                }
+            ],
+            "react/jsx-wrap-multilines": "error",
+            "sort-imports": [
+                "warn",
+                {
+                    "ignoreCase": false,
+                    "ignoreDeclarationSort": true,
+                    "ignoreMemberSort": false
+                }
+            ]
+        },
+        "globals": {
+            "window": "writable",
+            "document": "writable"
+        },
+        "settings": {
+            "import/parsers": {
+                "@typescript-eslint/parser": [
+                    ".js",
+                    ".ts",
+                    ".tsx"
+                ]
+            },
+            "import/resolver": {
+                "typescript": {
+                    "alwaysTryTypes": true
+                }
+            },
+            "react": {
+                "version": "detect"
+            }
+        },
+        "parserOptions": {
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "jsx": true
+            }
+        }
     }
 }

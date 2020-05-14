@@ -7,7 +7,6 @@ import { baseKeymap } from 'prosemirror-commands'
 import { Extension, ExtensionManager, minMax } from './utils'
 import { Doc, Paragraph, Text } from './nodes'
 import { EditorSchema, EditorSelection, FocusPosition } from './types'
-import { Commands } from './plugins'
 
 interface Events {
     onChange: (content: JSON) => void
@@ -22,7 +21,7 @@ interface Props extends Events {
 }
 
 class Editor {
-    commands: Commands
+    commands: any
     events: Events
     extensionManager: ExtensionManager
     focused: boolean = false
@@ -41,7 +40,7 @@ class Editor {
         const options = {
             ...defaultProps,
             ...props,
-        }
+        } as Props
         const extensionManager = new ExtensionManager([
             new Doc(),
             new Text(),
@@ -68,7 +67,7 @@ class Editor {
         })
         const commands = extensionManager.commands({ schema, view })
 
-        this.commands = commands as Commands
+        this.commands = commands
         this.view = view
         this.schema = schema
         this.extensionManager = extensionManager

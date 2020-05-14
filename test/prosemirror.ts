@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/named
 import { builders } from 'prosemirror-test-builder'
 import { Mark, Node as ProsemirrorNode } from 'prosemirror-model'
-import { EditorState, Plugin, Transaction } from 'prosemirror-state'
+import { EditorState, Plugin, Selection, Transaction } from 'prosemirror-state'
 import { Schema } from 'prosemirror-model'
 
 const headings = (attrs: object) =>
@@ -50,7 +50,7 @@ function command(state: EditorState, command: Function) {
 function mkState(config: {
     schema?: Schema | any
     doc?: ProsemirrorNode | null
-    selection?: Selection | any
+    selection?: Selection | null
     storedMarks?: Mark[] | null
     plugins?: Array<Plugin<any, any>> | null
 }) {

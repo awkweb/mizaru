@@ -1,12 +1,10 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Plugin, PluginKey } from 'prosemirror-state'
-
-import { Lexer } from 'marked'
+import { Plugin, PluginKey, Selection } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension, checkActive } from '../utils'
-import Parser, { Node, Decoration as ParserDecoration } from '../parser'
+import { Plugin as PluginExtension } from '../utils'
+import { Node, Decoration as ParserDecoration } from '../parser'
 import { DecorationType } from '../types'
 
 const key = new PluginKey('markdown')
@@ -21,18 +19,12 @@ class Markdown extends PluginExtension {
         return 'markdown'
     }
 
-    render(doc: ProsemirrorNode) {
+    render(doc: ProsemirrorNode, selection: Selection) {
+        const content = []
         doc.descendants((node, pos) => {
             if (node.isBlock) {
-                // @ts-ignore
-                const tokens = Lexer.lex(node.textContent)
-                // @ts-ignore
-                const elements = Parser.parse(tokens, { offset: pos })
-                const { decorations, nodes } = elements
-                this.results = {
-                    decorations: [...this.results.decorations, ...decorations],
-                    nodes: [...this.results.nodes, ...nodes],
-                }
+                console.log(`"${node.textContent}"`)
+                content.push(node.textContent)
             }
         })
     }
@@ -46,9 +38,9 @@ class Markdown extends PluginExtension {
         })
     }
 
-    private createDeco(doc: ProsemirrorNode) {
+    private createDeco(doc: ProsemirrorNode, selection: Selection) {
         this.results = { decorations: [], nodes: [] }
-        this.render(doc)
+        this.render(doc, selection)
         return this.decorations
             ? DecorationSet.create(doc, this.decorations)
             : []
@@ -60,11 +52,13 @@ class Markdown extends PluginExtension {
                 key,
                 state: {
                     init: (_config, instance) => {
-                        return this.createDeco(instance.doc)
+                        const { doc, selection } = instance
+                        return this.createDeco(doc, selection)
                     },
                     apply: (tr, value, _oldState, _newState) => {
                         if (tr.docChanged) {
-                            return this.createDeco(tr.doc)
+                            const { doc, selection } = tr
+                            return this.createDeco(doc, selection)
                         }
                         return value
                     },
@@ -78,32 +72,7 @@ class Markdown extends PluginExtension {
                 appendTransaction: (_transactions, _oldState, newState) => {
                     const tr = newState.tr
                     const { doc, selection, schema } = newState
-                    const { nodes } = this.results
-
-                    tr.removeMark(0, doc.textContent.length + 1)
-                    nodes.forEach(({ type, ...rest }) => {
-                        const { from, to, marks } = rest
-                        const active = checkActive(from, to, selection)
-                        const attrs = {
-                            ...rest.attrs,
-                            active,
-                        }
-                        const node = schema.node(type, attrs)
-                        tr.setBlockType(from, to, node.type, attrs)
-
-                        marks?.forEach(({ type, ...rest }) => {
-                            const { from, to } = rest
-                            const active = checkActive(from, to, selection)
-                            const attrs = {
-                                ...rest.attrs,
-                                active,
-                            }
-                            const mark = schema.mark(type, attrs)
-
-                            tr.addMark(from, to, mark)
-                            tr.removeStoredMark(mark)
-                        })
-                    })
+                    // const { nodes } = this.results
 
                     return tr
                 },
