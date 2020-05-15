@@ -24,7 +24,7 @@
         "react-dom": "16.13.1",
         "remark": "^12.0.0",
         "unist-util-modify-children": "^2.0.0",
-        "unist-util-remove-position": "^2.0.1"
+        "unist-util-source": "^2.0.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",
@@ -65,7 +65,7 @@
         "prettier": "^2.0.4",
         "prosemirror-test-builder": "^1.0.3",
         "tailwindcss": "^1.2.0",
-        "typescript": "^3.8.3"
+        "typescript": "^3.9.2"
     },
     "babel": {
         "presets": [
