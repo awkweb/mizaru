@@ -4,12 +4,12 @@ import { Node } from '../utils'
 
 class UnorderedList extends Node {
     get name() {
-        return 'unordered_list'
+        return 'unorderedList'
     }
 
     get schema() {
         return {
-            content: 'list_item+',
+            content: 'listItem+',
             group: 'block',
             parseDOM: [{ tag: 'ul' }],
             toDOM: (): DOMOutputSpec => ['ul', 0],

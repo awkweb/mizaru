@@ -46,11 +46,10 @@ class Parser {
             switch (type) {
                 case 'blockquote': {
                     const syntaxLength = 2
-                    counter = counter + 1
                     const out = this.parseBlock(children, counter, syntaxLength)
                     counter = out.counter + 1
                     const to = counter
-                    const decorationStart = from + 2
+                    const decorationStart = from + 1
                     decorations.push(...out.decorations, {
                         from: decorationStart,
                         to: decorationStart + syntaxLength,
@@ -62,30 +61,24 @@ class Parser {
                         type,
                         marks: [],
                     })
-
-                    continue
+                    break
                 }
                 case 'heading': {
-                    const { depth: level } = <Heading>node
-                    const syntaxLength = level + 1
-                    const decorationStart = from + 1
-                    counter = decorationStart + syntaxLength
-                    const out = this.parseInline(children, counter)
-                    counter = out.counter + 1
-                    const to = counter
-                    decorations.push(...out.decorations, {
-                        from: decorationStart,
-                        to: decorationStart + syntaxLength,
-                        type: 'syntax',
-                    })
-                    nodes.push({
+                    const out = this.renderHeading(
                         from,
-                        to,
-                        type,
-                        marks: out.marks,
-                        attrs: { level },
-                    })
-                    continue
+                        children,
+                        counter,
+                        node,
+                    )
+                    counter = out.counter
+                    decorations.push(...out.decorations)
+                    nodes.push(...out.nodes)
+                    break
+                }
+                case 'html': {
+                    // console.log('node: ', node)
+                    counter = counter + 2
+                    break
                 }
                 case 'list': {
                     const modify = modifyChildren(this.modifyListItem)
@@ -102,7 +95,7 @@ class Parser {
                         attrs: { ordered, spread, start },
                     })
                     decorations.push(...out.decorations)
-                    continue
+                    break
                 }
                 case 'listItem': {
                     const syntaxLength = this.getListItemSyntaxLength(
@@ -132,19 +125,19 @@ class Parser {
                             spread,
                         },
                     })
-                    continue
+                    break
                 }
                 case 'paragraph': {
-                    counter = counter + 1
-                    const out = this.parseInline(
+                    const out = this.renderParagraph(
+                        from,
                         children,
-                        counter + (boost ?? 0),
+                        counter,
+                        boost,
                     )
-                    counter = out.counter + 1
-                    const to = counter
+                    counter = out.counter
                     decorations.push(...out.decorations)
-                    nodes.push({ from, to, type, marks: out.marks })
-                    continue
+                    nodes.push(...out.nodes)
+                    break
                 }
                 default: {
                     throw new Error(
@@ -154,6 +147,63 @@ class Parser {
             }
         }
         return { counter, decorations, nodes }
+    }
+
+    private renderHeading(
+        from: number,
+        children: UnistNode[],
+        counter: number,
+        node: UnistNode,
+    ) {
+        const raw = this.getRawText(node)
+        if (!raw.includes(' ') || raw.startsWith(' ')) {
+            const out = this.renderParagraph(from, children, counter)
+            return out
+        }
+        const { depth: level } = <Heading>node
+        const syntaxLength = level + 1
+        const decorationStart = from + 1
+        counter = decorationStart + syntaxLength
+        const out = this.parseInline(children, counter)
+        counter = out.counter + 1
+        const to = counter
+        return {
+            counter,
+            decorations: [
+                ...out.decorations,
+                {
+                    from: decorationStart,
+                    to: decorationStart + syntaxLength,
+                    type: 'syntax',
+                },
+            ],
+            nodes: [
+                {
+                    from,
+                    to,
+                    type: 'heading',
+                    marks: out.marks,
+                    attrs: { level },
+                },
+            ],
+        }
+    }
+
+    private renderParagraph(
+        from: number,
+        children: UnistNode[],
+        counter: number,
+        boost?: number,
+    ) {
+        counter = counter + 1
+        const out = this.parseInline(children, counter + (boost ?? 0))
+        counter = out.counter + 1
+        const to = counter
+        return {
+            counter,
+            decorations: out.decorations,
+            nodes: [{ from, to, type: 'paragraph', marks: out.marks }],
+        }
     }
 
     parseInline(nodes: UnistNode[], counter: number) {
@@ -167,15 +217,14 @@ class Parser {
             switch (type) {
                 case 'inlineCode': {
                     const from = counter
-                    const decorationStart = from + 1
+                    const decorationStart = from
                     counter =
                         decorationStart +
                         syntaxLength +
                         ((<Literal>node).value as string).length +
                         syntaxLength
                     const decorationEnd = counter
-                    counter = counter + 1
-                    const to = counter
+                    const to = decorationEnd
                     decorations.push(
                         {
                             from: decorationStart,
@@ -189,43 +238,40 @@ class Parser {
                         },
                     )
                     marks.push({ from, to, type })
-                    continue
+                    break
                 }
                 case 'delete':
                 case 'emphasis':
                 case 'strong': {
                     const from = counter
-                    const decorationStart = from + 1
-                    counter = decorationStart + syntaxLength
+                    counter = from + syntaxLength
                     const out = this.parseInline(children, counter)
                     counter = out.counter + syntaxLength
-                    const decorationEnd = counter
-                    counter = counter + 1
                     const to = counter
                     decorations.push(
                         ...out.decorations,
                         {
-                            from: decorationStart,
-                            to: decorationStart + syntaxLength,
+                            from,
+                            to: from + syntaxLength,
                             type: 'syntax',
                         },
                         {
-                            from: decorationEnd - syntaxLength,
-                            to: decorationEnd,
+                            from: to - syntaxLength,
+                            to,
                             type: 'syntax',
                         },
                     )
                     marks.push(...out.marks, { from, to, type })
-                    continue
+                    break
                 }
                 case 'link': {
                     const { url, title } = <Link>node
                     const linkType = this.getLinkType(<Link>node)
-                    continue
+                    break
                 }
                 case 'text': {
                     counter = counter + ((<Literal>node).value as string).length
-                    continue
+                    break
                 }
                 default: {
                     throw new Error(
@@ -279,4 +325,5 @@ class Parser {
     }
 }
 
+export type { Decoration, Heading, Link, List, ListItem, Mark, Node }
 export default Parser

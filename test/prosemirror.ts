@@ -13,7 +13,7 @@ const headings = (attrs: object) =>
         {},
     )
 const inlines = (attrs: object) =>
-    ['strong', 'codespan', 'del', 'em'].reduce(
+    ['strong', 'inlineCode', 'delete', 'emphasis'].reduce(
         (obj, cur, _i) => ({
             ...obj,
             [cur]: { nodeType: cur, ...attrs },
@@ -58,3 +58,4 @@ function mkState(config: {
 }
 
 export { out, type, remove, command, mkState }
+console.log(`"${node.textContent}"`)

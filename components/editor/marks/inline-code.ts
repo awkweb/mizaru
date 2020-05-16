@@ -4,7 +4,7 @@ import { Mark } from '../utils'
 
 class InlineCode extends Mark {
     get name() {
-        return 'inline_code'
+        return 'inlineCode'
     }
 
     get schema() {

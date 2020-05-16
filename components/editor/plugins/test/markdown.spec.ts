@@ -1,24 +1,35 @@
 import { Schema } from 'prosemirror-model'
 
 import { Markdown } from '../../plugins'
-import { Doc, Heading, Paragraph, Text } from '../../nodes'
-import { Codespan, Del, Em, Link, Strong } from '../../marks'
+import {
+    Doc,
+    Heading,
+    ListItem,
+    OrderedList,
+    Paragraph,
+    Text,
+    UnorderedList,
+} from '../../nodes'
+import { Delete, Emphasis, InlineCode, Link, Strong } from '../../marks'
 import { ExtensionManager } from '../../utils'
 
 // @ts-ignore
 const { out, type, mkState } = prosemirror
 
 const extensionManager = new ExtensionManager([
-    new Heading(),
-    new Link(),
-    new Del(),
-    new Strong(),
-    new Codespan(),
-    new Em(),
+    new Delete(),
     new Doc(),
-    new Paragraph(),
-    new Text(),
+    new Emphasis(),
+    new Heading(),
+    new InlineCode(),
+    new Link(),
+    new ListItem(),
     new Markdown(),
+    new OrderedList(),
+    new Paragraph(),
+    new Strong(),
+    new Text(),
+    new UnorderedList(),
 ])
 const { nodes, marks, plugins } = extensionManager
 const schema = new Schema({
@@ -45,25 +56,25 @@ test('strong', () => {
     expect(state.doc).toEqual(doc(p(active.strong(md))))
 })
 
-test('em', () => {
+test('emphasis', () => {
     const md = '*foo*'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.em(md))))
+    expect(state.doc).toEqual(doc(p(active.emphasis(md))))
 })
 
-test('del', () => {
+test('delete', () => {
     const md = '~foo~'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.del(md))))
+    expect(state.doc).toEqual(doc(p(active.delete(md))))
 })
 
-test('codespan', () => {
+test('inlineCode', () => {
     const md = '`foo`'
     let state = mkState({ schema, plugins })
     state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.codespan(md))))
+    expect(state.doc).toEqual(doc(p(active.inlineCode(md))))
 })
 
 test('link', () => {
@@ -81,38 +92,19 @@ test('strong with nested em', () => {
     )
 })
 
-test('h1', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '# foo')
-    expect(state.doc).toEqual(doc(active.h1('# foo')))
-})
-
-test('h2', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '## foo')
-    expect(state.doc).toEqual(doc(active.h2('## foo')))
-})
-
-test('h3', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '### foo')
-    expect(state.doc).toEqual(doc(active.h3('### foo')))
-})
-
-test('h4', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '#### foo')
-    expect(state.doc).toEqual(doc(active.h4('#### foo')))
-})
-
-test('h5', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '##### foo')
-    expect(state.doc).toEqual(doc(active.h5('##### foo')))
-})
-
-test('h6', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '###### foo')
-    expect(state.doc).toEqual(doc(active.h6('###### foo')))
-})
+const headings = [
+    { tag: 'h1', syntax: '# ' },
+    { tag: 'h2', syntax: '## ' },
+    { tag: 'h3', syntax: '### ' },
+    { tag: 'h4', syntax: '#### ' },
+    { tag: 'h5', syntax: '##### ' },
+    { tag: 'h6', syntax: '###### ' },
+]
+for (let { tag, syntax } of headings) {
+    test(tag, () => {
+        const content = `${syntax} foo`
+        let state = mkState({ schema, plugins })
+        state = type(state, content)
+        expect(state.doc).toEqual(doc(active[tag](content)))
+    })
+}

@@ -4,7 +4,7 @@ import { Node } from '../utils'
 
 class ListItem extends Node {
     get name() {
-        return 'list_item'
+        return 'listItem'
     }
 
     get schema() {

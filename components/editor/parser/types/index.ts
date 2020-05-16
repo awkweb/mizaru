@@ -30,7 +30,8 @@ export interface Position {
     to: number
 }
 
-export interface Element {
+export interface Element extends Position {
+    attrs?: { [key: string]: unknown }
     type: string
     [key: string]: unknown
 }
