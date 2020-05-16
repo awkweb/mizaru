@@ -5,10 +5,19 @@ import applyDevTools from 'prosemirror-dev-tools'
 import { useMount } from '@/hooks'
 
 import { History, Markdown } from './plugins'
-import { Doc, Heading, Paragraph, Text } from './nodes'
+import {
+    Blockquote,
+    Doc,
+    Heading,
+    ListItem,
+    OrderedList,
+    Paragraph,
+    Text,
+    UnorderedList,
+} from './nodes'
+import { Delete, Emphasis, InlineCode, Link, Strong } from './marks'
 import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
-import { Codespan, Del, Em, Link, Strong } from './marks'
 
 type Props = {
     autoFocus?: boolean
@@ -28,13 +37,22 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
 
     useMount(() => {
         const marks = [
+            new Delete(),
+            new Emphasis(),
+            new InlineCode(),
             new Link(),
-            new Em(),
             new Strong(),
-            new Del(),
-            new Codespan(),
         ]
-        const nodes = [new Doc(), new Heading(), new Paragraph(), new Text()]
+        const nodes = [
+            new Blockquote(),
+            new Doc(),
+            new Heading(),
+            new ListItem(),
+            new OrderedList(),
+            new Paragraph(),
+            new Text(),
+            new UnorderedList(),
+        ]
         const plugins = [new History(), new Markdown()]
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,

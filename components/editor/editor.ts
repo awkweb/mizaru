@@ -86,7 +86,7 @@ class Editor {
     }
 
     get json() {
-        return this.state.doc.toJSON() as JSON
+        return <JSON>this.state.doc.toJSON()
     }
 
     createDocument(schema: EditorSchema, content: JSON | string) {
@@ -101,12 +101,12 @@ class Editor {
         switch (typeof content) {
             case 'string': {
                 const element = document.createElement('div')
-                element.innerHTML = (content as string).trim()
+                element.innerHTML = (<string>content).trim()
                 return DOMParser.fromSchema(schema).parse(element)
             }
             case 'object': {
                 try {
-                    return schema.nodeFromJSON(content as JSON)
+                    return schema.nodeFromJSON(<JSON>content)
                 } catch (error) {
                     return schema.nodeFromJSON(emptyDocument)
                 }
@@ -119,7 +119,7 @@ class Editor {
     }
 
     dispatchTransaction(transaction: Transaction) {
-        const newState = this.state.apply(transaction) as EditorState<any>
+        const newState = <EditorState<any>>this.state.apply(transaction)
         this.view.updateState(newState)
         this.selection = {
             from: newState.selection.from,
@@ -146,7 +146,7 @@ class Editor {
         }
 
         if (position === FocusPosition.End) {
-            const { doc } = this.state as EditorState<any>
+            const { doc } = <EditorState<any>>this.state
             return {
                 from: doc.content.size - 1,
                 to: doc.content.size - 1,
@@ -166,12 +166,12 @@ class Editor {
 
         const { from, to } = this.resolveSelection(position)
 
-        this.setSelection(from as number, to as number)
+        this.setSelection(<number>from, <number>to)
         this.view.focus()
     }
 
     setSelection(from = 0, to = 0) {
-        const { doc, tr } = this.state as EditorState<any>
+        const { doc, tr } = <EditorState<any>>this.state
         const resolvedFrom = minMax(from, 0, doc.content.size)
         const resolvedEnd = minMax(to, 0, doc.content.size)
         const selection = TextSelection.create(doc, resolvedFrom, resolvedEnd)
