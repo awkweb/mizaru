@@ -7,6 +7,11 @@ import { Parent, Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
 
 import { Decoration, Heading, Link, List, ListItem, Mark, Node } from './types'
+import {
+    getInlineSyntaxLength,
+    getListItemSyntaxLength,
+    modifyListItem,
+} from './utils'
 
 interface Props {
     offset: number
@@ -81,7 +86,7 @@ class Parser {
                     break
                 }
                 case 'list': {
-                    const modify = modifyChildren(this.modifyListItem)
+                    const modify = modifyChildren(modifyListItem)
                     modify(node)
                     const out = this.parseBlock(children, counter + 1)
                     counter = out.counter + 1
@@ -98,9 +103,7 @@ class Parser {
                     break
                 }
                 case 'listItem': {
-                    const syntaxLength = this.getListItemSyntaxLength(
-                        <ListItem>node,
-                    )
+                    const syntaxLength = getListItemSyntaxLength(<ListItem>node)
                     const out = this.parseBlock(
                         children,
                         counter + 1,
@@ -212,7 +215,7 @@ class Parser {
 
         for (const node of nodes) {
             const { type, children } = <Parent>node
-            const syntaxLength = this.getInlineSyntaxLength(type)
+            const syntaxLength = getInlineSyntaxLength(type)
 
             switch (type) {
                 case 'inlineCode': {
@@ -266,7 +269,7 @@ class Parser {
                 }
                 case 'link': {
                     const { url, title } = <Link>node
-                    const linkType = this.getLinkType(<Link>node)
+                    const raw = this.getRawText(node)
                     break
                 }
                 case 'text': {
@@ -281,43 +284,6 @@ class Parser {
             }
         }
         return { decorations, counter, marks }
-    }
-
-    private getInlineSyntaxLength(type: string) {
-        switch (type) {
-            case 'delete':
-            case 'strong':
-                return 2
-            case 'emphasis':
-            case 'inlineCode':
-                return 1
-            default:
-                return 0
-        }
-    }
-
-    private getListItemSyntaxLength(node: ListItem) {
-        const { checked, num } = node
-        let syntaxLength = 2
-        if (typeof num === 'number') {
-            syntaxLength = `${num}. `.length
-        }
-        if (checked !== null) {
-            const boxLength = (checked ? `[x]` : `[ ]`).length + 1
-            syntaxLength = syntaxLength + boxLength
-        }
-        return syntaxLength
-    }
-
-    private modifyListItem(node: UnistNode, index: number, parent: Parent) {
-        const { start } = <List>parent
-        const num = typeof start === 'number' ? start + index : null
-        parent.children.splice(index, 1, { ...node, num })
-    }
-
-    private getLinkType(node: Link) {
-        const raw = this.getRawText(node)
-        return 'default'
     }
 
     private getRawText(node: UnistNode) {

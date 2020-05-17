@@ -8,14 +8,14 @@ describe('basic', () => {
             expect(nodes).toEqual([
                 {
                     from: 0,
-                    to: 9,
+                    to: 7,
                     type: 'paragraph',
-                    marks: [{ from: 1, to: 8, type: 'emphasis' }],
+                    marks: [{ from: 1, to: 6, type: 'emphasis' }],
                 },
             ])
             expect(decorations).toEqual([
-                { from: 2, to: 3, type: 'syntax' },
-                { from: 6, to: 7, type: 'syntax' },
+                { from: 1, to: 2, type: 'syntax' },
+                { from: 5, to: 6, type: 'syntax' },
             ])
         })
     }
@@ -28,19 +28,19 @@ describe('with nested', () => {
         expect(nodes).toEqual([
             {
                 from: 0,
-                to: 15,
+                to: 11,
                 type: 'paragraph',
                 marks: [
-                    { from: 3, to: 12, type: 'delete' },
-                    { from: 1, to: 14, type: 'emphasis' },
+                    { from: 2, to: 9, type: 'delete' },
+                    { from: 1, to: 10, type: 'emphasis' },
                 ],
             },
         ])
         expect(decorations).toEqual([
-            { from: 4, to: 6, type: 'syntax' },
-            { from: 9, to: 11, type: 'syntax' },
-            { from: 2, to: 3, type: 'syntax' },
-            { from: 12, to: 13, type: 'syntax' },
+            { from: 2, to: 4, type: 'syntax' },
+            { from: 7, to: 9, type: 'syntax' },
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 9, to: 10, type: 'syntax' },
         ])
     })
 
@@ -50,19 +50,19 @@ describe('with nested', () => {
         expect(nodes).toEqual([
             {
                 from: 0,
-                to: 13,
+                to: 9,
                 type: 'paragraph',
                 marks: [
-                    { from: 3, to: 10, type: 'inlineCode' },
-                    { from: 1, to: 12, type: 'emphasis' },
+                    { from: 2, to: 7, type: 'inlineCode' },
+                    { from: 1, to: 8, type: 'emphasis' },
                 ],
             },
         ])
         expect(decorations).toEqual([
-            { from: 4, to: 5, type: 'syntax' },
-            { from: 8, to: 9, type: 'syntax' },
             { from: 2, to: 3, type: 'syntax' },
-            { from: 10, to: 11, type: 'syntax' },
+            { from: 6, to: 7, type: 'syntax' },
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 7, to: 8, type: 'syntax' },
         ])
     })
 
@@ -72,19 +72,19 @@ describe('with nested', () => {
         expect(nodes).toEqual([
             {
                 from: 0,
-                to: 15,
+                to: 11,
                 type: 'paragraph',
                 marks: [
-                    { from: 3, to: 12, type: 'strong' },
-                    { from: 1, to: 14, type: 'emphasis' },
+                    { from: 2, to: 9, type: 'strong' },
+                    { from: 1, to: 10, type: 'emphasis' },
                 ],
             },
         ])
         expect(decorations).toEqual([
-            { from: 4, to: 6, type: 'syntax' },
-            { from: 9, to: 11, type: 'syntax' },
-            { from: 2, to: 3, type: 'syntax' },
-            { from: 12, to: 13, type: 'syntax' },
+            { from: 2, to: 4, type: 'syntax' },
+            { from: 7, to: 9, type: 'syntax' },
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 9, to: 10, type: 'syntax' },
         ])
     })
 })

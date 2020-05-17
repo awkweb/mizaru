@@ -1,6 +1,6 @@
 import Parser from '../'
 
-describe('basic', () => {
+describe.skip('basic', () => {
     const doc = '> foo'
     test(doc, () => {
         const { decorations, nodes } = Parser.parse(doc)
@@ -22,7 +22,7 @@ describe('basic', () => {
     })
 })
 
-describe('with nested', () => {
+describe.skip('with nested', () => {
     test('delete', () => {
         const doc = '> foo ~~bar~~'
         const { decorations, nodes } = Parser.parse(doc)

@@ -1,6 +1,6 @@
 import Parser from '../'
 
-describe('basic', () => {
+describe.skip('basic', () => {
     const doc = '[foo]()'
     test(doc, () => {
         const { decorations, nodes } = Parser.parse(doc)
@@ -17,7 +17,7 @@ describe('basic', () => {
     })
 })
 
-describe('autolink', () => {
+describe.skip('autolink', () => {
     const doc = '<https://example.com>'
     test(doc, () => {
         const { decorations, nodes } = Parser.parse(doc)

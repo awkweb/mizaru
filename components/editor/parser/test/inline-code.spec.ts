@@ -7,14 +7,14 @@ describe('basic', () => {
         expect(nodes).toEqual([
             {
                 from: 0,
-                to: 9,
+                to: 7,
                 type: 'paragraph',
-                marks: [{ from: 1, to: 8, type: 'inlineCode' }],
+                marks: [{ from: 1, to: 6, type: 'inlineCode' }],
             },
         ])
         expect(decorations).toEqual([
-            { from: 2, to: 3, type: 'syntax' },
-            { from: 6, to: 7, type: 'syntax' },
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 5, to: 6, type: 'syntax' },
         ])
     })
 })
@@ -26,19 +26,36 @@ describe('cannot nest', () => {
         expect(nodes).toEqual([
             {
                 from: 0,
-                to: 13,
+                to: 11,
                 type: 'paragraph',
-                marks: [{ from: 1, to: 12, type: 'inlineCode' }],
+                marks: [{ from: 1, to: 10, type: 'inlineCode' }],
             },
         ])
         expect(decorations).toEqual([
-            { from: 2, to: 3, type: 'syntax' },
-            { from: 10, to: 11, type: 'syntax' },
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 9, to: 10, type: 'syntax' },
         ])
     })
 
     test('emphasis', () => {
         const doc = '`*foo*`'
+        const { decorations, nodes } = Parser.parse(doc)
+        expect(nodes).toEqual([
+            {
+                from: 0,
+                to: 9,
+                type: 'paragraph',
+                marks: [{ from: 1, to: 8, type: 'inlineCode' }],
+            },
+        ])
+        expect(decorations).toEqual([
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 7, to: 8, type: 'syntax' },
+        ])
+    })
+
+    test('strong', () => {
+        const doc = '`**foo**`'
         const { decorations, nodes } = Parser.parse(doc)
         expect(nodes).toEqual([
             {
@@ -49,25 +66,8 @@ describe('cannot nest', () => {
             },
         ])
         expect(decorations).toEqual([
-            { from: 2, to: 3, type: 'syntax' },
-            { from: 8, to: 9, type: 'syntax' },
-        ])
-    })
-
-    test('strong', () => {
-        const doc = '`**foo**`'
-        const { decorations, nodes } = Parser.parse(doc)
-        expect(nodes).toEqual([
-            {
-                from: 0,
-                to: 13,
-                type: 'paragraph',
-                marks: [{ from: 1, to: 12, type: 'inlineCode' }],
-            },
-        ])
-        expect(decorations).toEqual([
-            { from: 2, to: 3, type: 'syntax' },
-            { from: 10, to: 11, type: 'syntax' },
+            { from: 1, to: 2, type: 'syntax' },
+            { from: 9, to: 10, type: 'syntax' },
         ])
     })
 })

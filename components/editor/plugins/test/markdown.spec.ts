@@ -14,7 +14,7 @@ import { Delete, Emphasis, InlineCode, Link, Strong } from '../../marks'
 import { ExtensionManager } from '../../utils'
 
 // @ts-ignore
-const { out, type, mkState } = prosemirror
+const { out, backspace, type, mkState } = prosemirror
 
 const extensionManager = new ExtensionManager([
     new Delete(),
@@ -36,60 +36,53 @@ const schema = new Schema({
     nodes,
     marks,
 })
-const { doc, p, em } = out(schema)
+const { doc, p, emphasis } = out(schema)
 const active = out(schema, {
     mark: { active: true },
     node: { active: true },
 })
 
 test('text', () => {
-    const md = 'foo'
+    const content = 'foo'
     let state = mkState({ schema, plugins })
-    state = type(state, md)
-    expect(state.doc).toEqual(doc(p(md)))
-})
-
-test('strong', () => {
-    const md = '**foo**'
-    let state = mkState({ schema, plugins })
-    state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.strong(md))))
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(content)))
 })
 
 test('emphasis', () => {
-    const md = '*foo*'
+    const content = '*foo*'
     let state = mkState({ schema, plugins })
-    state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.emphasis(md))))
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(active.emphasis(content))))
+    state = backspace(state, 2)
+    expect(state.doc).toEqual(doc(p(content.substring(0, content.length - 1))))
 })
 
 test('delete', () => {
-    const md = '~foo~'
+    const content = '~~foo~~'
     let state = mkState({ schema, plugins })
-    state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.delete(md))))
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(active.delete(content))))
+    state = backspace(state, 3)
+    expect(state.doc).toEqual(doc(p(content.substring(0, content.length - 2))))
 })
 
 test('inlineCode', () => {
-    const md = '`foo`'
+    const content = '`foo`'
     let state = mkState({ schema, plugins })
-    state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.inlineCode(md))))
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(active.inlineCode(content))))
+    state = backspace(state, 2)
+    expect(state.doc).toEqual(doc(p(content.substring(0, content.length - 1))))
 })
 
-test('link', () => {
-    const md = '[foo](https://example.com)'
+test('strong', () => {
+    const content = '**foo**'
     let state = mkState({ schema, plugins })
-    state = type(state, md)
-    expect(state.doc).toEqual(doc(p(active.link(md))))
-})
-
-test('strong with nested em', () => {
-    let state = mkState({ schema, plugins })
-    state = type(state, '**foo *bar***')
-    expect(state.doc).toEqual(
-        doc(p(active.strong('**foo ', em('*bar*'), '**'))),
-    )
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(active.strong(content))))
+    state = backspace(state, 3)
+    expect(state.doc).toEqual(doc(p(content.substring(0, content.length - 2))))
 })
 
 const headings = [
@@ -108,3 +101,11 @@ for (let { tag, syntax } of headings) {
         expect(state.doc).toEqual(doc(active[tag](content)))
     })
 }
+
+test('strong with nested em', () => {
+    let state = mkState({ schema, plugins })
+    state = type(state, '**foo *bar***')
+    expect(state.doc).toEqual(
+        doc(p(active.strong('**foo ', emphasis('*bar*'), '**'))),
+    )
+})
