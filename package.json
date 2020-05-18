@@ -1,10 +1,10 @@
 {
     "name": "mizaru",
-    "version": "0.1.0",
     "license": "MIT",
     "scripts": {
-        "dev": "next dev",
+        "commit": "git-cz",
         "build": "next build",
+        "dev": "next dev",
         "start": "next start",
         "test": "jest",
         "test:watch": "jest --watch"
@@ -22,6 +22,7 @@
         "prosemirror-view": "^1.14.7",
         "react": "16.13.1",
         "react-dom": "16.13.1",
+        "react-use": "^15.1.0",
         "remark": "^12.0.0",
         "unist-util-modify-children": "^2.0.0",
         "unist-util-source": "^2.0.0"
@@ -49,6 +50,8 @@
         "@types/unist": "^2.0.3",
         "@typescript-eslint/eslint-plugin": "^2.29.0",
         "@typescript-eslint/parser": "^2.29.0",
+        "commitizen": "^4.1.2",
+        "cz-conventional-changelog": "3.2.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.10.1",
         "eslint-import-resolver-typescript": "^2.0.0",
@@ -84,11 +87,7 @@
         }
     },
     "lint-staged": {
-        "*.{ts,tsx}": [
-            "prettier --write",
-            "eslint --max-warnings 0 --cache"
-        ],
-        "*.{js}": [
+        "*.{js,ts,tsx}": [
             "prettier --write",
             "eslint --max-warnings 0 --cache"
         ]
@@ -118,6 +117,11 @@
         "arrowParens": "always",
         "semi": false,
         "singleQuote": true
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     },
     "eslintConfig": {
         "parser": "@typescript-eslint/parser",

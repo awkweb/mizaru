@@ -109,9 +109,9 @@ describe('with nested', () => {
     })
 })
 
-describe('invalid', () => {
-    test('no space after #', () => {
-        const doc = '#foo'
+describe('edge cases', () => {
+    const doc = '#foo'
+    test(`"${doc}"`, () => {
         const { decorations, nodes } = Parser.parse(doc)
         expect(nodes).toEqual([
             {
@@ -123,4 +123,34 @@ describe('invalid', () => {
         ])
         expect(decorations).toEqual([])
     })
+
+    const doc2 = '#foo  '
+    test(`"${doc2}"`, () => {})
+
+    const doc3 = '   #foo'
+    test(`"${doc3}"`, () => {})
+
+    const doc4 = '   #foo  '
+    test(`"${doc4}"`, () => {})
+
+    const doc5 = '# foo  '
+    test(`"${doc5}"`, () => {})
+
+    const doc6 = '   # foo'
+    test(`"${doc6}"`, () => {})
+
+    const doc7 = '   #foo  '
+    test(`"${doc7}"`, () => {})
+
+    const doc8 = '#    foo'
+    test(`"${doc8}"`, () => {})
+
+    const doc9 = '#    foo  '
+    test(`"${doc9}"`, () => {})
+
+    const doc10 = '   #    foo'
+    test(`"${doc10}"`, () => {})
+
+    const doc11 = '   #    foo   '
+    test(`"${doc11}"`, () => {})
 })

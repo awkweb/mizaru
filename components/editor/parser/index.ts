@@ -34,7 +34,11 @@ class Parser {
 
     parse(doc: string) {
         this.doc = doc
-        const settings = <PartialRemarkOptions>{ gfm: true, position: true }
+        const settings = <PartialRemarkOptions>{
+            commonmark: true,
+            gfm: true,
+            position: true,
+        }
         const tree = remark().use({ settings }).parse(doc)
         const out = this.parseBlock((<Parent>tree).children, this.props.offset)
         return out
@@ -159,12 +163,52 @@ class Parser {
         node: UnistNode,
     ) {
         const raw = this.getRawText(node)
+        // Turn `#foo` and `  #foo` into paragraphs
         if (!raw.includes(' ') || raw.startsWith(' ')) {
-            const out = this.renderParagraph(from, children, counter)
+            const value = raw.slice(0, raw.indexOf('#') + 1)
+            const out = this.renderParagraph(
+                from,
+                [{ type: 'text', value }, ...children],
+                counter,
+            )
             return out
         }
         const { depth: level } = <Heading>node
         const syntaxLength = level + 1
+
+        const value = raw.substring(syntaxLength, raw.length)
+        // Leading spaces after syntax `#   foo`
+        if (value.startsWith(' ')) {
+            const firstNonWhitespaceChar = value.trim()[0]
+            const leadingSpaces = value.slice(
+                0,
+                value.indexOf(firstNonWhitespaceChar),
+            )
+            children = [
+                {
+                    type: 'text',
+                    value: ' '.repeat(leadingSpaces.length),
+                },
+                ...children,
+            ]
+        }
+        // Trailing spaces after syntax `# foo   `
+        if (value.endsWith('  ')) {
+            const trimmedValue = value.trim()
+            const trimmedValueLength = trimmedValue.length
+            const lastNonWhitespaceChar = trimmedValue[trimmedValueLength - 1]
+            const trailingSpaces = value.slice(
+                value.lastIndexOf(lastNonWhitespaceChar) + 1,
+                value.length,
+            )
+            children = [
+                ...children,
+                {
+                    type: 'text',
+                    value: ' '.repeat(trailingSpaces.length),
+                },
+            ]
+        }
         const decorationStart = from + 1
         counter = decorationStart + syntaxLength
         const out = this.parseInline(children, counter)

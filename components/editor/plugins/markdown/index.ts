@@ -3,9 +3,9 @@ import { Plugin, PluginKey, Selection } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension, checkActive } from '../utils'
-import Parser, { Decoration as Deco, Node } from '../parser'
-import { EditorSelection } from '../types'
+import { Plugin as PluginExtension, checkActive } from '../../utils'
+import Parser, { Decoration as Deco, Node } from '../../parser'
+import { EditorSelection } from '../../types'
 
 const key = new PluginKey('markdown')
 

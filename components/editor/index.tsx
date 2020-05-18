@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle, useRef } from 'react'
 import { EditorView } from 'prosemirror-view'
 import applyDevTools from 'prosemirror-dev-tools'
 
-import { useMount } from '@/hooks'
+import { useMount } from 'react-use'
 
 import { History, Markdown } from './plugins'
 import {

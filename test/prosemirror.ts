@@ -4,14 +4,20 @@ import { Mark, Node as ProsemirrorNode } from 'prosemirror-model'
 import { EditorState, Plugin, Selection } from 'prosemirror-state'
 import { Schema } from 'prosemirror-model'
 
-function headings(attrs: object) {
-    return [1, 2, 3, 4, 5, 6].reduce(
+import { Extension, ExtensionManager } from '@/components/editor/utils'
+import { Doc, Paragraph, Text } from '@/components/editor/nodes'
+
+function nodes(attrs: object) {
+    const headings = [1, 2, 3, 4, 5, 6].reduce(
         (obj, cur, _i) => ({
             ...obj,
             [`h${cur}`]: { nodeType: 'heading', level: cur, ...attrs },
         }),
         {},
     )
+    return {
+        ...headings,
+    }
 }
 
 function marks(attrs: object) {
@@ -26,7 +32,7 @@ function marks(attrs: object) {
 
 function out(schema: Schema, options: { node: object; mark: object }) {
     return builders(schema, {
-        ...headings(options?.node),
+        ...nodes(options?.node),
         ...marks(options?.mark),
         p: { nodeType: 'paragraph' },
     })
@@ -44,6 +50,24 @@ function backspace(state: EditorState, count: number) {
     return remove(state, state.doc.content.size - count, state.doc.content.size)
 }
 
+function mkExtensionManager(extensions: Extension[]) {
+    return new ExtensionManager([
+        ...extensions,
+        new Doc(),
+        new Paragraph(),
+        new Text(),
+    ])
+}
+
+function mkSchema(extensions: Extension[]) {
+    const { nodes, marks, plugins } = mkExtensionManager(extensions)
+    const schema = new Schema({
+        nodes,
+        marks,
+    })
+    return { plugins, schema }
+}
+
 function mkState(config: {
     schema?: Schema | any
     doc?: ProsemirrorNode | null
@@ -54,4 +78,4 @@ function mkState(config: {
     return EditorState.create(config)
 }
 
-export { out, backspace, type, remove, mkState }
+export { out, backspace, type, remove, mkExtensionManager, mkSchema, mkState }
