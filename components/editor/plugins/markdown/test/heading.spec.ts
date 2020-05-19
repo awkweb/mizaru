@@ -10,15 +10,15 @@ const active = out(schema, {
     node: { active: true },
 })
 
+const mkHeadings = (space?: boolean) => {
+    return [1, 2, 3, 4, 5, 6].map((i) => ({
+        tag: `h${i}`,
+        syntax: `${'#'.repeat(i)}${space ? ' ' : ''}`,
+    }))
+}
+
 describe('basic', () => {
-    const headings = [
-        { tag: 'h1', syntax: '# ' },
-        { tag: 'h2', syntax: '## ' },
-        { tag: 'h3', syntax: '### ' },
-        { tag: 'h4', syntax: '#### ' },
-        { tag: 'h5', syntax: '##### ' },
-        { tag: 'h6', syntax: '###### ' },
-    ]
+    const headings = mkHeadings()
     for (let { tag, syntax } of headings) {
         const content = `${syntax} foo`
         test(content, () => {
@@ -30,31 +30,44 @@ describe('basic', () => {
 })
 
 describe('edge cases', () => {
-    test.only('no space after syntax', () => {
-        const content = '#Testing'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(p(content)))
-    })
+    const whiteSpace = '   '
+    const headings = mkHeadings(false)
+    for (let { tag, syntax } of headings) {
+        describe(tag, () => {
+            const content = `${syntax}foo`
+            test(content, () => {
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(p(content)))
+            })
 
-    test('more than one space after syntax', () => {
-        const content = '#          Testing'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(active.h1(content)))
-    })
+            const content2 = `${syntax}foo${whiteSpace}`
+            test(content2, () => {
+                let state = mkState({ schema, plugins })
+                state = type(state, content2)
+                expect(state.doc).toEqual(doc(p(content2)))
+            })
 
-    test('leading spaces', () => {
-        const content = '   # Testing'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(p(content)))
-    })
+            const content3 = `${whiteSpace}${syntax}foo`
+            test(content3, () => {
+                let state = mkState({ schema, plugins })
+                state = type(state, content3)
+                expect(state.doc).toEqual(doc(p(content3)))
+            })
 
-    test('trailing spaces', () => {
-        const content = '# Testing  '
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(active.h1(content)))
-    })
+            const content4 = `${whiteSpace}${syntax}foo${whiteSpace}`
+            test(content4, () => {
+                let state = mkState({ schema, plugins })
+                state = type(state, content4)
+                expect(state.doc).toEqual(doc(p(content4)))
+            })
+
+            const content5 = `${syntax} foo${whiteSpace}`
+            test(content5, () => {
+                let state = mkState({ schema, plugins })
+                state = type(state, content5)
+                expect(state.doc).toEqual(doc(active[tag](content5)))
+            })
+        })
+    }
 })

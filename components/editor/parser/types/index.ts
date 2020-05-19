@@ -1,4 +1,8 @@
-import { Parent } from 'unist'
+import { Parent as UnistParent } from 'unist'
+
+export interface Parent extends UnistParent {
+    raw: string
+}
 
 export interface Heading extends Parent {
     type: 'heading'

@@ -1,24 +1,39 @@
 /* eslint-disable */
+import unified from 'unified'
 import remark, { PartialRemarkOptions } from 'remark'
+import toMDAST from 'remark-parse'
 import modifyChildren from 'unist-util-modify-children'
 // @ts-ignore
 import source from 'unist-util-source'
-import { Parent, Node as UnistNode, Literal } from 'unist'
+import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
 
-import { Decoration, Heading, Link, List, ListItem, Mark, Node } from './types'
+import {
+    Decoration,
+    Heading,
+    Link,
+    List,
+    ListItem,
+    Mark,
+    Node,
+    Parent,
+} from './types'
 import {
     getInlineSyntaxLength,
+    getInnerWhiteSpace,
+    getLeadingWhiteSpace,
     getListItemSyntaxLength,
+    getTrailingWhiteSpace,
     modifyListItem,
+    toMDZAST,
 } from './utils'
+import { WHITESPACE_CHAR } from './utils/whitespace'
 
 interface Props {
     offset: number
 }
 
 class Parser {
-    doc = ''
     props: Props = {
         offset: 0,
     }
@@ -33,13 +48,14 @@ class Parser {
     }
 
     parse(doc: string) {
-        this.doc = doc
         const settings = <PartialRemarkOptions>{
             commonmark: true,
             gfm: true,
             position: true,
         }
-        const tree = remark().use({ settings }).parse(doc)
+        const tree = toMDZAST({ doc })(
+            unified().use(toMDAST, settings).parse(doc),
+        )
         const out = this.parseBlock((<Parent>tree).children, this.props.offset)
         return out
     }
@@ -162,53 +178,46 @@ class Parser {
         counter: number,
         node: UnistNode,
     ) {
-        const raw = this.getRawText(node)
-        // Turn `#foo` and `  #foo` into paragraphs
-        if (!raw.includes(' ') || raw.startsWith(' ')) {
-            const value = raw.slice(0, raw.indexOf('#') + 1)
-            const out = this.renderParagraph(
-                from,
-                [{ type: 'text', value }, ...children],
-                counter,
-            )
-            return out
-        }
-        const { depth: level } = <Heading>node
+        const { depth: level, raw } = <Heading>node
         const syntaxLength = level + 1
+        // If not fully formed, convert to paragraph
+        const syntax = '#'.repeat(level)
+        if (syntax === raw) {
+            const child = { type: 'text', value: raw }
+            children.push(child)
+            return this.renderParagraph(from, children, counter)
+        }
+        // If heading ends with whitespace, add text child with whitespace
+        // length
+        if (raw.endsWith(WHITESPACE_CHAR)) {
+            const rawMinusSyntax = raw.slice(syntaxLength, raw.length)
+            const value = getTrailingWhiteSpace(
+                !rawMinusSyntax.trim() ? rawMinusSyntax : raw,
+            )
+            const child = { type: 'text', value }
+            children.push(child)
+        }
+        // If heading starts with whitespace, convert it to a paragraph
+        if (raw.startsWith(WHITESPACE_CHAR)) {
+            const trimmed = raw.trim()
+            const content = trimmed.slice(syntax.length, trimmed.length)
+            const value = `${getLeadingWhiteSpace(
+                raw,
+            )}${syntax}${getLeadingWhiteSpace(content)}`
+            const child = { type: 'text', value }
+            children.unshift(child)
+            return this.renderParagraph(from, children, counter)
+        }
+        // If heading contains extra whitespace between syntax and text, add
+        // text child  with whitespace length
+        const trimmed = raw.trim()
+        const rawMinusSyntax = trimmed.slice(syntaxLength, trimmed.length)
+        if (rawMinusSyntax.includes(WHITESPACE_CHAR)) {
+            const value = getLeadingWhiteSpace(rawMinusSyntax)
+            const child = { type: 'text', value }
+            children.unshift(child)
+        }
 
-        const value = raw.substring(syntaxLength, raw.length)
-        // Leading spaces after syntax `#   foo`
-        if (value.startsWith(' ')) {
-            const firstNonWhitespaceChar = value.trim()[0]
-            const leadingSpaces = value.slice(
-                0,
-                value.indexOf(firstNonWhitespaceChar),
-            )
-            children = [
-                {
-                    type: 'text',
-                    value: ' '.repeat(leadingSpaces.length),
-                },
-                ...children,
-            ]
-        }
-        // Trailing spaces after syntax `# foo   `
-        if (value.endsWith('  ')) {
-            const trimmedValue = value.trim()
-            const trimmedValueLength = trimmedValue.length
-            const lastNonWhitespaceChar = trimmedValue[trimmedValueLength - 1]
-            const trailingSpaces = value.slice(
-                value.lastIndexOf(lastNonWhitespaceChar) + 1,
-                value.length,
-            )
-            children = [
-                ...children,
-                {
-                    type: 'text',
-                    value: ' '.repeat(trailingSpaces.length),
-                },
-            ]
-        }
         const decorationStart = from + 1
         counter = decorationStart + syntaxLength
         const out = this.parseInline(children, counter)
@@ -313,10 +322,10 @@ class Parser {
                 }
                 case 'link': {
                     const { url, title } = <Link>node
-                    const raw = this.getRawText(node)
                     break
                 }
                 case 'text': {
+                    // console.log(`"${node.value}"`)
                     counter = counter + ((<Literal>node).value as string).length
                     break
                 }
@@ -328,10 +337,6 @@ class Parser {
             }
         }
         return { decorations, counter, marks }
-    }
-
-    private getRawText(node: UnistNode) {
-        return source(node, this.doc)
     }
 }
 
