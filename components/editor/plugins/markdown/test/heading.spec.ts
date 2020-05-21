@@ -1,73 +1,167 @@
 import { Heading } from '@/components/editor/nodes'
+import { Delete, Emphasis, InlineCode, Strong } from '@/components/editor/marks'
 
 import Markdown from '..'
 
 // @ts-ignore
-const { out, type, mkState, mkSchema } = prosemirror
-const { schema, plugins } = mkSchema([new Heading(), new Markdown()])
+const { out, type, mkHeadings, mkState, mkSchema } = prosemirror
+const { schema, plugins } = mkSchema([
+    new Delete(),
+    new Emphasis(),
+    new Heading(),
+    new InlineCode(),
+    new Markdown(),
+    new Strong(),
+])
 const { doc, p } = out(schema)
 const active = out(schema, {
     node: { active: true },
+    mark: { active: true },
 })
 
-const mkHeadings = (space?: boolean) => {
-    return [1, 2, 3, 4, 5, 6].map((i) => ({
-        tag: `h${i}`,
-        syntax: `${'#'.repeat(i)}${space ? ' ' : ''}`,
-    }))
-}
+const headings = mkHeadings()
+for (const { tag, syntax } of headings) {
+    describe(tag, () => {
+        test('only syntax', () => {
+            const content = `${syntax}`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(p(content)))
+        })
 
-describe('basic', () => {
-    const headings = mkHeadings()
-    for (let { tag, syntax } of headings) {
-        const content = `${syntax} foo`
-        test(content, () => {
+        test('empty heading', () => {
+            const content = `${syntax} `
             let state = mkState({ schema, plugins })
             state = type(state, content)
             expect(state.doc).toEqual(doc(active[tag](content)))
         })
-    }
-})
 
-describe('edge cases', () => {
-    const whiteSpace = '   '
-    const headings = mkHeadings(false)
-    for (let { tag, syntax } of headings) {
-        describe(tag, () => {
-            const content = `${syntax}foo`
-            test(content, () => {
+        test('single-word heading', () => {
+            const content = `${syntax} foo`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(active[tag](content)))
+        })
+
+        test('multiple-word heading', () => {
+            const content = `${syntax} foo bar baz`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(active[tag](content)))
+        })
+
+        describe('with nested', () => {
+            test('delete', () => {
+                const content = `${syntax} foo ~~bar~~`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        active[tag](`${syntax} foo `, active.delete('~~bar~~')),
+                    ),
+                )
+            })
+
+            test('emphasis', () => {
+                const content = `${syntax} foo *bar*`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        active[tag](`${syntax} foo `, active.emphasis('*bar*')),
+                    ),
+                )
+            })
+
+            test('inlineCode', () => {
+                const content = `${syntax} foo \`bar\``
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        active[tag](
+                            `${syntax} foo `,
+                            active.inlineCode('`bar`'),
+                        ),
+                    ),
+                )
+            })
+
+            test('strong', () => {
+                const content = `${syntax} foo **bar**`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        active[tag](`${syntax} foo `, active.strong('**bar**')),
+                    ),
+                )
+            })
+        })
+
+        describe('with whitespace', () => {
+            test('leading', () => {
+                const content = `   ${syntax} foo`
                 let state = mkState({ schema, plugins })
                 state = type(state, content)
                 expect(state.doc).toEqual(doc(p(content)))
             })
 
-            const content2 = `${syntax}foo${whiteSpace}`
-            test(content2, () => {
+            test('trailing', () => {
+                const content = `${syntax} foo   `
                 let state = mkState({ schema, plugins })
-                state = type(state, content2)
-                expect(state.doc).toEqual(doc(p(content2)))
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(active[tag](content)))
             })
 
-            const content3 = `${whiteSpace}${syntax}foo`
-            test(content3, () => {
+            test('leading and trailing', () => {
+                const content = `   ${syntax} foo   `
                 let state = mkState({ schema, plugins })
-                state = type(state, content3)
-                expect(state.doc).toEqual(doc(p(content3)))
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(p(content)))
             })
 
-            const content4 = `${whiteSpace}${syntax}foo${whiteSpace}`
-            test(content4, () => {
+            test('inner', () => {
+                const content = `${syntax}    foo`
                 let state = mkState({ schema, plugins })
-                state = type(state, content4)
-                expect(state.doc).toEqual(doc(p(content4)))
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(active[tag](content)))
             })
 
-            const content5 = `${syntax} foo${whiteSpace}`
-            test(content5, () => {
+            test('inner and trailing', () => {
+                const content = `${syntax}    foo   `
                 let state = mkState({ schema, plugins })
-                state = type(state, content5)
-                expect(state.doc).toEqual(doc(active[tag](content5)))
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(active[tag](content)))
+            })
+
+            test('leading and inner', () => {
+                const content = `   ${syntax}    foo`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(p(content)))
+            })
+
+            test('leading, inner, and trailing', () => {
+                const content = `   ${syntax}    foo   `
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(p(content)))
+            })
+
+            test('trailing syntax characters', () => {
+                const content = `${syntax} foo  ${syntax}`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(active[tag](content)))
+            })
+
+            test('trailing syntax characters and spaces', () => {
+                const content = `${syntax} foo  ${syntax}  ${syntax}  `
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(doc(active[tag](content)))
             })
         })
-    }
-})
+    })
+}

@@ -1,4 +1,4 @@
-import { ListItem } from '..'
+import { ListItem } from '../types'
 
 export function getInlineSyntaxLength(type: string) {
     switch (type) {

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import unified from 'unified'
-import remark, { PartialRemarkOptions } from 'remark'
+import { PartialRemarkOptions } from 'remark'
 import toMDAST from 'remark-parse'
 import modifyChildren from 'unist-util-modify-children'
 // @ts-ignore
@@ -19,15 +19,13 @@ import {
     Parent,
 } from './types'
 import {
+    getEnclosingWhitespace,
+    getHeadingWhitespace,
     getInlineSyntaxLength,
-    getInnerWhiteSpace,
-    getLeadingWhiteSpace,
     getListItemSyntaxLength,
-    getTrailingWhiteSpace,
     modifyListItem,
     toMDZAST,
 } from './utils'
-import { WHITESPACE_CHAR } from './utils/whitespace'
 
 interface Props {
     offset: number
@@ -179,45 +177,40 @@ class Parser {
         node: UnistNode,
     ) {
         const { depth: level, raw } = <Heading>node
-        const syntaxLength = level + 1
+        const syntaxChars = '#'.repeat(level)
+
         // If not fully formed, convert to paragraph
-        const syntax = '#'.repeat(level)
-        if (syntax === raw) {
+        if (raw === syntaxChars) {
             const child = { type: 'text', value: raw }
             children.push(child)
             return this.renderParagraph(from, children, counter)
         }
-        // If heading ends with whitespace, add text child with whitespace
-        // length
-        if (raw.endsWith(WHITESPACE_CHAR)) {
-            const rawMinusSyntax = raw.slice(syntaxLength, raw.length)
-            const value = getTrailingWhiteSpace(
-                !rawMinusSyntax.trim() ? rawMinusSyntax : raw,
-            )
+
+        const { leading, inner, trailing } = getHeadingWhitespace(raw, level)
+        if (trailing) {
+            const trimmed = raw.trim()
+            const value =
+                trimmed === syntaxChars || trailing.includes('#')
+                    ? trailing.slice(0, trailing.length - 1)
+                    : trailing
             const child = { type: 'text', value }
             children.push(child)
         }
-        // If heading starts with whitespace, convert it to a paragraph
-        if (raw.startsWith(WHITESPACE_CHAR)) {
-            const trimmed = raw.trim()
-            const content = trimmed.slice(syntax.length, trimmed.length)
-            const value = `${getLeadingWhiteSpace(
-                raw,
-            )}${syntax}${getLeadingWhiteSpace(content)}`
-            const child = { type: 'text', value }
-            children.unshift(child)
-            return this.renderParagraph(from, children, counter)
-        }
+
         // If heading contains extra whitespace between syntax and text, add
-        // text child  with whitespace length
-        const trimmed = raw.trim()
-        const rawMinusSyntax = trimmed.slice(syntaxLength, trimmed.length)
-        if (rawMinusSyntax.includes(WHITESPACE_CHAR)) {
-            const value = getLeadingWhiteSpace(rawMinusSyntax)
-            const child = { type: 'text', value }
+        // whitespace length
+        if (inner) {
+            const child = { type: 'text', value: inner }
             children.unshift(child)
         }
 
+        if (leading) {
+            const child = { type: 'text', value: `${leading}${syntaxChars} ` }
+            children.unshift(child)
+            return this.renderParagraph(from, children, counter)
+        }
+
+        const syntaxLength = level + 1
         const decorationStart = from + 1
         counter = decorationStart + syntaxLength
         const out = this.parseInline(children, counter)

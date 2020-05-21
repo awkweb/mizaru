@@ -7,11 +7,19 @@ import { Schema } from 'prosemirror-model'
 import { Extension, ExtensionManager } from '@/components/editor/utils'
 import { Doc, Paragraph, Text } from '@/components/editor/nodes'
 
+function mkHeadings(space?: boolean) {
+    return [1, 2, 3, 4, 5, 6].map((i) => ({
+        tag: `h${i}`,
+        syntax: `${'#'.repeat(i)}${space ? ' ' : ''}`,
+        level: i,
+    }))
+}
+
 function nodes(attrs: object) {
-    const headings = [1, 2, 3, 4, 5, 6].reduce(
-        (obj, cur, _i) => ({
+    const headings = mkHeadings().reduce(
+        (obj, { tag, level }, _i) => ({
             ...obj,
-            [`h${cur}`]: { nodeType: 'heading', level: cur, ...attrs },
+            [tag]: { nodeType: 'heading', level, ...attrs },
         }),
         {},
     )
@@ -78,4 +86,13 @@ function mkState(config: {
     return EditorState.create(config)
 }
 
-export { out, backspace, type, remove, mkExtensionManager, mkSchema, mkState }
+export {
+    out,
+    backspace,
+    type,
+    remove,
+    mkHeadings,
+    mkExtensionManager,
+    mkSchema,
+    mkState,
+}
