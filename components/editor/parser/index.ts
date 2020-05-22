@@ -197,11 +197,11 @@ class Parser {
             children.push(child)
 
             const hasClosingSequence = trailing.includes('#')
-            const rawLength = raw.length + 1
+            const decorationTo = from + raw.length + 1
             if (hasClosingSequence) {
                 decorationClosing = {
-                    from: rawLength - value.length,
-                    to: rawLength,
+                    from: decorationTo - value.length,
+                    to: decorationTo,
                     type: 'syntax',
                 }
             }
