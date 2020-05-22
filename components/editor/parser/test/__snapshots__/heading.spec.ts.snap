@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`h1 empty heading 1`] = `
+exports[`h1 empty 1`] = `
 Object {
   "counter": 4,
   "decorations": Array [
@@ -24,7 +24,7 @@ Object {
 }
 `;
 
-exports[`h1 multiple-word heading 1`] = `
+exports[`h1 multiple words 1`] = `
 Object {
   "counter": 15,
   "decorations": Array [
@@ -48,22 +48,7 @@ Object {
 }
 `;
 
-exports[`h1 only syntax 1`] = `
-Object {
-  "counter": 3,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 3,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h1 single-word heading 1`] = `
+exports[`h1 single word 1`] = `
 Object {
   "counter": 7,
   "decorations": Array [
@@ -87,9 +72,154 @@ Object {
 }
 `;
 
+exports[`h1 with closing sequence different number of syntax characters 1`] = `
+Object {
+  "counter": 18,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 17,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 18,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h1 with closing sequence random syntax characters 1`] = `
+Object {
+  "counter": 23,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 22,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 23,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h1 with closing sequence same number of syntax characters 1`] = `
+Object {
+  "counter": 17,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 16,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 17,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h1 with closing sequence trailing whitespace 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 19,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 20,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h1 with closing sequence trailing whitespace and random syntax characters 1`] = `
+Object {
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 25,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 26,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h1 with nested delete 1`] = `
 Object {
-  "counter": 15,
+  "counter": 19,
   "decorations": Array [
     Object {
       "from": 7,
@@ -120,7 +250,7 @@ Object {
           "type": "delete",
         },
       ],
-      "to": 15,
+      "to": 19,
       "type": "heading",
     },
   ],
@@ -129,7 +259,7 @@ Object {
 
 exports[`h1 with nested emphasis 1`] = `
 Object {
-  "counter": 13,
+  "counter": 17,
   "decorations": Array [
     Object {
       "from": 7,
@@ -160,7 +290,7 @@ Object {
           "type": "emphasis",
         },
       ],
-      "to": 13,
+      "to": 17,
       "type": "heading",
     },
   ],
@@ -169,7 +299,7 @@ Object {
 
 exports[`h1 with nested inlineCode 1`] = `
 Object {
-  "counter": 13,
+  "counter": 17,
   "decorations": Array [
     Object {
       "from": 7,
@@ -200,7 +330,7 @@ Object {
           "type": "inlineCode",
         },
       ],
-      "to": 13,
+      "to": 17,
       "type": "heading",
     },
   ],
@@ -209,7 +339,7 @@ Object {
 
 exports[`h1 with nested strong 1`] = `
 Object {
-  "counter": 15,
+  "counter": 19,
   "decorations": Array [
     Object {
       "from": 7,
@@ -240,7 +370,7 @@ Object {
           "type": "strong",
         },
       ],
-      "to": 15,
+      "to": 19,
       "type": "heading",
     },
   ],
@@ -249,11 +379,11 @@ Object {
 
 exports[`h1 with whitespace inner 1`] = `
 Object {
-  "counter": 10,
+  "counter": 18,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 3,
+      "to": 6,
       "type": "syntax",
     },
   ],
@@ -264,7 +394,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 10,
+      "to": 18,
       "type": "heading",
     },
   ],
@@ -273,11 +403,11 @@ Object {
 
 exports[`h1 with whitespace inner and trailing 1`] = `
 Object {
-  "counter": 13,
+  "counter": 21,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 3,
+      "to": 6,
       "type": "syntax",
     },
   ],
@@ -288,7 +418,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 13,
+      "to": 21,
       "type": "heading",
     },
   ],
@@ -297,14 +427,23 @@ Object {
 
 exports[`h1 with whitespace leading 1`] = `
 Object {
-  "counter": 10,
-  "decorations": Array [],
+  "counter": 18,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 1,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 10,
-      "type": "paragraph",
+      "to": 18,
+      "type": "heading",
     },
   ],
 }
@@ -312,14 +451,23 @@ Object {
 
 exports[`h1 with whitespace leading and inner 1`] = `
 Object {
-  "counter": 13,
-  "decorations": Array [],
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 9,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 1,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 13,
-      "type": "paragraph",
+      "to": 21,
+      "type": "heading",
     },
   ],
 }
@@ -327,14 +475,23 @@ Object {
 
 exports[`h1 with whitespace leading and trailing 1`] = `
 Object {
-  "counter": 13,
-  "decorations": Array [],
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 1,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 13,
-      "type": "paragraph",
+      "to": 21,
+      "type": "heading",
     },
   ],
 }
@@ -342,14 +499,23 @@ Object {
 
 exports[`h1 with whitespace leading, inner, and trailing 1`] = `
 Object {
-  "counter": 16,
-  "decorations": Array [],
+  "counter": 24,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 9,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 1,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 16,
-      "type": "paragraph",
+      "to": 24,
+      "type": "heading",
     },
   ],
 }
@@ -357,7 +523,7 @@ Object {
 
 exports[`h1 with whitespace trailing 1`] = `
 Object {
-  "counter": 10,
+  "counter": 18,
   "decorations": Array [
     Object {
       "from": 1,
@@ -372,62 +538,14 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 10,
+      "to": 18,
       "type": "heading",
     },
   ],
 }
 `;
 
-exports[`h1 with whitespace trailing syntax characters 1`] = `
-Object {
-  "counter": 9,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 3,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 1,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 9,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h1 with whitespace trailing syntax characters and spaces 1`] = `
-Object {
-  "counter": 14,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 3,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 1,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 14,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h2 empty heading 1`] = `
+exports[`h2 empty 1`] = `
 Object {
   "counter": 5,
   "decorations": Array [
@@ -451,7 +569,7 @@ Object {
 }
 `;
 
-exports[`h2 multiple-word heading 1`] = `
+exports[`h2 multiple words 1`] = `
 Object {
   "counter": 16,
   "decorations": Array [
@@ -475,22 +593,7 @@ Object {
 }
 `;
 
-exports[`h2 only syntax 1`] = `
-Object {
-  "counter": 4,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 4,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h2 single-word heading 1`] = `
+exports[`h2 single word 1`] = `
 Object {
   "counter": 8,
   "decorations": Array [
@@ -514,9 +617,154 @@ Object {
 }
 `;
 
+exports[`h2 with closing sequence different number of syntax characters 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 19,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 20,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h2 with closing sequence random syntax characters 1`] = `
+Object {
+  "counter": 24,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 23,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 24,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h2 with closing sequence same number of syntax characters 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 19,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h2 with closing sequence trailing whitespace 1`] = `
+Object {
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 21,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 22,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h2 with closing sequence trailing whitespace and random syntax characters 1`] = `
+Object {
+  "counter": 27,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 26,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 27,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h2 with nested delete 1`] = `
 Object {
-  "counter": 16,
+  "counter": 20,
   "decorations": Array [
     Object {
       "from": 8,
@@ -547,7 +795,7 @@ Object {
           "type": "delete",
         },
       ],
-      "to": 16,
+      "to": 20,
       "type": "heading",
     },
   ],
@@ -556,7 +804,7 @@ Object {
 
 exports[`h2 with nested emphasis 1`] = `
 Object {
-  "counter": 14,
+  "counter": 18,
   "decorations": Array [
     Object {
       "from": 8,
@@ -587,7 +835,7 @@ Object {
           "type": "emphasis",
         },
       ],
-      "to": 14,
+      "to": 18,
       "type": "heading",
     },
   ],
@@ -596,7 +844,7 @@ Object {
 
 exports[`h2 with nested inlineCode 1`] = `
 Object {
-  "counter": 14,
+  "counter": 18,
   "decorations": Array [
     Object {
       "from": 8,
@@ -627,7 +875,7 @@ Object {
           "type": "inlineCode",
         },
       ],
-      "to": 14,
+      "to": 18,
       "type": "heading",
     },
   ],
@@ -636,7 +884,7 @@ Object {
 
 exports[`h2 with nested strong 1`] = `
 Object {
-  "counter": 16,
+  "counter": 20,
   "decorations": Array [
     Object {
       "from": 8,
@@ -667,7 +915,7 @@ Object {
           "type": "strong",
         },
       ],
-      "to": 16,
+      "to": 20,
       "type": "heading",
     },
   ],
@@ -676,11 +924,11 @@ Object {
 
 exports[`h2 with whitespace inner 1`] = `
 Object {
-  "counter": 11,
+  "counter": 19,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 4,
+      "to": 7,
       "type": "syntax",
     },
   ],
@@ -691,7 +939,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 11,
+      "to": 19,
       "type": "heading",
     },
   ],
@@ -700,11 +948,11 @@ Object {
 
 exports[`h2 with whitespace inner and trailing 1`] = `
 Object {
-  "counter": 14,
+  "counter": 22,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 4,
+      "to": 7,
       "type": "syntax",
     },
   ],
@@ -715,7 +963,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 14,
+      "to": 22,
       "type": "heading",
     },
   ],
@@ -724,14 +972,23 @@ Object {
 
 exports[`h2 with whitespace leading 1`] = `
 Object {
-  "counter": 11,
-  "decorations": Array [],
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 2,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 11,
-      "type": "paragraph",
+      "to": 19,
+      "type": "heading",
     },
   ],
 }
@@ -739,14 +996,23 @@ Object {
 
 exports[`h2 with whitespace leading and inner 1`] = `
 Object {
-  "counter": 14,
-  "decorations": Array [],
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 10,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 2,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 14,
-      "type": "paragraph",
+      "to": 22,
+      "type": "heading",
     },
   ],
 }
@@ -754,14 +1020,23 @@ Object {
 
 exports[`h2 with whitespace leading and trailing 1`] = `
 Object {
-  "counter": 14,
-  "decorations": Array [],
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 2,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 14,
-      "type": "paragraph",
+      "to": 22,
+      "type": "heading",
     },
   ],
 }
@@ -769,14 +1044,23 @@ Object {
 
 exports[`h2 with whitespace leading, inner, and trailing 1`] = `
 Object {
-  "counter": 17,
-  "decorations": Array [],
+  "counter": 25,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 10,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 2,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 17,
-      "type": "paragraph",
+      "to": 25,
+      "type": "heading",
     },
   ],
 }
@@ -784,7 +1068,7 @@ Object {
 
 exports[`h2 with whitespace trailing 1`] = `
 Object {
-  "counter": 11,
+  "counter": 19,
   "decorations": Array [
     Object {
       "from": 1,
@@ -799,62 +1083,14 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 11,
+      "to": 19,
       "type": "heading",
     },
   ],
 }
 `;
 
-exports[`h2 with whitespace trailing syntax characters 1`] = `
-Object {
-  "counter": 11,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 4,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 2,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 11,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h2 with whitespace trailing syntax characters and spaces 1`] = `
-Object {
-  "counter": 17,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 4,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 2,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 17,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h3 empty heading 1`] = `
+exports[`h3 empty 1`] = `
 Object {
   "counter": 6,
   "decorations": Array [
@@ -878,7 +1114,7 @@ Object {
 }
 `;
 
-exports[`h3 multiple-word heading 1`] = `
+exports[`h3 multiple words 1`] = `
 Object {
   "counter": 17,
   "decorations": Array [
@@ -902,22 +1138,7 @@ Object {
 }
 `;
 
-exports[`h3 only syntax 1`] = `
-Object {
-  "counter": 5,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 5,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h3 single-word heading 1`] = `
+exports[`h3 single word 1`] = `
 Object {
   "counter": 9,
   "decorations": Array [
@@ -941,9 +1162,154 @@ Object {
 }
 `;
 
+exports[`h3 with closing sequence different number of syntax characters 1`] = `
+Object {
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 21,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 22,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h3 with closing sequence random syntax characters 1`] = `
+Object {
+  "counter": 25,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 24,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 25,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h3 with closing sequence same number of syntax characters 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 20,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 21,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h3 with closing sequence trailing whitespace 1`] = `
+Object {
+  "counter": 24,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 23,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 24,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h3 with closing sequence trailing whitespace and random syntax characters 1`] = `
+Object {
+  "counter": 28,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 27,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 28,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h3 with nested delete 1`] = `
 Object {
-  "counter": 17,
+  "counter": 21,
   "decorations": Array [
     Object {
       "from": 9,
@@ -974,7 +1340,7 @@ Object {
           "type": "delete",
         },
       ],
-      "to": 17,
+      "to": 21,
       "type": "heading",
     },
   ],
@@ -983,7 +1349,7 @@ Object {
 
 exports[`h3 with nested emphasis 1`] = `
 Object {
-  "counter": 15,
+  "counter": 19,
   "decorations": Array [
     Object {
       "from": 9,
@@ -1014,7 +1380,7 @@ Object {
           "type": "emphasis",
         },
       ],
-      "to": 15,
+      "to": 19,
       "type": "heading",
     },
   ],
@@ -1023,7 +1389,7 @@ Object {
 
 exports[`h3 with nested inlineCode 1`] = `
 Object {
-  "counter": 15,
+  "counter": 19,
   "decorations": Array [
     Object {
       "from": 9,
@@ -1054,7 +1420,7 @@ Object {
           "type": "inlineCode",
         },
       ],
-      "to": 15,
+      "to": 19,
       "type": "heading",
     },
   ],
@@ -1063,7 +1429,7 @@ Object {
 
 exports[`h3 with nested strong 1`] = `
 Object {
-  "counter": 17,
+  "counter": 21,
   "decorations": Array [
     Object {
       "from": 9,
@@ -1094,7 +1460,7 @@ Object {
           "type": "strong",
         },
       ],
-      "to": 17,
+      "to": 21,
       "type": "heading",
     },
   ],
@@ -1103,11 +1469,11 @@ Object {
 
 exports[`h3 with whitespace inner 1`] = `
 Object {
-  "counter": 12,
+  "counter": 20,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 5,
+      "to": 8,
       "type": "syntax",
     },
   ],
@@ -1118,7 +1484,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 12,
+      "to": 20,
       "type": "heading",
     },
   ],
@@ -1127,11 +1493,11 @@ Object {
 
 exports[`h3 with whitespace inner and trailing 1`] = `
 Object {
-  "counter": 15,
+  "counter": 23,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 5,
+      "to": 8,
       "type": "syntax",
     },
   ],
@@ -1142,7 +1508,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 15,
+      "to": 23,
       "type": "heading",
     },
   ],
@@ -1151,14 +1517,23 @@ Object {
 
 exports[`h3 with whitespace leading 1`] = `
 Object {
-  "counter": 12,
-  "decorations": Array [],
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 3,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 12,
-      "type": "paragraph",
+      "to": 20,
+      "type": "heading",
     },
   ],
 }
@@ -1166,14 +1541,23 @@ Object {
 
 exports[`h3 with whitespace leading and inner 1`] = `
 Object {
-  "counter": 15,
-  "decorations": Array [],
+  "counter": 23,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 11,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 3,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 15,
-      "type": "paragraph",
+      "to": 23,
+      "type": "heading",
     },
   ],
 }
@@ -1181,14 +1565,23 @@ Object {
 
 exports[`h3 with whitespace leading and trailing 1`] = `
 Object {
-  "counter": 15,
-  "decorations": Array [],
+  "counter": 23,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 3,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 15,
-      "type": "paragraph",
+      "to": 23,
+      "type": "heading",
     },
   ],
 }
@@ -1196,68 +1589,29 @@ Object {
 
 exports[`h3 with whitespace leading, inner, and trailing 1`] = `
 Object {
-  "counter": 18,
-  "decorations": Array [],
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 11,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 3,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 18,
-      "type": "paragraph",
+      "to": 26,
+      "type": "heading",
     },
   ],
 }
 `;
 
 exports[`h3 with whitespace trailing 1`] = `
-Object {
-  "counter": 12,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 5,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 3,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 12,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h3 with whitespace trailing syntax characters 1`] = `
-Object {
-  "counter": 13,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 5,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 3,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 13,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h3 with whitespace trailing syntax characters and spaces 1`] = `
 Object {
   "counter": 20,
   "decorations": Array [
@@ -1281,7 +1635,7 @@ Object {
 }
 `;
 
-exports[`h4 empty heading 1`] = `
+exports[`h4 empty 1`] = `
 Object {
   "counter": 7,
   "decorations": Array [
@@ -1305,7 +1659,7 @@ Object {
 }
 `;
 
-exports[`h4 multiple-word heading 1`] = `
+exports[`h4 multiple words 1`] = `
 Object {
   "counter": 18,
   "decorations": Array [
@@ -1329,22 +1683,7 @@ Object {
 }
 `;
 
-exports[`h4 only syntax 1`] = `
-Object {
-  "counter": 6,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 6,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h4 single-word heading 1`] = `
+exports[`h4 single word 1`] = `
 Object {
   "counter": 10,
   "decorations": Array [
@@ -1368,173 +1707,18 @@ Object {
 }
 `;
 
-exports[`h4 with nested delete 1`] = `
+exports[`h4 with closing sequence different number of syntax characters 1`] = `
 Object {
-  "counter": 18,
-  "decorations": Array [
-    Object {
-      "from": 10,
-      "to": 12,
-      "type": "syntax",
-    },
-    Object {
-      "from": 15,
-      "to": 17,
-      "type": "syntax",
-    },
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [
-        Object {
-          "from": 10,
-          "to": 17,
-          "type": "delete",
-        },
-      ],
-      "to": 18,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with nested emphasis 1`] = `
-Object {
-  "counter": 16,
-  "decorations": Array [
-    Object {
-      "from": 10,
-      "to": 11,
-      "type": "syntax",
-    },
-    Object {
-      "from": 14,
-      "to": 15,
-      "type": "syntax",
-    },
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [
-        Object {
-          "from": 10,
-          "to": 15,
-          "type": "emphasis",
-        },
-      ],
-      "to": 16,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with nested inlineCode 1`] = `
-Object {
-  "counter": 16,
-  "decorations": Array [
-    Object {
-      "from": 10,
-      "to": 11,
-      "type": "syntax",
-    },
-    Object {
-      "from": 14,
-      "to": 15,
-      "type": "syntax",
-    },
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [
-        Object {
-          "from": 10,
-          "to": 15,
-          "type": "inlineCode",
-        },
-      ],
-      "to": 16,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with nested strong 1`] = `
-Object {
-  "counter": 18,
-  "decorations": Array [
-    Object {
-      "from": 10,
-      "to": 12,
-      "type": "syntax",
-    },
-    Object {
-      "from": 15,
-      "to": 17,
-      "type": "syntax",
-    },
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [
-        Object {
-          "from": 10,
-          "to": 17,
-          "type": "strong",
-        },
-      ],
-      "to": 18,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace inner 1`] = `
-Object {
-  "counter": 13,
+  "counter": 24,
   "decorations": Array [
     Object {
       "from": 1,
       "to": 6,
+      "type": "syntax",
+    },
+    Object {
+      "from": 17,
+      "to": 23,
       "type": "syntax",
     },
   ],
@@ -1545,20 +1729,25 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 13,
+      "to": 24,
       "type": "heading",
     },
   ],
 }
 `;
 
-exports[`h4 with whitespace inner and trailing 1`] = `
+exports[`h4 with closing sequence random syntax characters 1`] = `
 Object {
-  "counter": 16,
+  "counter": 26,
   "decorations": Array [
     Object {
       "from": 1,
       "to": 6,
+      "type": "syntax",
+    },
+    Object {
+      "from": 17,
+      "to": 25,
       "type": "syntax",
     },
   ],
@@ -1569,128 +1758,25 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 16,
+      "to": 26,
       "type": "heading",
     },
   ],
 }
 `;
 
-exports[`h4 with whitespace leading 1`] = `
-Object {
-  "counter": 13,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 13,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace leading and inner 1`] = `
-Object {
-  "counter": 16,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 16,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace leading and trailing 1`] = `
-Object {
-  "counter": 16,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 16,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace leading, inner, and trailing 1`] = `
-Object {
-  "counter": 19,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 19,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace trailing 1`] = `
-Object {
-  "counter": 13,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 13,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace trailing syntax characters 1`] = `
-Object {
-  "counter": 15,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 15,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with whitespace trailing syntax characters and spaces 1`] = `
+exports[`h4 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 23,
   "decorations": Array [
     Object {
       "from": 1,
       "to": 6,
+      "type": "syntax",
+    },
+    Object {
+      "from": 17,
+      "to": 22,
       "type": "syntax",
     },
   ],
@@ -1708,7 +1794,393 @@ Object {
 }
 `;
 
-exports[`h5 empty heading 1`] = `
+exports[`h4 with closing sequence trailing whitespace 1`] = `
+Object {
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+    Object {
+      "from": 17,
+      "to": 25,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 26,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with closing sequence trailing whitespace and random syntax characters 1`] = `
+Object {
+  "counter": 29,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+    Object {
+      "from": 17,
+      "to": 28,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 29,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with nested delete 1`] = `
+Object {
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 10,
+      "to": 12,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 17,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 10,
+          "to": 17,
+          "type": "delete",
+        },
+      ],
+      "to": 22,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with nested emphasis 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 10,
+      "to": 11,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 15,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 10,
+          "to": 15,
+          "type": "emphasis",
+        },
+      ],
+      "to": 20,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with nested inlineCode 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 10,
+      "to": 11,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 15,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 10,
+          "to": 15,
+          "type": "inlineCode",
+        },
+      ],
+      "to": 20,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with nested strong 1`] = `
+Object {
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 10,
+      "to": 12,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 17,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 10,
+          "to": 17,
+          "type": "strong",
+        },
+      ],
+      "to": 22,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace inner 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 9,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 21,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace inner and trailing 1`] = `
+Object {
+  "counter": 24,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 9,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 24,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace leading 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 9,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 21,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace leading and inner 1`] = `
+Object {
+  "counter": 24,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 12,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 24,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace leading and trailing 1`] = `
+Object {
+  "counter": 24,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 9,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 24,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace leading, inner, and trailing 1`] = `
+Object {
+  "counter": 27,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 12,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 27,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 with whitespace trailing 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 21,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h5 empty 1`] = `
 Object {
   "counter": 8,
   "decorations": Array [
@@ -1732,7 +2204,7 @@ Object {
 }
 `;
 
-exports[`h5 multiple-word heading 1`] = `
+exports[`h5 multiple words 1`] = `
 Object {
   "counter": 19,
   "decorations": Array [
@@ -1756,22 +2228,7 @@ Object {
 }
 `;
 
-exports[`h5 only syntax 1`] = `
-Object {
-  "counter": 7,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 7,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h5 single-word heading 1`] = `
+exports[`h5 single word 1`] = `
 Object {
   "counter": 11,
   "decorations": Array [
@@ -1795,9 +2252,154 @@ Object {
 }
 `;
 
+exports[`h5 with closing sequence different number of syntax characters 1`] = `
+Object {
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 25,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 26,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h5 with closing sequence random syntax characters 1`] = `
+Object {
+  "counter": 27,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 26,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 27,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h5 with closing sequence same number of syntax characters 1`] = `
+Object {
+  "counter": 25,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 24,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 25,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h5 with closing sequence trailing whitespace 1`] = `
+Object {
+  "counter": 28,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 27,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 28,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h5 with closing sequence trailing whitespace and random syntax characters 1`] = `
+Object {
+  "counter": 30,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 29,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 30,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h5 with nested delete 1`] = `
 Object {
-  "counter": 19,
+  "counter": 23,
   "decorations": Array [
     Object {
       "from": 11,
@@ -1828,7 +2430,7 @@ Object {
           "type": "delete",
         },
       ],
-      "to": 19,
+      "to": 23,
       "type": "heading",
     },
   ],
@@ -1837,7 +2439,7 @@ Object {
 
 exports[`h5 with nested emphasis 1`] = `
 Object {
-  "counter": 17,
+  "counter": 21,
   "decorations": Array [
     Object {
       "from": 11,
@@ -1868,7 +2470,7 @@ Object {
           "type": "emphasis",
         },
       ],
-      "to": 17,
+      "to": 21,
       "type": "heading",
     },
   ],
@@ -1877,7 +2479,7 @@ Object {
 
 exports[`h5 with nested inlineCode 1`] = `
 Object {
-  "counter": 17,
+  "counter": 21,
   "decorations": Array [
     Object {
       "from": 11,
@@ -1908,7 +2510,7 @@ Object {
           "type": "inlineCode",
         },
       ],
-      "to": 17,
+      "to": 21,
       "type": "heading",
     },
   ],
@@ -1917,7 +2519,7 @@ Object {
 
 exports[`h5 with nested strong 1`] = `
 Object {
-  "counter": 19,
+  "counter": 23,
   "decorations": Array [
     Object {
       "from": 11,
@@ -1948,7 +2550,7 @@ Object {
           "type": "strong",
         },
       ],
-      "to": 19,
+      "to": 23,
       "type": "heading",
     },
   ],
@@ -1957,11 +2559,11 @@ Object {
 
 exports[`h5 with whitespace inner 1`] = `
 Object {
-  "counter": 14,
+  "counter": 22,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 7,
+      "to": 10,
       "type": "syntax",
     },
   ],
@@ -1972,7 +2574,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 14,
+      "to": 22,
       "type": "heading",
     },
   ],
@@ -1981,11 +2583,11 @@ Object {
 
 exports[`h5 with whitespace inner and trailing 1`] = `
 Object {
-  "counter": 17,
+  "counter": 25,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 7,
+      "to": 10,
       "type": "syntax",
     },
   ],
@@ -1996,7 +2598,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 17,
+      "to": 25,
       "type": "heading",
     },
   ],
@@ -2005,14 +2607,23 @@ Object {
 
 exports[`h5 with whitespace leading 1`] = `
 Object {
-  "counter": 14,
-  "decorations": Array [],
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 10,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 5,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 14,
-      "type": "paragraph",
+      "to": 22,
+      "type": "heading",
     },
   ],
 }
@@ -2020,14 +2631,23 @@ Object {
 
 exports[`h5 with whitespace leading and inner 1`] = `
 Object {
-  "counter": 17,
-  "decorations": Array [],
+  "counter": 25,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 13,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 5,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 17,
-      "type": "paragraph",
+      "to": 25,
+      "type": "heading",
     },
   ],
 }
@@ -2035,14 +2655,23 @@ Object {
 
 exports[`h5 with whitespace leading and trailing 1`] = `
 Object {
-  "counter": 17,
-  "decorations": Array [],
+  "counter": 25,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 10,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 5,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 17,
-      "type": "paragraph",
+      "to": 25,
+      "type": "heading",
     },
   ],
 }
@@ -2050,14 +2679,23 @@ Object {
 
 exports[`h5 with whitespace leading, inner, and trailing 1`] = `
 Object {
-  "counter": 20,
-  "decorations": Array [],
+  "counter": 28,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 13,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 5,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 20,
-      "type": "paragraph",
+      "to": 28,
+      "type": "heading",
     },
   ],
 }
@@ -2065,7 +2703,7 @@ Object {
 
 exports[`h5 with whitespace trailing 1`] = `
 Object {
-  "counter": 14,
+  "counter": 22,
   "decorations": Array [
     Object {
       "from": 1,
@@ -2080,62 +2718,14 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 14,
+      "to": 22,
       "type": "heading",
     },
   ],
 }
 `;
 
-exports[`h5 with whitespace trailing syntax characters 1`] = `
-Object {
-  "counter": 17,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 7,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 5,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 17,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h5 with whitespace trailing syntax characters and spaces 1`] = `
-Object {
-  "counter": 26,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 7,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 5,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 26,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h6 empty heading 1`] = `
+exports[`h6 empty 1`] = `
 Object {
   "counter": 9,
   "decorations": Array [
@@ -2159,7 +2749,7 @@ Object {
 }
 `;
 
-exports[`h6 multiple-word heading 1`] = `
+exports[`h6 multiple words 1`] = `
 Object {
   "counter": 20,
   "decorations": Array [
@@ -2183,22 +2773,7 @@ Object {
 }
 `;
 
-exports[`h6 only syntax 1`] = `
-Object {
-  "counter": 8,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 8,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h6 single-word heading 1`] = `
+exports[`h6 single word 1`] = `
 Object {
   "counter": 12,
   "decorations": Array [
@@ -2222,9 +2797,154 @@ Object {
 }
 `;
 
+exports[`h6 with closing sequence different number of syntax characters 1`] = `
+Object {
+  "counter": 28,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 19,
+      "to": 27,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 28,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 with closing sequence random syntax characters 1`] = `
+Object {
+  "counter": 28,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 19,
+      "to": 27,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 28,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 with closing sequence same number of syntax characters 1`] = `
+Object {
+  "counter": 27,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 19,
+      "to": 26,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 27,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 with closing sequence trailing whitespace 1`] = `
+Object {
+  "counter": 30,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 19,
+      "to": 29,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 30,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 with closing sequence trailing whitespace and random syntax characters 1`] = `
+Object {
+  "counter": 31,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 19,
+      "to": 30,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 31,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h6 with nested delete 1`] = `
 Object {
-  "counter": 20,
+  "counter": 24,
   "decorations": Array [
     Object {
       "from": 12,
@@ -2255,7 +2975,7 @@ Object {
           "type": "delete",
         },
       ],
-      "to": 20,
+      "to": 24,
       "type": "heading",
     },
   ],
@@ -2264,7 +2984,7 @@ Object {
 
 exports[`h6 with nested emphasis 1`] = `
 Object {
-  "counter": 18,
+  "counter": 22,
   "decorations": Array [
     Object {
       "from": 12,
@@ -2295,7 +3015,7 @@ Object {
           "type": "emphasis",
         },
       ],
-      "to": 18,
+      "to": 22,
       "type": "heading",
     },
   ],
@@ -2304,7 +3024,7 @@ Object {
 
 exports[`h6 with nested inlineCode 1`] = `
 Object {
-  "counter": 18,
+  "counter": 22,
   "decorations": Array [
     Object {
       "from": 12,
@@ -2335,7 +3055,7 @@ Object {
           "type": "inlineCode",
         },
       ],
-      "to": 18,
+      "to": 22,
       "type": "heading",
     },
   ],
@@ -2344,7 +3064,7 @@ Object {
 
 exports[`h6 with nested strong 1`] = `
 Object {
-  "counter": 20,
+  "counter": 24,
   "decorations": Array [
     Object {
       "from": 12,
@@ -2375,7 +3095,7 @@ Object {
           "type": "strong",
         },
       ],
-      "to": 20,
+      "to": 24,
       "type": "heading",
     },
   ],
@@ -2384,11 +3104,11 @@ Object {
 
 exports[`h6 with whitespace inner 1`] = `
 Object {
-  "counter": 15,
+  "counter": 23,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 8,
+      "to": 11,
       "type": "syntax",
     },
   ],
@@ -2399,7 +3119,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 15,
+      "to": 23,
       "type": "heading",
     },
   ],
@@ -2408,11 +3128,11 @@ Object {
 
 exports[`h6 with whitespace inner and trailing 1`] = `
 Object {
-  "counter": 18,
+  "counter": 26,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 8,
+      "to": 11,
       "type": "syntax",
     },
   ],
@@ -2423,7 +3143,7 @@ Object {
       },
       "from": 0,
       "marks": Array [],
-      "to": 18,
+      "to": 26,
       "type": "heading",
     },
   ],
@@ -2432,14 +3152,23 @@ Object {
 
 exports[`h6 with whitespace leading 1`] = `
 Object {
-  "counter": 15,
-  "decorations": Array [],
+  "counter": 23,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 11,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 6,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 15,
-      "type": "paragraph",
+      "to": 23,
+      "type": "heading",
     },
   ],
 }
@@ -2447,14 +3176,23 @@ Object {
 
 exports[`h6 with whitespace leading and inner 1`] = `
 Object {
-  "counter": 18,
-  "decorations": Array [],
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 14,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 6,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 18,
-      "type": "paragraph",
+      "to": 26,
+      "type": "heading",
     },
   ],
 }
@@ -2462,14 +3200,23 @@ Object {
 
 exports[`h6 with whitespace leading and trailing 1`] = `
 Object {
-  "counter": 18,
-  "decorations": Array [],
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 11,
+      "type": "syntax",
+    },
+  ],
   "nodes": Array [
     Object {
+      "attrs": Object {
+        "level": 6,
+      },
       "from": 0,
       "marks": Array [],
-      "to": 18,
-      "type": "paragraph",
+      "to": 26,
+      "type": "heading",
     },
   ],
 }
@@ -2477,74 +3224,11 @@ Object {
 
 exports[`h6 with whitespace leading, inner, and trailing 1`] = `
 Object {
-  "counter": 21,
-  "decorations": Array [],
-  "nodes": Array [
-    Object {
-      "from": 0,
-      "marks": Array [],
-      "to": 21,
-      "type": "paragraph",
-    },
-  ],
-}
-`;
-
-exports[`h6 with whitespace trailing 1`] = `
-Object {
-  "counter": 15,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 8,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 6,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 15,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h6 with whitespace trailing syntax characters 1`] = `
-Object {
-  "counter": 19,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 8,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 6,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 19,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h6 with whitespace trailing syntax characters and spaces 1`] = `
-Object {
   "counter": 29,
   "decorations": Array [
     Object {
       "from": 1,
-      "to": 8,
+      "to": 14,
       "type": "syntax",
     },
   ],
@@ -2556,6 +3240,30 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 29,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 with whitespace trailing 1`] = `
+Object {
+  "counter": 23,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 23,
       "type": "heading",
     },
   ],

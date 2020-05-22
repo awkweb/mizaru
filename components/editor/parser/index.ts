@@ -19,7 +19,6 @@ import {
     Parent,
 } from './types'
 import {
-    getEnclosingWhitespace,
     getHeadingWhitespace,
     getInlineSyntaxLength,
     getListItemSyntaxLength,
@@ -187,14 +186,25 @@ class Parser {
         }
 
         const { leading, inner, trailing } = getHeadingWhitespace(raw, level)
+        let decorationClosing
         if (trailing) {
             const trimmed = raw.trim()
             const value =
-                trimmed === syntaxChars || trailing.includes('#')
+                trimmed === syntaxChars
                     ? trailing.slice(0, trailing.length - 1)
                     : trailing
             const child = { type: 'text', value }
             children.push(child)
+
+            const hasClosingSequence = trailing.includes('#')
+            const rawLength = raw.length + 1
+            if (hasClosingSequence) {
+                decorationClosing = {
+                    from: rawLength - value.length,
+                    to: rawLength,
+                    type: 'syntax',
+                }
+            }
         }
 
         // If heading contains extra whitespace between syntax and text, add
@@ -204,27 +214,24 @@ class Parser {
             children.unshift(child)
         }
 
-        if (leading) {
-            const child = { type: 'text', value: `${leading}${syntaxChars} ` }
-            children.unshift(child)
-            return this.renderParagraph(from, children, counter)
-        }
-
-        const syntaxLength = level + 1
+        const syntaxLength = (leading?.length ?? 0) + level + 1
         const decorationStart = from + 1
         counter = decorationStart + syntaxLength
         const out = this.parseInline(children, counter)
         counter = out.counter + 1
         const to = counter
+        const decorationEnd =
+            decorationStart + syntaxLength + (inner?.length ?? 0)
         return {
             counter,
             decorations: [
                 ...out.decorations,
                 {
                     from: decorationStart,
-                    to: decorationStart + syntaxLength,
+                    to: decorationEnd,
                     type: 'syntax',
                 },
+                ...(decorationClosing ? [decorationClosing] : []),
             ],
             nodes: [
                 {
