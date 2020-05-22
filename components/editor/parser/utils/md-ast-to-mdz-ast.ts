@@ -1,6 +1,7 @@
 /* eslint-disable */
 import visit from 'unist-util-visit'
 /* eslint-enable */
+// @ts-ignore
 import source from 'unist-util-source'
 import { Node } from 'unist'
 

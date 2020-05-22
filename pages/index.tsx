@@ -8,7 +8,7 @@ import { useStore } from '@/store'
 interface Props {}
 
 const Home: NextPage<Props> = () => {
-    const { content, searchTerm, handleChange } = useStore()
+    const { content, handleChange } = useStore()
     const editorRef: EditorRef = useRef(null)
 
     return (
@@ -16,7 +16,6 @@ const Home: NextPage<Props> = () => {
             <Editor
                 autoFocus
                 ref={editorRef}
-                searchTerm={searchTerm}
                 value={content}
                 onChange={handleChange}
             />
