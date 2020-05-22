@@ -1,3 +1,4 @@
+import { Plugin } from 'prosemirror-state'
 import { keymap } from 'prosemirror-keymap'
 import { EditorView } from 'prosemirror-view'
 
@@ -39,13 +40,15 @@ export default class ExtensionManager {
         )
     }
 
-    get plugins() {
+    get plugins(): Plugin<any, any>[] {
         return this.extensions
             .filter((extension) => extension.plugins)
             .reduce(
-                // @ts-ignore
-                (allPlugins, { plugins }) => [...allPlugins, ...plugins],
-                [],
+                (allPlugins, extension) => [
+                    ...allPlugins,
+                    ...extension.plugins,
+                ],
+                [] as Plugin<any, any>[],
             )
     }
 

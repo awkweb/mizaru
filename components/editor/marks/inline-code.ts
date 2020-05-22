@@ -2,9 +2,9 @@ import { DOMOutputSpec, Mark as ProsemirrorMark } from 'prosemirror-model'
 
 import { Mark } from '../utils'
 
-class Codespan extends Mark {
+class InlineCode extends Mark {
     get name() {
-        return 'codespan'
+        return 'inlineCode'
     }
 
     get schema() {
@@ -34,4 +34,4 @@ class Codespan extends Mark {
     }
 }
 
-export default Codespan
+export default InlineCode

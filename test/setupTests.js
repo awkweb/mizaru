@@ -1,9 +1,3 @@
-import { command, mkState, out, remove, type } from './prosemirror'
+import * as prosemirror from './prosemirror'
 
-global.prosemirror = {
-    remove,
-    command,
-    mkState,
-    out,
-    type,
-}
+global.prosemirror = prosemirror

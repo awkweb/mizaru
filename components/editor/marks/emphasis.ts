@@ -2,9 +2,9 @@ import { DOMOutputSpec, Mark as ProsemirrorMark } from 'prosemirror-model'
 
 import { Mark } from '../utils'
 
-class Del extends Mark {
+class Emphasis extends Mark {
     get name() {
-        return 'del'
+        return 'emphasis'
     }
 
     get schema() {
@@ -15,19 +15,18 @@ class Del extends Mark {
                 },
             },
             parseDOM: [
-                { tag: 's' },
-                { tag: 'strike' },
-                { tag: 'del' },
-                { style: 'text-decoration=line-through' },
+                { tag: 'i' },
+                { tag: 'em' },
+                { style: 'font-style=italic' },
             ],
             toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
                 const attrs = {
                     ...(node.attrs.active ? { class: 'active' } : null),
                 }
-                return ['del', attrs]
+                return ['em', attrs]
             },
         }
     }
 }
 
-export default Del
+export default Emphasis

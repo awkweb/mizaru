@@ -7,7 +7,6 @@ import {
 import { Plugin } from 'prosemirror-state'
 
 import { Mark, getMarkAttrs } from '../utils'
-import { DecorationType } from '../types'
 
 class Link extends Mark {
     get name() {
@@ -65,7 +64,7 @@ class Link extends Mark {
                         const parentIsAnchor =
                             target.parentElement instanceof HTMLAnchorElement
                         const targetIsNotSyntax = !target.classList.contains(
-                            DecorationType.Syntax,
+                            'preview',
                         )
 
                         if (attrs.href && parentIsAnchor && targetIsNotSyntax) {

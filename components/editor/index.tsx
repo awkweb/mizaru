@@ -1,20 +1,26 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 import { EditorView } from 'prosemirror-view'
 import applyDevTools from 'prosemirror-dev-tools'
 
-import { Transaction } from 'prosemirror-state'
+import { useMount } from 'react-use'
 
-import { useMount } from '@/hooks'
-
-import { Highlight, History, Markdown, ReactProps } from './plugins'
-import { Doc, Heading, Paragraph, Text } from './nodes'
+import { History, Markdown } from './plugins'
+import {
+    Blockquote,
+    Doc,
+    Heading,
+    ListItem,
+    OrderedList,
+    Paragraph,
+    Text,
+    UnorderedList,
+} from './nodes'
+import { Delete, Emphasis, InlineCode, Link, Strong } from './marks'
 import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
-import { Codespan, Del, Em, Link, Strong } from './marks'
 
 type Props = {
     autoFocus?: boolean
-    searchTerm?: string
     value: JSON | string
     onChange: (content: JSON | string) => void
 }
@@ -31,28 +37,29 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
 
     useMount(() => {
         const marks = [
+            new Delete(),
+            new Emphasis(),
+            new InlineCode(),
             new Link(),
-            new Em(),
             new Strong(),
-            new Del(),
-            new Codespan(),
         ]
-        const nodes = [new Doc(), new Heading(), new Paragraph(), new Text()]
-        const plugins = [
-            new Highlight({
-                caseSensitive: false,
-            }),
-            new History(),
-            new Markdown(),
-            new ReactProps(props),
+        const nodes = [
+            new Blockquote(),
+            new Doc(),
+            new Heading(),
+            new ListItem(),
+            new OrderedList(),
+            new Paragraph(),
+            new Text(),
+            new UnorderedList(),
         ]
+        const plugins = [new History(), new Markdown()]
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,
             extensions: [...marks, ...nodes, ...plugins],
             element: viewHost.current as HTMLDivElement,
             content: props.value,
             onChange: props.onChange,
-            onTransaction,
         })
         editor.current = editorInstance
 
@@ -61,24 +68,6 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         }
         return () => editor.current?.view.destroy()
     })
-
-    useEffect(() => {
-        if (props.searchTerm === undefined) return
-        editor.current?.commands.search(props.searchTerm)
-    }, [props.searchTerm])
-
-    useEffect(() => {
-        editor.current?.commands.updateReactProps({
-            searchTerm: props.searchTerm,
-        })
-    }, [props.searchTerm])
-
-    const onTransaction = (transaction: Transaction) => {
-        if (transaction.docChanged) {
-            const { searchTerm } = editor.current?.commands.getReactProps()
-            editor.current?.commands.search(searchTerm)
-        }
-    }
 
     return <div ref={viewHost} />
 })

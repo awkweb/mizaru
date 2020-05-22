@@ -21,7 +21,7 @@ class Strong extends Mark {
                 {
                     tag: 'b',
                     getAttrs: (node: string | Node) =>
-                        (node as HTMLElement).style.fontWeight !== 'normal' &&
+                        (<HTMLElement>node).style.fontWeight !== 'normal' &&
                         null,
                 },
                 {

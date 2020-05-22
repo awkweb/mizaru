@@ -29,8 +29,3 @@ export enum FocusPosition {
     End = 'END',
     Start = 'START',
 }
-
-export enum DecorationType {
-    Syntax = 'syntax',
-    Preview = 'preview',
-}

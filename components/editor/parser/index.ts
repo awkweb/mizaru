@@ -1,15 +1,30 @@
+/* eslint-disable */
+import unified from 'unified'
+import { PartialRemarkOptions } from 'remark'
+import toMDAST from 'remark-parse'
+import modifyChildren from 'unist-util-modify-children'
 // @ts-ignore
-import { inline } from 'marked/src/rules'
+import source from 'unist-util-source'
+import { Node as UnistNode, Literal } from 'unist'
+/* eslint-enable */
 
 import {
     Decoration,
+    Heading,
+    Link,
+    List,
+    ListItem,
     Mark,
-    MarkedHeadingToken,
-    MarkedLinkToken,
-    MarkedToken,
     Node,
+    Parent,
 } from './types'
-import { DecorationType } from '../types'
+import {
+    getHeadingWhitespace,
+    getInlineSyntaxLength,
+    getListItemSyntaxLength,
+    modifyListItem,
+    toMDZAST,
+} from './utils'
 
 interface Props {
     offset: number
@@ -20,289 +35,310 @@ class Parser {
         offset: 0,
     }
 
-    constructor(props: Partial<Props>) {
+    constructor(props?: Partial<Props>) {
         this.props = { ...this.props, ...props }
     }
 
-    static parse(tokens: MarkedToken[], props: Partial<Props>) {
+    static parse(doc: string, props?: Partial<Props>) {
         const parser = new Parser(props)
-        return parser.parse(tokens)
+        return parser.parse(doc)
     }
 
-    parse(tokens: MarkedToken[]): { decorations: Decoration[]; nodes: Node[] } {
-        const nodes: Node[] = []
+    parse(doc: string) {
+        const settings = <PartialRemarkOptions>{
+            commonmark: true,
+            gfm: true,
+            position: true,
+        }
+        const tree = toMDZAST({ doc })(
+            unified().use(toMDAST, settings).parse(doc),
+        )
+        const out = this.parseBlock((<Parent>tree).children, this.props.offset)
+        return out
+    }
+
+    parseBlock(nodes_: UnistNode[], counter: number, boost?: number) {
         const decorations: Decoration[] = []
-        const from = this.props.offset
+        const nodes: Node[] = []
 
-        // Hoist declarations outside loop if speed is an issue
-        // Currently kept for readability
-        const l = tokens.length
-        for (let i = 0; i < l; i++) {
-            const token = tokens[i] as MarkedToken
-            const type = token.type
+        for (const node of nodes_) {
+            const { type, children } = <Parent>node
+            const from = counter
+
             switch (type) {
-                case 'heading': {
-                    const { depth: level } = token as MarkedHeadingToken
-                    const syntaxLength = from + level + 2
-                    const out = this.parseInline(token.tokens, syntaxLength)
-                    const to = out.counter + 1
-
-                    const node = {
+                case 'blockquote': {
+                    const syntaxLength = 2
+                    const out = this.parseBlock(children, counter, syntaxLength)
+                    counter = out.counter + 1
+                    const to = counter
+                    const decorationStart = from + 1
+                    decorations.push(...out.decorations, {
+                        from: decorationStart,
+                        to: decorationStart + syntaxLength,
+                        type: 'syntax',
+                    })
+                    nodes.push(...out.nodes, {
                         from,
                         to,
                         type,
-                        marks: out.marks,
+                        marks: [],
+                    })
+                    break
+                }
+                case 'heading': {
+                    const out = this.renderHeading(
+                        from,
+                        children,
+                        counter,
+                        node,
+                    )
+                    counter = out.counter
+                    decorations.push(...out.decorations)
+                    nodes.push(...out.nodes)
+                    break
+                }
+                case 'html': {
+                    // console.log('node: ', node)
+                    counter = counter + 2
+                    break
+                }
+                case 'list': {
+                    const modify = modifyChildren(modifyListItem)
+                    modify(node)
+                    const out = this.parseBlock(children, counter + 1)
+                    counter = out.counter + 1
+                    const to = counter
+                    const { ordered, spread, start } = <List>node
+                    nodes.push(...out.nodes, {
+                        from,
+                        to,
+                        type,
+                        marks: [],
+                        attrs: { ordered, spread, start },
+                    })
+                    decorations.push(...out.decorations)
+                    break
+                }
+                case 'listItem': {
+                    const syntaxLength = getListItemSyntaxLength(<ListItem>node)
+                    const out = this.parseBlock(
+                        children,
+                        counter + 1,
+                        syntaxLength,
+                    )
+                    counter = out.counter + 1
+                    const to = counter
+                    const decorationStart = from + 2
+                    decorations.push(...out.decorations, {
+                        from: decorationStart,
+                        to: decorationStart + syntaxLength,
+                        type: 'syntax',
+                    })
+                    const { checked, spread } = <ListItem>node
+                    nodes.push(...out.nodes, {
+                        from,
+                        to,
+                        type,
+                        marks: [],
                         attrs: {
-                            level,
+                            checked,
+                            spread,
                         },
-                    }
-                    const decoration = { from, to: syntaxLength }
-                    nodes.push(...nodes, node)
-                    decorations.push(decoration, ...out.decorations)
-                    continue
+                    })
+                    break
                 }
                 case 'paragraph': {
-                    const out = this.parseInline(token.tokens, from + 1)
-                    const to = out.counter + 1
-
-                    const node = { from, to, type, marks: out.marks }
-                    nodes.push(...nodes, node)
+                    const out = this.renderParagraph(
+                        from,
+                        children,
+                        counter,
+                        boost,
+                    )
+                    counter = out.counter
                     decorations.push(...out.decorations)
-                    continue
-                }
-                case 'space': {
-                    continue
+                    nodes.push(...out.nodes)
+                    break
                 }
                 default: {
-                    const errMsg = `Token with "${token.type}" type was not found.`
-                    throw new Error(errMsg)
+                    throw new Error(
+                        `Block node with "${type}" type was not found.`,
+                    )
+                }
+            }
+        }
+        return { counter, decorations, nodes }
+    }
+
+    private renderHeading(
+        from: number,
+        children: UnistNode[],
+        counter: number,
+        node: UnistNode,
+    ) {
+        const { depth: level, raw } = <Heading>node
+        const syntaxChars = '#'.repeat(level)
+
+        // If not fully formed, convert to paragraph
+        if (raw === syntaxChars) {
+            const child = { type: 'text', value: raw }
+            children.push(child)
+            return this.renderParagraph(from, children, counter)
+        }
+
+        const { leading, inner, trailing } = getHeadingWhitespace(raw, level)
+        let decorationClosing
+        if (trailing) {
+            const trimmed = raw.trim()
+            const value =
+                trimmed === syntaxChars
+                    ? trailing.slice(0, trailing.length - 1)
+                    : trailing
+            const child = { type: 'text', value }
+            children.push(child)
+
+            const hasClosingSequence = trailing.includes('#')
+            const rawLength = raw.length + 1
+            if (hasClosingSequence) {
+                decorationClosing = {
+                    from: rawLength - value.length,
+                    to: rawLength,
+                    type: 'syntax',
                 }
             }
         }
 
+        // If heading contains extra whitespace between syntax and text, add
+        // whitespace length
+        if (inner) {
+            const child = { type: 'text', value: inner }
+            children.unshift(child)
+        }
+
+        const syntaxLength = (leading?.length ?? 0) + level + 1
+        const decorationStart = from + 1
+        counter = decorationStart + syntaxLength
+        const out = this.parseInline(children, counter)
+        counter = out.counter + 1
+        const to = counter
+        const decorationEnd =
+            decorationStart + syntaxLength + (inner?.length ?? 0)
         return {
-            decorations,
-            nodes,
+            counter,
+            decorations: [
+                ...out.decorations,
+                {
+                    from: decorationStart,
+                    to: decorationEnd,
+                    type: 'syntax',
+                },
+                ...(decorationClosing ? [decorationClosing] : []),
+            ],
+            nodes: [
+                {
+                    from,
+                    to,
+                    type: 'heading',
+                    marks: out.marks,
+                    attrs: { level },
+                },
+            ],
         }
     }
 
-    parseInline(
-        tokens: MarkedToken[],
+    private renderParagraph(
+        from: number,
+        children: UnistNode[],
         counter: number,
-    ): { decorations: Decoration[]; marks: Mark[]; counter: number } {
+        boost?: number,
+    ) {
+        counter = counter + 1
+        const out = this.parseInline(children, counter + (boost ?? 0))
+        counter = out.counter + 1
+        const to = counter
+        return {
+            counter,
+            decorations: out.decorations,
+            nodes: [{ from, to, type: 'paragraph', marks: out.marks }],
+        }
+    }
+
+    parseInline(nodes: UnistNode[], counter: number) {
         const decorations: Decoration[] = []
         const marks: Mark[] = []
 
-        const l = tokens.length
-        for (let i = 0; i < l; i++) {
-            const token = tokens[i]
-            const type = token.type
-            const from = counter
+        for (const node of nodes) {
+            const { type, children } = <Parent>node
+            const syntaxLength = getInlineSyntaxLength(type)
+
             switch (type) {
-                case 'codespan': {
-                    const syntax = '`'
-                    const syntaxLength = syntax.length
+                case 'inlineCode': {
+                    const from = counter
+                    const decorationStart = from
                     counter =
-                        counter +
+                        decorationStart +
                         syntaxLength +
-                        token.text.length +
+                        ((<Literal>node).value as string).length +
                         syntaxLength
-                    const to = counter
-
-                    const mark = { from, to, type }
-                    const decoration = [
+                    const decorationEnd = counter
+                    const to = decorationEnd
+                    decorations.push(
                         {
-                            from,
-                            to: from + syntaxLength,
+                            from: decorationStart,
+                            to: decorationStart + syntaxLength,
+                            type: 'syntax',
                         },
                         {
-                            from: to - syntaxLength,
-                            to,
+                            from: decorationEnd - syntaxLength,
+                            to: decorationEnd,
+                            type: 'syntax',
                         },
-                    ]
-                    marks.push(mark)
-                    decorations.push(...decoration)
+                    )
+                    marks.push({ from, to, type })
                     break
                 }
-                case 'del': {
-                    const syntax = '~'
-                    const syntaxLength = syntax.length
-                    counter = counter + syntaxLength
-                    const out = this.parseInline(token.tokens, counter)
+                case 'delete':
+                case 'emphasis':
+                case 'strong': {
+                    const from = counter
+                    counter = from + syntaxLength
+                    const out = this.parseInline(children, counter)
                     counter = out.counter + syntaxLength
                     const to = counter
-
-                    const mark = { from, to, type }
-                    const decoration = [
+                    decorations.push(
+                        ...out.decorations,
                         {
                             from,
                             to: from + syntaxLength,
-                            type: DecorationType.Syntax,
-                        },
-                        {
-                            from: from + syntaxLength,
-                            to: to - syntaxLength,
-                            type: DecorationType.Preview,
+                            type: 'syntax',
                         },
                         {
                             from: to - syntaxLength,
                             to,
-                            type: DecorationType.Syntax,
+                            type: 'syntax',
                         },
-                    ]
-                    marks.push(...out.marks, mark)
-                    decorations.push(...out.decorations, ...decoration)
-                    break
-                }
-                case 'em': {
-                    const syntax = '*'
-                    const syntaxLength = syntax.length
-                    counter = counter + syntaxLength
-                    const out = this.parseInline(token.tokens, counter)
-                    counter = out.counter + syntaxLength
-                    const to = counter
-
-                    const mark = { from, to, type }
-                    const decoration = [
-                        {
-                            from,
-                            to: from + syntaxLength,
-                        },
-                        {
-                            from: to - syntaxLength,
-                            to,
-                        },
-                    ]
-                    marks.push(...out.marks, mark)
-                    decorations.push(...out.decorations, ...decoration)
+                    )
+                    marks.push(...out.marks, { from, to, type })
                     break
                 }
                 case 'link': {
-                    const { href, title } = token as MarkedLinkToken
-                    let decoration: Decoration[]
-                    let out = {} as {
-                        decorations: Decoration[]
-                        marks: Mark[]
-                        counter: number
-                    }
-                    let to
-                    if (inline.gfm.url.test(token.raw)) {
-                        // Need to use raw because of mangling
-                        counter += token.raw.length
-                        to = counter
-                        decoration = [
-                            {
-                                from,
-                                to,
-                                type: DecorationType.Preview,
-                            },
-                        ]
-                    } else if (inline.autolink.test(token.raw)) {
-                        const syntax = '<'
-                        const syntaxLength = syntax.length
-                        counter += token.raw.length
-                        to = counter
-                        decoration = [
-                            {
-                                from,
-                                to: from + syntaxLength,
-                                type: DecorationType.Syntax,
-                            },
-                            {
-                                from: from + syntaxLength,
-                                to: to - syntaxLength,
-                                type: DecorationType.Preview,
-                            },
-                            {
-                                from: to - syntaxLength,
-                                to,
-                                type: DecorationType.Syntax,
-                            },
-                        ]
-                    } else {
-                        // Adding on opening [
-                        counter = counter + 1
-                        out = this.parseInline(token.tokens, counter)
-                        const decorationClosingStart = out.counter
-                        // Adding on `](href.length`
-                        counter = decorationClosingStart + 2 + href.length
-                        if (title) {
-                            // Adding on ` "title.length"`
-                            counter = counter + 2 + title.length + 1
-                        }
-                        // Adding on closing )
-                        counter = counter + 1 // )
-                        to = counter
-                        decoration = [
-                            {
-                                from,
-                                to: from + 1,
-                                type: DecorationType.Syntax,
-                            },
-                            {
-                                from: from + 1,
-                                to: decorationClosingStart,
-                                type: DecorationType.Preview,
-                            },
-
-                            {
-                                from: decorationClosingStart,
-                                to,
-                                type: DecorationType.Syntax,
-                            },
-                        ]
-                    }
-
-                    const mark = {
-                        from,
-                        to,
-                        type,
-                        attrs: {
-                            title,
-                            href,
-                        },
-                    }
-                    marks.push(...(out?.marks ?? []), mark)
-                    decorations.push(...(out?.decorations ?? []), ...decoration)
-                    break
-                }
-                case 'strong': {
-                    const syntax = '**'
-                    const syntaxLength = syntax.length
-                    counter = counter + syntaxLength
-                    const out = this.parseInline(token.tokens, counter)
-                    counter = out.counter + syntaxLength
-                    const to = counter
-
-                    const mark = { from, to, type }
-                    const decoration = [
-                        {
-                            from,
-                            to: from + syntaxLength,
-                        },
-                        {
-                            from: to - syntaxLength,
-                            to,
-                        },
-                    ]
-                    marks.push(...out.marks, mark)
-                    decorations.push(...out.decorations, ...decoration)
+                    const { url, title } = <Link>node
                     break
                 }
                 case 'text': {
-                    counter += token.text.length
+                    // console.log(`"${node.value}"`)
+                    counter = counter + ((<Literal>node).value as string).length
                     break
                 }
                 default: {
-                    const errMsg = `Token with "${token.type}" type was not found.`
-                    throw new Error(errMsg)
+                    throw new Error(
+                        `Inline node with "${type}" type was not found.`,
+                    )
                 }
             }
         }
-
-        return { decorations, marks, counter }
+        return { decorations, counter, marks }
     }
 }
 
+export type { Decoration, Heading, Link, List, ListItem, Mark, Node }
 export default Parser
-export type { Decoration, Mark, Node }
