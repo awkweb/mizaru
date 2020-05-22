@@ -117,23 +117,8 @@ module.exports = {
             default: '1',
         },
         fontFamily: {
-            sans: [
-                '-apple-system',
-                'BlinkMacSystemFont',
-                '"Segoe UI"',
-                'Helvetica',
-                'Arial',
-                'sans-serif',
-                "'Apple Color Emoji'",
-                '"Segoe UI Emoji"',
-            ],
-            mono: [
-                'SFMono-Regular',
-                'Consolas',
-                '"Liberation Mono"',
-                'Menlo',
-                'monospace',
-            ],
+            sans: ['Sans', '-apple-system', 'sans-serif'],
+            mono: ['Mono', 'monospace'],
         },
         fontSize: {
             xs: '0.75rem',
