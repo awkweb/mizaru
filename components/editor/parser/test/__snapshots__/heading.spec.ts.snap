@@ -130,6 +130,35 @@ Object {
 }
 `;
 
+exports[`h1 with closing sequence random syntax characters and trailing whitespace  1`] = `
+Object {
+  "counter": 26,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 25,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 26,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h1 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 17,
@@ -182,35 +211,6 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 20,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h1 with closing sequence trailing whitespace and random syntax characters 1`] = `
-Object {
-  "counter": 26,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 3,
-      "type": "syntax",
-    },
-    Object {
-      "from": 14,
-      "to": 25,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 1,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 26,
       "type": "heading",
     },
   ],
@@ -675,6 +675,35 @@ Object {
 }
 `;
 
+exports[`h2 with closing sequence random syntax characters and trailing whitespace  1`] = `
+Object {
+  "counter": 27,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 26,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 27,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h2 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 19,
@@ -727,35 +756,6 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 22,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h2 with closing sequence trailing whitespace and random syntax characters 1`] = `
-Object {
-  "counter": 27,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 4,
-      "type": "syntax",
-    },
-    Object {
-      "from": 15,
-      "to": 26,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 2,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 27,
       "type": "heading",
     },
   ],
@@ -1220,6 +1220,35 @@ Object {
 }
 `;
 
+exports[`h3 with closing sequence random syntax characters and trailing whitespace  1`] = `
+Object {
+  "counter": 28,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 27,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 28,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h3 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 21,
@@ -1272,35 +1301,6 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 24,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h3 with closing sequence trailing whitespace and random syntax characters 1`] = `
-Object {
-  "counter": 28,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 5,
-      "type": "syntax",
-    },
-    Object {
-      "from": 16,
-      "to": 27,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 3,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 28,
       "type": "heading",
     },
   ],
@@ -1765,6 +1765,35 @@ Object {
 }
 `;
 
+exports[`h4 with closing sequence random syntax characters and trailing whitespace  1`] = `
+Object {
+  "counter": 29,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+    Object {
+      "from": 17,
+      "to": 28,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 29,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h4 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 23,
@@ -1817,35 +1846,6 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 26,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h4 with closing sequence trailing whitespace and random syntax characters 1`] = `
-Object {
-  "counter": 29,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 6,
-      "type": "syntax",
-    },
-    Object {
-      "from": 17,
-      "to": 28,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 4,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 29,
       "type": "heading",
     },
   ],
@@ -2310,6 +2310,35 @@ Object {
 }
 `;
 
+exports[`h5 with closing sequence random syntax characters and trailing whitespace  1`] = `
+Object {
+  "counter": 30,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 29,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 30,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h5 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 25,
@@ -2362,35 +2391,6 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 28,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h5 with closing sequence trailing whitespace and random syntax characters 1`] = `
-Object {
-  "counter": 30,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 7,
-      "type": "syntax",
-    },
-    Object {
-      "from": 18,
-      "to": 29,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 5,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 30,
       "type": "heading",
     },
   ],
@@ -2855,6 +2855,35 @@ Object {
 }
 `;
 
+exports[`h6 with closing sequence random syntax characters and trailing whitespace  1`] = `
+Object {
+  "counter": 31,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 19,
+      "to": 30,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 31,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h6 with closing sequence same number of syntax characters 1`] = `
 Object {
   "counter": 27,
@@ -2907,35 +2936,6 @@ Object {
       "from": 0,
       "marks": Array [],
       "to": 30,
-      "type": "heading",
-    },
-  ],
-}
-`;
-
-exports[`h6 with closing sequence trailing whitespace and random syntax characters 1`] = `
-Object {
-  "counter": 31,
-  "decorations": Array [
-    Object {
-      "from": 1,
-      "to": 8,
-      "type": "syntax",
-    },
-    Object {
-      "from": 19,
-      "to": 30,
-      "type": "syntax",
-    },
-  ],
-  "nodes": Array [
-    Object {
-      "attrs": Object {
-        "level": 6,
-      },
-      "from": 0,
-      "marks": Array [],
-      "to": 31,
       "type": "heading",
     },
   ],
