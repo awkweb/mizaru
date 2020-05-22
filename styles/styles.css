@@ -1,5 +1,6 @@
 /* purgecss start ignore */
 @import 'prosemirror-view/style/prosemirror.css';
+@import './fonts.css';
 /* purgecss end ignore */
 
 /* purgecss start ignore */
@@ -23,6 +24,7 @@ html {
     @apply font-sans;
     @apply antialiased;
     font-size: 16px;
+    font-feature-settings: 'liga' on, 'calt' on;
     text-rendering: optimizeLegibility;
 }
 
