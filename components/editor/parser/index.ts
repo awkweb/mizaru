@@ -1,14 +1,14 @@
 /* eslint-disable */
 import unified from 'unified'
-import { PartialRemarkOptions } from 'remark'
-import toMDAST from 'remark-parse'
+import remarkParse from 'remark-parse'
 import modifyChildren from 'unist-util-modify-children'
-// @ts-ignore
-import source from 'unist-util-source'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
+// @ts-ignore
+import remarkDisableTokenizers from 'remark-disable-tokenizers'
 
 import {
+    BlankLine,
     Decoration,
     Heading,
     Link,
@@ -25,6 +25,7 @@ import {
     modifyListItem,
     toMDZAST,
 } from './utils'
+import { blankLine } from './tokenize'
 
 interface Props {
     offset: number
@@ -45,15 +46,22 @@ class Parser {
     }
 
     parse(doc: string) {
-        const settings = <PartialRemarkOptions>{
-            commonmark: true,
-            gfm: true,
-            position: true,
-        }
-        const tree = toMDZAST({ doc })(
-            unified().use(toMDAST, settings).parse(doc),
-        )
-        const out = this.parseBlock((<Parent>tree).children, this.props.offset)
+        // @ts-ignore
+        const tokenizers = remarkParse.Parser.prototype.blockTokenizers
+        tokenizers.blankLine = blankLine
+
+        const markdown = unified()
+            .use(remarkParse, {
+                commonmark: true,
+                gfm: true,
+            })
+            .use(remarkDisableTokenizers, {
+                inline: ['break'],
+            })
+            .parse(doc)
+        const tree = <Parent>toMDZAST({ doc })(markdown)
+        const out = this.parseBlock(tree.children, this.props.offset)
+
         return out
     }
 
@@ -85,6 +93,15 @@ class Parser {
                     })
                     break
                 }
+                case 'blankLine': {
+                    const { count } = <BlankLine>node
+                    if (count % 2 === 0) {
+                        counter = counter + count
+                    } else {
+                        counter = counter + count - 1
+                    }
+                    break
+                }
                 case 'heading': {
                     const out = this.renderHeading(
                         from,
@@ -95,11 +112,6 @@ class Parser {
                     counter = out.counter
                     decorations.push(...out.decorations)
                     nodes.push(...out.nodes)
-                    break
-                }
-                case 'html': {
-                    // console.log('node: ', node)
-                    counter = counter + 2
                     break
                 }
                 case 'list': {
@@ -274,10 +286,11 @@ class Parser {
                 case 'inlineCode': {
                     const from = counter
                     const decorationStart = from
+                    const value = (<Literal>node).value as string
                     counter =
                         decorationStart +
                         syntaxLength +
-                        ((<Literal>node).value as string).length +
+                        value.length +
                         syntaxLength
                     const decorationEnd = counter
                     const to = decorationEnd
@@ -325,8 +338,13 @@ class Parser {
                     break
                 }
                 case 'text': {
-                    // console.log(`"${node.value}"`)
-                    counter = counter + ((<Literal>node).value as string).length
+                    const value = (<Literal>node).value as string
+                    let offset = 0
+                    if (value.includes('\n')) {
+                        const match = value.match(/(\n)/g) || []
+                        offset = match.length
+                    }
+                    counter = counter + value.length + offset
                     break
                 }
                 default: {

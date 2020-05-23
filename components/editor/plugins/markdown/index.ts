@@ -1,4 +1,4 @@
-import { NodeRange, Node as ProsemirrorNode } from 'prosemirror-model'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Plugin, PluginKey, Selection } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
@@ -30,7 +30,7 @@ class Markdown extends PluginExtension {
                 if (from <= selection.from && to >= selection.to) {
                     this.selection = { from, to }
                 }
-                content.push(node.textContent || '<p></p>\n')
+                content.push(node.textContent || '\n')
             }
         })
         const { nodes, decorations } = Parser.parse(content.join('\n'))
