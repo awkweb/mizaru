@@ -127,34 +127,3 @@ for (const { tag, syntax } of headings) {
         })
     })
 }
-
-describe('invalid', () => {
-    test('no space after syntax character', () => {
-        const doc = '#'
-        const out = Parser.parse(doc)
-        const type = out.nodes[0].type
-        expect(type).toEqual('paragraph')
-    })
-
-    test('more than six syntax characters', () => {
-        const doc = '#######'
-        const out = Parser.parse(doc)
-        const type = out.nodes[0].type
-        expect(type).toEqual('paragraph')
-    })
-
-    test.skip('escaped syntax character', () => {
-        // prettier-ignore
-        const doc = '\# foo'
-        const out = Parser.parse(doc)
-        const type = out.nodes[0].type
-        expect(type).toEqual('paragraph')
-    })
-
-    test.skip('four spaces before syntax character', () => {
-        const doc = '    #'
-        const out = Parser.parse(doc)
-        const type = out.nodes[0].type
-        expect(type).toEqual('code')
-    })
-})

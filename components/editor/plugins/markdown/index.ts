@@ -22,7 +22,7 @@ class Markdown extends PluginExtension {
 
     render(doc: ProsemirrorNode, selection: Selection) {
         this.selection = { from: 0, to: doc.nodeSize }
-        const content: string[] = []
+        const lines: string[] = []
         doc.descendants((node, pos) => {
             if (node.isBlock) {
                 const from = pos
@@ -30,10 +30,12 @@ class Markdown extends PluginExtension {
                 if (from <= selection.from && to >= selection.to) {
                     this.selection = { from, to }
                 }
-                content.push(node.textContent || '\n')
+                const line = node.textContent || '\n'
+                lines.push(line)
             }
         })
-        const { nodes, decorations } = Parser.parse(content.join('\n'))
+        const content = Parser.toContent(lines)
+        const { nodes, decorations } = Parser.parse(content)
         this.results = { decorations, nodes }
     }
 

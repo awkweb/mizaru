@@ -46,6 +46,10 @@ class Parser {
         return parser.parse(doc)
     }
 
+    static toContent(lines: string[]) {
+        return lines.join('\n').replace(/(\\)/g, '\\\\')
+    }
+
     parse(doc: string) {
         // @ts-ignore
         const tokenizers = remarkParse.Parser.prototype.blockTokenizers
@@ -61,7 +65,9 @@ class Parser {
             })
             .parse(doc)
         const tree = <Parent>toMDZAST({ doc })(markdown)
+        // console.log(tree.children[0])
         const out = this.parseBlock(tree.children, this.props.offset)
+        // console.log(out)
 
         return out
     }
@@ -290,12 +296,17 @@ class Parser {
                     const value = <string>(<Literal>node).value
                     const newLines = getNewLines(value)
                     const offset = newLines.length
+                    const backslashes = value.match(/(\\)/g) || []
+                    const backslashOffset = backslashes
+                        ? backslashes.length / 2
+                        : 0
                     counter =
                         decorationStart +
                         syntaxLength +
                         value.length +
                         syntaxLength +
-                        offset
+                        offset -
+                        backslashOffset
                     const decorationEnd = counter
                     const to = decorationEnd
                     decorations.push(
@@ -339,6 +350,7 @@ class Parser {
                 }
                 case 'text': {
                     const value = <string>(<Literal>node).value
+                    // console.log(node.raw, value)
                     const newLines = getNewLines(value)
                     const offset = newLines.length
                     counter = counter + value.length + offset
