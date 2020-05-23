@@ -15,3 +15,7 @@ export function getHeadingWhitespace(text: string, level: number) {
         trailing: (text.match(/((\s*)(\s#*)(\s*))*$/) || [])[0],
     }
 }
+
+export function getNewLines(text: string) {
+    return text.match(/(\n)/g) || []
+}

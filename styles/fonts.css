@@ -3,16 +3,16 @@
     font-style: normal;
     font-weight: 100;
     font-display: fallback;
-    src: url('/static/fonts/inter/Thin.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Thin.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Thin.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Thin.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 100;
     font-display: fallback;
-    src: url('/static/fonts/inter/ThinItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/ThinItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/ThinItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/ThinItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -20,17 +20,16 @@
     font-style: normal;
     font-weight: 200;
     font-display: fallback;
-    src: url('/static/fonts/inter/ExtraLight.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/ExtraLight.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/ExtraLight.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/ExtraLight.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 200;
     font-display: fallback;
-    src: url('/static/fonts/inter/ExtraLightItalic.woff2?v=3.13')
-            format('woff2'),
-        url('/static/fonts/inter/ExtraLightItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/ExtraLightItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/ExtraLightItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -38,16 +37,16 @@
     font-style: normal;
     font-weight: 300;
     font-display: fallback;
-    src: url('/static/fonts/inter/Light.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Light.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Light.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Light.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 300;
     font-display: fallback;
-    src: url('/static/fonts/inter/LightItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/LightItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/LightItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/LightItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -55,16 +54,16 @@
     font-style: normal;
     font-weight: 400;
     font-display: fallback;
-    src: url('/static/fonts/inter/Regular.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Regular.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Regular.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Regular.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 400;
     font-display: fallback;
-    src: url('/static/fonts/inter/Italic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Italic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Italic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Italic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -72,16 +71,16 @@
     font-style: normal;
     font-weight: 500;
     font-display: fallback;
-    src: url('/static/fonts/inter/Medium.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Medium.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Medium.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Medium.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 500;
     font-display: fallback;
-    src: url('/static/fonts/inter/MediumItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/MediumItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/MediumItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/MediumItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -89,16 +88,16 @@
     font-style: normal;
     font-weight: 600;
     font-display: fallback;
-    src: url('/static/fonts/inter/SemiBold.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/SemiBold.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/SemiBold.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/SemiBold.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 600;
     font-display: fallback;
-    src: url('/static/fonts/inter/SemiBoldItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/SemiBoldItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/SemiBoldItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/SemiBoldItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -106,16 +105,16 @@
     font-style: normal;
     font-weight: 700;
     font-display: fallback;
-    src: url('/static/fonts/inter/Bold.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Bold.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Bold.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Bold.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 700;
     font-display: fallback;
-    src: url('/static/fonts/inter/BoldItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/BoldItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/BoldItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/BoldItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -123,16 +122,16 @@
     font-style: normal;
     font-weight: 800;
     font-display: fallback;
-    src: url('/static/fonts/inter/ExtraBold.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/ExtraBold.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/ExtraBold.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/ExtraBold.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 800;
     font-display: fallback;
-    src: url('/static/fonts/inter/ExtraBoldItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/ExtraBoldItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/ExtraBoldItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/ExtraBoldItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -140,16 +139,16 @@
     font-style: normal;
     font-weight: 900;
     font-display: fallback;
-    src: url('/static/fonts/inter/Black.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/Black.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/Black.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/Black.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Sans';
     font-style: italic;
     font-weight: 900;
     font-display: fallback;
-    src: url('/static/fonts/inter/BlackItalic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/inter/BlackItalic.woff?v=3.13') format('woff');
+    src: url('/fonts/inter/BlackItalic.woff2?v=3.13') format('woff2'),
+        url('/fonts/inter/BlackItalic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -157,17 +156,16 @@
     font-style: normal;
     font-weight: 400;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/Regular.woff2?v=3.13')
-            format('woff2'),
-        url('/static/fonts/jetbrains-mono/Regular.woff?v=3.13') format('woff');
+    src: url('/fonts/jetbrains-mono/Regular.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/Regular.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Mono';
     font-style: italic;
     font-weight: 400;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/Italic.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/jetbrains-mono/Italic.woff?v=3.13') format('woff');
+    src: url('/fonts/jetbrains-mono/Italic.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/Italic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -175,18 +173,16 @@
     font-style: normal;
     font-weight: 500;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/Medium.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/jetbrains-mono/Medium.woff?v=3.13') format('woff');
+    src: url('/fonts/jetbrains-mono/Medium.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/Medium.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Mono';
     font-style: italic;
     font-weight: 500;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/Medium-Italic.woff2?v=3.13')
-            format('woff2'),
-        url('/static/fonts/jetbrains-mono/Medium-Italic.woff?v=3.13')
-            format('woff');
+    src: url('/fonts/jetbrains-mono/Medium-Italic.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/Medium-Italic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -194,18 +190,16 @@
     font-style: normal;
     font-weight: 700;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/Bold.woff2?v=3.13') format('woff2'),
-        url('/static/fonts/jetbrains-mono/Bold.woff?v=3.13') format('woff');
+    src: url('/fonts/jetbrains-mono/Bold.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/Bold.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Mono';
     font-style: italic;
     font-weight: 700;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/Bold-Italic.woff2?v=3.13')
-            format('woff2'),
-        url('/static/fonts/jetbrains-mono/Bold-Italic.woff?v=3.13')
-            format('woff');
+    src: url('/fonts/jetbrains-mono/Bold-Italic.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/Bold-Italic.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -213,17 +207,15 @@
     font-style: normal;
     font-weight: 800;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/ExtraBold.woff2?v=3.13')
-            format('woff2'),
-        url('/static/fonts/jetbrains-mono/ExtraBold.woff?v=3.13') format('woff');
+    src: url('/fonts/jetbrains-mono/ExtraBold.woff2?v=3.13') format('woff2'),
+        url('/fonts/jetbrains-mono/ExtraBold.woff?v=3.13') format('woff');
 }
 @font-face {
     font-family: 'Mono';
     font-style: italic;
     font-weight: 800;
     font-display: fallback;
-    src: url('/static/fonts/jetbrains-mono/ExtraBold-Italic.woff2?v=3.13')
+    src: url('/fonts/jetbrains-mono/ExtraBold-Italic.woff2?v=3.13')
             format('woff2'),
-        url('/static/fonts/jetbrains-mono/ExtraBold-Italic.woff?v=3.13')
-            format('woff');
+        url('/fonts/jetbrains-mono/ExtraBold-Italic.woff?v=3.13') format('woff');
 }

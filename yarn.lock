@@ -3131,6 +3131,11 @@ clone-deep@^4.0.1:
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
 
+clone@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+  integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -9163,6 +9168,13 @@ regjsparser@^0.6.4:
   integrity sha512-64O87/dPDgfk8/RQqC4gkZoGyyWFIEUTTh80CU6CWuK5vkCGyekIx+oKcEIYtP/RAxSQltCZHCNu/mdd7fqlJw==
   dependencies:
     jsesc "~0.5.0"
+
+remark-disable-tokenizers@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/remark-disable-tokenizers/-/remark-disable-tokenizers-1.0.24.tgz#98efd5ade2da46e8e6167cc3318c7cd93d15449d"
+  integrity sha512-HsAmBY5cNliHYAzba4zuskZzkDdp6sG+tRelDb4AoPo2YHNGHnxYsatShzTIsnRNLgCbsxycW5Ge6KigHn701A==
+  dependencies:
+    clone "^2.1.2"
 
 remark-parse@^8.0.0, remark-parse@^8.0.2:
   version "8.0.2"

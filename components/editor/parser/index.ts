@@ -1,14 +1,14 @@
 /* eslint-disable */
 import unified from 'unified'
-import { PartialRemarkOptions } from 'remark'
-import toMDAST from 'remark-parse'
+import remarkParse from 'remark-parse'
 import modifyChildren from 'unist-util-modify-children'
-// @ts-ignore
-import source from 'unist-util-source'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
+// @ts-ignore
+import remarkDisableTokenizers from 'remark-disable-tokenizers'
 
 import {
+    BlankLine,
     Decoration,
     Heading,
     Link,
@@ -22,9 +22,11 @@ import {
     getHeadingWhitespace,
     getInlineSyntaxLength,
     getListItemSyntaxLength,
+    getNewLines,
     modifyListItem,
     toMDZAST,
 } from './utils'
+import { blankLine } from './tokenize'
 
 interface Props {
     offset: number
@@ -44,16 +46,29 @@ class Parser {
         return parser.parse(doc)
     }
 
+    static toContent(lines: string[]) {
+        return lines.join('\n').replace(/(\\)/g, '\\\\')
+    }
+
     parse(doc: string) {
-        const settings = <PartialRemarkOptions>{
-            commonmark: true,
-            gfm: true,
-            position: true,
-        }
-        const tree = toMDZAST({ doc })(
-            unified().use(toMDAST, settings).parse(doc),
-        )
-        const out = this.parseBlock((<Parent>tree).children, this.props.offset)
+        // @ts-ignore
+        const tokenizers = remarkParse.Parser.prototype.blockTokenizers
+        tokenizers.blankLine = blankLine
+
+        const markdown = unified()
+            .use(remarkParse, {
+                commonmark: true,
+                gfm: true,
+            })
+            .use(remarkDisableTokenizers, {
+                inline: ['break'],
+            })
+            .parse(doc)
+        const tree = <Parent>toMDZAST({ doc })(markdown)
+        // console.log(tree.children[0])
+        const out = this.parseBlock(tree.children, this.props.offset)
+        // console.log(out)
+
         return out
     }
 
@@ -85,6 +100,15 @@ class Parser {
                     })
                     break
                 }
+                case 'blankLine': {
+                    const { count } = <BlankLine>node
+                    if (count % 2 === 0) {
+                        counter = counter + count
+                    } else {
+                        counter = counter + count - 1
+                    }
+                    break
+                }
                 case 'heading': {
                     const out = this.renderHeading(
                         from,
@@ -95,11 +119,6 @@ class Parser {
                     counter = out.counter
                     decorations.push(...out.decorations)
                     nodes.push(...out.nodes)
-                    break
-                }
-                case 'html': {
-                    // console.log('node: ', node)
-                    counter = counter + 2
                     break
                 }
                 case 'list': {
@@ -274,11 +293,20 @@ class Parser {
                 case 'inlineCode': {
                     const from = counter
                     const decorationStart = from
+                    const value = <string>(<Literal>node).value
+                    const newLines = getNewLines(value)
+                    const offset = newLines.length
+                    const backslashes = value.match(/(\\)/g) || []
+                    const backslashOffset = backslashes
+                        ? backslashes.length / 2
+                        : 0
                     counter =
                         decorationStart +
                         syntaxLength +
-                        ((<Literal>node).value as string).length +
-                        syntaxLength
+                        value.length +
+                        syntaxLength +
+                        offset -
+                        backslashOffset
                     const decorationEnd = counter
                     const to = decorationEnd
                     decorations.push(
@@ -320,13 +348,12 @@ class Parser {
                     marks.push(...out.marks, { from, to, type })
                     break
                 }
-                case 'link': {
-                    const { url, title } = <Link>node
-                    break
-                }
                 case 'text': {
-                    // console.log(`"${node.value}"`)
-                    counter = counter + ((<Literal>node).value as string).length
+                    const value = <string>(<Literal>node).value
+                    // console.log(node.raw, value)
+                    const newLines = getNewLines(value)
+                    const offset = newLines.length
+                    counter = counter + value.length + offset
                     break
                 }
                 default: {

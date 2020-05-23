@@ -4,6 +4,11 @@ export interface Parent extends UnistParent {
     raw: string
 }
 
+export interface BlankLine extends Parent {
+    type: 'blankLine'
+    count: number
+}
+
 export interface Heading extends Parent {
     type: 'heading'
     depth: number

@@ -5,19 +5,12 @@ test('create parser', () => {
     expect(parser).toBeDefined()
 })
 
-describe('text', () => {
-    let doc = 'foo'
-    test(doc, () => {
-        const { decorations, nodes } = Parser.parse(doc)
-        expect(nodes).toEqual([
-            { from: 0, to: 5, type: 'paragraph', marks: [] },
-        ])
-        expect(decorations).toEqual([])
-    })
-
-    test('<empty>', () => {
-        const { decorations, nodes } = Parser.parse('')
-        expect(nodes).toEqual([])
-        expect(decorations).toEqual([])
-    })
+test('converts lines to parseable content', () => {
+    const lines = ['foo', 'bar', 'baz']
+    const content = Parser.toContent(lines)
+    expect(content).toMatchInlineSnapshot(`
+        "foo
+        bar
+        baz"
+    `)
 })
