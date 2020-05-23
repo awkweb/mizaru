@@ -22,6 +22,7 @@ import {
     getHeadingWhitespace,
     getInlineSyntaxLength,
     getListItemSyntaxLength,
+    getNewLines,
     modifyListItem,
     toMDZAST,
 } from './utils'
@@ -286,12 +287,15 @@ class Parser {
                 case 'inlineCode': {
                     const from = counter
                     const decorationStart = from
-                    const value = (<Literal>node).value as string
+                    const value = <string>(<Literal>node).value
+                    const newLines = getNewLines(value)
+                    const offset = newLines.length
                     counter =
                         decorationStart +
                         syntaxLength +
                         value.length +
-                        syntaxLength
+                        syntaxLength +
+                        offset
                     const decorationEnd = counter
                     const to = decorationEnd
                     decorations.push(
@@ -333,17 +337,10 @@ class Parser {
                     marks.push(...out.marks, { from, to, type })
                     break
                 }
-                case 'link': {
-                    const { url, title } = <Link>node
-                    break
-                }
                 case 'text': {
-                    const value = (<Literal>node).value as string
-                    let offset = 0
-                    if (value.includes('\n')) {
-                        const match = value.match(/(\n)/g) || []
-                        offset = match.length
-                    }
+                    const value = <string>(<Literal>node).value
+                    const newLines = getNewLines(value)
+                    const offset = newLines.length
                     counter = counter + value.length + offset
                     break
                 }

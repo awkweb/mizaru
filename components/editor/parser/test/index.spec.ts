@@ -6,18 +6,68 @@ test('create parser', () => {
 })
 
 describe('text', () => {
-    let doc = 'foo'
-    test(doc, () => {
-        const { decorations, nodes } = Parser.parse(doc)
-        expect(nodes).toEqual([
-            { from: 0, to: 5, type: 'paragraph', marks: [] },
-        ])
-        expect(decorations).toEqual([])
+    test('empty', () => {
+        const out = Parser.parse('')
+        expect(out).toMatchInlineSnapshot(`
+            Object {
+              "counter": 0,
+              "decorations": Array [],
+              "nodes": Array [],
+            }
+        `)
     })
 
-    test('<empty>', () => {
-        const { decorations, nodes } = Parser.parse('')
-        expect(nodes).toEqual([])
-        expect(decorations).toEqual([])
+    test('single word', () => {
+        const out = Parser.parse('foo')
+        expect(out).toMatchInlineSnapshot(`
+            Object {
+              "counter": 5,
+              "decorations": Array [],
+              "nodes": Array [
+                Object {
+                  "from": 0,
+                  "marks": Array [],
+                  "to": 5,
+                  "type": "paragraph",
+                },
+              ],
+            }
+        `)
+    })
+
+    test('multiple words', () => {
+        const out = Parser.parse('foo bar baz')
+        expect(out).toMatchInlineSnapshot(`
+            Object {
+              "counter": 13,
+              "decorations": Array [],
+              "nodes": Array [
+                Object {
+                  "from": 0,
+                  "marks": Array [],
+                  "to": 13,
+                  "type": "paragraph",
+                },
+              ],
+            }
+        `)
+    })
+
+    test('split across multiple lines', () => {
+        const out = Parser.parse('foo\nbar\nbaz')
+        expect(out).toMatchInlineSnapshot(`
+            Object {
+              "counter": 15,
+              "decorations": Array [],
+              "nodes": Array [
+                Object {
+                  "from": 0,
+                  "marks": Array [],
+                  "to": 15,
+                  "type": "paragraph",
+                },
+              ],
+            }
+        `)
     })
 })
