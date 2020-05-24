@@ -48,7 +48,7 @@ export interface Element extends Position {
 export interface Mark extends Element {}
 
 export interface Node extends Element {
-    marks: Mark[]
+    marks?: Mark[]
 }
 
 export interface Decoration extends Position {

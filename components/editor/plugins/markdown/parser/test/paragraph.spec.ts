@@ -47,7 +47,7 @@ test('multiple words', () => {
         `)
 })
 
-test('backslashes', () => {
+test('backslash', () => {
     const out = Parser.parse('foo\\ bar baz')
     expect(out).toMatchInlineSnapshot(`
         Object {

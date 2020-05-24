@@ -24,6 +24,18 @@ for (const { tag, syntax } of headings) {
             expect(out).toMatchSnapshot()
         })
 
+        test('backslash', () => {
+            const doc = `${syntax} foo\\ bar baz`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
+
+        test('split across multiple lines', () => {
+            const doc = `${syntax} foo\nbar\nbaz`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
+
         describe('with nested', () => {
             test('delete', () => {
                 const doc = `${syntax} foo ~~bar~~ baz`

@@ -50,6 +50,10 @@ function type(state: EditorState, text: string) {
     return state.apply(state.tr.insertText(text))
 }
 
+function carriageReturn(state: EditorState, pos: number) {
+    return state.apply(state.tr.split(pos))
+}
+
 function remove(state: EditorState, from: number, to: number) {
     return state.apply(state.tr.delete(from, to))
 }
@@ -89,6 +93,7 @@ function mkState(config: {
 export {
     out,
     backspace,
+    carriageReturn,
     type,
     remove,
     mkHeadings,

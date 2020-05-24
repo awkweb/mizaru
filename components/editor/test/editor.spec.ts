@@ -2,7 +2,6 @@ import Editor from '../editor'
 
 test('create editor', () => {
     const editor = new Editor()
-
     expect(editor).toBeDefined()
 })
 
@@ -10,7 +9,6 @@ test('check empty content', () => {
     const editor = new Editor({
         content: undefined,
     })
-
     expect(editor.json).toEqual({
         content: [{ type: 'paragraph' }],
         type: 'doc',
@@ -19,7 +17,6 @@ test('check empty content', () => {
 
 test('check string content', () => {
     const editor = new Editor({ content: 'Hello, World!' })
-
     expect(editor.json).toEqual({
         content: [
             {
@@ -43,7 +40,6 @@ test('check json content', () => {
             type: 'doc',
         },
     })
-
     expect(editor.json).toEqual({
         content: [
             {
@@ -83,6 +79,5 @@ test('transaction callback', (done) => {
             done()
         },
     })
-
     editor.setContent('Hello, World!', true)
 })

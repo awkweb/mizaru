@@ -1,7 +1,6 @@
 /* eslint-disable */
 import unified from 'unified'
 import remarkParse from 'remark-parse'
-import modifyChildren from 'unist-util-modify-children'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
 // @ts-ignore
@@ -19,11 +18,10 @@ import {
     Parent,
 } from './types'
 import {
+    getBlockquoteWhitespace,
     getHeadingWhitespace,
     getInlineSyntaxLength,
-    getListItemSyntaxLength,
     getNewLines,
-    modifyListItem,
     toMDZAST,
 } from './utils'
 import { blankLine } from './tokenize'
@@ -82,22 +80,15 @@ class Parser {
 
             switch (type) {
                 case 'blockquote': {
-                    const syntaxLength = 2
-                    const out = this.parseBlock(children, counter, syntaxLength)
-                    counter = out.counter + 1
-                    const to = counter
-                    const decorationStart = from + 1
-                    decorations.push(...out.decorations, {
-                        from: decorationStart,
-                        to: decorationStart + syntaxLength,
-                        type: 'syntax',
-                    })
-                    nodes.push(...out.nodes, {
+                    const out = this.renderBlockquote(
                         from,
-                        to,
-                        type,
-                        marks: [],
-                    })
+                        children,
+                        counter,
+                        node,
+                    )
+                    counter = out.counter
+                    decorations.push(...out.decorations)
+                    nodes.push(...out.nodes)
                     break
                 }
                 case 'blankLine': {
@@ -121,51 +112,6 @@ class Parser {
                     nodes.push(...out.nodes)
                     break
                 }
-                case 'list': {
-                    const modify = modifyChildren(modifyListItem)
-                    modify(node)
-                    const out = this.parseBlock(children, counter + 1)
-                    counter = out.counter + 1
-                    const to = counter
-                    const { ordered, spread, start } = <List>node
-                    nodes.push(...out.nodes, {
-                        from,
-                        to,
-                        type,
-                        marks: [],
-                        attrs: { ordered, spread, start },
-                    })
-                    decorations.push(...out.decorations)
-                    break
-                }
-                case 'listItem': {
-                    const syntaxLength = getListItemSyntaxLength(<ListItem>node)
-                    const out = this.parseBlock(
-                        children,
-                        counter + 1,
-                        syntaxLength,
-                    )
-                    counter = out.counter + 1
-                    const to = counter
-                    const decorationStart = from + 2
-                    decorations.push(...out.decorations, {
-                        from: decorationStart,
-                        to: decorationStart + syntaxLength,
-                        type: 'syntax',
-                    })
-                    const { checked, spread } = <ListItem>node
-                    nodes.push(...out.nodes, {
-                        from,
-                        to,
-                        type,
-                        marks: [],
-                        attrs: {
-                            checked,
-                            spread,
-                        },
-                    })
-                    break
-                }
                 case 'paragraph': {
                     const out = this.renderParagraph(
                         from,
@@ -186,6 +132,49 @@ class Parser {
             }
         }
         return { counter, decorations, nodes }
+    }
+
+    private renderBlockquote(
+        from: number,
+        children: UnistNode[],
+        counter: number,
+        node: UnistNode,
+    ) {
+        const { raw } = <Parent>node
+        // If not fully formed, convert to paragraph
+        if (raw === '>') {
+            const child = { type: 'text', value: raw }
+            children.push(child)
+            return this.renderParagraph(from, children, counter)
+        }
+
+        const { leading, inner } = getBlockquoteWhitespace(raw)
+        const syntaxLength = (leading?.length ?? 0) + (inner?.length ?? 0) + 1
+        counter = from + 1
+        const out = this.parseBlock(children, counter, syntaxLength)
+        counter = out.counter + 1
+        const to = counter
+        const decorationStart = from + 2
+        const decorationEnd = decorationStart + syntaxLength
+        return {
+            counter,
+            decorations: [
+                ...out.decorations,
+                {
+                    from: decorationStart,
+                    to: decorationEnd,
+                    type: 'syntax',
+                },
+            ],
+            nodes: [
+                ...out.nodes,
+                {
+                    from,
+                    to,
+                    type: 'blockquote',
+                },
+            ],
+        }
     }
 
     private renderHeading(
@@ -216,8 +205,8 @@ class Parser {
             children.push(child)
 
             const hasClosingSequence = trailing.includes('#')
-            const decorationTo = from + raw.length + 1
             if (hasClosingSequence) {
+                const decorationTo = from + raw.length + 1
                 decorationClosing = {
                     from: decorationTo - value.length,
                     to: decorationTo,
@@ -350,7 +339,6 @@ class Parser {
                 }
                 case 'text': {
                     const value = <string>(<Literal>node).value
-                    // console.log(node.raw, value)
                     const newLines = getNewLines(value)
                     const offset = newLines.length
                     counter = counter + value.length + offset

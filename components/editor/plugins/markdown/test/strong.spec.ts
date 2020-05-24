@@ -1,40 +1,117 @@
-import { Emphasis, Strong } from '@/components/editor/marks'
+import { Delete, Emphasis, InlineCode, Strong } from '@/components/editor/marks'
 
 import Markdown from '..'
 
 // @ts-ignore
-const { out, backspace, type, mkState, mkSchema } = prosemirror
+const { out, carriageReturn, type, mkState, mkSchema } = prosemirror
 const { schema, plugins } = mkSchema([
+    new Delete(),
     new Emphasis(),
+    new InlineCode(),
     new Markdown(),
     new Strong(),
 ])
-const { doc, p, emphasis } = out(schema)
+const { doc, p, ...inactive } = out(schema)
 const active = out(schema, {
     mark: { active: true },
 })
 
-describe('basic', () => {
-    for (const syntax of ['**', '__']) {
-        const content = `${syntax}foo${syntax}`
-        test(content, () => {
+for (const syntax of ['**', '__']) {
+    describe(syntax, () => {
+        test('single word', () => {
+            const content = `${syntax}foo${syntax}`
             let state = mkState({ schema, plugins })
             state = type(state, content)
             expect(state.doc).toEqual(doc(p(active.strong(content))))
-            state = backspace(state, 3)
+        })
+
+        test('multiple words', () => {
+            const content = `${syntax}foo bar baz${syntax}`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(p(active.strong(content))))
+        })
+
+        test('backslash', () => {
+            const content = `${syntax}foo\\ bar baz${syntax}`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(p(active.strong(content))))
+        })
+
+        test('split across multiple lines', () => {
+            const content = `${syntax}foo bar baz${syntax}`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(p(active.strong(content))))
+            state = carriageReturn(state, 7)
             expect(state.doc).toEqual(
-                doc(p(content.substring(0, content.length - 2))),
+                doc(
+                    p(active.strong(`${syntax}foo `)),
+                    p(active.strong(`bar baz${syntax}`)),
+                ),
+            )
+            state = carriageReturn(state, 13)
+            expect(state.doc).toEqual(
+                doc(
+                    p(active.strong(`${syntax}foo `)),
+                    p(active.strong(`bar `)),
+                    p(active.strong(`baz${syntax}`)),
+                ),
             )
         })
-    }
-})
 
-describe('with nested', () => {
-    test('emphasis', () => {
-        let state = mkState({ schema, plugins })
-        state = type(state, '**foo *bar***')
-        expect(state.doc).toEqual(
-            doc(p(active.strong('**foo ', emphasis('*bar*'), '**'))),
-        )
+        describe('with nested', () => {
+            test('delete', () => {
+                const content = `${syntax}foo ~~bar~~ baz${syntax}`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        p(
+                            active.strong(
+                                `${syntax}foo `,
+                                inactive.delete('~~bar~~'),
+                                ` baz${syntax}`,
+                            ),
+                        ),
+                    ),
+                )
+            })
+
+            test('emphasis', () => {
+                const content = `${syntax}foo *bar* baz${syntax}`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        p(
+                            active.strong(
+                                `${syntax}foo `,
+                                inactive.emphasis('*bar*'),
+                                ` baz${syntax}`,
+                            ),
+                        ),
+                    ),
+                )
+            })
+
+            test('inlineCode', () => {
+                const content = `${syntax}foo \`bar\` baz${syntax}`
+                let state = mkState({ schema, plugins })
+                state = type(state, content)
+                expect(state.doc).toEqual(
+                    doc(
+                        p(
+                            active.strong(
+                                `${syntax}foo `,
+                                inactive.inlineCode('`bar`'),
+                                ` baz${syntax}`,
+                            ),
+                        ),
+                    ),
+                )
+            })
+        })
     })
-})
+}
