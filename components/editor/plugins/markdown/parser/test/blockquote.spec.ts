@@ -1,115 +1,93 @@
 import Parser from '../'
 
-test('empty', () => {
-    const doc = '> '
-    const out = Parser.parse(doc)
-    expect(out).toMatchInlineSnapshot(`
-        Object {
-          "counter": 2,
-          "decorations": Array [
-            Object {
-              "from": 2,
-              "to": 4,
-              "type": "syntax",
-            },
-          ],
-          "nodes": Array [
-            Object {
-              "from": 0,
-              "to": 2,
-              "type": "blockquote",
-            },
-          ],
-        }
-    `)
-})
+// @ts-ignore
+const { mkHeadings } = prosemirror
 
-test('single word', () => {
-    const doc = '> foo'
-    const out = Parser.parse(doc)
-    expect(out).toMatchInlineSnapshot(`
-        Object {
-          "counter": 9,
-          "decorations": Array [
-            Object {
-              "from": 2,
-              "to": 4,
-              "type": "syntax",
-            },
-          ],
-          "nodes": Array [
-            Object {
-              "from": 1,
-              "marks": Array [],
-              "to": 8,
-              "type": "paragraph",
-            },
-            Object {
-              "from": 0,
-              "to": 9,
-              "type": "blockquote",
-            },
-          ],
-        }
-    `)
-})
+for (const syntax of ['>', '> ']) {
+    describe(syntax, () => {
+        test('empty', () => {
+            const doc = `${syntax}`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
 
-test('multiple words', () => {
-    const doc = '> foo bar baz'
-    const out = Parser.parse(doc)
-    expect(out).toMatchInlineSnapshot(`
-        Object {
-          "counter": 17,
-          "decorations": Array [
-            Object {
-              "from": 2,
-              "to": 4,
-              "type": "syntax",
-            },
-          ],
-          "nodes": Array [
-            Object {
-              "from": 1,
-              "marks": Array [],
-              "to": 16,
-              "type": "paragraph",
-            },
-            Object {
-              "from": 0,
-              "to": 17,
-              "type": "blockquote",
-            },
-          ],
-        }
-    `)
-})
+        test('single word', () => {
+            const doc = `${syntax}foo`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
 
-test('backslash', () => {
-    const doc = '> foo\\ bar baz'
-    const out = Parser.parse(doc)
-    expect(out).toMatchInlineSnapshot(`
-        Object {
-          "counter": 18,
-          "decorations": Array [
-            Object {
-              "from": 2,
-              "to": 4,
-              "type": "syntax",
-            },
-          ],
-          "nodes": Array [
-            Object {
-              "from": 1,
-              "marks": Array [],
-              "to": 17,
-              "type": "paragraph",
-            },
-            Object {
-              "from": 0,
-              "to": 18,
-              "type": "blockquote",
-            },
-          ],
-        }
-    `)
-})
+        test('multiple words', () => {
+            const doc = `${syntax}foo bar baz`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
+
+        test('backslash', () => {
+            const doc = `${syntax}foo\\ bar baz`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
+
+        test('split across multiple lines', () => {
+            const doc = `${syntax}foo\nbar\nbaz`
+            const out = Parser.parse(doc)
+            expect(out).toMatchSnapshot()
+        })
+
+        describe('with nested', () => {
+            test('delete', () => {
+                const doc = `${syntax}foo ~~bar~~ baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+
+            test('emphasis', () => {
+                const doc = `${syntax}foo *bar* baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+
+            test('inlineCode', () => {
+                const doc = `${syntax}foo \`bar\` baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+
+            test('strong', () => {
+                const doc = `${syntax}foo **bar** baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+
+            const headings = mkHeadings()
+            for (const heading of headings) {
+                test(heading.tag, () => {
+                    const doc = `${syntax}${heading.syntax} foo bar baz`
+                    const out = Parser.parse(doc)
+                    expect(out).toMatchSnapshot()
+                })
+            }
+        })
+
+        describe('with whitespace', () => {
+            test('leading', () => {
+                const doc = `   ${syntax}foo bar baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+
+            test('inner', () => {
+                const doc = `${syntax}   foo bar baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+
+            test('leading and inner', () => {
+                const doc = `   ${syntax}   foo bar baz`
+                const out = Parser.parse(doc)
+                expect(out).toMatchSnapshot()
+            })
+        })
+    })
+}

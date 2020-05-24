@@ -63,9 +63,7 @@ class Parser {
             })
             .parse(doc)
         const tree = <Parent>toMDZAST({ doc })(markdown)
-        // console.log(tree.children[0])
         const out = this.parseBlock(tree.children, this.props.offset)
-        // console.log(out)
 
         return out
     }
@@ -106,6 +104,7 @@ class Parser {
                         children,
                         counter,
                         node,
+                        boost,
                     )
                     counter = out.counter
                     decorations.push(...out.decorations)
@@ -149,7 +148,8 @@ class Parser {
         }
 
         const { leading, inner } = getBlockquoteWhitespace(raw)
-        const syntaxLength = (leading?.length ?? 0) + (inner?.length ?? 0) + 1
+        const syntaxLength =
+            (leading?.length ?? 0) + (inner?.length > 0 ? 1 : 0) + 1
         counter = from + 1
         const out = this.parseBlock(children, counter, syntaxLength)
         counter = out.counter + 1
@@ -182,6 +182,7 @@ class Parser {
         children: UnistNode[],
         counter: number,
         node: UnistNode,
+        boost?: number,
     ) {
         const { depth: level, raw } = <Heading>node
         const syntaxChars = '#'.repeat(level)
@@ -223,7 +224,7 @@ class Parser {
         }
 
         const syntaxLength = (leading?.length ?? 0) + level + 1
-        const decorationStart = from + 1
+        const decorationStart = (boost ?? 0) + from + 1
         counter = decorationStart + syntaxLength
         const out = this.parseInline(children, counter)
         counter = out.counter + 1
