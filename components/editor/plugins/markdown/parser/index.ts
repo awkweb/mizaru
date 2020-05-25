@@ -1,11 +1,10 @@
 /* eslint-disable */
 import unified from 'unified'
 import remarkParse from 'remark-parse'
-import modifyChildren from 'unist-util-modify-children'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
 // @ts-ignore
-import remarkDisableTokenizers from 'remark-disable-tokenizers'
+import disableTokenizers from 'remark-disable-tokenizers'
 
 import {
     BlankLine,
@@ -19,14 +18,15 @@ import {
     Parent,
 } from './types'
 import {
+    escape,
+    getBlockquoteWhitespace,
     getHeadingWhitespace,
     getInlineSyntaxLength,
-    getListItemSyntaxLength,
     getNewLines,
-    modifyListItem,
     toMDZAST,
 } from './utils'
 import { blankLine } from './tokenize'
+import { settings } from './constants'
 
 interface Props {
     offset: number
@@ -41,34 +41,41 @@ class Parser {
         this.props = { ...this.props, ...props }
     }
 
-    static parse(doc: string, props?: Partial<Props>) {
+    static parse(content: string, props?: Partial<Props>) {
         const parser = new Parser(props)
-        return parser.parse(doc)
+        return parser.parse(content)
     }
 
-    static toContent(lines: string[]) {
-        return lines.join('\n').replace(/(\\)/g, '\\\\')
+    static toContent(lines: string[], props?: Partial<Props>) {
+        const parser = new Parser(props)
+        return parser.toContent(lines)
     }
 
-    parse(doc: string) {
+    parse(content: string) {
         // @ts-ignore
-        const tokenizers = remarkParse.Parser.prototype.blockTokenizers
-        tokenizers.blankLine = blankLine
+        const blockTokenizers = remarkParse.Parser.prototype.blockTokenizers
+
+        // Override tokenizers
+        blockTokenizers.blankLine = blankLine
+
+        // Disable tokenizers
+        const disabled = { inline: ['break'] }
 
         const markdown = unified()
-            .use(remarkParse, {
-                commonmark: true,
-                gfm: true,
-            })
-            .use(remarkDisableTokenizers, {
-                inline: ['break'],
-            })
-            .parse(doc)
-        const tree = <Parent>toMDZAST({ doc })(markdown)
-        // console.log(tree.children[0])
+            .use(remarkParse, settings)
+            .use(disableTokenizers, disabled)
+            .parse(content)
+        const tree = <Parent>toMDZAST({ content })(markdown)
         const out = this.parseBlock(tree.children, this.props.offset)
-        // console.log(out)
 
+        return out
+    }
+
+    toContent(lines: string[]) {
+        // Join lines into one string with \n
+        // Escape backslashes so markdown processor doesn't strip them
+        const joined = lines.join('\n').replace(/(\\)/g, '\\\\')
+        const out = escape(joined)
         return out
     }
 
@@ -82,22 +89,15 @@ class Parser {
 
             switch (type) {
                 case 'blockquote': {
-                    const syntaxLength = 2
-                    const out = this.parseBlock(children, counter, syntaxLength)
-                    counter = out.counter + 1
-                    const to = counter
-                    const decorationStart = from + 1
-                    decorations.push(...out.decorations, {
-                        from: decorationStart,
-                        to: decorationStart + syntaxLength,
-                        type: 'syntax',
-                    })
-                    nodes.push(...out.nodes, {
+                    const out = this.renderBlockquote(
                         from,
-                        to,
-                        type,
-                        marks: [],
-                    })
+                        children,
+                        counter,
+                        node,
+                    )
+                    counter = out.counter
+                    decorations.push(...out.decorations)
+                    nodes.push(...out.nodes)
                     break
                 }
                 case 'blankLine': {
@@ -115,55 +115,11 @@ class Parser {
                         children,
                         counter,
                         node,
+                        boost,
                     )
                     counter = out.counter
                     decorations.push(...out.decorations)
                     nodes.push(...out.nodes)
-                    break
-                }
-                case 'list': {
-                    const modify = modifyChildren(modifyListItem)
-                    modify(node)
-                    const out = this.parseBlock(children, counter + 1)
-                    counter = out.counter + 1
-                    const to = counter
-                    const { ordered, spread, start } = <List>node
-                    nodes.push(...out.nodes, {
-                        from,
-                        to,
-                        type,
-                        marks: [],
-                        attrs: { ordered, spread, start },
-                    })
-                    decorations.push(...out.decorations)
-                    break
-                }
-                case 'listItem': {
-                    const syntaxLength = getListItemSyntaxLength(<ListItem>node)
-                    const out = this.parseBlock(
-                        children,
-                        counter + 1,
-                        syntaxLength,
-                    )
-                    counter = out.counter + 1
-                    const to = counter
-                    const decorationStart = from + 2
-                    decorations.push(...out.decorations, {
-                        from: decorationStart,
-                        to: decorationStart + syntaxLength,
-                        type: 'syntax',
-                    })
-                    const { checked, spread } = <ListItem>node
-                    nodes.push(...out.nodes, {
-                        from,
-                        to,
-                        type,
-                        marks: [],
-                        attrs: {
-                            checked,
-                            spread,
-                        },
-                    })
                     break
                 }
                 case 'paragraph': {
@@ -188,11 +144,56 @@ class Parser {
         return { counter, decorations, nodes }
     }
 
+    private renderBlockquote(
+        from: number,
+        children: UnistNode[],
+        counter: number,
+        node: UnistNode,
+    ) {
+        const { raw } = <Parent>node
+        // If not fully formed, convert to paragraph
+        if (raw === '>') {
+            const child = { type: 'text', value: raw }
+            children.push(child)
+            return this.renderParagraph(from, children, counter)
+        }
+
+        const { leading, inner } = getBlockquoteWhitespace(raw)
+        const syntaxLength =
+            (leading?.length ?? 0) + (inner?.length > 0 ? 1 : 0) + 1
+        counter = from + 1
+        const out = this.parseBlock(children, counter, syntaxLength)
+        counter = out.counter + 1
+        const to = counter
+        const decorationStart = from + 2
+        const decorationEnd = decorationStart + syntaxLength
+        return {
+            counter,
+            decorations: [
+                ...out.decorations,
+                {
+                    from: decorationStart,
+                    to: decorationEnd,
+                    type: 'syntax',
+                },
+            ],
+            nodes: [
+                ...out.nodes,
+                {
+                    from,
+                    to,
+                    type: 'blockquote',
+                },
+            ],
+        }
+    }
+
     private renderHeading(
         from: number,
         children: UnistNode[],
         counter: number,
         node: UnistNode,
+        boost?: number,
     ) {
         const { depth: level, raw } = <Heading>node
         const syntaxChars = '#'.repeat(level)
@@ -216,8 +217,8 @@ class Parser {
             children.push(child)
 
             const hasClosingSequence = trailing.includes('#')
-            const decorationTo = from + raw.length + 1
             if (hasClosingSequence) {
+                const decorationTo = from + raw.length + 1
                 decorationClosing = {
                     from: decorationTo - value.length,
                     to: decorationTo,
@@ -234,7 +235,7 @@ class Parser {
         }
 
         const syntaxLength = (leading?.length ?? 0) + level + 1
-        const decorationStart = from + 1
+        const decorationStart = (boost ?? 0) + from + 1
         counter = decorationStart + syntaxLength
         const out = this.parseInline(children, counter)
         counter = out.counter + 1
@@ -296,17 +297,12 @@ class Parser {
                     const value = <string>(<Literal>node).value
                     const newLines = getNewLines(value)
                     const offset = newLines.length
-                    const backslashes = value.match(/(\\)/g) || []
-                    const backslashOffset = backslashes
-                        ? backslashes.length / 2
-                        : 0
                     counter =
                         decorationStart +
                         syntaxLength +
                         value.length +
                         syntaxLength +
-                        offset -
-                        backslashOffset
+                        offset
                     const decorationEnd = counter
                     const to = decorationEnd
                     decorations.push(
@@ -350,7 +346,6 @@ class Parser {
                 }
                 case 'text': {
                     const value = <string>(<Literal>node).value
-                    // console.log(node.raw, value)
                     const newLines = getNewLines(value)
                     const offset = newLines.length
                     counter = counter + value.length + offset

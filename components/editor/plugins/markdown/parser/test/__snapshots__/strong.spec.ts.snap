@@ -1,0 +1,633 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`** backslash 1`] = `
+Object {
+  "counter": 18,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 17,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 17,
+          "type": "strong",
+        },
+      ],
+      "to": 18,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** multiple words 1`] = `
+Object {
+  "counter": 17,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 16,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 16,
+          "type": "strong",
+        },
+      ],
+      "to": 17,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** single word 1`] = `
+Object {
+  "counter": 9,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 6,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 8,
+          "type": "strong",
+        },
+      ],
+      "to": 9,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** split across multiple lines 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 18,
+          "type": "strong",
+        },
+      ],
+      "to": 19,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** with nested delete 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 9,
+      "type": "syntax",
+    },
+    Object {
+      "from": 12,
+      "to": 14,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 20,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 14,
+          "type": "delete",
+        },
+        Object {
+          "from": 1,
+          "to": 20,
+          "type": "strong",
+        },
+      ],
+      "to": 21,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** with nested emphasis 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 11,
+      "to": 12,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 12,
+          "type": "emphasis",
+        },
+        Object {
+          "from": 1,
+          "to": 18,
+          "type": "strong",
+        },
+      ],
+      "to": 19,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** with nested inlineCode 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 11,
+      "to": 12,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 12,
+          "type": "inlineCode",
+        },
+        Object {
+          "from": 1,
+          "to": 18,
+          "type": "strong",
+        },
+      ],
+      "to": 19,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`** with nested strong 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 7,
+      "to": 9,
+      "type": "syntax",
+    },
+    Object {
+      "from": 12,
+      "to": 14,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 20,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 9,
+          "type": "strong",
+        },
+        Object {
+          "from": 12,
+          "to": 20,
+          "type": "strong",
+        },
+      ],
+      "to": 21,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ backslash 1`] = `
+Object {
+  "counter": 18,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 15,
+      "to": 17,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 17,
+          "type": "strong",
+        },
+      ],
+      "to": 18,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ multiple words 1`] = `
+Object {
+  "counter": 17,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 14,
+      "to": 16,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 16,
+          "type": "strong",
+        },
+      ],
+      "to": 17,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ single word 1`] = `
+Object {
+  "counter": 9,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 6,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 8,
+          "type": "strong",
+        },
+      ],
+      "to": 9,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ split across multiple lines 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 1,
+          "to": 18,
+          "type": "strong",
+        },
+      ],
+      "to": 19,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ with nested delete 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 9,
+      "type": "syntax",
+    },
+    Object {
+      "from": 12,
+      "to": 14,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 20,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 14,
+          "type": "delete",
+        },
+        Object {
+          "from": 1,
+          "to": 20,
+          "type": "strong",
+        },
+      ],
+      "to": 21,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ with nested emphasis 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 11,
+      "to": 12,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 12,
+          "type": "emphasis",
+        },
+        Object {
+          "from": 1,
+          "to": 18,
+          "type": "strong",
+        },
+      ],
+      "to": 19,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ with nested inlineCode 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 8,
+      "type": "syntax",
+    },
+    Object {
+      "from": 11,
+      "to": 12,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 16,
+      "to": 18,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 12,
+          "type": "inlineCode",
+        },
+        Object {
+          "from": 1,
+          "to": 18,
+          "type": "strong",
+        },
+      ],
+      "to": 19,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ with nested strong 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 7,
+      "to": 9,
+      "type": "syntax",
+    },
+    Object {
+      "from": 12,
+      "to": 14,
+      "type": "syntax",
+    },
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+    Object {
+      "from": 18,
+      "to": 20,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [
+        Object {
+          "from": 7,
+          "to": 14,
+          "type": "strong",
+        },
+        Object {
+          "from": 1,
+          "to": 20,
+          "type": "strong",
+        },
+      ],
+      "to": 21,
+      "type": "paragraph",
+    },
+  ],
+}
+`;

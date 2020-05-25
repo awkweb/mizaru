@@ -4,7 +4,7 @@ import { Plugin, PluginKey, Selection } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { Plugin as PluginExtension, checkActive } from '../../utils'
-import Parser, { Decoration as Deco, Node } from '../../parser'
+import Parser, { Decoration as Deco, Node } from './parser'
 import { EditorSelection } from '../../types'
 
 const key = new PluginKey('markdown')
@@ -35,8 +35,8 @@ class Markdown extends PluginExtension {
             }
         })
         const content = Parser.toContent(lines)
-        const { nodes, decorations } = Parser.parse(content)
-        this.results = { decorations, nodes }
+        const out = Parser.parse(content)
+        this.results = out
     }
 
     get decorations() {

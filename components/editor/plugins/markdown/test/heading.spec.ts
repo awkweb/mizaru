@@ -44,6 +44,13 @@ for (const { tag, syntax } of headings) {
             expect(state.doc).toEqual(doc(heading(content)))
         })
 
+        test('backslash', () => {
+            const content = `${syntax} foo\ bar baz`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(heading(content)))
+        })
+
         describe('with nested', () => {
             test('delete', () => {
                 const content = `${syntax} foo ~~bar~~ baz`
@@ -195,37 +202,6 @@ for (const { tag, syntax } of headings) {
         })
     })
 }
-
-describe('invalid', () => {
-    test('no space after syntax character', () => {
-        const content = '#'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(p(content)))
-    })
-
-    test('more than six syntax characters', () => {
-        const content = '#######'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(p(content)))
-    })
-
-    test.skip('escaped syntax character', () => {
-        // prettier-ignore
-        const content = '\# foo'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(p(content)))
-    })
-
-    test.skip('four spaces before syntax character', () => {
-        const content = '    #'
-        let state = mkState({ schema, plugins })
-        state = type(state, content)
-        expect(state.doc).toEqual(doc(p(content)))
-    })
-})
 
 describe('editing', () => {
     test('type', () => {

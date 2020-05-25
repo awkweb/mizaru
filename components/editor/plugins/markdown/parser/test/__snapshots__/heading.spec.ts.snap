@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`h1 backslash 1`] = `
+Object {
+  "counter": 16,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 16,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h1 empty 1`] = `
 Object {
   "counter": 4,
@@ -67,6 +91,36 @@ Object {
       "marks": Array [],
       "to": 7,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h1 split across multiple lines 1`] = `
+Object {
+  "counter": 17,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 3,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 7,
+      "type": "heading",
+    },
+    Object {
+      "from": 7,
+      "marks": Array [],
+      "to": 17,
+      "type": "paragraph",
     },
   ],
 }
@@ -545,6 +599,30 @@ Object {
 }
 `;
 
+exports[`h2 backslash 1`] = `
+Object {
+  "counter": 17,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 17,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h2 empty 1`] = `
 Object {
   "counter": 5,
@@ -612,6 +690,36 @@ Object {
       "marks": Array [],
       "to": 8,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h2 split across multiple lines 1`] = `
+Object {
+  "counter": 18,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 4,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 8,
+      "type": "heading",
+    },
+    Object {
+      "from": 8,
+      "marks": Array [],
+      "to": 18,
+      "type": "paragraph",
     },
   ],
 }
@@ -1090,6 +1198,30 @@ Object {
 }
 `;
 
+exports[`h3 backslash 1`] = `
+Object {
+  "counter": 18,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 18,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h3 empty 1`] = `
 Object {
   "counter": 6,
@@ -1157,6 +1289,36 @@ Object {
       "marks": Array [],
       "to": 9,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h3 split across multiple lines 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 5,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 9,
+      "type": "heading",
+    },
+    Object {
+      "from": 9,
+      "marks": Array [],
+      "to": 19,
+      "type": "paragraph",
     },
   ],
 }
@@ -1635,6 +1797,30 @@ Object {
 }
 `;
 
+exports[`h4 backslash 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 19,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h4 empty 1`] = `
 Object {
   "counter": 7,
@@ -1702,6 +1888,36 @@ Object {
       "marks": Array [],
       "to": 10,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 split across multiple lines 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 6,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 10,
+      "type": "heading",
+    },
+    Object {
+      "from": 10,
+      "marks": Array [],
+      "to": 20,
+      "type": "paragraph",
     },
   ],
 }
@@ -2180,6 +2396,30 @@ Object {
 }
 `;
 
+exports[`h5 backslash 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 20,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h5 empty 1`] = `
 Object {
   "counter": 8,
@@ -2247,6 +2487,36 @@ Object {
       "marks": Array [],
       "to": 11,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h5 split across multiple lines 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 7,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 11,
+      "type": "heading",
+    },
+    Object {
+      "from": 11,
+      "marks": Array [],
+      "to": 21,
+      "type": "paragraph",
     },
   ],
 }
@@ -2725,6 +2995,30 @@ Object {
 }
 `;
 
+exports[`h6 backslash 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 21,
+      "type": "heading",
+    },
+  ],
+}
+`;
+
 exports[`h6 empty 1`] = `
 Object {
   "counter": 9,
@@ -2792,6 +3086,36 @@ Object {
       "marks": Array [],
       "to": 12,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 split across multiple lines 1`] = `
+Object {
+  "counter": 22,
+  "decorations": Array [
+    Object {
+      "from": 1,
+      "to": 8,
+      "type": "syntax",
+    },
+  ],
+  "nodes": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "from": 0,
+      "marks": Array [],
+      "to": 12,
+      "type": "heading",
+    },
+    Object {
+      "from": 12,
+      "marks": Array [],
+      "to": 22,
+      "type": "paragraph",
     },
   ],
 }
