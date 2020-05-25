@@ -2,6 +2,7 @@ import Parser from '../'
 
 // @ts-ignore
 const { mkHeadings } = prosemirror
+const headings = mkHeadings()
 
 for (const syntax of ['>', '> ']) {
     describe(syntax, () => {
@@ -60,7 +61,6 @@ for (const syntax of ['>', '> ']) {
                 expect(out).toMatchSnapshot()
             })
 
-            const headings = mkHeadings()
             for (const heading of headings) {
                 test(heading.tag, () => {
                     const doc = `${syntax}${heading.syntax} foo bar baz`

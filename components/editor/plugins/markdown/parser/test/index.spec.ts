@@ -14,3 +14,12 @@ test('converts lines to parseable content', () => {
         baz"
     `)
 })
+
+test.only('test', () => {
+    // prettier-ignore
+    // const escaped = unescape('\\o')
+    // console.log('escaped', escaped)
+    const content = Parser.toContent(['\\', '', 'foo'])
+    const out = Parser.parse(content)
+    console.log(out)
+})

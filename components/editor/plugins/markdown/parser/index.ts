@@ -4,7 +4,7 @@ import remarkParse from 'remark-parse'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
 // @ts-ignore
-import remarkDisableTokenizers from 'remark-disable-tokenizers'
+import disableTokenizers from 'remark-disable-tokenizers'
 
 import {
     BlankLine,
@@ -18,6 +18,7 @@ import {
     Parent,
 } from './types'
 import {
+    escape,
     getBlockquoteWhitespace,
     getHeadingWhitespace,
     getInlineSyntaxLength,
@@ -25,6 +26,7 @@ import {
     toMDZAST,
 } from './utils'
 import { blankLine } from './tokenize'
+import { settings } from './constants'
 
 interface Props {
     offset: number
@@ -39,32 +41,41 @@ class Parser {
         this.props = { ...this.props, ...props }
     }
 
-    static parse(doc: string, props?: Partial<Props>) {
+    static parse(content: string, props?: Partial<Props>) {
         const parser = new Parser(props)
-        return parser.parse(doc)
+        return parser.parse(content)
     }
 
-    static toContent(lines: string[]) {
-        return lines.join('\n').replace(/(\\)/g, '\\\\')
+    static toContent(lines: string[], props?: Partial<Props>) {
+        const parser = new Parser(props)
+        return parser.toContent(lines)
     }
 
-    parse(doc: string) {
+    parse(content: string) {
         // @ts-ignore
-        const tokenizers = remarkParse.Parser.prototype.blockTokenizers
-        tokenizers.blankLine = blankLine
+        const blockTokenizers = remarkParse.Parser.prototype.blockTokenizers
+
+        // Override tokenizers
+        blockTokenizers.blankLine = blankLine
+
+        // Disable tokenizers
+        const disabled = { inline: ['break'] }
 
         const markdown = unified()
-            .use(remarkParse, {
-                commonmark: true,
-                gfm: true,
-            })
-            .use(remarkDisableTokenizers, {
-                inline: ['break'],
-            })
-            .parse(doc)
-        const tree = <Parent>toMDZAST({ doc })(markdown)
+            .use(remarkParse, settings)
+            .use(disableTokenizers, disabled)
+            .parse(content)
+        const tree = <Parent>toMDZAST({ content })(markdown)
         const out = this.parseBlock(tree.children, this.props.offset)
 
+        return out
+    }
+
+    toContent(lines: string[]) {
+        // Join lines into one string with \n
+        // Escape backslashes so markdown processor doesn't strip them
+        const joined = lines.join('\n').replace(/(\\)/g, '\\\\')
+        const out = escape(joined)
         return out
     }
 
@@ -286,17 +297,12 @@ class Parser {
                     const value = <string>(<Literal>node).value
                     const newLines = getNewLines(value)
                     const offset = newLines.length
-                    const backslashes = value.match(/(\\)/g) || []
-                    const backslashOffset = backslashes
-                        ? backslashes.length / 2
-                        : 0
                     counter =
                         decorationStart +
                         syntaxLength +
                         value.length +
                         syntaxLength +
-                        offset -
-                        backslashOffset
+                        offset
                     const decorationEnd = counter
                     const to = decorationEnd
                     decorations.push(
