@@ -48,6 +48,24 @@ test('multiple words', () => {
 })
 
 test('backslash', () => {
+    const out = Parser.parse('\\')
+    expect(out).toMatchInlineSnapshot(`
+        Object {
+          "counter": 3,
+          "decorations": Array [],
+          "nodes": Array [
+            Object {
+              "from": 0,
+              "marks": Array [],
+              "to": 3,
+              "type": "paragraph",
+            },
+          ],
+        }
+    `)
+})
+
+test('backslash between multiple words', () => {
     const out = Parser.parse('foo\\ bar baz')
     expect(out).toMatchInlineSnapshot(`
         Object {
@@ -85,8 +103,7 @@ test('split across multiple lines', () => {
 
 describe('with nested', () => {
     test('delete', () => {
-        const doc = 'foo ~~bar~~ baz'
-        const out = Parser.parse(doc)
+        const out = Parser.parse('foo ~~bar~~ baz')
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 17,
@@ -121,8 +138,7 @@ describe('with nested', () => {
     })
 
     test('emphasis', () => {
-        const doc = 'foo *bar* baz'
-        const out = Parser.parse(doc)
+        const out = Parser.parse('foo *bar* baz')
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 15,
@@ -157,8 +173,7 @@ describe('with nested', () => {
     })
 
     test('inlineCode', () => {
-        const doc = 'foo `bar` baz'
-        const out = Parser.parse(doc)
+        const out = Parser.parse('foo `bar` baz')
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 15,
@@ -193,8 +208,7 @@ describe('with nested', () => {
     })
 
     test('strong', () => {
-        const doc = 'foo **bar** baz'
-        const out = Parser.parse(doc)
+        const out = Parser.parse('foo **bar** baz')
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 17,
@@ -231,8 +245,7 @@ describe('with nested', () => {
 
 describe('with whitespace', () => {
     test('leading', () => {
-        const doc = '   foo bar baz'
-        const out = Parser.parse(doc)
+        const out = Parser.parse('   foo bar baz')
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 16,
@@ -250,8 +263,7 @@ describe('with whitespace', () => {
     })
 
     test('trailing', () => {
-        const doc = 'foo bar baz   '
-        const out = Parser.parse(doc)
+        const out = Parser.parse('foo bar baz   ')
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 16,

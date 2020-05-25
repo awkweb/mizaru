@@ -20,6 +20,13 @@ test('multiple words', () => {
 })
 
 test('backslash', () => {
+    const content = '\\'
+    let state = mkState({ schema, plugins })
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(content)))
+})
+
+test('backslash between multiple words', () => {
     const content = 'foo\\ bar baz'
     let state = mkState({ schema, plugins })
     state = type(state, content)

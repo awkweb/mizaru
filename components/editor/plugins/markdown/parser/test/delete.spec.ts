@@ -1,8 +1,8 @@
 import Parser from '../'
 
 test('single word', () => {
-    const doc = '~~foo~~'
-    const out = Parser.parse(doc)
+    const content = '~~foo~~'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 9,
@@ -37,8 +37,8 @@ test('single word', () => {
 })
 
 test('multiple words', () => {
-    const doc = '~~foo bar baz~~'
-    const out = Parser.parse(doc)
+    const content = '~~foo bar baz~~'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 17,
@@ -73,8 +73,8 @@ test('multiple words', () => {
 })
 
 test('backslash', () => {
-    const doc = '~~foo\\ bar baz~~'
-    const out = Parser.parse(doc)
+    const content = '~~foo\\ bar baz~~'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 18,
@@ -109,8 +109,8 @@ test('backslash', () => {
 })
 
 test('split across multiple lines', () => {
-    const doc = '~~foo\nbar\nbaz~~'
-    const out = Parser.parse(doc)
+    const content = '~~foo\nbar\nbaz~~'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 19,
@@ -146,8 +146,8 @@ test('split across multiple lines', () => {
 
 describe('with nested', () => {
     test('delete', () => {
-        const doc = '~~foo ~~bar~~ baz~~'
-        const out = Parser.parse(doc)
+        const content = '~~foo ~~bar~~ baz~~'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 21,
@@ -182,8 +182,8 @@ describe('with nested', () => {
     })
 
     test('emphasis', () => {
-        const doc = '~~foo *bar* baz~~'
-        const out = Parser.parse(doc)
+        const content = '~~foo *bar* baz~~'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 19,
@@ -233,8 +233,8 @@ describe('with nested', () => {
     })
 
     test('inlineCode', () => {
-        const doc = '~~foo `bar` baz~~'
-        const out = Parser.parse(doc)
+        const content = '~~foo `bar` baz~~'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 19,
@@ -284,8 +284,8 @@ describe('with nested', () => {
     })
 
     test('strong', () => {
-        const doc = '~~foo **bar** baz~~'
-        const out = Parser.parse(doc)
+        const content = '~~foo **bar** baz~~'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 21,

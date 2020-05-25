@@ -1,8 +1,8 @@
 import Parser from '../'
 
 test('single word', () => {
-    const doc = '`foo`'
-    const out = Parser.parse(doc)
+    const content = '`foo`'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 7,
@@ -37,8 +37,8 @@ test('single word', () => {
 })
 
 test('multiple words', () => {
-    const doc = '`foo bar baz`'
-    const out = Parser.parse(doc)
+    const content = '`foo bar baz`'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 15,
@@ -73,11 +73,11 @@ test('multiple words', () => {
 })
 
 test('backslash', () => {
-    const doc = '`foo\\ bar baz`'
-    const out = Parser.parse(doc)
+    const content = '`foo\\ bar baz`'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
-          "counter": 15.5,
+          "counter": 16,
           "decorations": Array [
             Object {
               "from": 1,
@@ -85,8 +85,8 @@ test('backslash', () => {
               "type": "syntax",
             },
             Object {
-              "from": 13.5,
-              "to": 14.5,
+              "from": 14,
+              "to": 15,
               "type": "syntax",
             },
           ],
@@ -96,11 +96,11 @@ test('backslash', () => {
               "marks": Array [
                 Object {
                   "from": 1,
-                  "to": 14.5,
+                  "to": 15,
                   "type": "inlineCode",
                 },
               ],
-              "to": 15.5,
+              "to": 16,
               "type": "paragraph",
             },
           ],
@@ -109,8 +109,8 @@ test('backslash', () => {
 })
 
 test('split across multiple lines', () => {
-    const doc = '`foo\nbar\nbaz`'
-    const out = Parser.parse(doc)
+    const content = '`foo\nbar\nbaz`'
+    const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {
           "counter": 17,
@@ -146,8 +146,8 @@ test('split across multiple lines', () => {
 
 describe('with nested', () => {
     test('delete', () => {
-        const doc = '`foo ~~bar~~ baz`'
-        const out = Parser.parse(doc)
+        const content = '`foo ~~bar~~ baz`'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 19,
@@ -182,8 +182,8 @@ describe('with nested', () => {
     })
 
     test('emphasis', () => {
-        const doc = '`foo *bar* baz`'
-        const out = Parser.parse(doc)
+        const content = '`foo *bar* baz`'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 17,
@@ -218,8 +218,8 @@ describe('with nested', () => {
     })
 
     test('inlineCode', () => {
-        const doc = '`foo `bar` baz`'
-        const out = Parser.parse(doc)
+        const content = '`foo `bar` baz`'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 17,
@@ -269,8 +269,8 @@ describe('with nested', () => {
     })
 
     test('strong', () => {
-        const doc = '`foo **bar** baz`'
-        const out = Parser.parse(doc)
+        const content = '`foo **bar** baz`'
+        const out = Parser.parse(content)
         expect(out).toMatchInlineSnapshot(`
             Object {
               "counter": 19,

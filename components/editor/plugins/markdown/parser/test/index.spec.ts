@@ -5,7 +5,7 @@ test('create parser', () => {
     expect(parser).toBeDefined()
 })
 
-test('converts lines to parseable content', () => {
+test('converts lines and parses content', () => {
     const lines = ['foo', 'bar', 'baz']
     const content = Parser.toContent(lines)
     expect(content).toMatchInlineSnapshot(`
@@ -13,13 +13,19 @@ test('converts lines to parseable content', () => {
         bar
         baz"
     `)
-})
-
-test.only('test', () => {
-    // prettier-ignore
-    // const escaped = unescape('\\o')
-    // console.log('escaped', escaped)
-    const content = Parser.toContent(['\\', '', 'foo'])
     const out = Parser.parse(content)
-    console.log(out)
+    expect(out).toMatchInlineSnapshot(`
+        Object {
+          "counter": 15,
+          "decorations": Array [],
+          "nodes": Array [
+            Object {
+              "from": 0,
+              "marks": Array [],
+              "to": 15,
+              "type": "paragraph",
+            },
+          ],
+        }
+    `)
 })
