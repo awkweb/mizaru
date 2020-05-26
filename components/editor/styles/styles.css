@@ -1,0 +1,33 @@
+/* purgecss start ignore */
+@import 'prosemirror-view/style/prosemirror.css';
+
+.editor {
+    @apply h-full;
+}
+
+.editor p.is-editor-empty:first-child::before {
+    @apply float-left;
+    @apply h-0;
+    @apply pointer-events-none;
+    @apply text-syntax;
+    content: attr(data-empty-text);
+}
+
+.ProseMirror {
+    @apply min-h-full;
+    @apply outline-none;
+    @apply pb-64;
+    @apply pt-16;
+    @apply px-10;
+    @apply w-full;
+}
+
+.syntax {
+    @apply text-syntax;
+    @apply no-underline;
+    @apply hidden;
+}
+.active > .syntax {
+    @apply inline;
+}
+/* purgecss end ignore */

@@ -22,11 +22,17 @@ class Delete extends Mark {
             ],
             toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
                 const attrs = {
-                    ...(node.attrs.active ? { class: 'active' } : null),
+                    class: this.getClasses(node.attrs.active),
                 }
                 return ['del', attrs]
             },
         }
+    }
+
+    private getClasses(active: boolean) {
+        const activeClasses = active ? ['active'] : []
+        const classes = [...activeClasses, 'no-underline']
+        return classes.join(' ')
     }
 }
 

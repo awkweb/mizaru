@@ -1,9 +1,6 @@
 /* purgecss start ignore */
-@import 'prosemirror-view/style/prosemirror.css';
 @import './fonts.css';
-/* purgecss end ignore */
 
-/* purgecss start ignore */
 @tailwind base;
 @tailwind components;
 
@@ -28,82 +25,18 @@ html {
     text-rendering: optimizeLegibility;
 }
 
-@supports (font: -apple-system-body) {
-    html {
-        font: -apple-system-body;
-    }
-}
-
 body {
     @apply bg-background;
+    @apply h-screen;
     @apply leading-normal;
     @apply m-0;
-    @apply max-w-xl;
+    @apply max-w-3xl;
     @apply mx-auto;
     @apply text-body;
 }
 
-a {
-    @apply no-underline;
-}
-a span:not(.syntax) {
-    @apply underline;
-}
-
-del {
-    @apply no-underline;
-}
-del span:not(.syntax) {
-    @apply line-through;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @apply font-bold;
-}
-
-h1 {
-    @apply text-3xl;
-}
-h2 {
-    @apply text-2xl;
-}
-h3 {
-    @apply text-xl;
-}
-h4 {
-    @apply text-lg;
-}
-h5 {
-    @apply text-base;
-}
-h6 {
-    @apply text-sm;
-}
-
-.ProseMirror {
-    @apply outline-none;
-    @apply pb-10;
-    @apply pt-3;
-    @apply px-3;
-    min-height: calc(100vh - 2.5rem);
-}
-
-.highlight {
-    @apply bg-highlight;
-}
-
-.syntax {
-    @apply text-syntax;
-    @apply no-underline;
-    @apply hidden;
-}
-.active > .syntax {
-    @apply inline;
+#__next {
+    @apply h-full;
 }
 /* purgecss end ignore */
 
