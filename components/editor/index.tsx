@@ -63,4 +63,5 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
 })
 
 export default Editor
+export { keys } from './constants'
 export type { Props as EditorProps, Ref as EditorRef }

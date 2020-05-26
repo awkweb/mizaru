@@ -8,7 +8,7 @@ import {
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { checkActive } from '../../utils'
-import Parser, { Decoration as Deco, Node } from './parser'
+import Parser, { Decoration as Deco, Node } from '../../parser'
 import Plugin from '../plugin'
 
 const key = new PluginKey('markdown')

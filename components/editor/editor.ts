@@ -6,11 +6,7 @@ import { baseKeymap } from 'prosemirror-commands'
 
 import { Extension, ExtensionManager, minMax } from './utils'
 import { Doc, Paragraph, Text } from './nodes'
-
-export enum FocusPosition {
-    End = 'END',
-    Start = 'START',
-}
+import { FocusPosition } from './types'
 
 interface Events {
     onChange: (content: JSON) => void
@@ -32,6 +28,8 @@ class Editor {
     schema: Schema
     selection = { from: 0, to: 0 }
     view: EditorView<any>
+
+    public static FocusPosition = FocusPosition
 
     constructor(props?: Partial<Props>) {
         const defaultProps = {
