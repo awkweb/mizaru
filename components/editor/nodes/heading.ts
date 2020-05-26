@@ -42,12 +42,35 @@ class Heading extends Node {
             toDOM: (node: ProsemirrorNode): DOMOutputSpec => {
                 const { active, level, ...rest } = node.attrs
                 const attrs = {
-                    ...(active ? { class: 'active' } : null),
+                    class: this.getClasses(level, active),
                     ...rest,
                 }
                 return [`h${level}`, attrs, 0]
             },
         }
+    }
+
+    private getClasses(level: number, active: boolean) {
+        let sizeClass
+        switch (level) {
+            case 4:
+                sizeClass = ['text-lg']
+                break
+            case 3:
+                sizeClass = ['text-xl']
+                break
+            case 2:
+                sizeClass = ['text-2xl']
+                break
+            case 1:
+                sizeClass = ['text-3xl']
+                break
+            default:
+                sizeClass = ['text-base']
+        }
+        const activeClasses = active ? ['active'] : []
+        const classes = [...activeClasses, ...sizeClass, 'font-bold']
+        return classes.join(' ')
     }
 }
 

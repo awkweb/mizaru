@@ -12,14 +12,12 @@ const Home: NextPage<Props> = () => {
     const editorRef: EditorRef = useRef(null)
 
     return (
-        <div>
-            <Editor
-                autoFocus
-                ref={editorRef}
-                value={content}
-                onChange={handleChange}
-            />
-        </div>
+        <Editor
+            autoFocus
+            ref={editorRef}
+            value={content}
+            onChange={handleChange}
+        />
     )
 }
 

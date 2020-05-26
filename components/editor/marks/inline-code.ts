@@ -17,20 +17,24 @@ class InlineCode extends Mark {
             excludes: '_',
             parseDOM: [{ tag: 'code' }],
             toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
-                const activeClasses = node.attrs.active ? ['active'] : ['px-1']
-                const classes = [
-                    ...activeClasses,
-                    'bg-muted',
-                    'leading-normal',
-                    'py-px',
-                    'rounded-sm',
-                ]
                 const attrs = {
-                    class: classes.join(' '),
+                    class: this.getClasses(node.attrs.active),
                 }
                 return ['code', attrs]
             },
         }
+    }
+
+    private getClasses(active: boolean) {
+        const activeClasses = active ? ['active'] : ['px-1']
+        const classes = [
+            ...activeClasses,
+            'bg-muted',
+            'leading-normal',
+            'py-px',
+            'rounded-sm',
+        ]
+        return classes.join(' ')
     }
 }
 

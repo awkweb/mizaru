@@ -33,11 +33,17 @@ class Strong extends Mark {
             ],
             toDOM: (node: ProsemirrorMark, _inline: boolean): DOMOutputSpec => {
                 const attrs = {
-                    ...(node.attrs.active ? { class: 'active' } : null),
+                    class: this.getClasses(node.attrs.active),
                 }
                 return ['strong', attrs]
             },
         }
+    }
+
+    private getClasses(active: boolean) {
+        const activeClasses = active ? ['active'] : []
+        const classes = [...activeClasses, 'font-bold']
+        return classes.join(' ')
     }
 }
 

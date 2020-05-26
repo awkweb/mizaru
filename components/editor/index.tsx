@@ -4,7 +4,7 @@ import applyDevTools from 'prosemirror-dev-tools'
 
 import { useMount } from 'react-use'
 
-import { History, Markdown } from './plugins'
+import { History, Markdown, Placeholder } from './plugins'
 import { Blockquote, Doc, Heading, Paragraph, Text } from './nodes'
 import { Delete, Emphasis, InlineCode, Strong } from './marks'
 import { EditorRef } from './types'
@@ -40,7 +40,7 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
             new Paragraph(),
             new Text(),
         ]
-        const plugins = [new History(), new Markdown()]
+        const plugins = [new History(), new Markdown(), new Placeholder()]
         const editorInstance = new EditorInstance({
             autoFocus: props.autoFocus,
             extensions: [...marks, ...nodes, ...plugins],
@@ -56,7 +56,7 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
         return () => editor.current?.view.destroy()
     })
 
-    return <div ref={viewHost} />
+    return <div className="editor" ref={viewHost} />
 })
 
 export default Editor
