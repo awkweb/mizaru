@@ -51,25 +51,27 @@ class Heading extends Node {
     }
 
     private getClasses(level: number, active: boolean) {
-        let sizeClass
+        let levelClasses
         switch (level) {
-            case 4:
-                sizeClass = ['text-lg']
-                break
             case 3:
-                sizeClass = ['text-xl']
+                levelClasses = ['mb-2', 'mt-4', 'text-xl']
                 break
             case 2:
-                sizeClass = ['text-2xl']
+                levelClasses = ['mb-2', 'mt-5', 'text-2xl']
                 break
             case 1:
-                sizeClass = ['text-3xl']
+                levelClasses = ['mb-3', 'mt-6', 'text-3xl']
                 break
             default:
-                sizeClass = ['text-base']
+                levelClasses = ['mb-1', 'mt-3', 'text-lg']
         }
         const activeClasses = active ? ['active'] : []
-        const classes = [...activeClasses, ...sizeClass, 'font-bold']
+        const classes = [
+            ...activeClasses,
+            ...levelClasses,
+            'font-bold',
+            'leading-tight',
+        ]
         return classes.join(' ')
     }
 }

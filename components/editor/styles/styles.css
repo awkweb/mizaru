@@ -22,6 +22,10 @@
     @apply w-full;
 }
 
+.ProseMirror *:first-child {
+    @apply mt-0;
+}
+
 .syntax {
     @apply text-syntax;
     @apply no-underline;
