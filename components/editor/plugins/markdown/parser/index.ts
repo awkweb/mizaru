@@ -59,7 +59,27 @@ class Parser {
         blockTokenizers.blankLine = blankLine
 
         // Disable tokenizers
-        const disabled = { inline: ['break'] }
+        const disabled = {
+            block: [
+                'indentedCode',
+                'fencedCode',
+                'blockquote',
+                'thematicBreak',
+                'list',
+                'html',
+                'definition',
+                'table',
+            ],
+            inline: [
+                'autoLink',
+                'url',
+                'email',
+                'html',
+                'link',
+                'reference',
+                'break',
+            ],
+        }
 
         const markdown = unified()
             .use(remarkParse, settings)
