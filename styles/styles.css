@@ -4,12 +4,24 @@
 @tailwind base;
 @tailwind components;
 
-:root {
-    --colors-background: hsl(104, 100%, 100%);
-    --colors-body: hsl(109, 0%, 10%);
-    --colors-highlight: hsl(167, 100%, 74%);
-    --colors-muted: hsl(109, 0%, 95%);
-    --colors-syntax: hsl(204, 0%, 70%);
+@media (prefers-color-scheme: dark) {
+    :root {
+        --colors-background: hsl(0, 0%, 0%);
+        --colors-body: hsl(109, 0%, 60%);
+        --colors-highlight: hsl(167, 100%, 74%);
+        --colors-muted: hsl(109, 0%, 5%);
+        --colors-syntax: hsl(204, 0%, 30%);
+    }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+    :root {
+        --colors-background: hsl(104, 100%, 100%);
+        --colors-body: hsl(109, 0%, 20%);
+        --colors-highlight: hsl(167, 100%, 74%);
+        --colors-muted: hsl(109, 0%, 95%);
+        --colors-syntax: hsl(204, 0%, 70%);
+    }
 }
 
 ::selection {
@@ -28,7 +40,7 @@ html {
 body {
     @apply bg-background;
     @apply h-screen;
-    @apply leading-normal;
+    @apply leading-relaxed;
     @apply m-0;
     @apply max-w-3xl;
     @apply mx-auto;
