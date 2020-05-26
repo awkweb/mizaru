@@ -1,10 +1,6 @@
 /* eslint-disable */
-import unified from 'unified'
-import remarkParse from 'remark-parse'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
-// @ts-ignore
-import disableTokenizers from 'remark-disable-tokenizers'
 
 import {
     BlankLine,
@@ -18,15 +14,12 @@ import {
     Parent,
 } from './types'
 import {
-    escape,
     getBlockquoteWhitespace,
     getHeadingWhitespace,
     getInlineSyntaxLength,
+    getMDAST,
     getNewLines,
-    toMDZAST,
 } from './utils'
-import { blankLine } from './tokenize'
-import { settings } from './constants'
 
 interface Props {
     offset: number
@@ -46,56 +39,9 @@ class Parser {
         return parser.parse(content)
     }
 
-    static toContent(lines: string[], props?: Partial<Props>) {
-        const parser = new Parser(props)
-        return parser.toContent(lines)
-    }
-
     parse(content: string) {
-        // @ts-ignore
-        const blockTokenizers = remarkParse.Parser.prototype.blockTokenizers
-
-        // Override tokenizers
-        blockTokenizers.blankLine = blankLine
-
-        // Disable tokenizers
-        const disabled = {
-            block: [
-                'indentedCode',
-                // 'fencedCode',
-                // 'blockquote',
-                // 'thematicBreak',
-                // 'list',
-                // 'html',
-                'definition',
-                'table',
-            ],
-            inline: [
-                'autoLink',
-                'url',
-                'email',
-                'html',
-                'link',
-                'reference',
-                'break',
-            ],
-        }
-
-        const markdown = unified()
-            .use(remarkParse, settings)
-            .use(disableTokenizers, disabled)
-            .parse(content)
-        const tree = <Parent>toMDZAST({ content })(markdown)
+        const tree = getMDAST(content)
         const out = this.parseBlock(tree.children, this.props.offset)
-
-        return out
-    }
-
-    toContent(lines: string[]) {
-        // Join lines into one string with \n
-        // Escape backslashes so markdown processor doesn't strip them
-        const joined = lines.join('\n').replace(/(\\)/g, '\\\\')
-        const out = escape(joined)
         return out
     }
 

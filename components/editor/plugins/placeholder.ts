@@ -6,8 +6,9 @@ import Plugin from './plugin'
 const key = new PluginKey('placeholder')
 
 type Props = {
-    placeholderClass: string
-    placeholderText: string
+    className: string
+
+    text: string
 }
 
 class Placeholder extends Plugin {
@@ -17,8 +18,8 @@ class Placeholder extends Plugin {
         super()
 
         this.props = {
-            placeholderClass: 'is-empty',
-            placeholderText: 'Write something …',
+            className: 'placeholder',
+            text: 'Write something …',
             ...props,
         }
     }
@@ -51,9 +52,8 @@ class Placeholder extends Plugin {
                                 pos,
                                 pos + node.nodeSize,
                                 {
-                                    class: this.props.placeholderClass,
-                                    'data-empty-text': this.props
-                                        .placeholderText,
+                                    class: this.props.className,
+                                    'data-placeholder-text': this.props.text,
                                 },
                             )
                             decorations.push(decoration)

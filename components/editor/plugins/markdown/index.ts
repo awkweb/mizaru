@@ -14,7 +14,6 @@ import Plugin from '../plugin'
 const key = new PluginKey('markdown')
 
 class Markdown extends Plugin {
-    selection = { from: 0, to: 0 }
     results: { decorations: Deco[]; nodes: Node[] } = {
         decorations: [],
         nodes: [],
@@ -24,22 +23,16 @@ class Markdown extends Plugin {
         return 'markdown'
     }
 
-    render(doc: ProsemirrorNode, selection: Selection) {
-        this.selection = { from: 0, to: doc.nodeSize }
+    render(doc: ProsemirrorNode) {
         const lines: string[] = []
         doc.descendants((node, pos) => {
             if (node.isBlock) {
-                const from = pos
-                const to = pos + 1 + node.textContent.length + 1
-                if (from <= selection.from && to >= selection.to) {
-                    this.selection = { from, to }
-                }
                 const line = node.textContent || '\n'
                 lines.push(line)
             }
         })
-        const content = Parser.toContent(lines)
-        const out = Parser.parse(content)
+        const joined = lines.join('\n')
+        const out = Parser.parse(joined)
         this.results = out
     }
 
@@ -50,8 +43,8 @@ class Markdown extends Plugin {
         })
     }
 
-    private createDeco(doc: ProsemirrorNode, selection: Selection) {
-        this.render(doc, selection)
+    private createDeco(doc: ProsemirrorNode) {
+        this.render(doc)
         return this.decorations
             ? DecorationSet.create(doc, this.decorations)
             : []
@@ -63,13 +56,11 @@ class Markdown extends Plugin {
                 key,
                 state: {
                     init: (_config, instance) => {
-                        const { doc, selection } = instance
-                        return this.createDeco(doc, selection)
+                        return this.createDeco(instance.doc)
                     },
                     apply: (tr, value, _oldState, _newState) => {
                         if (tr.docChanged) {
-                            const { doc, selection } = tr
-                            return this.createDeco(doc, selection)
+                            return this.createDeco(tr.doc)
                         }
                         return value
                     },

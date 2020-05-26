@@ -5,12 +5,12 @@
     @apply h-full;
 }
 
-.editor .is-empty:first-child::before {
+.editor .placeholder:first-child::before {
     @apply float-left;
     @apply h-0;
     @apply pointer-events-none;
     @apply text-syntax;
-    content: attr(data-empty-text);
+    content: attr(data-placeholder-text);
 }
 
 .ProseMirror {
