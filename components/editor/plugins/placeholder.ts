@@ -1,28 +1,24 @@
-import { Plugin, PluginKey } from 'prosemirror-state'
+import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension } from '../utils'
+import Plugin from './plugin'
 
 const key = new PluginKey('placeholder')
 
 type Props = {
-    emptyEditorClass: string
-    emptyNodeClass: string
-    emptyNodeText: string
-    showOnlyCurrent: boolean
+    placeholderClass: string
+    placeholderText: string
 }
 
-class Placeholder extends PluginExtension {
+class Placeholder extends Plugin {
     props: Props
 
     constructor(props?: Partial<Props>) {
         super()
 
         this.props = {
-            emptyEditorClass: 'is-editor-empty',
-            emptyNodeClass: 'is-empty',
-            emptyNodeText: 'Write something …',
-            showOnlyCurrent: true,
+            placeholderClass: 'is-empty',
+            placeholderText: 'Write something …',
             ...props,
         }
     }
@@ -33,42 +29,34 @@ class Placeholder extends PluginExtension {
 
     get plugins() {
         return [
-            new Plugin({
+            new ProsemirrorPlugin({
                 key,
                 props: {
-                    decorations: ({ doc, selection }) => {
-                        const { anchor } = selection
+                    decorations: ({ doc }) => {
                         const decorations: Decoration[] = []
-                        const isEditorEmpty = doc.textContent.length === 0
+                        const completelyEmpty =
+                            doc.textContent === '' &&
+                            doc.childCount <= 1 &&
+                            doc.content.size <= 2
 
                         doc.descendants((node, pos) => {
-                            const hasAnchor =
-                                anchor >= pos && anchor <= pos + node.nodeSize
-                            const isNodeEmpty = node.content.size === 0
-
-                            if (
-                                (hasAnchor || !this.props.showOnlyCurrent) &&
-                                isNodeEmpty
-                            ) {
-                                const classes = [this.props.emptyNodeClass]
-
-                                if (isEditorEmpty) {
-                                    classes.push(this.props.emptyEditorClass)
-                                }
-
-                                const decoration = Decoration.node(
-                                    pos,
-                                    pos + node.nodeSize,
-                                    {
-                                        class: classes.join(' '),
-                                        'data-empty-text': this.props
-                                            .emptyNodeText,
-                                    },
-                                )
-                                decorations.push(decoration)
+                            if (!completelyEmpty) {
+                                return
+                            }
+                            if (pos !== 0 || node.type.name !== 'paragraph') {
+                                return
                             }
 
-                            return false
+                            const decoration = Decoration.node(
+                                pos,
+                                pos + node.nodeSize,
+                                {
+                                    class: this.props.placeholderClass,
+                                    'data-empty-text': this.props
+                                        .placeholderText,
+                                },
+                            )
+                            decorations.push(decoration)
                         })
 
                         return DecorationSet.create(doc, decorations)

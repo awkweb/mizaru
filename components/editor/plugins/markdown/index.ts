@@ -1,16 +1,20 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Plugin, PluginKey, Selection } from 'prosemirror-state'
+import {
+    PluginKey,
+    Plugin as ProsemirrorPlugin,
+    Selection,
+} from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension, checkActive } from '../../utils'
+import { checkActive } from '../../utils'
 import Parser, { Decoration as Deco, Node } from './parser'
-import { EditorSelection } from '../../types'
+import Plugin from '../plugin'
 
 const key = new PluginKey('markdown')
 
-class Markdown extends PluginExtension {
-    selection: EditorSelection = { from: 0, to: 0 }
+class Markdown extends Plugin {
+    selection = { from: 0, to: 0 }
     results: { decorations: Deco[]; nodes: Node[] } = {
         decorations: [],
         nodes: [],
@@ -55,7 +59,7 @@ class Markdown extends PluginExtension {
 
     get plugins() {
         return [
-            new Plugin({
+            new ProsemirrorPlugin({
                 key,
                 state: {
                     init: (_config, instance) => {
@@ -72,7 +76,7 @@ class Markdown extends PluginExtension {
                 },
                 props: {
                     decorations(state) {
-                        return (<Plugin>this).getState(state)
+                        return (<ProsemirrorPlugin>this).getState(state)
                     },
                 },
                 appendTransaction: (_transactions, _oldState, newState) => {

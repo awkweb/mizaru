@@ -29,17 +29,7 @@ test('check string content', () => {
 })
 
 test('check json content', () => {
-    const editor = new Editor({
-        content: {
-            content: [
-                {
-                    type: 'paragraph',
-                    content: [{ type: 'text', text: 'Hello, World!' }],
-                },
-            ],
-            type: 'doc',
-        },
-    })
+    const editor = new Editor({ content: 'Hello, World!' })
     expect(editor.json).toEqual({
         content: [
             {

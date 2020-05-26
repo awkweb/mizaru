@@ -1,6 +1,6 @@
 import { history, redo, undo } from 'prosemirror-history'
 
-import { Plugin } from '../utils'
+import Plugin from './plugin'
 
 class History extends Plugin {
     get name() {

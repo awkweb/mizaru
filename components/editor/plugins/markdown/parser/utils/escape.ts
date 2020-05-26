@@ -8,14 +8,14 @@ const backslash = '\\'
 function escape(value: string) {
     let out = ''
     let previousChar
-    const escape = escapes(settings)
+    const allowlist = escapes(settings)
     const denylist = [backslash, '\n']
 
     for (const char of value) {
         if (
-            denylist.indexOf(char) === -1 &&
             previousChar === backslash &&
-            escape.indexOf(char) !== -1
+            denylist.indexOf(char) === -1 &&
+            allowlist.indexOf(char) !== -1
         ) {
             out += backslash
         }

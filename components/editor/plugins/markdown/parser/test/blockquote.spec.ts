@@ -5,7 +5,7 @@ const { mkHeadings } = prosemirror
 const headings = mkHeadings()
 
 for (const syntax of ['>', '> ']) {
-    describe(syntax, () => {
+    describe.skip(syntax, () => {
         test('empty', () => {
             const content = `${syntax}`
             const out = Parser.parse(content)

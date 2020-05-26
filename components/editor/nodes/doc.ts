@@ -1,4 +1,4 @@
-import { Node } from '../utils'
+import Node from './node'
 
 class Doc extends Node {
     get name() {

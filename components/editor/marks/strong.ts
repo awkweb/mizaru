@@ -1,6 +1,6 @@
 import { DOMOutputSpec, Mark as ProsemirrorMark } from 'prosemirror-model'
 
-import { Mark } from '../utils'
+import Mark from './mark'
 
 class Strong extends Mark {
     get name() {

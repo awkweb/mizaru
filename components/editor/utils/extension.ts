@@ -1,14 +1,27 @@
-import { Plugin } from 'prosemirror-state'
+import { EditorState, Plugin } from 'prosemirror-state'
 
-import { ExtensionType } from '../types'
+import { EditorView } from 'prosemirror-view'
+
+enum Type {
+    Extension = 'extension',
+    Node = 'node',
+    Mark = 'mark',
+    Plugin = 'plugin',
+}
+
+type Command = (
+    attrs: object,
+) => (state: EditorState, dispatch: EditorView['dispatch']) => any
 
 abstract class Extension {
-    get name(): string {
+    public static Type = Type
+
+    get name() {
         return ''
     }
 
-    get type(): ExtensionType {
-        return ExtensionType.Extension
+    get type() {
+        return Extension.Type.Extension
     }
 
     get defaultOptions() {
@@ -23,8 +36,8 @@ abstract class Extension {
         return { ...keys }
     }
 
-    commands(): { [key: string]: Function } {
-        return {}
+    commands(_options?: any): Record<string, Command> | Command {
+        return (_attrs) => () => false
     }
 }
 

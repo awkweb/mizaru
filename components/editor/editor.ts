@@ -6,7 +6,11 @@ import { baseKeymap } from 'prosemirror-commands'
 
 import { Extension, ExtensionManager, minMax } from './utils'
 import { Doc, Paragraph, Text } from './nodes'
-import { EditorSchema, EditorSelection, FocusPosition } from './types'
+
+export enum FocusPosition {
+    End = 'END',
+    Start = 'START',
+}
 
 interface Events {
     onChange: (content: JSON) => void
@@ -25,8 +29,8 @@ class Editor {
     events: Events
     extensionManager: ExtensionManager
     focused: boolean = false
-    schema: EditorSchema
-    selection: EditorSelection = { from: 0, to: 0 }
+    schema: Schema
+    selection = { from: 0, to: 0 }
     view: EditorView<any>
 
     constructor(props?: Partial<Props>) {
@@ -89,7 +93,7 @@ class Editor {
         return <JSON>this.state.doc.toJSON()
     }
 
-    createDocument(schema: EditorSchema, content: JSON | string) {
+    createDocument(schema: Schema, content: JSON | string) {
         const emptyDocument = {
             type: 'doc',
             content: [
@@ -146,7 +150,7 @@ class Editor {
         }
 
         if (position === FocusPosition.End) {
-            const { doc } = <EditorState<any>>this.state
+            const { doc } = <EditorState>this.state
             return {
                 from: doc.content.size - 1,
                 to: doc.content.size - 1,

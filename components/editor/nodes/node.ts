@@ -1,11 +1,10 @@
 import { NodeSpec } from 'prosemirror-model'
 
-import Extension from './extension'
-import { ExtensionType } from '../types'
+import { Extension } from '../utils'
 
 class Node extends Extension {
     get type() {
-        return ExtensionType.Node
+        return Extension.Type.Node
     }
 
     get schema(): NodeSpec {

@@ -62,11 +62,11 @@ class Parser {
         const disabled = {
             block: [
                 'indentedCode',
-                'fencedCode',
-                'blockquote',
-                'thematicBreak',
-                'list',
-                'html',
+                // 'fencedCode',
+                // 'blockquote',
+                // 'thematicBreak',
+                // 'list',
+                // 'html',
                 'definition',
                 'table',
             ],

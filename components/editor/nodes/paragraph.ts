@@ -1,6 +1,6 @@
 import { DOMOutputSpec } from 'prosemirror-model'
 
-import { Node } from '../utils'
+import Node from './node'
 
 class Paragraph extends Node {
     get name() {

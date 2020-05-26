@@ -1,4 +1,4 @@
-import { Node } from '../utils'
+import Node from './node'
 
 class Text extends Node {
     get name() {

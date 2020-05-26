@@ -5,7 +5,7 @@
     @apply h-full;
 }
 
-.editor p.is-editor-empty:first-child::before {
+.editor .is-empty:first-child::before {
     @apply float-left;
     @apply h-0;
     @apply pointer-events-none;
