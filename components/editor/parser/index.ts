@@ -6,9 +6,6 @@ import {
     BlankLine,
     Decoration,
     Heading,
-    Link,
-    List,
-    ListItem,
     Mark,
     Node,
     NodeType,
@@ -327,5 +324,6 @@ class Parser {
     }
 }
 
-export type { Decoration, Heading, Link, List, ListItem, Mark, Node }
+export type { Decoration, Mark, Node }
+export { NodeType }
 export default Parser

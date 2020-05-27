@@ -3,7 +3,7 @@ import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { checkActive } from '../../utils'
+import { checkActive, toMarkdown } from '../../utils'
 import Parser, { Decoration as Deco, Node } from '../../parser'
 import Plugin from '../plugin'
 
@@ -20,17 +20,8 @@ class Markdown extends Plugin {
     }
 
     render(doc: ProsemirrorNode) {
-        const lines: string[] = []
-        doc.descendants((node, _pos) => {
-            if (node.isBlock) {
-                const content = node.textContent
-                const trimmed = content.trim()
-                const line = trimmed ? content : `${content}\n`
-                lines.push(line)
-            }
-        })
-        const joined = lines.join('\n')
-        const out = Parser.parse(joined)
+        const markdown = toMarkdown(doc, true)
+        const out = Parser.parse(markdown)
         this.results = out
     }
 

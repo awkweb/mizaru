@@ -11,8 +11,8 @@ import { default as EditorInstance } from './editor'
 
 type Props = {
     autoFocus?: boolean
-    value: JSON | string
-    onChange: (content: JSON | string) => void
+    value: string
+    onChange: (content: string) => void
 }
 
 type Ref = ReactRef<{
