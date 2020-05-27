@@ -1,12 +1,12 @@
-import { ListItem } from '../types'
+import { ListItem, NodeType } from '../types'
 
 export function getInlineSyntaxLength(type: string) {
     switch (type) {
-        case 'delete':
-        case 'strong':
+        case NodeType.Delete:
+        case NodeType.Strong:
             return 2
-        case 'emphasis':
-        case 'inlineCode':
+        case NodeType.Emphasis:
+        case NodeType.InlineCode:
             return 1
         default:
             return 0

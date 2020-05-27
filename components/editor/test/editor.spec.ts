@@ -9,66 +9,24 @@ test('check empty content', () => {
     const editor = new Editor({
         content: undefined,
     })
-    expect(editor.json).toEqual({
-        content: [{ type: 'paragraph' }],
-        type: 'doc',
-    })
+    expect(editor.markdown).toEqual('')
 })
 
-test('check string content', () => {
-    const editor = new Editor({ content: 'Hello, World!' })
-    expect(editor.json).toEqual({
-        content: [
-            {
-                type: 'paragraph',
-                content: [{ type: 'text', text: 'Hello, World!' }],
-            },
-        ],
-        type: 'doc',
-    })
-})
-
-test('check json content', () => {
-    const editor = new Editor({
-        content: {
-            content: [
-                {
-                    type: 'paragraph',
-                    content: [{ type: 'text', text: 'Hello, World!' }],
-                },
-            ],
-            type: 'doc',
-        },
-    })
-    expect(editor.json).toEqual({
-        content: [
-            {
-                type: 'paragraph',
-                content: [{ type: 'text', text: 'Hello, World!' }],
-            },
-        ],
-        type: 'doc',
-    })
+test('check markdown content', () => {
+    const editor = new Editor({ content: 'foo bar baz' })
+    expect(editor.markdown).toEqual('foo bar baz')
 })
 
 test('change callback', (done) => {
     const editor = new Editor({
         content: undefined,
         onChange: (c) => {
-            expect(c).toEqual({
-                content: [
-                    {
-                        type: 'paragraph',
-                        content: [{ type: 'text', text: 'Hello, World!' }],
-                    },
-                ],
-                type: 'doc',
-            })
+            expect(c).toEqual('foo bar baz')
             done()
         },
     })
 
-    editor.setContent('Hello, World!', true)
+    editor.setContent('foo bar baz', true)
 })
 
 test('transaction callback', (done) => {
@@ -79,5 +37,5 @@ test('transaction callback', (done) => {
             done()
         },
     })
-    editor.setContent('Hello, World!', true)
+    editor.setContent('foo bar baz', true)
 })

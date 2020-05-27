@@ -1,18 +1,12 @@
 import Parser from '../'
 
-test('create parser', () => {
+test('creates parser', () => {
     const parser = new Parser()
     expect(parser).toBeDefined()
 })
 
-test('converts lines and parses content', () => {
-    const lines = ['foo', 'bar', 'baz']
-    const content = Parser.toContent(lines)
-    expect(content).toMatchInlineSnapshot(`
-        "foo
-        bar
-        baz"
-    `)
+test('parses content', () => {
+    const content = ['foo', 'bar', 'baz'].join('\n')
     const out = Parser.parse(content)
     expect(out).toMatchInlineSnapshot(`
         Object {

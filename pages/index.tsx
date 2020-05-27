@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import { useRef } from 'react'
 import { NextPage } from 'next'
+import Head from 'next/head'
 
 import { Editor, EditorRef } from '@/components'
 import { useStore } from '@/store'
@@ -12,12 +13,21 @@ const Home: NextPage<Props> = () => {
     const editorRef: EditorRef = useRef(null)
 
     return (
-        <Editor
-            autoFocus
-            ref={editorRef}
-            value={content}
-            onChange={handleChange}
-        />
+        <>
+            <Head>
+                <title>Mizaru</title>
+                <meta
+                    content="initial-scale=1.0, width=device-width"
+                    name="viewport"
+                />
+            </Head>
+            <Editor
+                autoFocus
+                ref={editorRef}
+                value={content}
+                onChange={handleChange}
+            />
+        </>
     )
 }
 

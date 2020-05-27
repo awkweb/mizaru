@@ -1,32 +1,23 @@
 /* eslint-disable */
-import unified from 'unified'
-import remarkParse from 'remark-parse'
 import { Node as UnistNode, Literal } from 'unist'
 /* eslint-enable */
-// @ts-ignore
-import disableTokenizers from 'remark-disable-tokenizers'
 
 import {
     BlankLine,
     Decoration,
     Heading,
-    Link,
-    List,
-    ListItem,
     Mark,
     Node,
+    NodeType,
     Parent,
 } from './types'
 import {
-    escape,
     getBlockquoteWhitespace,
     getHeadingWhitespace,
     getInlineSyntaxLength,
+    getMDAST,
     getNewLines,
-    toMDZAST,
 } from './utils'
-import { blankLine } from './tokenize'
-import { settings } from './constants'
 
 interface Props {
     offset: number
@@ -46,69 +37,22 @@ class Parser {
         return parser.parse(content)
     }
 
-    static toContent(lines: string[], props?: Partial<Props>) {
-        const parser = new Parser(props)
-        return parser.toContent(lines)
-    }
-
     parse(content: string) {
-        // @ts-ignore
-        const blockTokenizers = remarkParse.Parser.prototype.blockTokenizers
-
-        // Override tokenizers
-        blockTokenizers.blankLine = blankLine
-
-        // Disable tokenizers
-        const disabled = {
-            block: [
-                'indentedCode',
-                'fencedCode',
-                'blockquote',
-                'thematicBreak',
-                'list',
-                'html',
-                'definition',
-                'table',
-            ],
-            inline: [
-                'autoLink',
-                'url',
-                'email',
-                'html',
-                'link',
-                'reference',
-                'break',
-            ],
-        }
-
-        const markdown = unified()
-            .use(remarkParse, settings)
-            .use(disableTokenizers, disabled)
-            .parse(content)
-        const tree = <Parent>toMDZAST({ content })(markdown)
+        const tree = getMDAST(content)
         const out = this.parseBlock(tree.children, this.props.offset)
-
         return out
     }
 
-    toContent(lines: string[]) {
-        // Join lines into one string with \n
-        // Escape backslashes so markdown processor doesn't strip them
-        const joined = lines.join('\n').replace(/(\\)/g, '\\\\')
-        const out = escape(joined)
-        return out
-    }
-
-    parseBlock(nodes_: UnistNode[], counter: number, boost?: number) {
+    parseBlock(tree: UnistNode[], counter: number, boost?: number) {
         const decorations: Decoration[] = []
         const nodes: Node[] = []
 
-        for (const node of nodes_) {
+        for (const node of tree) {
             const { type, children } = <Parent>node
             const from = counter
 
             switch (type) {
-                case 'blockquote': {
+                case NodeType.Blockquote: {
                     const out = this.renderBlockquote(
                         from,
                         children,
@@ -120,16 +64,14 @@ class Parser {
                     nodes.push(...out.nodes)
                     break
                 }
-                case 'blankLine': {
-                    const { count } = <BlankLine>node
-                    if (count % 2 === 0) {
-                        counter = counter + count
-                    } else {
-                        counter = counter + count - 1
-                    }
+                case NodeType.BlankLine: {
+                    const { count, raw } = <BlankLine>node
+                    const newLines = getNewLines(raw)
+                    const isAfter = newLines.length % 2 !== 0
+                    counter = counter + count - (isAfter ? 1 : 0)
                     break
                 }
-                case 'heading': {
+                case NodeType.Heading: {
                     const out = this.renderHeading(
                         from,
                         children,
@@ -142,7 +84,7 @@ class Parser {
                     nodes.push(...out.nodes)
                     break
                 }
-                case 'paragraph': {
+                case NodeType.Paragraph: {
                     const out = this.renderParagraph(
                         from,
                         children,
@@ -202,7 +144,7 @@ class Parser {
                 {
                     from,
                     to,
-                    type: 'blockquote',
+                    type: NodeType.Blockquote,
                 },
             ],
         }
@@ -220,7 +162,7 @@ class Parser {
 
         // If not fully formed, convert to paragraph
         if (raw === syntaxChars) {
-            const child = { type: 'text', value: raw }
+            const child = { type: NodeType.Text, value: raw }
             children.push(child)
             return this.renderParagraph(from, children, counter)
         }
@@ -233,7 +175,7 @@ class Parser {
                 trimmed === syntaxChars
                     ? trailing.slice(0, trailing.length - 1)
                     : trailing
-            const child = { type: 'text', value }
+            const child = { type: NodeType.Text, value }
             children.push(child)
 
             const hasClosingSequence = trailing.includes('#')
@@ -250,7 +192,7 @@ class Parser {
         // If heading contains extra whitespace between syntax and text, add
         // whitespace length
         if (inner) {
-            const child = { type: 'text', value: inner }
+            const child = { type: NodeType.Text, value: inner }
             children.unshift(child)
         }
 
@@ -277,8 +219,8 @@ class Parser {
                 {
                     from,
                     to,
-                    type: 'heading',
-                    marks: out.marks,
+                    type: NodeType.Heading,
+                    marks: out.nodes,
                     attrs: { level },
                 },
             ],
@@ -298,20 +240,20 @@ class Parser {
         return {
             counter,
             decorations: out.decorations,
-            nodes: [{ from, to, type: 'paragraph', marks: out.marks }],
+            nodes: [{ from, to, type: NodeType.Paragraph, marks: out.nodes }],
         }
     }
 
-    parseInline(nodes: UnistNode[], counter: number) {
+    parseInline(tree: UnistNode[], counter: number) {
         const decorations: Decoration[] = []
-        const marks: Mark[] = []
+        const nodes: Mark[] = []
 
-        for (const node of nodes) {
+        for (const node of tree) {
             const { type, children } = <Parent>node
             const syntaxLength = getInlineSyntaxLength(type)
 
             switch (type) {
-                case 'inlineCode': {
+                case NodeType.InlineCode: {
                     const from = counter
                     const decorationStart = from
                     const value = <string>(<Literal>node).value
@@ -337,12 +279,12 @@ class Parser {
                             type: 'syntax',
                         },
                     )
-                    marks.push({ from, to, type })
+                    nodes.push({ from, to, type })
                     break
                 }
-                case 'delete':
-                case 'emphasis':
-                case 'strong': {
+                case NodeType.Delete:
+                case NodeType.Emphasis:
+                case NodeType.Strong: {
                     const from = counter
                     counter = from + syntaxLength
                     const out = this.parseInline(children, counter)
@@ -361,10 +303,10 @@ class Parser {
                             type: 'syntax',
                         },
                     )
-                    marks.push(...out.marks, { from, to, type })
+                    nodes.push(...out.nodes, { from, to, type })
                     break
                 }
-                case 'text': {
+                case NodeType.Text: {
                     const value = <string>(<Literal>node).value
                     const newLines = getNewLines(value)
                     const offset = newLines.length
@@ -378,9 +320,10 @@ class Parser {
                 }
             }
         }
-        return { decorations, counter, marks }
+        return { decorations, counter, nodes }
     }
 }
 
-export type { Decoration, Heading, Link, List, ListItem, Mark, Node }
+export type { Decoration, Mark, Node }
+export { NodeType }
 export default Parser

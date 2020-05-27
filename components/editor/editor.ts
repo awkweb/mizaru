@@ -4,18 +4,18 @@ import { DOMParser, Schema } from 'prosemirror-model'
 import { keymap } from 'prosemirror-keymap'
 import { baseKeymap } from 'prosemirror-commands'
 
-import { Extension, ExtensionManager, minMax } from './utils'
+import { Extension, ExtensionManager, minMax, toMarkdown } from './utils'
 import { Doc, Paragraph, Text } from './nodes'
-import { EditorSchema, EditorSelection, FocusPosition } from './types'
+import { FocusPosition } from './types'
 
 interface Events {
-    onChange: (content: JSON) => void
+    onChange: (content: string) => void
     onTransaction: (transaction: Transaction) => void
 }
 
 interface Props extends Events {
     autoFocus?: boolean
-    content: JSON | string
+    content: string
     element: HTMLDivElement
     extensions: Extension[]
 }
@@ -25,9 +25,11 @@ class Editor {
     events: Events
     extensionManager: ExtensionManager
     focused: boolean = false
-    schema: EditorSchema
-    selection: EditorSelection = { from: 0, to: 0 }
+    schema: Schema
+    selection = { from: 0, to: 0 }
     view: EditorView<any>
+
+    public static FocusPosition = FocusPosition
 
     constructor(props?: Partial<Props>) {
         const defaultProps = {
@@ -85,37 +87,19 @@ class Editor {
         return this.view.state
     }
 
-    get json() {
-        return <JSON>this.state.doc.toJSON()
+    get markdown() {
+        return toMarkdown(this.state.doc)
     }
 
-    createDocument(schema: EditorSchema, content: JSON | string) {
-        const emptyDocument = {
-            type: 'doc',
-            content: [
-                {
-                    type: 'paragraph',
-                },
-            ],
-        }
-        switch (typeof content) {
-            case 'string': {
-                const element = document.createElement('div')
-                element.innerHTML = (<string>content).trim()
-                return DOMParser.fromSchema(schema).parse(element)
-            }
-            case 'object': {
-                try {
-                    return schema.nodeFromJSON(<JSON>content)
-                } catch (error) {
-                    return schema.nodeFromJSON(emptyDocument)
-                }
-            }
-            case null:
-            default: {
-                return schema.nodeFromJSON(emptyDocument)
-            }
-        }
+    createDocument(schema: Schema, content: string) {
+        const raw = (content ?? '')
+            .split('\n')
+            .map((x) => `<p>${x}</p>`)
+            .join('')
+        const element = document.createElement('div')
+        element.innerHTML = raw
+        const options = { preserveWhitespace: true }
+        return DOMParser.fromSchema(schema).parse(element, options)
     }
 
     dispatchTransaction(transaction: Transaction) {
@@ -130,7 +114,7 @@ class Editor {
         if (!transaction.docChanged || transaction.getMeta('preventUpdate')) {
             return
         }
-        this.events.onChange(this.json)
+        this.events.onChange(this.markdown)
     }
 
     resolveSelection(position?: FocusPosition | boolean) {
@@ -146,7 +130,7 @@ class Editor {
         }
 
         if (position === FocusPosition.End) {
-            const { doc } = <EditorState<any>>this.state
+            const { doc } = <EditorState>this.state
             return {
                 from: doc.content.size - 1,
                 to: doc.content.size - 1,
@@ -180,7 +164,7 @@ class Editor {
         this.view.dispatch(transaction)
     }
 
-    setContent(content: JSON | string, emitUpdate: boolean = false) {
+    setContent(content: string, emitUpdate: boolean = false) {
         const { doc, tr } = this.state
         const document = this.createDocument(this.schema, content)
         const selection = TextSelection.create(doc, 0, doc.content.size)

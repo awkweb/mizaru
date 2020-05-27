@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react'
+import { Ref as ReactRef, forwardRef, useImperativeHandle, useRef } from 'react'
 import { EditorView } from 'prosemirror-view'
 import applyDevTools from 'prosemirror-dev-tools'
 
@@ -7,16 +7,19 @@ import { useMount } from 'react-use'
 import { History, Markdown, Placeholder } from './plugins'
 import { Blockquote, Doc, Heading, Paragraph, Text } from './nodes'
 import { Delete, Emphasis, InlineCode, Strong } from './marks'
-import { EditorRef } from './types'
 import { default as EditorInstance } from './editor'
 
 type Props = {
     autoFocus?: boolean
-    value: JSON | string
-    onChange: (content: JSON | string) => void
+    value: string
+    onChange: (content: string) => void
 }
 
-const Editor = forwardRef((props: Props, ref: EditorRef) => {
+type Ref = ReactRef<{
+    focus: () => void
+}>
+
+const Editor = forwardRef((props: Props, ref: Ref) => {
     const viewHost = useRef<HTMLDivElement>(null)
     const editor = useRef<EditorInstance>()
 
@@ -60,4 +63,5 @@ const Editor = forwardRef((props: Props, ref: EditorRef) => {
 })
 
 export default Editor
-export type { Props as EditorProps, EditorRef }
+export { keys } from './constants'
+export type { Props as EditorProps, Ref as EditorRef }

@@ -5,7 +5,7 @@ const { mkHeadings } = prosemirror
 const headings = mkHeadings()
 
 for (const syntax of ['>', '> ']) {
-    describe(syntax, () => {
+    describe.skip(syntax, () => {
         test('empty', () => {
             const content = `${syntax}`
             const out = Parser.parse(content)
@@ -26,6 +26,12 @@ for (const syntax of ['>', '> ']) {
 
         test('backslash', () => {
             const content = `${syntax}foo\\ bar baz`
+            const out = Parser.parse(content)
+            expect(out).toMatchSnapshot()
+        })
+
+        test('escaped', () => {
+            const content = `\\${syntax}foo bar baz`
             const out = Parser.parse(content)
             expect(out).toMatchSnapshot()
         })

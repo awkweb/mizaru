@@ -1,11 +1,11 @@
 import { Plugin } from 'prosemirror-state'
 import { keymap } from 'prosemirror-keymap'
 import { EditorView } from 'prosemirror-view'
+import { Schema } from 'prosemirror-model'
 
 import Extension from './extension'
-import { EditorSchema, ExtensionType } from '../types'
-import Mark from './mark'
-import Node from './node'
+import { Mark } from '../marks'
+import { Node } from '../nodes'
 
 export default class ExtensionManager {
     extensions: Extension[]
@@ -15,107 +15,96 @@ export default class ExtensionManager {
     }
 
     get nodes() {
-        const nodes = this.extensions.filter(
-            (extension) => extension.type === ExtensionType.Node,
-        ) as Node[]
-        return nodes.reduce(
-            (nodes, { name, schema }) => ({
-                ...nodes,
-                [name]: schema,
-            }),
-            {},
-        )
+        return this.extensions
+            .filter((extension) => extension.type === Extension.Type.Node)
+            .reduce(
+                (nodes, node) => ({
+                    ...nodes,
+                    [node.name]: (<Node>node).schema,
+                }),
+                {},
+            )
     }
 
     get marks() {
-        const marks = this.extensions.filter(
-            (extension) => extension.type === ExtensionType.Mark,
-        ) as Mark[]
-        return marks.reduce(
-            (marks, { name, schema }) => ({
-                ...marks,
-                [name]: schema,
-            }),
-            {},
-        )
+        return this.extensions
+            .filter((extension) => extension.type === Extension.Type.Mark)
+            .reduce(
+                (marks, mark) => ({
+                    ...marks,
+                    [mark.name]: (<Mark>mark).schema,
+                }),
+                {},
+            )
     }
 
-    get plugins(): Plugin<any, any>[] {
+    get plugins() {
         return this.extensions
             .filter((extension) => extension.plugins)
             .reduce(
-                (allPlugins, extension) => [
-                    ...allPlugins,
-                    ...extension.plugins,
-                ],
+                (allPlugins, { plugins }) => [...allPlugins, ...plugins],
                 [] as Plugin<any, any>[],
             )
     }
 
-    keymaps({ schema }: { schema: EditorSchema<string, string> }) {
+    keymaps({ schema }: { schema: Schema }) {
         const pluginKeymaps = this.extensions
             .filter((extension) =>
-                [ExtensionType.Plugin].includes(extension.type),
+                [Extension.Type.Plugin].includes(extension.type),
             )
             .filter((extension) => extension.keys)
             .map((extension) => extension.keys({ schema }))
+
         const nodeMarkKeymaps = this.extensions
             .filter((extension) =>
-                [ExtensionType.Mark, ExtensionType.Node].includes(
+                [Extension.Type.Mark, Extension.Type.Node].includes(
                     extension.type,
                 ),
             )
             .filter((extension) => extension.keys)
             .map((extension) =>
                 extension.keys({
-                    type: (schema as { [key: string]: any })[
-                        `${extension.type}s`
-                    ][extension.name],
+                    type: schema[`${extension.type}s`][extension.name],
                     schema,
                 }),
             )
-        return [...pluginKeymaps, ...nodeMarkKeymaps].map((keys) =>
-            keymap(keys),
-        )
+
+        return [
+            ...pluginKeymaps,
+            ...nodeMarkKeymaps,
+        ].map((keys: Record<string, any>) => keymap(keys))
     }
 
-    commands({
-        schema,
-        view,
-    }: {
-        schema: EditorSchema<string, string>
-        view: EditorView
-    }) {
+    commands({ schema, view }: { schema: Schema; view: EditorView }) {
         return this.extensions
             .filter((extension) => extension.commands)
             .reduce((allCommands, extension) => {
                 const { name, type } = extension
                 const commands: { [key: string]: any } = {}
-                // @ts-ignore
                 const value = extension.commands({
                     schema,
-                    ...([ExtensionType.Mark, ExtensionType.Node].includes(type)
+                    ...([Extension.Type.Mark, Extension.Type.Node].includes(
+                        type,
+                    )
                         ? {
-                              type: (schema as { [key: string]: any })[
-                                  `${type}s`
-                              ][name],
+                              type: schema[`${type}s`][name],
                           }
                         : {}),
                 })
 
-                const apply = (cb: Function, attrs: object) => {
+                const apply = (callback: Function, attrs: object) => {
                     if (!view.editable) {
                         return false
                     }
-                    return cb(attrs)(view.state, view.dispatch, view)
+                    return callback(attrs)(view.state, view.dispatch, view)
                 }
 
                 const handle = (name: string, value: Array<any> | Function) => {
                     if (Array.isArray(value)) {
-                        commands[name] = (attrs: any) =>
+                        commands[name] = (attrs: object) =>
                             value.forEach((callback) => apply(callback, attrs))
                     } else if (typeof value === 'function') {
-                        commands[name] = (attrs: any) => apply(value, attrs)
+                        commands[name] = (attrs: object) => apply(value, attrs)
                     }
                 }
 

@@ -1,6 +1,6 @@
 import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 
-import { Node } from '../utils'
+import Node from './node'
 
 interface Props {
     levels: number[]

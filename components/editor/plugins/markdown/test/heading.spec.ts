@@ -51,6 +51,13 @@ for (const { tag, syntax } of headings) {
             expect(state.doc).toEqual(doc(heading(content)))
         })
 
+        test('escaped', () => {
+            const content = `\\${syntax} foo bar baz`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(p(content)))
+        })
+
         describe('with nested', () => {
             test('delete', () => {
                 const content = `${syntax} foo ~~bar~~ baz`

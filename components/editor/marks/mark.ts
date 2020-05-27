@@ -1,11 +1,10 @@
 import { MarkSpec } from 'prosemirror-model'
 
-import Extension from './extension'
-import { ExtensionType } from '../types'
+import { Extension } from '../utils'
 
 class Mark extends Extension {
     get type() {
-        return ExtensionType.Mark
+        return Extension.Type.Mark
     }
 
     get schema(): MarkSpec {

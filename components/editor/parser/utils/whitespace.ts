@@ -1,12 +1,20 @@
+export function getLeadingWhitespace(text: string) {
+    return (text.match(/^(\s+)/) || [])[0]
+}
+
+export function getTrailingWhitespace(text: string) {
+    return (text.match(/(\s+)$/) || [])[0]
+}
+
 export function getEnclosingWhitespace(text: string) {
     return {
-        leading: (text.match(/^(\s+)/) || [])[0],
-        trailing: (text.match(/(\s+)$/) || [])[0],
+        leading: getLeadingWhitespace(text),
+        trailing: getTrailingWhitespace(text),
     }
 }
 
 export function getHeadingWhitespace(text: string, level: number) {
-    const { leading } = getEnclosingWhitespace(text)
+    const leading = getLeadingWhitespace(text)
     const trailing = (text.match(/((\s*)(\s#*)(\s*))*$/) || [])[0]
     const trimmed = text.slice((leading?.length ?? 0) + level + 1, text.length)
     const { leading: inner } = getEnclosingWhitespace(trimmed)
@@ -14,7 +22,7 @@ export function getHeadingWhitespace(text: string, level: number) {
 }
 
 export function getBlockquoteWhitespace(text: string) {
-    const { leading } = getEnclosingWhitespace(text)
+    const leading = getLeadingWhitespace(text)
     const trimmed = text.slice((leading?.length ?? 0) + 1, text.length)
     const { leading: inner } = getEnclosingWhitespace(trimmed)
     return { leading, inner }

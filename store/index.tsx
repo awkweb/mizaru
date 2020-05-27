@@ -2,9 +2,9 @@ import { ReactNode, createContext, useContext, useState } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 
 type State = {
-    content: JSON | string
+    content: string
     searchTerm: string
-    handleChange: (content: JSON | string) => void
+    handleChange: (content: string) => void
     handleSearch: (searchTerm?: string) => void
 }
 const Context = createContext<Partial<State>>({})
@@ -15,10 +15,12 @@ type Props = {
 const Provider = ({ children }: Props) => {
     const cookies = parseCookies()
     const initialContent = JSON.parse(cookies?.content ?? 'null')
-    const [content, setContent] = useState<JSON | string>(initialContent)
+    console.log(initialContent)
+    const [content, setContent] = useState<string>(initialContent)
     const [searchTerm, setSearchTerm] = useState<string>()
 
-    const handleChange = (content: JSON | string) => {
+    const handleChange = (content: string) => {
+        console.log(content, JSON.stringify(content))
         setCookie(null, 'content', JSON.stringify(content), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',

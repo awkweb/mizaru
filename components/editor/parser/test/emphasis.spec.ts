@@ -1,6 +1,6 @@
 import Parser from '../'
 
-for (const syntax of ['**', '__']) {
+for (const syntax of ['*', '_']) {
     describe(syntax, () => {
         test('single word', () => {
             const content = `${syntax}foo${syntax}`
@@ -16,6 +16,12 @@ for (const syntax of ['**', '__']) {
 
         test('backslash', () => {
             const content = `${syntax}foo\\ bar baz${syntax}`
+            const out = Parser.parse(content)
+            expect(out).toMatchSnapshot()
+        })
+
+        test('escaped', () => {
+            const content = `\\${syntax}foo bar baz${syntax}`
             const out = Parser.parse(content)
             expect(out).toMatchSnapshot()
         })

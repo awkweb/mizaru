@@ -1,16 +1,15 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Plugin, PluginKey, Selection } from 'prosemirror-state'
+import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { Plugin as PluginExtension, checkActive } from '../../utils'
-import Parser, { Decoration as Deco, Node } from './parser'
-import { EditorSelection } from '../../types'
+import { checkActive, toMarkdown } from '../../utils'
+import Parser, { Decoration as Deco, Node } from '../../parser'
+import Plugin from '../plugin'
 
 const key = new PluginKey('markdown')
 
-class Markdown extends PluginExtension {
-    selection: EditorSelection = { from: 0, to: 0 }
+class Markdown extends Plugin {
     results: { decorations: Deco[]; nodes: Node[] } = {
         decorations: [],
         nodes: [],
@@ -20,22 +19,9 @@ class Markdown extends PluginExtension {
         return 'markdown'
     }
 
-    render(doc: ProsemirrorNode, selection: Selection) {
-        this.selection = { from: 0, to: doc.nodeSize }
-        const lines: string[] = []
-        doc.descendants((node, pos) => {
-            if (node.isBlock) {
-                const from = pos
-                const to = pos + 1 + node.textContent.length + 1
-                if (from <= selection.from && to >= selection.to) {
-                    this.selection = { from, to }
-                }
-                const line = node.textContent || '\n'
-                lines.push(line)
-            }
-        })
-        const content = Parser.toContent(lines)
-        const out = Parser.parse(content)
+    render(doc: ProsemirrorNode) {
+        const markdown = toMarkdown(doc, true)
+        const out = Parser.parse(markdown)
         this.results = out
     }
 
@@ -46,8 +32,8 @@ class Markdown extends PluginExtension {
         })
     }
 
-    private createDeco(doc: ProsemirrorNode, selection: Selection) {
-        this.render(doc, selection)
+    private createDeco(doc: ProsemirrorNode) {
+        this.render(doc)
         return this.decorations
             ? DecorationSet.create(doc, this.decorations)
             : []
@@ -55,24 +41,22 @@ class Markdown extends PluginExtension {
 
     get plugins() {
         return [
-            new Plugin({
+            new ProsemirrorPlugin({
                 key,
                 state: {
                     init: (_config, instance) => {
-                        const { doc, selection } = instance
-                        return this.createDeco(doc, selection)
+                        return this.createDeco(instance.doc)
                     },
                     apply: (tr, value, _oldState, _newState) => {
                         if (tr.docChanged) {
-                            const { doc, selection } = tr
-                            return this.createDeco(doc, selection)
+                            return this.createDeco(tr.doc)
                         }
                         return value
                     },
                 },
                 props: {
                     decorations(state) {
-                        return (<Plugin>this).getState(state)
+                        return (<ProsemirrorPlugin>this).getState(state)
                     },
                 },
                 appendTransaction: (_transactions, _oldState, newState) => {

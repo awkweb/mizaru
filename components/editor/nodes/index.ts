@@ -1,3 +1,4 @@
+export { default as Node } from './node'
 export { default as Blockquote } from './blockquote'
 export { default as Doc } from './doc'
 export { default as Heading } from './heading'
