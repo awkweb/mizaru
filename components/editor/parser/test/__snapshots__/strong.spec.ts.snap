@@ -32,6 +32,21 @@ Object {
 }
 `;
 
+exports[`** escaped 1`] = `
+Object {
+  "counter": 10,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 10,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
 exports[`** multiple words 1`] = `
 Object {
   "counter": 17,
@@ -342,6 +357,21 @@ Object {
         },
       ],
       "to": 18,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
+exports[`__ escaped 1`] = `
+Object {
+  "counter": 10,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 10,
       "type": "paragraph",
     },
   ],

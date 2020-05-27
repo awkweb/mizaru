@@ -5,7 +5,9 @@ export {
     getBlockquoteWhitespace,
     getEnclosingWhitespace,
     getHeadingWhitespace,
+    getLeadingWhitespace,
     getNewLines,
+    getTrailingWhitespace,
 } from './whitespace'
 export { default as escape } from './escape'
 export { default as unescape } from './unescape'

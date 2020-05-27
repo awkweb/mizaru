@@ -1,35 +1,62 @@
 import { Parent as UnistParent } from 'unist'
 
+export enum NodeType {
+    AutoLink = 'autoLink',
+    BlankLine = 'blankLine',
+    Blockquote = 'blockquote',
+    Break = 'break',
+    Definition = 'definition',
+    Delete = 'delete',
+    Email = 'email',
+    Emphasis = 'emphasis',
+    FencedCode = 'fencedCode',
+    HTML = 'html',
+    Heading = 'heading',
+    IndentedCode = 'indentedCode',
+    InlineCode = 'inlineCode',
+    Link = 'link',
+    List = 'list',
+    ListItem = 'listItem',
+    Paragraph = 'paragraph',
+    Reference = 'reference',
+    Root = 'root',
+    Strong = 'strong',
+    Table = 'table',
+    Text = 'text',
+    ThematicBreak = 'thematicBreak',
+    URL = 'url',
+}
+
 export interface Parent extends UnistParent {
     raw: string
 }
 
 export interface BlankLine extends Parent {
-    type: 'blankLine'
+    type: NodeType.BlankLine
     count: number
 }
 
 export interface Heading extends Parent {
-    type: 'heading'
+    type: NodeType.Heading
     depth: number
 }
 
 export interface List extends Parent {
-    type: 'list'
+    type: NodeType.List
     ordered: boolean
     spread: boolean
     start?: number
 }
 
 export interface ListItem extends Parent {
-    type: 'listItem'
+    type: NodeType.ListItem
     checked?: boolean
     num?: number
     spread: boolean
 }
 
 export interface Link extends Parent {
-    type: 'link'
+    type: NodeType.Link
     title?: string
     url: string
 }

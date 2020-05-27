@@ -108,6 +108,25 @@ test('backslash', () => {
     `)
 })
 
+test('escaped', () => {
+    const content = '\\`foo bar baz`'
+    const out = Parser.parse(content)
+    expect(out).toMatchInlineSnapshot(`
+        Object {
+          "counter": 16,
+          "decorations": Array [],
+          "nodes": Array [
+            Object {
+              "from": 0,
+              "marks": Array [],
+              "to": 16,
+              "type": "paragraph",
+            },
+          ],
+        }
+    `)
+})
+
 test('split across multiple lines', () => {
     const content = '`foo\nbar\nbaz`'
     const out = Parser.parse(content)

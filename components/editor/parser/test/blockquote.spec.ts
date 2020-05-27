@@ -30,6 +30,12 @@ for (const syntax of ['>', '> ']) {
             expect(out).toMatchSnapshot()
         })
 
+        test('escaped', () => {
+            const content = `\\${syntax}foo bar baz`
+            const out = Parser.parse(content)
+            expect(out).toMatchSnapshot()
+        })
+
         test('split across multiple lines', () => {
             const content = `${syntax}foo\nbar\nbaz`
             const out = Parser.parse(content)

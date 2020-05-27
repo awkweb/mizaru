@@ -48,6 +48,21 @@ Object {
 }
 `;
 
+exports[`h1 escaped 1`] = `
+Object {
+  "counter": 16,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 16,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
 exports[`h1 multiple words 1`] = `
 Object {
   "counter": 15,
@@ -642,6 +657,21 @@ Object {
       "marks": Array [],
       "to": 5,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h2 escaped 1`] = `
+Object {
+  "counter": 17,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 17,
+      "type": "paragraph",
     },
   ],
 }
@@ -1246,6 +1276,21 @@ Object {
 }
 `;
 
+exports[`h3 escaped 1`] = `
+Object {
+  "counter": 18,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 18,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
 exports[`h3 multiple words 1`] = `
 Object {
   "counter": 17,
@@ -1840,6 +1885,21 @@ Object {
       "marks": Array [],
       "to": 7,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h4 escaped 1`] = `
+Object {
+  "counter": 19,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 19,
+      "type": "paragraph",
     },
   ],
 }
@@ -2444,6 +2504,21 @@ Object {
 }
 `;
 
+exports[`h5 escaped 1`] = `
+Object {
+  "counter": 20,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 20,
+      "type": "paragraph",
+    },
+  ],
+}
+`;
+
 exports[`h5 multiple words 1`] = `
 Object {
   "counter": 19,
@@ -3038,6 +3113,21 @@ Object {
       "marks": Array [],
       "to": 9,
       "type": "heading",
+    },
+  ],
+}
+`;
+
+exports[`h6 escaped 1`] = `
+Object {
+  "counter": 21,
+  "decorations": Array [],
+  "nodes": Array [
+    Object {
+      "from": 0,
+      "marks": Array [],
+      "to": 21,
+      "type": "paragraph",
     },
   ],
 }

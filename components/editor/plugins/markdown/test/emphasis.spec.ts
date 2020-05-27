@@ -39,6 +39,13 @@ for (const syntax of ['*', '_']) {
             expect(state.doc).toEqual(doc(p(active.emphasis(content))))
         })
 
+        test('escaped', () => {
+            const content = `\\${syntax}foo bar baz${syntax}`
+            let state = mkState({ schema, plugins })
+            state = type(state, content)
+            expect(state.doc).toEqual(doc(p(content)))
+        })
+
         test('split across multiple lines', () => {
             const content = `${syntax}foo bar baz${syntax}`
             let state = mkState({ schema, plugins })

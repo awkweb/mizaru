@@ -1,9 +1,5 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import {
-    PluginKey,
-    Plugin as ProsemirrorPlugin,
-    Selection,
-} from 'prosemirror-state'
+import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
@@ -25,9 +21,11 @@ class Markdown extends Plugin {
 
     render(doc: ProsemirrorNode) {
         const lines: string[] = []
-        doc.descendants((node, pos) => {
+        doc.descendants((node, _pos) => {
             if (node.isBlock) {
-                const line = node.textContent || '\n'
+                const content = node.textContent
+                const trimmed = content.trim()
+                const line = trimmed ? content : `${content}\n`
                 lines.push(line)
             }
         })

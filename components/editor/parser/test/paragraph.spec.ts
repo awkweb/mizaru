@@ -279,4 +279,40 @@ describe('with whitespace', () => {
             }
         `)
     })
+
+    test('leading empty lines', () => {
+        const out = Parser.parse('   \n\nfoo bar baz')
+        expect(out).toMatchInlineSnapshot(`
+            Object {
+              "counter": 18,
+              "decorations": Array [],
+              "nodes": Array [
+                Object {
+                  "from": 5,
+                  "marks": Array [],
+                  "to": 18,
+                  "type": "paragraph",
+                },
+              ],
+            }
+        `)
+    })
+
+    test('trailing empty lines', () => {
+        const out = Parser.parse('foo bar baz\n\n   ')
+        expect(out).toMatchInlineSnapshot(`
+            Object {
+              "counter": 18,
+              "decorations": Array [],
+              "nodes": Array [
+                Object {
+                  "from": 0,
+                  "marks": Array [],
+                  "to": 13,
+                  "type": "paragraph",
+                },
+              ],
+            }
+        `)
+    })
 })

@@ -43,3 +43,17 @@ test('split across multiple lines', () => {
     state = carriageReturn(state, 11)
     expect(state.doc).toEqual(doc(p('foo '), p('bar '), p('baz')))
 })
+
+test('leading empty lines', () => {
+    const content = '   \n\nfoo bar baz'
+    let state = mkState({ schema, plugins })
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(content)))
+})
+
+test('trailing empty lines', () => {
+    const content = 'foo bar baz\n\n   '
+    let state = mkState({ schema, plugins })
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(content)))
+})

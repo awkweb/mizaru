@@ -37,6 +37,13 @@ test('backslash', () => {
     expect(state.doc).toEqual(doc(p(active.delete(content))))
 })
 
+test('escaped', () => {
+    const content = '\\~~foo bar baz~~'
+    let state = mkState({ schema, plugins })
+    state = type(state, content)
+    expect(state.doc).toEqual(doc(p(content)))
+})
+
 test('split across multiple lines', () => {
     const content = '~~foo bar baz~~'
     let state = mkState({ schema, plugins })

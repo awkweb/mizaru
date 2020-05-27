@@ -13,13 +13,14 @@ import { settings } from '../constants'
 import { blankLine } from './tokenize'
 import unescape from './unescape'
 import escape from './escape'
+import { NodeType } from '../types'
 
 const toMDZAST = (options: { content: string }) => (tree: Node): Node => {
     visit(tree, (node) => {
-        if (node.type !== 'root') {
+        if (node.type !== NodeType.Root) {
             node.raw = source(node, options.content)
         }
-        if (node.type === 'inlineCode') {
+        if (node.type === NodeType.InlineCode) {
             const value = <string>(<Literal>node).value
 
             // Remove escaped characters from inlineCode
@@ -53,23 +54,23 @@ function getMDAST(content: string) {
     // Disable tokenizers
     const disabled = {
         block: [
-            'indentedCode',
-            // 'fencedCode',
-            // 'blockquote',
-            // 'thematicBreak',
-            // 'list',
-            // 'html',
-            'definition',
-            'table',
+            NodeType.IndentedCode,
+            // NodeType.FencedCode,
+            // NodeType.Blockquote,
+            // NodeType.ThematicBreak,
+            // NodeType.List,
+            // NodeType.HTML,
+            NodeType.Definition,
+            NodeType.Table,
         ],
         inline: [
-            'autoLink',
-            'url',
-            'email',
-            'html',
-            'link',
-            'reference',
-            'break',
+            NodeType.AutoLink,
+            NodeType.URL,
+            NodeType.Email,
+            NodeType.HTML,
+            NodeType.Link,
+            NodeType.Reference,
+            NodeType.Break,
         ],
     }
 
@@ -78,6 +79,7 @@ function getMDAST(content: string) {
         .use(disableTokenizers, disabled)
         .parse(content)
     const tree = <Parent>toMDZAST({ content })(markdown)
+
     return tree
 }
 

@@ -20,6 +20,12 @@ for (const syntax of ['**', '__']) {
             expect(out).toMatchSnapshot()
         })
 
+        test('escaped', () => {
+            const content = `\\${syntax}foo${syntax}`
+            const out = Parser.parse(content)
+            expect(out).toMatchSnapshot()
+        })
+
         test('split across multiple lines', () => {
             const content = `${syntax}foo\nbar\nbaz${syntax}`
             const out = Parser.parse(content)
