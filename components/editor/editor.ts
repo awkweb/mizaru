@@ -164,7 +164,7 @@ class Editor {
         this.view.dispatch(transaction)
     }
 
-    setContent(content: JSON | string, emitUpdate: boolean = false) {
+    setContent(content: string, emitUpdate: boolean = false) {
         const { doc, tr } = this.state
         const document = this.createDocument(this.schema, content)
         const selection = TextSelection.create(doc, 0, doc.content.size)

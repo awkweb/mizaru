@@ -1,6 +1,6 @@
 import { Node, Parent } from 'unist'
 
-import { List } from '..'
+import { List } from '../types'
 
 export function modifyListItem(node: Node, index: number, parent: Parent) {
     const { start } = <List>parent
