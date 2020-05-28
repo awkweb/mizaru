@@ -15,12 +15,10 @@ type Props = {
 const Provider = ({ children }: Props) => {
     const cookies = parseCookies()
     const initialContent = JSON.parse(cookies?.content ?? 'null')
-    console.log(initialContent)
     const [content, setContent] = useState<string>(initialContent)
     const [searchTerm, setSearchTerm] = useState<string>()
 
     const handleChange = (content: string) => {
-        console.log(content, JSON.stringify(content))
         setCookie(null, 'content', JSON.stringify(content), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',

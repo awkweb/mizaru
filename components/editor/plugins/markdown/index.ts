@@ -1,10 +1,19 @@
-import { Node as ProsemirrorNode } from 'prosemirror-model'
+import {
+    DOMSerializer,
+    Node as ProsemirrorNode,
+    Slice,
+} from 'prosemirror-model'
 import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { checkActive, toMarkdown } from '../../utils'
-import Parser, { Decoration as Deco, Node } from '../../parser'
+import {
+    checkActive,
+    htmlToMarkdown,
+    pmToMarkdown,
+    stringToMarkdown,
+} from '../../utils'
+import Parser, { Decoration as Deco, Node } from './parser'
 import Plugin from '../plugin'
 
 const key = new PluginKey('markdown')
@@ -20,7 +29,7 @@ class Markdown extends Plugin {
     }
 
     render(doc: ProsemirrorNode) {
-        const markdown = toMarkdown(doc, true)
+        const markdown = pmToMarkdown(doc, true)
         const out = Parser.parse(markdown)
         this.results = out
     }
@@ -57,6 +66,25 @@ class Markdown extends Plugin {
                 props: {
                     decorations(state) {
                         return (<ProsemirrorPlugin>this).getState(state)
+                    },
+                    transformPastedHTML(html: string) {
+                        const content = htmlToMarkdown(html)
+                        const markdown = stringToMarkdown(content.trimRight())
+                        return markdown
+                    },
+                    handlePaste: (view, event: ClipboardEvent) => {
+                        if (!view.props.editable) return false
+
+                        const { clipboardData } = event
+                        const html = clipboardData?.getData('text/html')
+                        if (html) {
+                            console.log('html', html)
+                            return true
+                        }
+
+                        const text = clipboardData?.getData('text/plain')
+                        console.log('plain', text)
+                        return true
                     },
                 },
                 appendTransaction: (_transactions, _oldState, newState) => {
