@@ -9,12 +9,26 @@ test('check empty content', () => {
     const editor = new Editor({
         content: undefined,
     })
-    expect(editor.markdown).toEqual('')
+    expect(editor.markdown).toMatchInlineSnapshot(`
+        "
+        "
+    `)
 })
 
-test('check markdown content', () => {
+test('check single line content', () => {
     const editor = new Editor({ content: 'foo bar baz' })
-    expect(editor.markdown).toEqual('foo bar baz')
+    expect(editor.markdown).toMatchInlineSnapshot(`"foo bar baz"`)
+})
+
+test('check multi-line content', () => {
+    const editor = new Editor({ content: '\nfoo\nbar\n\nbaz' })
+    expect(editor.markdown).toMatchInlineSnapshot(`
+        "
+        foo
+        bar
+
+        baz"
+    `)
 })
 
 test('change callback', (done) => {

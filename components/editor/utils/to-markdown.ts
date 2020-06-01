@@ -1,45 +1,32 @@
-/* eslint-disable */
-import unified from 'unified'
-import stringify from 'remark-stringify'
-/* eslint-enable */
-// @ts-ignore
-import parse from 'rehype-parse'
-// @ts-ignore
-import rehype2remark from 'rehype-remark'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 
-import { Fragment, Node as ProsemirrorNode } from 'prosemirror-model'
+const blockSeparator = '\n'
+const leafText = '\n'
 
-export function pmToMarkdown(
-    doc: ProsemirrorNode | Fragment,
-    emptyNewLine?: boolean,
-) {
-    const lines: string[] = []
-    doc.descendants((node, _pos) => {
-        if (node.isBlock) {
-            let line = node.textContent
-            if (emptyNewLine && !line.trim()) {
-                line = `${line}\n`
-            }
-            lines.push(line)
+function toMarkdown(doc: ProsemirrorNode) {
+    const from = 0
+    const to = doc.content.size
+
+    let content = ''
+    let separated = true
+    doc.nodesBetween(from, to, (node, pos) => {
+        const isEmpty = node.content.size === 0
+        if (node.isText) {
+            content +=
+                node?.text?.slice(Math.max(from, pos) - pos, to - pos) ?? ''
+            separated = !blockSeparator
+        } else if (node.isLeaf && leafText) {
+            content += leafText
+            separated = !blockSeparator
+        } else if (!separated && node.isBlock) {
+            content += `${isEmpty ? blockSeparator : ''}${blockSeparator}`
+            separated = true
+        } else if (node.content.size === 0) {
+            content += '\n'
         }
     })
-    return lines.join('\n')
+
+    return content
 }
 
-export function htmlToMarkdown(html: string) {
-    try {
-        const markdown = unified().use(parse).use(rehype2remark).use(stringify)
-            .processSync
-        const out = markdown(html)
-        return <string>out.contents
-    } catch (err) {
-        return html
-    }
-}
-
-export function stringToMarkdown(string: string) {
-    return (string ?? '')
-        .split('\n')
-        .map((x) => `<p>${x}</p>`)
-        .join('')
-}
+export default toMarkdown

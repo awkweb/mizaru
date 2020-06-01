@@ -2,23 +2,21 @@ import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 
 import Node from './node'
 
-class Blockquote extends Node {
+class UnorderedList extends Node {
     get name() {
-        return 'blockquote'
+        return 'unorderedList'
     }
 
     get schema() {
         return {
-            content: 'block*',
+            content: 'listItem+',
             group: 'block',
-            defining: true,
-            draggable: false,
-            parseDOM: [{ tag: 'blockquote' }],
+            parseDOM: [{ tag: 'ul' }],
             toDOM: (_node: ProsemirrorNode): DOMOutputSpec => {
-                return ['blockquote', 0]
+                return ['ul', 0]
             },
         }
     }
 }
 
-export default Blockquote
+export default UnorderedList

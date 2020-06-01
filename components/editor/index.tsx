@@ -5,7 +5,17 @@ import applyDevTools from 'prosemirror-dev-tools'
 import { useMount } from 'react-use'
 
 import { History, Markdown, Placeholder } from './plugins'
-import { Blockquote, Doc, Heading, Paragraph, Text } from './nodes'
+import {
+    Blockquote,
+    Doc,
+    HardBreak,
+    Heading,
+    ListItem,
+    OrderedList,
+    Paragraph,
+    Text,
+    UnorderedList,
+} from './nodes'
 import { Delete, Emphasis, InlineCode, Strong } from './marks'
 import { default as EditorInstance } from './editor'
 
@@ -39,7 +49,11 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
         const nodes = [
             new Blockquote(),
             new Doc(),
+            new HardBreak(),
             new Heading(),
+            new ListItem(),
+            new OrderedList(),
+            new UnorderedList(),
             new Paragraph(),
             new Text(),
         ]

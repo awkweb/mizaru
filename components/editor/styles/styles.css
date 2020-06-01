@@ -28,8 +28,7 @@
 
 .syntax {
     @apply text-syntax;
-    @apply no-underline;
-    @apply hidden;
+    /* @apply hidden; */
 }
 .active > .syntax {
     @apply inline;

@@ -4,13 +4,7 @@ import { DOMParser, Schema } from 'prosemirror-model'
 import { keymap } from 'prosemirror-keymap'
 import { baseKeymap } from 'prosemirror-commands'
 
-import {
-    Extension,
-    ExtensionManager,
-    minMax,
-    pmToMarkdown,
-    stringToMarkdown,
-} from './utils'
+import { Extension, ExtensionManager, minMax, toMarkdown } from './utils'
 import { Doc, Paragraph, Text } from './nodes'
 import { FocusPosition } from './types'
 
@@ -95,13 +89,17 @@ class Editor {
     }
 
     get markdown() {
-        return pmToMarkdown(this.state.doc)
+        return toMarkdown(this.state.doc)
     }
 
     createDocument(schema: Schema, content: string) {
-        const raw = stringToMarkdown(content)
         const element = document.createElement('div')
-        element.innerHTML = raw
+        if (content?.length > 0 && content.trim()) {
+            element.innerHTML = content
+                .split('\n')
+                .map((x) => `<p>${x}</p>`)
+                .join('')
+        }
         const options = { preserveWhitespace: true }
         return DOMParser.fromSchema(schema).parse(element, options)
     }

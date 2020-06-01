@@ -1,51 +1,19 @@
-import {
-    DOMSerializer,
-    Node as ProsemirrorNode,
-    Slice,
-} from 'prosemirror-model'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 
-import { Decoration, DecorationSet } from 'prosemirror-view'
-
-import {
-    checkActive,
-    htmlToMarkdown,
-    pmToMarkdown,
-    stringToMarkdown,
-} from '../../utils'
-import Parser, { Decoration as Deco, Node } from './parser'
 import Plugin from '../plugin'
+import { toMarkdown } from '../../utils'
 
 const key = new PluginKey('markdown')
 
 class Markdown extends Plugin {
-    results: { decorations: Deco[]; nodes: Node[] } = {
-        decorations: [],
-        nodes: [],
-    }
-
     get name() {
         return 'markdown'
     }
 
     render(doc: ProsemirrorNode) {
-        const markdown = pmToMarkdown(doc, true)
-        const out = Parser.parse(markdown)
-        this.results = out
-    }
-
-    get decorations() {
-        return this.results.decorations.map((deco) => {
-            const attrs = { class: deco.type }
-            return Decoration.inline(deco.from, deco.to, attrs)
-        })
-    }
-
-    private createDeco(doc: ProsemirrorNode) {
-        this.render(doc)
-        return this.decorations
-            ? DecorationSet.create(doc, this.decorations)
-            : []
+        const content = toMarkdown(doc)
+        console.log(content)
     }
 
     get plugins() {
@@ -54,76 +22,13 @@ class Markdown extends Plugin {
                 key,
                 state: {
                     init: (_config, instance) => {
-                        return this.createDeco(instance.doc)
+                        this.render(instance.doc)
                     },
-                    apply: (tr, value, _oldState, _newState) => {
+                    apply: (tr, _value, _oldState, _newState) => {
                         if (tr.docChanged) {
-                            return this.createDeco(tr.doc)
+                            this.render(tr.doc)
                         }
-                        return value
                     },
-                },
-                props: {
-                    decorations(state) {
-                        return (<ProsemirrorPlugin>this).getState(state)
-                    },
-                    transformPastedHTML(html: string) {
-                        const content = htmlToMarkdown(html)
-                        const markdown = stringToMarkdown(content.trimRight())
-                        return markdown
-                    },
-                    handlePaste: (view, event: ClipboardEvent) => {
-                        if (!view.props.editable) return false
-
-                        const { clipboardData } = event
-                        const html = clipboardData?.getData('text/html')
-                        if (html) {
-                            console.log('html', html)
-                            return true
-                        }
-
-                        const text = clipboardData?.getData('text/plain')
-                        console.log('plain', text)
-                        return true
-                    },
-                },
-                appendTransaction: (_transactions, _oldState, newState) => {
-                    const { doc, selection, schema, tr } = newState
-                    const { nodes } = this.results
-                    const docSize = doc.content.size
-
-                    tr.removeMark(0, docSize)
-                    nodes.forEach(({ type, ...rest }) => {
-                        const { from, to, marks } = rest
-                        const attrs = {
-                            ...rest.attrs,
-                            active: checkActive(from, to, selection),
-                        }
-                        const node = schema.node(type, attrs)
-                        if (node.isTextblock) {
-                            tr.setBlockType(from, to, node.type, attrs)
-                        } else {
-                            // const $from = doc.resolve(from)
-                            // const $to = doc.resolve(to)
-                            // const range = new NodeRange($from, $to, 0)
-                            // tr.wrap(range, [{ type: node.type, attrs }])
-                            // console.log('node', type, from, to)
-                        }
-
-                        marks?.forEach(({ type, ...rest }) => {
-                            const { from, to } = rest
-                            const attrs = {
-                                ...rest.attrs,
-                                active: checkActive(from, to, selection),
-                            }
-                            const mark = schema.mark(type, attrs)
-
-                            tr.addMark(from, to, mark)
-                            tr.removeStoredMark(mark)
-                        })
-                    })
-
-                    return tr
                 },
             }),
         ]
