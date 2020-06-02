@@ -3,6 +3,7 @@ import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
 
 import Plugin from '../plugin'
 import { toMarkdown } from '../../utils'
+import { toMDAST } from './utils'
 
 const key = new PluginKey('markdown')
 
@@ -13,6 +14,7 @@ class Markdown extends Plugin {
 
     render(doc: ProsemirrorNode) {
         const content = toMarkdown(doc)
+        toMDAST(content)
         console.log(content)
     }
 
