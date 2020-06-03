@@ -2,7 +2,7 @@ import { Eat } from 'remark-parse'
 
 const reBlankLine = /^[ \t]*(\n|$)/
 
-function blankLine(eat: Eat, value: string, silent: boolean) {
+function tokenize(eat: Eat, value: string, silent: boolean) {
     let match
     let subvalue = ''
     let index = 0
@@ -27,7 +27,7 @@ function blankLine(eat: Eat, value: string, silent: boolean) {
         return true
     }
 
-    eat(subvalue)({ type: 'blankLine', count: index / 2 })
+    eat(subvalue)({ type: 'blankLine', count: index })
 }
 
-export default blankLine
+export default tokenize

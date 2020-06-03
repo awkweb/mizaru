@@ -21,7 +21,7 @@ function escape(value: string) {
 
         // Markdown strips single new line characters so couple them up
         if (char === newLine) {
-            out += newLine
+            // out += newLine
         }
 
         out += char

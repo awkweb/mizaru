@@ -33,3 +33,8 @@ export interface Parent extends UnistParent {
 }
 
 export interface Node extends UnistNode {}
+
+export interface BlankLine extends Node {
+    type: NodeType.BlankLine
+    count: number
+}
