@@ -1,11 +1,11 @@
 import { Modifier } from 'unist-util-modify-children'
 
-import { Node, NodeType } from '../types'
+import { Node, NodeType, Parent } from '../types'
 import blankLine from './blank-line'
 import emphasis from './emphasis'
 import strong from './strong'
 
-type BlockModifier = (node: Node, tree: Node) => void
+type BlockModifier = (node: Node, tree: Parent) => void
 
 interface Block {
     [NodeType.BlankLine]: BlockModifier

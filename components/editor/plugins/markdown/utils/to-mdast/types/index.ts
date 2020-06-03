@@ -18,6 +18,7 @@ export enum NodeType {
     Link = 'link',
     List = 'list',
     ListItem = 'listItem',
+    NewLine = 'newLine',
     Paragraph = 'paragraph',
     Reference = 'reference',
     Root = 'root',

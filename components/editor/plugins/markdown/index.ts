@@ -15,7 +15,7 @@ class Markdown extends Plugin {
     render(doc: ProsemirrorNode) {
         const content = toMarkdown(doc)
         toMDAST(content)
-        console.log(content)
+        console.log(JSON.stringify(content))
     }
 
     get plugins() {

@@ -9,6 +9,7 @@ import source from 'unist-util-source'
 
 import { settings } from './constants'
 import { escape } from './utils'
+import { Parent } from './types'
 import tokenize from './tokenize'
 import modify from './modify'
 
@@ -36,7 +37,7 @@ function toMDAST(markdown: string) {
         if (inline.hasOwnProperty(type)) {
             modifyChildren(inline[type])(node)
         } else if (block.hasOwnProperty(type)) {
-            block[type](node, tree)
+            block[type](node, <Parent>tree)
         }
 
         // Discard position and raw from node after use
@@ -46,14 +47,14 @@ function toMDAST(markdown: string) {
 
     console.log(tree)
     // @ts-ignore
-    tree.children.forEach((z) => {
-        const children = z.children
-        if (children) {
-            children.forEach((x: any) => console.log(x))
-        } else {
-            console.log(z)
-        }
-    })
+    // tree.children.forEach((z) => {
+    //     const children = z.children
+    //     if (children) {
+    //         children.forEach((x: any) => console.log(x))
+    //     } else {
+    //         console.log(z)
+    //     }
+    // })
 
     return tree
 }

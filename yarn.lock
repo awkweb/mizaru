@@ -10780,6 +10780,13 @@ unique-slug@^2.0.0:
   dependencies:
     imurmurhash "^0.1.4"
 
+unist-util-find-after@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-find-after/-/unist-util-find-after-3.0.0.tgz#5c65fcebf64d4f8f496db46fa8fd0fbf354b43e6"
+  integrity sha512-ojlBqfsBftYXExNu3+hHLfJQ/X1jYY/9vdm4yZWjIbf0VuWF6CRufci1ZyoD/wV2TYMKxXUoNuoqwy+CkgzAiQ==
+  dependencies:
+    unist-util-is "^4.0.0"
+
 unist-util-find-before@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/unist-util-find-before/-/unist-util-find-before-2.0.5.tgz#829b3cfa5e40b8f47c6908b2593c0a2f5cc037c9"

@@ -29,6 +29,7 @@
         "remark-disable-tokenizers": "^1.0.24",
         "remark-parse": "^8.0.2",
         "unified": "^9.0.0",
+        "unist-util-find-after": "^3.0.0",
         "unist-util-find-before": "^2.0.5",
         "unist-util-modify-children": "^2.0.0",
         "unist-util-source": "^2.0.0",

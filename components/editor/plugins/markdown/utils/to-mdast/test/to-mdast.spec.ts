@@ -198,7 +198,7 @@ test('multi-line text', () => {
 })
 
 test.only('test', () => {
-    const mdast = toMDAST('\nfoo\n\nbar')
+    const mdast = toMDAST('\nfoo\n\n\nbar')
     // const mdast = toMDAST('foo\n**bar\nbaz**')
     // expect(mdast).toMatchInlineSnapshot()
 })
