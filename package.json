@@ -31,6 +31,7 @@
         "unified": "^9.0.0",
         "unist-util-find-after": "^3.0.0",
         "unist-util-find-before": "^2.0.5",
+        "unist-util-flatmap": "^1.0.0",
         "unist-util-modify-children": "^2.0.0",
         "unist-util-source": "^2.0.0",
         "unist-util-visit": "^2.0.2",

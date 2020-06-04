@@ -8,8 +8,8 @@ import { History, Markdown, Placeholder } from './plugins'
 import {
     Blockquote,
     Doc,
-    HardBreak,
     Heading,
+    LineFeed,
     ListItem,
     OrderedList,
     Paragraph,
@@ -49,13 +49,13 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
         const nodes = [
             new Blockquote(),
             new Doc(),
-            new HardBreak(),
             new Heading(),
+            new LineFeed(),
             new ListItem(),
             new OrderedList(),
-            new UnorderedList(),
             new Paragraph(),
             new Text(),
+            new UnorderedList(),
         ]
         const plugins = [new History(), new Markdown(), new Placeholder()]
         const editorInstance = new EditorInstance({

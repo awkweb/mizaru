@@ -53,7 +53,6 @@ class Editor {
         const schema = new Schema({
             nodes,
             marks,
-            topNode: 'root',
         })
         const keymaps = extensionManager.keymaps({
             schema,
@@ -94,6 +93,19 @@ class Editor {
     }
 
     createDocument(schema: Schema, content: string) {
+        console.log(content)
+        if (content === '') {
+            const emptyDocument = {
+                type: 'doc',
+                content: [
+                    {
+                        type: 'paragraph',
+                    },
+                ],
+            }
+            return schema.nodeFromJSON(emptyDocument)
+        }
+
         const element = document.createElement('div')
         if (content?.length > 0 && content.trim()) {
             element.innerHTML = content

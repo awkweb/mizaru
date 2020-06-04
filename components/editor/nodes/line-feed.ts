@@ -2,9 +2,9 @@ import { DOMOutputSpec, Node as ProsemirrorNode } from 'prosemirror-model'
 
 import Node from './node'
 
-class HardBreak extends Node {
+class LineFeed extends Node {
     get name() {
-        return 'hardBreak'
+        return 'lineFeed'
     }
 
     get schema() {
@@ -18,4 +18,4 @@ class HardBreak extends Node {
     }
 }
 
-export default HardBreak
+export default LineFeed
