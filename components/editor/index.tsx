@@ -4,6 +4,7 @@ import applyDevTools from 'prosemirror-dev-tools'
 
 import { useMount } from 'react-use'
 
+import { Data } from './types'
 import { History, Markdown, Placeholder } from './plugins'
 import {
     Blockquote,
@@ -22,7 +23,7 @@ import { default as EditorInstance } from './editor'
 type Props = {
     autoFocus?: boolean
     value: string
-    onChange: (content: string) => void
+    onChange: (data: Data) => void
 }
 
 type Ref = ReactRef<{
@@ -78,4 +79,4 @@ const Editor = forwardRef((props: Props, ref: Ref) => {
 
 export default Editor
 export { keys } from './constants'
-export type { Props as EditorProps, Ref as EditorRef }
+export type { Props as EditorProps, Ref as EditorRef, Data as EditorData }

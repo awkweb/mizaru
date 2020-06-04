@@ -6,10 +6,10 @@ import { baseKeymap } from 'prosemirror-commands'
 
 import { Extension, ExtensionManager, minMax, toMarkdown } from './utils'
 import { Doc, Paragraph, Text } from './nodes'
-import { FocusPosition } from './types'
+import { Data, FocusPosition } from './types'
 
 interface Events {
-    onChange: (content: string) => void
+    onChange: (data: Data) => void
     onTransaction: (transaction: Transaction) => void
 }
 
@@ -92,29 +92,42 @@ class Editor {
         return toMarkdown(this.state.doc)
     }
 
+    get json() {
+        return this.state.doc.toJSON()
+    }
+
     createDocument(schema: Schema, content: string) {
-        console.log(content)
-        if (content === '') {
-            const emptyDocument = {
-                type: 'doc',
-                content: [
-                    {
-                        type: 'paragraph',
-                    },
-                ],
-            }
+        const emptyDocument = {
+            type: 'doc',
+            content: [
+                {
+                    type: 'paragraph',
+                },
+            ],
+        }
+        if (content === null) {
             return schema.nodeFromJSON(emptyDocument)
         }
 
-        const element = document.createElement('div')
-        if (content?.length > 0 && content.trim()) {
+        if (typeof content === 'object') {
+            try {
+                return schema.nodeFromJSON(content)
+            } catch (error) {
+                return schema.nodeFromJSON(emptyDocument)
+            }
+        }
+
+        if (typeof content === 'string') {
+            const element = document.createElement('div')
             element.innerHTML = content
                 .split('\n')
                 .map((x) => `<p>${x}</p>`)
                 .join('')
+            const options = { preserveWhitespace: true }
+            return DOMParser.fromSchema(schema).parse(element, options)
         }
-        const options = { preserveWhitespace: true }
-        return DOMParser.fromSchema(schema).parse(element, options)
+
+        return false
     }
 
     dispatchTransaction(transaction: Transaction) {
@@ -129,7 +142,7 @@ class Editor {
         if (!transaction.docChanged || transaction.getMeta('preventUpdate')) {
             return
         }
-        this.events.onChange(this.markdown)
+        this.events.onChange({ json: this.json, markdown: this.markdown })
     }
 
     resolveSelection(position?: FocusPosition | boolean) {

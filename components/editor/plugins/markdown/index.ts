@@ -16,7 +16,7 @@ class Markdown extends Plugin {
         const markdown = toMarkdown(doc)
         const mdast = toMDAST(markdown)
         const pmast = toPMAST(mdast)
-        console.log(JSON.stringify(markdown))
+        // console.log(JSON.stringify(markdown))
     }
 
     get plugins() {

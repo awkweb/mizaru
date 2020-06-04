@@ -1,10 +1,12 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 
+import { EditorData } from '@/components'
+
 type State = {
     content: string
     searchTerm: string
-    handleChange: (content: string) => void
+    handleChange: (data: EditorData) => void
     handleSearch: (searchTerm?: string) => void
 }
 const Context = createContext<Partial<State>>({})
@@ -18,8 +20,8 @@ const Provider = ({ children }: Props) => {
     const [content, setContent] = useState<string>(initialContent)
     const [searchTerm, setSearchTerm] = useState<string>()
 
-    const handleChange = (content: string) => {
-        setCookie(null, 'content', JSON.stringify(content), {
+    const handleChange = (data: EditorData) => {
+        setCookie(null, 'content', JSON.stringify(data.json), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
         })
