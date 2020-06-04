@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`** multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "foo bar baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`** nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "syntax",
+                  "value": "*",
+                },
+                Object {
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "type": "syntax",
+                  "value": "*",
+                },
+              ],
+              "type": "emphasis",
+            },
+            Object {
+              "type": "text",
+              "value": " baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`** nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "foo ",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": "bar",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": " baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`** single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "foo",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`** split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "foo",
+            },
+            Object {
+              "type": "lineFeed",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "lineFeed",
+            },
+            Object {
+              "type": "text",
+              "value": "baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`__ multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+            Object {
+              "type": "text",
+              "value": "foo bar baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`__ nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+            Object {
+              "type": "text",
+              "value": "foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "syntax",
+                  "value": "*",
+                },
+                Object {
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "type": "syntax",
+                  "value": "*",
+                },
+              ],
+              "type": "emphasis",
+            },
+            Object {
+              "type": "text",
+              "value": " baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`__ nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+            Object {
+              "type": "text",
+              "value": "foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "syntax",
+                  "value": "**",
+                },
+                Object {
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "type": "syntax",
+                  "value": "**",
+                },
+              ],
+              "type": "strong",
+            },
+            Object {
+              "type": "text",
+              "value": " baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`__ single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+            Object {
+              "type": "text",
+              "value": "foo",
+            },
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`__ split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+            Object {
+              "type": "text",
+              "value": "foo",
+            },
+            Object {
+              "type": "lineFeed",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "lineFeed",
+            },
+            Object {
+              "type": "text",
+              "value": "baz",
+            },
+            Object {
+              "type": "syntax",
+              "value": "__",
+            },
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;

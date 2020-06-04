@@ -1,9 +1,10 @@
 import { Parent as UnistParent } from 'unist'
 
+import { NodeType } from '../../../types'
 import { Node, Parent } from '../types'
 
 function modifier(node: Node, index: number, parent: UnistParent) {
-    const isSyntax = node.type === 'syntax'
+    const isSyntax = node.type === NodeType.Syntax
     if (isSyntax) return
 
     const { children, raw } = <Parent>parent
@@ -12,7 +13,7 @@ function modifier(node: Node, index: number, parent: UnistParent) {
 
     const syntaxChar = raw.startsWith('*') ? '*' : '_'
     const syntaxChild = {
-        type: 'syntax',
+        type: NodeType.Syntax,
         value: syntaxChar,
     }
 

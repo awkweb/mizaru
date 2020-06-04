@@ -1,15 +1,16 @@
 import { Eat } from 'remark-parse'
 
-import { newLine } from '../constants'
+import { NodeType } from '../../../types'
+import { lineFeed } from '../constants'
 
 function locate(value: string, fromIndex: number) {
-    return value.indexOf(newLine, fromIndex)
+    return value.indexOf(lineFeed, fromIndex)
 }
 
-const reNewLine = /^\n/
+const reLineFeed = /^\n/
 
 function tokenize(eat: Eat, value: string, silent: boolean) {
-    const match = reNewLine.exec(value)
+    const match = reLineFeed.exec(value)
 
     if (!match) {
         return
@@ -20,7 +21,7 @@ function tokenize(eat: Eat, value: string, silent: boolean) {
     }
 
     eat(match[0])({
-        type: 'newLine',
+        type: NodeType.LineFeed,
     })
 }
 

@@ -7,8 +7,9 @@ import modifyChildren from 'unist-util-modify-children'
 // @ts-ignore
 import source from 'unist-util-source'
 
+import { NodeType } from '../../types'
 import { settings } from './constants'
-import { escape } from './utils'
+import { remarkUnwrapNewLines } from './utils'
 import { Parent } from './types'
 import tokenize from './tokenize'
 import modify from './modify'
@@ -21,15 +22,18 @@ function toMDAST(markdown: string) {
 
     // Override tokenizers
     blockTokenizers.blankLine = tokenize.blankLine
-    inlineTokenizers.newLine = <Tokenizer>tokenize.newLine
-    inlineMethods.splice(inlineMethods.indexOf('text'), 0, 'newLine')
+    inlineTokenizers.lineFeed = <Tokenizer>tokenize.lineFeed
+    inlineMethods.splice(
+        inlineMethods.indexOf(NodeType.Text),
+        0,
+        NodeType.LineFeed,
+    )
 
-    const content = escape(markdown)
-    const tree = unified().use(remarkParse, settings).parse(content)
+    const tree = unified().use(remarkParse, settings).parse(markdown)
 
-    visit(tree, (node) => {
+    visit(tree, (node, _index, parent) => {
         // Get node raw value from markdown string
-        node.raw = source(node, content)
+        node.raw = source(node, markdown)
 
         // Modify block and inline nodes
         const { inline, block } = modify
@@ -37,7 +41,7 @@ function toMDAST(markdown: string) {
         if (inline.hasOwnProperty(type)) {
             modifyChildren(inline[type])(node)
         } else if (block.hasOwnProperty(type)) {
-            block[type](node, <Parent>tree)
+            block[type](node, <Parent>parent)
         }
 
         // Discard position and raw from node after use
@@ -45,7 +49,9 @@ function toMDAST(markdown: string) {
         delete node.raw
     })
 
-    console.log(tree)
+    remarkUnwrapNewLines(tree)
+
+    // console.log(tree)
     // @ts-ignore
     // tree.children.forEach((z) => {
     //     const children = z.children

@@ -33,7 +33,8 @@
         "unist-util-find-before": "^2.0.5",
         "unist-util-modify-children": "^2.0.0",
         "unist-util-source": "^2.0.0",
-        "unist-util-visit": "^2.0.2"
+        "unist-util-visit": "^2.0.2",
+        "unist-util-visit-parents": "^3.0.2"
     },
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",

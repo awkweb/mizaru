@@ -1,5 +1,7 @@
 import { Eat } from 'remark-parse'
 
+import { NodeType } from '../../../types'
+
 const reBlankLine = /^[ \t]*(\n|$)/
 
 function tokenize(eat: Eat, value: string, silent: boolean) {
@@ -27,7 +29,7 @@ function tokenize(eat: Eat, value: string, silent: boolean) {
         return true
     }
 
-    eat(subvalue)({ type: 'blankLine', count: index })
+    eat(subvalue)({ type: NodeType.BlankLine, count: index })
 }
 
 export default tokenize

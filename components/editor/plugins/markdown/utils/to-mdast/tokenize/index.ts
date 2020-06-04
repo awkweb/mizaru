@@ -1,9 +1,9 @@
 import blankLine from './blank-line'
-import newLine from './new-line'
+import lineFeed from './line-feed'
 
 const tokenize = {
     blankLine,
-    newLine,
+    lineFeed,
 }
 
 export default tokenize

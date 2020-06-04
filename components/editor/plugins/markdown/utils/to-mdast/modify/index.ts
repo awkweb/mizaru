@@ -1,6 +1,7 @@
 import { Modifier } from 'unist-util-modify-children'
 
-import { Node, NodeType, Parent } from '../types'
+import { NodeType } from '../../../types'
+import { Node, Parent } from '../types'
 import blankLine from './blank-line'
 import emphasis from './emphasis'
 import strong from './strong'

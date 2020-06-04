@@ -4,4 +4,4 @@ export const settings = {
 }
 
 export const backslash = '\\'
-export const newLine = '\n'
+export const lineFeed = '\n'

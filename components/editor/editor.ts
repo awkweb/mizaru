@@ -53,6 +53,7 @@ class Editor {
         const schema = new Schema({
             nodes,
             marks,
+            topNode: 'root',
         })
         const keymaps = extensionManager.keymaps({
             schema,
