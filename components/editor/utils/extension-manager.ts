@@ -43,7 +43,7 @@ export default class ExtensionManager {
             .filter((extension) => extension.plugins)
             .reduce(
                 (allPlugins, { plugins }) => [...allPlugins, ...plugins],
-                [] as Plugin<any, any>[],
+                [] as Plugin[],
             )
     }
 

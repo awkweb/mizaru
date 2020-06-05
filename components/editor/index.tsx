@@ -22,7 +22,7 @@ import { default as EditorInstance } from './editor'
 
 type Props = {
     autoFocus?: boolean
-    value: string
+    value: object | string
     onChange: (data: Data) => void
 }
 

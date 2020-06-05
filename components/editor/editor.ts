@@ -15,7 +15,7 @@ interface Events {
 
 interface Props extends Events {
     autoFocus?: boolean
-    content: string
+    content: object | string
     element: HTMLDivElement
     extensions: Extension[]
 }
@@ -96,7 +96,7 @@ class Editor {
         return this.state.doc.toJSON()
     }
 
-    createDocument(schema: Schema, content: string) {
+    createDocument(schema: Schema, content: object | string) {
         const emptyDocument = {
             type: 'doc',
             content: [
@@ -104,9 +104,6 @@ class Editor {
                     type: 'paragraph',
                 },
             ],
-        }
-        if (content === null) {
-            return schema.nodeFromJSON(emptyDocument)
         }
 
         if (typeof content === 'object') {
@@ -127,7 +124,7 @@ class Editor {
             return DOMParser.fromSchema(schema).parse(element, options)
         }
 
-        return false
+        return schema.nodeFromJSON(emptyDocument)
     }
 
     dispatchTransaction(transaction: Transaction) {
@@ -192,7 +189,7 @@ class Editor {
         this.view.dispatch(transaction)
     }
 
-    setContent(content: string, emitUpdate: boolean = false) {
+    setContent(content: object | string, emitUpdate: boolean = false) {
         const { doc, tr } = this.state
         const document = this.createDocument(this.schema, content)
         const selection = TextSelection.create(doc, 0, doc.content.size)

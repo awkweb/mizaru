@@ -4,7 +4,7 @@ import { parseCookies, setCookie } from 'nookies'
 import { EditorData } from '@/components'
 
 type State = {
-    content: string
+    content: object | string
     searchTerm: string
     handleChange: (data: EditorData) => void
     handleSearch: (searchTerm?: string) => void

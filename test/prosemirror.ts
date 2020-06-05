@@ -85,7 +85,7 @@ function mkState(config: {
     doc?: ProsemirrorNode | null
     selection?: Selection | null
     storedMarks?: Mark[] | null
-    plugins?: Array<Plugin<any, any>> | null
+    plugins?: Plugin[] | null
 }) {
     return EditorState.create(config)
 }

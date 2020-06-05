@@ -1,5 +1,9 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { PluginKey, Plugin as ProsemirrorPlugin } from 'prosemirror-state'
+import {
+    PluginKey,
+    Plugin as ProsemirrorPlugin,
+    TextSelection,
+} from 'prosemirror-state'
 
 import Plugin from '../plugin'
 import { toMarkdown } from '../../utils'
@@ -16,7 +20,7 @@ class Markdown extends Plugin {
         const markdown = toMarkdown(doc)
         const mdast = toMDAST(markdown)
         const pmast = toPMAST(mdast)
-        // console.log(JSON.stringify(markdown))
+        return pmast
     }
 
     get plugins() {
@@ -25,14 +29,44 @@ class Markdown extends Plugin {
                 key,
                 state: {
                     init: (_config, instance) => {
-                        this.render(instance.doc)
+                        const json = this.render(instance.doc)
+                        return { json }
                     },
-                    apply: (tr, _value, _oldState, _newState) => {
-                        if (tr.docChanged) {
-                            this.render(tr.doc)
+                    apply: (tr, value, _oldState, _newState) => {
+                        if (!tr.docChanged) {
+                            return value
                         }
+
+                        const json = this.render(tr.doc)
+                        return { json }
                     },
                 },
+                view: () => ({
+                    update: (view, prevState) => {
+                        const { state } = view
+                        const { json } = key.getState(state)
+
+                        if (prevState.doc.eq(state.doc) || !json) {
+                            return
+                        }
+
+                        const { doc, selection, schema, tr } = state
+
+                        // Swap document content
+                        const node = schema.nodeFromJSON(json)
+                        tr.replaceWith(0, doc.content.size, node.content)
+
+                        // Force selection to remain in last place
+                        const newSelection = TextSelection.create(
+                            state.apply(tr).doc,
+                            selection.anchor,
+                            selection.head,
+                        )
+                        tr.setSelection(newSelection)
+
+                        view.dispatch(tr)
+                    },
+                }),
             }),
         ]
     }

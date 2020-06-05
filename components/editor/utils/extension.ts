@@ -28,7 +28,7 @@ abstract class Extension {
         return {}
     }
 
-    get plugins(): Plugin<any, any>[] {
+    get plugins(): Plugin[] {
         return []
     }
 
