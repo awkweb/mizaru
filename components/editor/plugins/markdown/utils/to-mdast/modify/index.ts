@@ -18,6 +18,7 @@ interface Block {
 }
 
 interface Inline {
+    [NodeType.Blockquote]: Modifier
     [NodeType.Emphasis]: Modifier
     [NodeType.Strong]: Modifier
     [key: string]: Modifier
@@ -25,11 +26,12 @@ interface Inline {
 
 const block: Block = {
     blankLine,
-    blockquote,
+    blockquote: blockquote.block,
     heading,
 }
 
 const inline: Inline = {
+    blockquote: blockquote.inline,
     emphasis,
     strong,
 }

@@ -1,7 +1,7 @@
 import toMDAST from '../'
 
 test.only('empty', () => {
-    const mdast = toMDAST('  >foo')
+    const mdast = toMDAST('> f')
     console.log(JSON.stringify(mdast, null, 4))
     // expect(mdast).toMatchSnapshot()
 })

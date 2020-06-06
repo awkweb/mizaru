@@ -40,7 +40,8 @@ function toMDAST(markdown: string) {
         const { type } = node
         if (inline.hasOwnProperty(type)) {
             modifyChildren(inline[type])(node)
-        } else if (block.hasOwnProperty(type)) {
+        }
+        if (block.hasOwnProperty(type)) {
             const index = block[type](<Node>node, <Parent>parent)
             if (index) return index
         }
