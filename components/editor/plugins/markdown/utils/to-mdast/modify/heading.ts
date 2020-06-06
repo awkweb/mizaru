@@ -12,6 +12,7 @@ function modifier(node: Node, parent: Parent) {
         const paragraph = { type: NodeType.Paragraph, children: [child] }
         const index = parent.children.indexOf(node)
         parent.children.splice(index, 1, paragraph)
+        return
     }
 
     const { leading, inner, trailing } = getHeadingWhitespace(raw, level)
@@ -29,7 +30,7 @@ function modifier(node: Node, parent: Parent) {
     }
 
     // Add opening sequence
-    const child = { type: NodeType.Syntax, value: `${syntaxChars} ` }
+    const child = { type: NodeType.Syntax, value: syntaxChars }
     ;(<Parent>node).children.unshift(child)
 
     // Add leading whitespace

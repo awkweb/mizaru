@@ -15,20 +15,32 @@ function inline(node: Node, parent: Node) {
     return {
         ...rest,
         ...(text ? { text } : {}),
-        // Temporarily convert `syntax` to `text`
-        // Will add decorations later
-        ...{ type: type === NodeType.Syntax ? 'text' : type },
+        type,
         marks,
     }
 }
 
 function flatten(ast: Node) {
     return flatMap(ast, (node: Node) => {
+        // Discard position and raw from node
+        delete node.position
+        delete node.raw
+
+        const { type } = node
+
         // Flatten marks to ProseMirror structure
-        if (marks.hasOwnProperty(node.type)) {
+        if (marks.hasOwnProperty(type)) {
             return (<Parent>node).children.map((child: Node) => {
                 return inline(child, node)
             })
+        }
+
+        // Add heading attributes
+        if (type === NodeType.Heading) {
+            node.attrs = {
+                level: node.depth,
+            }
+            delete node.depth
         }
 
         // Rename `children` to `content`
@@ -40,6 +52,12 @@ function flatten(ast: Node) {
                     content,
                 },
             ]
+        }
+
+        // Temporarily convert `syntax` to `text`
+        // Will add decorations later
+        if (type === NodeType.Syntax) {
+            node.type = 'text'
         }
 
         // Rename `value` to `text`

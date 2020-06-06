@@ -1,0 +1,1828 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"> " empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 3,
+          "line": 1,
+          "offset": 2,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> ",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 3,
+      "line": 1,
+      "offset": 2,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> ",
+  "type": "root",
+}
+`;
+
+exports[`"> " multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">  ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": " foo bar baz",
+              "type": "text",
+              "value": " foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": " foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 15,
+          "line": 1,
+          "offset": 14,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">  foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 15,
+      "line": 1,
+      "offset": 14,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">  foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`"> " nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">  ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": " foo ",
+              "type": "text",
+              "value": " foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "*",
+                },
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 12,
+                      "line": 1,
+                      "offset": 11,
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 9,
+                      "line": 1,
+                      "offset": 8,
+                    },
+                  },
+                  "raw": "bar",
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "*",
+                },
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+              },
+              "raw": "*bar*",
+              "type": "emphasis",
+            },
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+              },
+              "raw": " baz",
+              "type": "text",
+              "value": " baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": " foo *bar* baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">  foo *bar* baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">  foo *bar* baz",
+  "type": "root",
+}
+`;
+
+exports[`"> " nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">  ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": " foo ",
+              "type": "text",
+              "value": " foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "**",
+                },
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 13,
+                      "line": 1,
+                      "offset": 12,
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 10,
+                      "line": 1,
+                      "offset": 9,
+                    },
+                  },
+                  "raw": "bar",
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "**",
+                },
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+              },
+              "raw": "**bar**",
+              "type": "strong",
+            },
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 19,
+                  "line": 1,
+                  "offset": 18,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+              },
+              "raw": " baz",
+              "type": "text",
+              "value": " baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": " foo **bar** baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">  foo **bar** baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">  foo **bar** baz",
+  "type": "root",
+}
+`;
+
+exports[`"> " single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">  ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": " foo",
+              "type": "text",
+              "value": " foo",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": " foo",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">  foo",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 7,
+      "line": 1,
+      "offset": 6,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">  foo",
+  "type": "root",
+}
+`;
+
+exports[`"> " split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">  ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": " foo",
+              "type": "text",
+              "value": " foo",
+            },
+          ],
+          "type": "paragraph",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 4,
+                  "line": 2,
+                  "offset": 10,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 2,
+                  "offset": 7,
+                },
+              },
+              "raw": "bar",
+              "type": "text",
+              "value": "bar",
+            },
+          ],
+          "type": "paragraph",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 4,
+                  "line": 3,
+                  "offset": 14,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 3,
+                  "offset": 11,
+                },
+              },
+              "raw": "baz",
+              "type": "text",
+              "value": "baz",
+            },
+          ],
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 4,
+          "line": 3,
+          "offset": 14,
+        },
+        "indent": Array [
+          1,
+          1,
+        ],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">  foo
+bar
+baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 14,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">  foo
+bar
+baz",
+  "type": "root",
+}
+`;
+
+exports[`"> " whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">    ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "   foo bar baz",
+              "type": "text",
+              "value": "   foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "   foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">    foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">    foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`"> " whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">  ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 18,
+                  "line": 1,
+                  "offset": 17,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+              },
+              "raw": " foo bar baz",
+              "type": "text",
+              "value": " foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": " foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   >  foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   >  foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`"> " whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">    ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 20,
+                  "line": 1,
+                  "offset": 19,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+              },
+              "raw": "   foo bar baz",
+              "type": "text",
+              "value": "   foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "   foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   >    foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   >    foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`">" empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "text",
+          "value": ">",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 2,
+      "line": 1,
+      "offset": 1,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">",
+  "type": "root",
+}
+`;
+
+exports[`">" multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "foo bar baz",
+              "type": "text",
+              "value": "foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 14,
+          "line": 1,
+          "offset": 13,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 14,
+      "line": 1,
+      "offset": 13,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`">" nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "foo ",
+              "type": "text",
+              "value": "foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "*",
+                },
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 11,
+                      "line": 1,
+                      "offset": 10,
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 8,
+                      "line": 1,
+                      "offset": 7,
+                    },
+                  },
+                  "raw": "bar",
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "*",
+                },
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+              },
+              "raw": "*bar*",
+              "type": "emphasis",
+            },
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 16,
+                  "line": 1,
+                  "offset": 15,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+              },
+              "raw": " baz",
+              "type": "text",
+              "value": " baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo *bar* baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> foo *bar* baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 16,
+      "line": 1,
+      "offset": 15,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> foo *bar* baz",
+  "type": "root",
+}
+`;
+
+exports[`">" nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "foo ",
+              "type": "text",
+              "value": "foo ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "**",
+                },
+                Object {
+                  "position": Position {
+                    "end": Object {
+                      "column": 12,
+                      "line": 1,
+                      "offset": 11,
+                    },
+                    "indent": Array [],
+                    "start": Object {
+                      "column": 9,
+                      "line": 1,
+                      "offset": 8,
+                    },
+                  },
+                  "raw": "bar",
+                  "type": "text",
+                  "value": "bar",
+                },
+                Object {
+                  "raw": null,
+                  "type": "syntax",
+                  "value": "**",
+                },
+              ],
+              "position": Position {
+                "end": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+              },
+              "raw": "**bar**",
+              "type": "strong",
+            },
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 18,
+                  "line": 1,
+                  "offset": 17,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+              },
+              "raw": " baz",
+              "type": "text",
+              "value": " baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo **bar** baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> foo **bar** baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> foo **bar** baz",
+  "type": "root",
+}
+`;
+
+exports[`">" single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "foo",
+              "type": "text",
+              "value": "foo",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> foo",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 6,
+      "line": 1,
+      "offset": 5,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> foo",
+  "type": "root",
+}
+`;
+
+exports[`">" split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "foo",
+              "type": "text",
+              "value": "foo",
+            },
+          ],
+          "type": "paragraph",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 4,
+                  "line": 2,
+                  "offset": 9,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 2,
+                  "offset": 6,
+                },
+              },
+              "raw": "bar",
+              "type": "text",
+              "value": "bar",
+            },
+          ],
+          "type": "paragraph",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 4,
+                  "line": 3,
+                  "offset": 13,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 1,
+                  "line": 3,
+                  "offset": 10,
+                },
+              },
+              "raw": "baz",
+              "type": "text",
+              "value": "baz",
+            },
+          ],
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 4,
+          "line": 3,
+          "offset": 13,
+        },
+        "indent": Array [
+          1,
+          1,
+        ],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> foo
+bar
+baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 13,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> foo
+bar
+baz",
+  "type": "root",
+}
+`;
+
+exports[`">" whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">   ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 16,
+                  "line": 1,
+                  "offset": 15,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "  foo bar baz",
+              "type": "text",
+              "value": "  foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "  foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": ">   foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 16,
+      "line": 1,
+      "offset": 15,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": ">   foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`">" whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+              },
+              "raw": "foo bar baz",
+              "type": "text",
+              "value": "foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   > foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   > foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`">" whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": ">   ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 19,
+                  "line": 1,
+                  "offset": 18,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+              },
+              "raw": "  foo bar baz",
+              "type": "text",
+              "value": "  foo bar baz",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "  foo bar baz",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   >   foo bar baz",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   >   foo bar baz",
+  "type": "root",
+}
+`;
+
+exports[`empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "raw": null,
+          "type": "syntax",
+          "value": "> ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "position": Position {
+                "end": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+              },
+              "raw": "foo",
+              "type": "text",
+              "value": "foo",
+            },
+          ],
+          "position": Position {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo",
+          "type": "paragraph",
+        },
+      ],
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "> foo",
+      "type": "blockquote",
+    },
+  ],
+  "position": Object {
+    "end": Object {
+      "column": 6,
+      "line": 1,
+      "offset": 5,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "> foo",
+  "type": "root",
+}
+`;

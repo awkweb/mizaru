@@ -10,7 +10,7 @@ import source from 'unist-util-source'
 import { NodeType } from '../../types'
 import { settings } from './constants'
 import { remarkUnwrapNewLines } from './utils'
-import { Parent } from './types'
+import { Node, Parent } from './types'
 import tokenize from './tokenize'
 import modify from './modify'
 
@@ -41,26 +41,12 @@ function toMDAST(markdown: string) {
         if (inline.hasOwnProperty(type)) {
             modifyChildren(inline[type])(node)
         } else if (block.hasOwnProperty(type)) {
-            block[type](node, <Parent>parent)
+            const index = block[type](<Node>node, <Parent>parent)
+            if (index) return index
         }
-
-        // Discard position and raw from node after use
-        delete node.position
-        delete node.raw
     })
 
     remarkUnwrapNewLines(tree)
-
-    // console.log(tree)
-    // @ts-ignore
-    // tree.children.forEach((z) => {
-    //     const children = z.children
-    //     if (children) {
-    //         children.forEach((x: any) => console.log(x))
-    //     } else {
-    //         console.log(z)
-    //     }
-    // })
 
     return tree
 }

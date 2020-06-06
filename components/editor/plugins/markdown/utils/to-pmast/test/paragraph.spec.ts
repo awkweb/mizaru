@@ -1,15 +1,11 @@
+/* eslint-disable import/default */
+import u from 'unist-builder'
+
 import toPMAST from '../'
 
 test('empty', () => {
-    const pmast = toPMAST({
-        type: 'root',
-        children: [
-            {
-                type: 'paragraph',
-                children: [],
-            },
-        ],
-    })
+    const mdast = u('root', [u('paragraph', [])])
+    const pmast = toPMAST(mdast)
     expect(pmast).toMatchInlineSnapshot(`
         Object {
           "content": Array [
@@ -24,15 +20,8 @@ test('empty', () => {
 })
 
 test('single word', () => {
-    const pmast = toPMAST({
-        type: 'root',
-        children: [
-            {
-                type: 'paragraph',
-                children: [{ type: 'text', value: 'foo' }],
-            },
-        ],
-    })
+    const mdast = u('root', [u('paragraph', [u('text', 'foo')])])
+    const pmast = toPMAST(mdast)
     expect(pmast).toMatchInlineSnapshot(`
         Object {
           "content": Array [
@@ -52,15 +41,8 @@ test('single word', () => {
 })
 
 test('multiple words', () => {
-    const pmast = toPMAST({
-        type: 'root',
-        children: [
-            {
-                type: 'paragraph',
-                children: [{ type: 'text', value: 'foo bar baz' }],
-            },
-        ],
-    })
+    const mdast = u('root', [u('paragraph', [u('text', 'foo bar baz')])])
+    const pmast = toPMAST(mdast)
     expect(pmast).toMatchInlineSnapshot(`
         Object {
           "content": Array [
@@ -80,21 +62,16 @@ test('multiple words', () => {
 })
 
 test('split across multiple lines', () => {
-    const pmast = toPMAST({
-        type: 'root',
-        children: [
-            {
-                type: 'paragraph',
-                children: [
-                    { type: 'text', value: 'foo' },
-                    { type: 'lineFeed' },
-                    { type: 'text', value: 'bar' },
-                    { type: 'lineFeed' },
-                    { type: 'text', value: 'baz' },
-                ],
-            },
-        ],
-    })
+    const mdast = u('root', [
+        u('paragraph', [
+            u('text', 'foo'),
+            u('lineFeed'),
+            u('text', 'bar'),
+            u('lineFeed'),
+            u('text', 'baz'),
+        ]),
+    ])
+    const pmast = toPMAST(mdast)
     expect(pmast).toMatchInlineSnapshot(`
         Object {
           "content": Array [

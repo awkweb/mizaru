@@ -78,7 +78,8 @@
         "prettier": "^2.0.4",
         "prosemirror-test-builder": "^1.0.3",
         "tailwindcss": "^1.2.0",
-        "typescript": "^3.9.2"
+        "typescript": "^3.9.2",
+        "unist-builder": "^2.0.3"
     },
     "babel": {
         "presets": [

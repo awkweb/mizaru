@@ -6,22 +6,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ##",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz ##",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz ##",
   "type": "root",
 }
 `;
@@ -32,22 +80,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz # ##   #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz # ##   #",
   "type": "root",
 }
 `;
@@ -58,22 +154,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #   ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 26,
+          "line": 1,
+          "offset": 25,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz # ##   #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 26,
+      "line": 1,
+      "offset": 25,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz # ##   #   ",
   "type": "root",
 }
 `;
@@ -84,22 +228,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " #",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 16,
+      "line": 1,
+      "offset": 15,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz #",
   "type": "root",
 }
 `;
@@ -110,22 +302,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " #   ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz #   ",
   "type": "root",
 }
 `;
@@ -136,18 +376,47 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 3,
+          "line": 1,
+          "offset": 2,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 3,
+      "line": 1,
+      "offset": 2,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# ",
   "type": "root",
 }
 `;
@@ -158,18 +427,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 14,
+          "line": 1,
+          "offset": 13,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 14,
+      "line": 1,
+      "offset": 13,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz",
   "type": "root",
 }
 `;
@@ -180,39 +496,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 11,
+                  "line": 1,
+                  "offset": 10,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "*bar*",
           "type": "emphasis",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo *bar* baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 16,
+      "line": 1,
+      "offset": 15,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo *bar* baz",
   "type": "root",
 }
 `;
@@ -223,39 +630,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 9,
+                  "line": 1,
+                  "offset": 8,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "**bar**",
           "type": "strong",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo **bar** baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo **bar** baz",
   "type": "root",
 }
 `;
@@ -266,18 +764,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 6,
+      "line": 1,
+      "offset": 5,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo",
   "type": "root",
 }
 `;
@@ -288,15 +833,49 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo",
       "type": "heading",
     },
     Object {
@@ -315,6 +894,7 @@ Object {
               "offset": 6,
             },
           },
+          "raw": "bar",
           "type": "text",
           "value": "bar",
         },
@@ -337,6 +917,7 @@ Object {
               "offset": 10,
             },
           },
+          "raw": "baz",
           "type": "text",
           "value": "baz",
         },
@@ -344,6 +925,21 @@ Object {
       "type": "paragraph",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 13,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo
+bar
+baz",
   "type": "root",
 }
 `;
@@ -354,22 +950,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#    foo bar baz",
   "type": "root",
 }
 `;
@@ -380,26 +1019,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -410,22 +1093,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   # foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   # foo bar baz",
   "type": "root",
 }
 `;
@@ -436,26 +1167,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   #    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   #    foo bar baz",
   "type": "root",
 }
 `;
@@ -466,26 +1241,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   # foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   # foo bar baz   ",
   "type": "root",
 }
 `;
@@ -496,30 +1320,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   #    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   #    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -530,22 +1399,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "# ",
+          "value": "#",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 1,
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "# foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "# foo bar baz   ",
   "type": "root",
 }
 `;
@@ -556,22 +1473,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ###",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz ###",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz ###",
   "type": "root",
 }
 `;
@@ -582,22 +1547,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz # ##   #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 24,
+      "line": 1,
+      "offset": 23,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz # ##   #",
   "type": "root",
 }
 `;
@@ -608,22 +1621,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #   ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 27,
+          "line": 1,
+          "offset": 26,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz # ##   #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz # ##   #   ",
   "type": "root",
 }
 `;
@@ -634,22 +1695,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ##",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz ##",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz ##",
   "type": "root",
 }
 `;
@@ -660,22 +1769,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ##   ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz ##   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz ##   ",
   "type": "root",
 }
 `;
@@ -686,18 +1843,47 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 4,
+          "line": 1,
+          "offset": 3,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 1,
+      "offset": 3,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## ",
   "type": "root",
 }
 `;
@@ -708,18 +1894,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 15,
+          "line": 1,
+          "offset": 14,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 15,
+      "line": 1,
+      "offset": 14,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz",
   "type": "root",
 }
 `;
@@ -730,39 +1963,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 9,
+                  "line": 1,
+                  "offset": 8,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "*bar*",
           "type": "emphasis",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo *bar* baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo *bar* baz",
   "type": "root",
 }
 `;
@@ -773,39 +2097,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 10,
+                  "line": 1,
+                  "offset": 9,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "**bar**",
           "type": "strong",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo **bar** baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo **bar** baz",
   "type": "root",
 }
 `;
@@ -816,18 +2231,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 7,
+      "line": 1,
+      "offset": 6,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo",
   "type": "root",
 }
 `;
@@ -838,15 +2300,49 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo",
       "type": "heading",
     },
     Object {
@@ -865,6 +2361,7 @@ Object {
               "offset": 7,
             },
           },
+          "raw": "bar",
           "type": "text",
           "value": "bar",
         },
@@ -887,6 +2384,7 @@ Object {
               "offset": 11,
             },
           },
+          "raw": "baz",
           "type": "text",
           "value": "baz",
         },
@@ -894,6 +2392,21 @@ Object {
       "type": "paragraph",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 14,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo
+bar
+baz",
   "type": "root",
 }
 `;
@@ -904,22 +2417,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##    foo bar baz",
   "type": "root",
 }
 `;
@@ -930,26 +2486,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -960,22 +2560,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ## foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ## foo bar baz",
   "type": "root",
 }
 `;
@@ -986,26 +2634,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ##    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ##    foo bar baz",
   "type": "root",
 }
 `;
@@ -1016,26 +2708,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ## foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ## foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1046,30 +2787,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ##    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 24,
+      "line": 1,
+      "offset": 23,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ##    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1080,22 +2866,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "## ",
+          "value": "##",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 2,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "## foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "## foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1106,22 +2940,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ####",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz ####",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz ####",
   "type": "root",
 }
 `;
@@ -1132,22 +3014,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz # ##   #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz # ##   #",
   "type": "root",
 }
 `;
@@ -1158,22 +3088,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #   ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 28,
+          "line": 1,
+          "offset": 27,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz # ##   #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 28,
+      "line": 1,
+      "offset": 27,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz # ##   #   ",
   "type": "root",
 }
 `;
@@ -1184,22 +3162,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ###",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz ###",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz ###",
   "type": "root",
 }
 `;
@@ -1210,22 +3236,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ###   ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz ###   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz ###   ",
   "type": "root",
 }
 `;
@@ -1236,18 +3310,47 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 5,
+      "line": 1,
+      "offset": 4,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### ",
   "type": "root",
 }
 `;
@@ -1258,18 +3361,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 16,
+      "line": 1,
+      "offset": 15,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz",
   "type": "root",
 }
 `;
@@ -1280,39 +3430,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 10,
+                  "line": 1,
+                  "offset": 9,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "*bar*",
           "type": "emphasis",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo *bar* baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo *bar* baz",
   "type": "root",
 }
 `;
@@ -1323,39 +3564,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 11,
+                  "line": 1,
+                  "offset": 10,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "**bar**",
           "type": "strong",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo **bar** baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo **bar** baz",
   "type": "root",
 }
 `;
@@ -1366,18 +3698,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 8,
+          "line": 1,
+          "offset": 7,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 8,
+      "line": 1,
+      "offset": 7,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo",
   "type": "root",
 }
 `;
@@ -1388,15 +3767,49 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 8,
+          "line": 1,
+          "offset": 7,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo",
       "type": "heading",
     },
     Object {
@@ -1415,6 +3828,7 @@ Object {
               "offset": 8,
             },
           },
+          "raw": "bar",
           "type": "text",
           "value": "bar",
         },
@@ -1437,6 +3851,7 @@ Object {
               "offset": 12,
             },
           },
+          "raw": "baz",
           "type": "text",
           "value": "baz",
         },
@@ -1444,6 +3859,21 @@ Object {
       "type": "paragraph",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 15,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo
+bar
+baz",
   "type": "root",
 }
 `;
@@ -1454,22 +3884,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###    foo bar baz",
   "type": "root",
 }
 `;
@@ -1480,26 +3953,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1510,22 +4027,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ### foo bar baz",
   "type": "root",
 }
 `;
@@ -1536,26 +4101,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ###    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ###    foo bar baz",
   "type": "root",
 }
 `;
@@ -1566,26 +4175,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1596,30 +4254,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ###    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ###    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1630,22 +4333,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "### ",
+          "value": "###",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 3,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -1656,22 +4407,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " #####",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz #####",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz #####",
   "type": "root",
 }
 `;
@@ -1682,22 +4481,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 26,
+          "line": 1,
+          "offset": 25,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz # ##   #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 26,
+      "line": 1,
+      "offset": 25,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz # ##   #",
   "type": "root",
 }
 `;
@@ -1708,22 +4555,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #   ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 29,
+          "line": 1,
+          "offset": 28,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz # ##   #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 29,
+      "line": 1,
+      "offset": 28,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz # ##   #   ",
   "type": "root",
 }
 `;
@@ -1734,22 +4629,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ####",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz ####",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz ####",
   "type": "root",
 }
 `;
@@ -1760,22 +4703,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ####   ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz ####   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz ####   ",
   "type": "root",
 }
 `;
@@ -1786,18 +4777,47 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 6,
+      "line": 1,
+      "offset": 5,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### ",
   "type": "root",
 }
 `;
@@ -1808,18 +4828,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 17,
+      "line": 1,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz",
   "type": "root",
 }
 `;
@@ -1830,39 +4897,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 11,
+                  "line": 1,
+                  "offset": 10,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "*bar*",
           "type": "emphasis",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo *bar* baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo *bar* baz",
   "type": "root",
 }
 `;
@@ -1873,39 +5031,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "**bar**",
           "type": "strong",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo **bar** baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo **bar** baz",
   "type": "root",
 }
 `;
@@ -1916,18 +5165,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 9,
+      "line": 1,
+      "offset": 8,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo",
   "type": "root",
 }
 `;
@@ -1938,15 +5234,49 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo",
       "type": "heading",
     },
     Object {
@@ -1965,6 +5295,7 @@ Object {
               "offset": 9,
             },
           },
+          "raw": "bar",
           "type": "text",
           "value": "bar",
         },
@@ -1987,6 +5318,7 @@ Object {
               "offset": 13,
             },
           },
+          "raw": "baz",
           "type": "text",
           "value": "baz",
         },
@@ -1994,6 +5326,21 @@ Object {
       "type": "paragraph",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 16,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo
+bar
+baz",
   "type": "root",
 }
 `;
@@ -2004,22 +5351,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "####    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "####    foo bar baz",
   "type": "root",
 }
 `;
@@ -2030,26 +5420,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "####    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "####    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2060,22 +5494,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   #### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   #### foo bar baz",
   "type": "root",
 }
 `;
@@ -2086,26 +5568,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ####    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ####    foo bar baz",
   "type": "root",
 }
 `;
@@ -2116,26 +5642,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   #### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   #### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2146,30 +5721,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 26,
+          "line": 1,
+          "offset": 25,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ####    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 26,
+      "line": 1,
+      "offset": 25,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ####    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2180,22 +5800,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "#### ",
+          "value": "####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 4,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2206,22 +5874,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ######",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz ######",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz ######",
   "type": "root",
 }
 `;
@@ -2232,22 +5948,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 27,
+          "line": 1,
+          "offset": 26,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz # ##   #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz # ##   #",
   "type": "root",
 }
 `;
@@ -2258,22 +6022,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #   ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 30,
+          "line": 1,
+          "offset": 29,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz # ##   #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 30,
+      "line": 1,
+      "offset": 29,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz # ##   #   ",
   "type": "root",
 }
 `;
@@ -2284,22 +6096,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " #####",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz #####",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 24,
+      "line": 1,
+      "offset": 23,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz #####",
   "type": "root",
 }
 `;
@@ -2310,22 +6170,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " #####   ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 27,
+          "line": 1,
+          "offset": 26,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz #####   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz #####   ",
   "type": "root",
 }
 `;
@@ -2336,18 +6244,47 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 7,
+      "line": 1,
+      "offset": 6,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### ",
   "type": "root",
 }
 `;
@@ -2358,18 +6295,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 18,
+      "line": 1,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz",
   "type": "root",
 }
 `;
@@ -2380,39 +6364,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "*bar*",
           "type": "emphasis",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo *bar* baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 20,
+      "line": 1,
+      "offset": 19,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo *bar* baz",
   "type": "root",
 }
 `;
@@ -2423,39 +6498,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 16,
+                  "line": 1,
+                  "offset": 15,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "**bar**",
           "type": "strong",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo **bar** baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo **bar** baz",
   "type": "root",
 }
 `;
@@ -2466,18 +6632,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 10,
+          "line": 1,
+          "offset": 9,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 10,
+      "line": 1,
+      "offset": 9,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo",
   "type": "root",
 }
 `;
@@ -2488,15 +6701,49 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 10,
+          "line": 1,
+          "offset": 9,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo",
       "type": "heading",
     },
     Object {
@@ -2515,6 +6762,7 @@ Object {
               "offset": 10,
             },
           },
+          "raw": "bar",
           "type": "text",
           "value": "bar",
         },
@@ -2537,6 +6785,7 @@ Object {
               "offset": 14,
             },
           },
+          "raw": "baz",
           "type": "text",
           "value": "baz",
         },
@@ -2544,6 +6793,21 @@ Object {
       "type": "paragraph",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 17,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo
+bar
+baz",
   "type": "root",
 }
 `;
@@ -2554,22 +6818,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#####    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#####    foo bar baz",
   "type": "root",
 }
 `;
@@ -2580,26 +6887,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "#####    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 24,
+      "line": 1,
+      "offset": 23,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "#####    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2610,22 +6961,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ##### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ##### foo bar baz",
   "type": "root",
 }
 `;
@@ -2636,26 +7035,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 24,
+              "line": 1,
+              "offset": 23,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   #####    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 24,
+      "line": 1,
+      "offset": 23,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   #####    foo bar baz",
   "type": "root",
 }
 `;
@@ -2666,26 +7109,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ##### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 24,
+      "line": 1,
+      "offset": 23,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ##### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2696,30 +7188,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 24,
+              "line": 1,
+              "offset": 23,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 27,
+          "line": 1,
+          "offset": 26,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   #####    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   #####    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2730,22 +7267,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "##### ",
+          "value": "#####",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 7,
+              "line": 1,
+              "offset": 6,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 5,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "##### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "##### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -2756,22 +7341,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " #######",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 27,
+          "line": 1,
+          "offset": 26,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz #######",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz #######",
   "type": "root",
 }
 `;
@@ -2782,22 +7415,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 28,
+          "line": 1,
+          "offset": 27,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz # ##   #",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 28,
+      "line": 1,
+      "offset": 27,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz # ##   #",
   "type": "root",
 }
 `;
@@ -2808,22 +7489,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " # ##   #   ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 31,
+          "line": 1,
+          "offset": 30,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz # ##   #   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 31,
+      "line": 1,
+      "offset": 30,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz # ##   #   ",
   "type": "root",
 }
 `;
@@ -2834,22 +7563,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ######",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 26,
+          "line": 1,
+          "offset": 25,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz ######",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 26,
+      "line": 1,
+      "offset": 25,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz ######",
   "type": "root",
 }
 `;
@@ -2860,22 +7637,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ######   ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 29,
+          "line": 1,
+          "offset": 28,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz ######   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 29,
+      "line": 1,
+      "offset": 28,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz ######   ",
   "type": "root",
 }
 `;
@@ -2886,18 +7711,47 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": " ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 8,
+          "line": 1,
+          "offset": 7,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 8,
+      "line": 1,
+      "offset": 7,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### ",
   "type": "root",
 }
 `;
@@ -2908,18 +7762,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz",
   "type": "root",
 }
 `;
@@ -2930,39 +7831,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 16,
+                  "line": 1,
+                  "offset": 15,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "*",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+          },
+          "raw": "*bar*",
           "type": "emphasis",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo *bar* baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo *bar* baz",
   "type": "root",
 }
 `;
@@ -2973,39 +7965,130 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo ",
           "type": "text",
           "value": "foo ",
         },
         Object {
           "children": Array [
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
             Object {
+              "position": Position {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "indent": Array [],
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+              },
+              "raw": "bar",
               "type": "text",
               "value": "bar",
             },
             Object {
+              "raw": null,
               "type": "syntax",
               "value": "**",
             },
           ],
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+          },
+          "raw": "**bar**",
           "type": "strong",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+          },
+          "raw": " baz",
           "type": "text",
           "value": " baz",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo **bar** baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 23,
+      "line": 1,
+      "offset": 22,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo **bar** baz",
   "type": "root",
 }
 `;
@@ -3016,18 +8099,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 11,
+          "line": 1,
+          "offset": 10,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 11,
+      "line": 1,
+      "offset": 10,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo",
   "type": "root",
 }
 `;
@@ -3038,15 +8168,49 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo",
           "type": "text",
           "value": "foo",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 11,
+          "line": 1,
+          "offset": 10,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo",
       "type": "heading",
     },
     Object {
@@ -3065,6 +8229,7 @@ Object {
               "offset": 11,
             },
           },
+          "raw": "bar",
           "type": "text",
           "value": "bar",
         },
@@ -3087,6 +8252,7 @@ Object {
               "offset": 15,
             },
           },
+          "raw": "baz",
           "type": "text",
           "value": "baz",
         },
@@ -3094,6 +8260,21 @@ Object {
       "type": "paragraph",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 4,
+      "line": 3,
+      "offset": 18,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo
+bar
+baz",
   "type": "root",
 }
 `;
@@ -3104,22 +8285,65 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "######    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "######    foo bar baz",
   "type": "root",
 }
 `;
@@ -3130,26 +8354,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "######    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "######    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -3160,22 +8428,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ###### foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ###### foo bar baz",
   "type": "root",
 }
 `;
@@ -3186,26 +8502,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 25,
+              "line": 1,
+              "offset": 24,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ######    foo bar baz",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ######    foo bar baz",
   "type": "root",
 }
 `;
@@ -3216,26 +8576,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ###### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ###### foo bar baz   ",
   "type": "root",
 }
 `;
@@ -3246,30 +8655,75 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "   ",
+          "value": "    ",
         },
         Object {
+          "position": Position {
+            "end": Object {
+              "column": 25,
+              "line": 1,
+              "offset": 24,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 28,
+          "line": 1,
+          "offset": 27,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "   ######    foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 28,
+      "line": 1,
+      "offset": 27,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "   ######    foo bar baz   ",
   "type": "root",
 }
 `;
@@ -3280,22 +8734,70 @@ Object {
     Object {
       "children": Array [
         Object {
+          "raw": null,
           "type": "syntax",
-          "value": "###### ",
+          "value": "######",
         },
         Object {
+          "raw": null,
+          "type": "syntax",
+          "value": " ",
+        },
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+          },
+          "raw": "foo bar baz",
           "type": "text",
           "value": "foo bar baz",
         },
         Object {
+          "raw": null,
           "type": "syntax",
           "value": "   ",
         },
       ],
       "depth": 6,
+      "position": Position {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "indent": Array [],
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "raw": "###### foo bar baz   ",
       "type": "heading",
     },
   ],
+  "position": Object {
+    "end": Object {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "raw": "###### foo bar baz   ",
   "type": "root",
 }
 `;

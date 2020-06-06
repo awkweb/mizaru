@@ -1,9 +1,9 @@
-import { Parent as UnistParent } from 'unist'
+import { Node as UnistNode, Parent as UnistParent } from 'unist'
 
 import { NodeType } from '../../../types'
-import { Node, Parent } from '../types'
+import { Parent } from '../types'
 
-function modifier(node: Node, index: number, parent: UnistParent) {
+function modifier(node: UnistNode, index: number, parent: UnistParent) {
     const isSyntax = node.type === NodeType.Syntax
     if (isSyntax) return
 

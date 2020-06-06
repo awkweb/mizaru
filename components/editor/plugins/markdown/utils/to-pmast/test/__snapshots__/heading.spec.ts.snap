@@ -1,0 +1,3793 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`h1 closing sequence different number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ##",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 closing sequence random 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 closing sequence same number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 closing sequence trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 empty 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 multiple words 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 nested emphasis 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 nested strong 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 single word 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 split across multiple lines 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "bar",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "baz",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace inner and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace leading 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace leading and inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace leading and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h1 whitespace trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 1,
+      },
+      "content": Array [
+        Object {
+          "text": "#",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 closing sequence different number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ###",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 closing sequence random 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 closing sequence same number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ##",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 closing sequence trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ##   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 empty 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 multiple words 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 nested emphasis 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 nested strong 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 single word 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 split across multiple lines 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "bar",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "baz",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace inner and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace leading 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace leading and inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace leading and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h2 whitespace trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 2,
+      },
+      "content": Array [
+        Object {
+          "text": "##",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 closing sequence different number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ####",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 closing sequence random 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 closing sequence same number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ###",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 closing sequence trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ###   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 empty 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 multiple words 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 nested emphasis 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 nested strong 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 single word 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 split across multiple lines 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "bar",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "baz",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace inner and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace leading 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace leading and inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace leading and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h3 whitespace trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 3,
+      },
+      "content": Array [
+        Object {
+          "text": "###",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 closing sequence different number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " #####",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 closing sequence random 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 closing sequence same number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ####",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 closing sequence trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ####   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 empty 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 multiple words 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 nested emphasis 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 nested strong 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 single word 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 split across multiple lines 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "bar",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "baz",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace inner and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace leading 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace leading and inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace leading and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h4 whitespace trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 4,
+      },
+      "content": Array [
+        Object {
+          "text": "####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 closing sequence different number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ######",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 closing sequence random 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 closing sequence same number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " #####",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 closing sequence trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " #####   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 empty 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 multiple words 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 nested emphasis 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 nested strong 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 single word 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 split across multiple lines 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "bar",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "baz",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace inner and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace leading 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace leading and inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace leading and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h5 whitespace trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 5,
+      },
+      "content": Array [
+        Object {
+          "text": "#####",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 closing sequence different number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " #######",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 closing sequence random 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " # ##   #   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 closing sequence same number of syntax characters 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ######",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 closing sequence trailing whitespace 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": " ######   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 empty 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 multiple words 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 nested emphasis 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "emphasis",
+            },
+          ],
+          "text": "*",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 nested strong 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo ",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "bar",
+          "type": "text",
+        },
+        Object {
+          "marks": Array [
+            Object {
+              "type": "strong",
+            },
+          ],
+          "text": "**",
+          "type": "text",
+        },
+        Object {
+          "text": " baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 single word 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 split across multiple lines 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "bar",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "text": "baz",
+          "type": "text",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace inner and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace leading 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace leading and inner 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace leading and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": "    ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;
+
+exports[`h6 whitespace trailing 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "attrs": Object {
+        "level": 6,
+      },
+      "content": Array [
+        Object {
+          "text": "######",
+          "type": "text",
+        },
+        Object {
+          "text": " ",
+          "type": "text",
+        },
+        Object {
+          "text": "foo bar baz",
+          "type": "text",
+        },
+        Object {
+          "text": "   ",
+          "type": "text",
+        },
+      ],
+      "type": "heading",
+    },
+  ],
+  "type": "doc",
+}
+`;

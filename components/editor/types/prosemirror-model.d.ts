@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import * as model from 'prosemirror-model'
 
 declare module 'prosemirror-model' {
