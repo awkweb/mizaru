@@ -32,6 +32,7 @@ class Editor {
     public static FocusPosition = FocusPosition
 
     constructor(props?: Partial<Props>) {
+        // Set options for editor instance
         const defaultProps = {
             autoFocus: false,
             extensions: [],
@@ -39,10 +40,12 @@ class Editor {
             onChange: () => {},
             onTransaction: () => {},
         }
-        const options = {
+        const options = <Props>{
             ...defaultProps,
             ...props,
-        } as Props
+        }
+
+        // Build extensions
         const extensionManager = new ExtensionManager([
             new Doc(),
             new Text(),
@@ -58,6 +61,7 @@ class Editor {
             schema,
         })
 
+        // Create state and view
         const state = EditorState.create({
             schema,
             doc: this.createDocument(schema, options.content),

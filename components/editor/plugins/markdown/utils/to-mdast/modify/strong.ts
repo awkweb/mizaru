@@ -12,13 +12,10 @@ function modifier(node: Node, index: number, parent: UnistParent) {
     const isLast = index === children.length - 1
 
     const syntaxChar = raw.startsWith('**') ? '**' : '__'
-    const syntaxChild = {
-        type: NodeType.Syntax,
-        value: syntaxChar,
-    }
+    const child = { type: NodeType.Syntax, value: syntaxChar }
 
-    if (isFirst) parent.children.unshift(syntaxChild)
-    if (isLast) parent.children.push(syntaxChild)
+    if (isFirst) parent.children.unshift(child)
+    if (isLast) parent.children.push(child)
 }
 
 export default modifier

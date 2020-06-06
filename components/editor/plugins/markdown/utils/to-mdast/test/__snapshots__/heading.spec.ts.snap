@@ -1,0 +1,3301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`h1 closing sequence different number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ##",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 closing sequence random 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #   ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 closing sequence same number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " #",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 closing sequence trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " #   ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+          ],
+          "type": "emphasis",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 2,
+              "offset": 9,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 2,
+              "offset": 6,
+            },
+          },
+          "type": "text",
+          "value": "bar",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 3,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 10,
+            },
+          },
+          "type": "text",
+          "value": "baz",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace inner and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace leading and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h1 whitespace trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "# ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 1,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 closing sequence different number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ###",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 closing sequence random 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #   ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 closing sequence same number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ##",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 closing sequence trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ##   ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+          ],
+          "type": "emphasis",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 2,
+              "offset": 10,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 2,
+              "offset": 7,
+            },
+          },
+          "type": "text",
+          "value": "bar",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 3,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 11,
+            },
+          },
+          "type": "text",
+          "value": "baz",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace inner and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace leading and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h2 whitespace trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "## ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 2,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 closing sequence different number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ####",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 closing sequence random 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #   ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 closing sequence same number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ###",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 closing sequence trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ###   ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+          ],
+          "type": "emphasis",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 2,
+              "offset": 11,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 2,
+              "offset": 8,
+            },
+          },
+          "type": "text",
+          "value": "bar",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 3,
+              "offset": 15,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 12,
+            },
+          },
+          "type": "text",
+          "value": "baz",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace inner and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace leading and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h3 whitespace trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 3,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 closing sequence different number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " #####",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 closing sequence random 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #   ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 closing sequence same number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ####",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 closing sequence trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ####   ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+          ],
+          "type": "emphasis",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 2,
+              "offset": 12,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 2,
+              "offset": 9,
+            },
+          },
+          "type": "text",
+          "value": "bar",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 3,
+              "offset": 16,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 13,
+            },
+          },
+          "type": "text",
+          "value": "baz",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace inner and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace leading and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h4 whitespace trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "#### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 4,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 closing sequence different number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ######",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 closing sequence random 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #   ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 closing sequence same number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " #####",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 closing sequence trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " #####   ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+          ],
+          "type": "emphasis",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 2,
+              "offset": 13,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 2,
+              "offset": 10,
+            },
+          },
+          "type": "text",
+          "value": "bar",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 3,
+              "offset": 17,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 14,
+            },
+          },
+          "type": "text",
+          "value": "baz",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace inner and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace leading and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h5 whitespace trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "##### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 5,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 closing sequence different number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " #######",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 closing sequence random 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 closing sequence random and trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " # ##   #   ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 closing sequence same number of syntax characters 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ######",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 closing sequence trailing whitespace 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ######   ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 empty 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": " ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 multiple words 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 nested emphasis 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "*",
+            },
+          ],
+          "type": "emphasis",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 nested strong 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo ",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+            Object {
+              "type": "text",
+              "value": "bar",
+            },
+            Object {
+              "type": "syntax",
+              "value": "**",
+            },
+          ],
+          "type": "strong",
+        },
+        Object {
+          "type": "text",
+          "value": " baz",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 single word 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 split across multiple lines 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 2,
+              "offset": 14,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 2,
+              "offset": 11,
+            },
+          },
+          "type": "text",
+          "value": "bar",
+        },
+      ],
+      "type": "paragraph",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "position": Position {
+            "end": Object {
+              "column": 4,
+              "line": 3,
+              "offset": 18,
+            },
+            "indent": Array [],
+            "start": Object {
+              "column": 1,
+              "line": 3,
+              "offset": 15,
+            },
+          },
+          "type": "text",
+          "value": "baz",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace inner and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace leading 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace leading and inner 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace leading and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace leading, inner, and trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;
+
+exports[`h6 whitespace trailing 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "syntax",
+          "value": "###### ",
+        },
+        Object {
+          "type": "text",
+          "value": "foo bar baz",
+        },
+        Object {
+          "type": "syntax",
+          "value": "   ",
+        },
+      ],
+      "depth": 6,
+      "type": "heading",
+    },
+  ],
+  "type": "root",
+}
+`;

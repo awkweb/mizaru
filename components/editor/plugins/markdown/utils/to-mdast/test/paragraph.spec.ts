@@ -129,6 +129,41 @@ describe('whitespace', () => {
         `)
     })
 
+    test('blank lines', () => {
+        const mdast = toMDAST('\n\n\n\n\n\n')
+        expect(mdast).toMatchInlineSnapshot(`
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [],
+                  "type": "paragraph",
+                },
+              ],
+              "type": "root",
+            }
+        `)
+    })
+
     test('leading blank lines', () => {
         const mdast = toMDAST('\n\n\nfoo bar baz')
         expect(mdast).toMatchInlineSnapshot(`
