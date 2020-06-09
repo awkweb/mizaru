@@ -27,7 +27,6 @@ function block(node: Node, parent: Parent) {
 }
 
 function inline(node: UnistNode, _index: number, parent: UnistParent) {
-    console.log('inline', node)
     const { raw } = <Parent>parent
     if (raw === syntaxChars) return
 

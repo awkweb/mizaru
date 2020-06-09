@@ -13,6 +13,7 @@ export interface Node extends UnistNode {
 export interface BlankLine extends Node {
     type: NodeType.BlankLine
     count: number
+    values: string[]
 }
 
 export interface Heading extends Node {

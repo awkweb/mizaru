@@ -369,32 +369,66 @@ describe('whitespace', () => {
             Object {
               "children": Array [
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
-                  "raw": null,
-                  "type": "paragraph",
-                },
-                Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
@@ -429,17 +463,33 @@ describe('whitespace', () => {
             Object {
               "children": Array [
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
-                  "raw": null,
-                  "type": "paragraph",
-                },
-                Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
@@ -545,12 +595,22 @@ describe('whitespace', () => {
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
-                  "raw": null,
+                  "children": Array [
+                    Object {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
@@ -619,12 +679,22 @@ describe('whitespace', () => {
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
-                  "raw": null,
+                  "children": Array [
+                    Object {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
@@ -666,12 +736,22 @@ describe('whitespace', () => {
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
-                  "raw": null,
+                  "children": Array [
+                    Object {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "type": "paragraph",
                 },
                 Object {
-                  "children": Array [],
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
                   "raw": null,
                   "type": "paragraph",
                 },
@@ -732,6 +812,100 @@ describe('whitespace', () => {
 
 
             baz",
+              "type": "root",
+            }
+        `)
+    })
+
+    test('blank lines with spaces', () => {
+        const mdast = toMDAST(' \n   \n\n \n  \n\n')
+        expect(mdast).toMatchInlineSnapshot(`
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "type": "text",
+                      "value": " ",
+                    },
+                  ],
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "   ",
+                    },
+                  ],
+                  "raw": null,
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
+                  "raw": null,
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": " ",
+                    },
+                  ],
+                  "raw": null,
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "  ",
+                    },
+                  ],
+                  "raw": null,
+                  "type": "paragraph",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "raw": null,
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
+                  "raw": null,
+                  "type": "paragraph",
+                },
+              ],
+              "position": Object {
+                "end": Object {
+                  "column": 1,
+                  "line": 7,
+                  "offset": 13,
+                },
+                "start": Object {
+                  "column": 1,
+                  "line": 1,
+                  "offset": 0,
+                },
+              },
+              "raw": " 
+               
+
+             
+              
+
+            ",
               "type": "root",
             }
         `)

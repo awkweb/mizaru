@@ -9,15 +9,28 @@ class Blockquote extends Node {
 
     get schema() {
         return {
+            attrs: {
+                active: {
+                    default: false,
+                },
+            },
             content: 'block*',
             group: 'block',
             defining: true,
             draggable: false,
             parseDOM: [{ tag: 'blockquote' }],
-            toDOM: (_node: ProsemirrorNode): DOMOutputSpec => {
-                return ['blockquote', 0]
+            toDOM: (node: ProsemirrorNode): DOMOutputSpec => {
+                const attrs = {
+                    class: this.getClasses(node.attrs.active),
+                }
+                return ['blockquote', attrs, 0]
             },
         }
+    }
+    private getClasses(active: boolean) {
+        const activeClasses = active ? ['active'] : []
+        const classes = [...activeClasses, 'border-l', 'border-syntax']
+        return classes.join(' ')
     }
 }
 

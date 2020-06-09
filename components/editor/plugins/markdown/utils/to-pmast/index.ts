@@ -61,7 +61,7 @@ function flatten(ast: Node) {
         }
 
         // Rename `value` to `text`
-        if (node.value) {
+        if (node.value !== undefined) {
             const { value, ...rest } = node
             return [
                 {

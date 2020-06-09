@@ -7,6 +7,7 @@ const reBlankLine = /^[ \t]*(\n|$)/
 function tokenize(eat: Eat, value: string, silent: boolean) {
     let match
     let subvalue = ''
+    let values = []
     let index = 0
     const length = value.length
 
@@ -19,6 +20,9 @@ function tokenize(eat: Eat, value: string, silent: boolean) {
 
         index += match[0].length
         subvalue += match[0]
+
+        // Save blank line matches
+        values.push(match[0])
     }
 
     if (subvalue === '') {
@@ -29,7 +33,7 @@ function tokenize(eat: Eat, value: string, silent: boolean) {
         return true
     }
 
-    eat(subvalue)({ type: NodeType.BlankLine, count: index })
+    eat(subvalue)({ type: NodeType.BlankLine, count: index, values })
 }
 
 export default tokenize

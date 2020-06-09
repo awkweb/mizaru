@@ -6,6 +6,7 @@ import modifyChildren from 'unist-util-modify-children'
 /* eslint-enable */
 // @ts-ignore
 import source from 'unist-util-source'
+import disableTokenizers from 'remark-disable-tokenizers'
 
 import { NodeType } from '../../types'
 import { settings } from './constants'
@@ -29,7 +30,16 @@ function toMDAST(markdown: string) {
         NodeType.LineFeed,
     )
 
-    const tree = unified().use(remarkParse, settings).parse(markdown)
+    // Disable tokenizers
+    const disabled = {
+        block: [NodeType.IndentedCode, NodeType.Definition, NodeType.Table],
+        inline: [NodeType.Reference, NodeType.Break],
+    }
+
+    const tree = unified()
+        .use(remarkParse, settings)
+        .use(disableTokenizers, disabled)
+        .parse(markdown)
 
     visit(tree, (node, _index, parent) => {
         // Get node raw value from markdown string
@@ -41,6 +51,7 @@ function toMDAST(markdown: string) {
         if (inline.hasOwnProperty(type)) {
             modifyChildren(inline[type])(node)
         }
+
         if (block.hasOwnProperty(type)) {
             const index = block[type](<Node>node, <Parent>parent)
             if (index) return index
