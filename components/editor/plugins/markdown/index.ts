@@ -20,7 +20,6 @@ class Markdown extends Plugin {
         const markdown = toMarkdown(doc)
         const mdast = toMDAST(markdown)
         const pmast = toPMAST(mdast)
-        console.log(pmast)
         return pmast
     }
 

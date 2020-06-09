@@ -29,7 +29,7 @@ class Blockquote extends Node {
     }
     private getClasses(active: boolean) {
         const activeClasses = active ? ['active'] : []
-        const classes = [...activeClasses, 'border-l', 'border-syntax']
+        const classes = [...activeClasses, 'bg-highlight']
         return classes.join(' ')
     }
 }

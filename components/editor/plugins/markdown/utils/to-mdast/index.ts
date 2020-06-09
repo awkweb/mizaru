@@ -6,7 +6,10 @@ import modifyChildren from 'unist-util-modify-children'
 /* eslint-enable */
 // @ts-ignore
 import source from 'unist-util-source'
+// @ts-ignore
 import disableTokenizers from 'remark-disable-tokenizers'
+// @ts-ignore
+import removePosition from 'unist-util-remove-position'
 
 import { NodeType } from '../../types'
 import { settings } from './constants'
@@ -58,6 +61,7 @@ function toMDAST(markdown: string) {
         }
     })
 
+    removePosition(tree)
     remarkUnwrapNewLines(tree)
 
     return tree

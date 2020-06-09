@@ -15,12 +15,13 @@ export function getEnclosingWhitespace(text: string) {
 
 export function getHeadingWhitespace(text: string, level: number) {
     const leading = getLeadingWhitespace(text)
-    const trailing = (text.match(/((\s*)(\s#*)(\s*))*$/) || [])[0]
-    const trimmed = text.slice(
-        (leading?.length ?? 0) + level,
-        text.length - (trailing?.length ?? 0),
+    const minusLeading = text.slice((leading?.length ?? 0) + level, text.length)
+    const trailing = (minusLeading.match(/((\s*)(\s#*)(\s*))*$/) || [])[0]
+    const minusTrailing = minusLeading.slice(
+        0,
+        minusLeading.length - (trailing?.length ?? 0),
     )
-    const { leading: inner } = getEnclosingWhitespace(trimmed)
+    const { leading: inner } = getEnclosingWhitespace(minusTrailing)
     return { leading, inner, trailing }
 }
 

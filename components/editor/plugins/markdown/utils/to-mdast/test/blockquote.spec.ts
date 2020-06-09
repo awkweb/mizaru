@@ -1,13 +1,13 @@
 import toMDAST from '../'
 
-test.only('empty', () => {
-    const mdast = toMDAST('> f')
+test('empty', () => {
+    const mdast = toMDAST('>  foo  ')
     console.log(JSON.stringify(mdast, null, 4))
     // expect(mdast).toMatchSnapshot()
 })
 
 for (const syntax of ['>', '> ']) {
-    describe(`"${syntax}"`, () => {
+    describe.skip(`"${syntax}"`, () => {
         test('empty', () => {
             const mdast = toMDAST(`${syntax}`)
             expect(mdast).toMatchSnapshot()

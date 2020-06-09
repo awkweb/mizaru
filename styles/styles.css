@@ -20,7 +20,7 @@
         --colors-body: hsl(109, 0%, 20%);
         --colors-highlight: hsl(167, 100%, 74%);
         --colors-muted: hsl(109, 0%, 95%);
-        --colors-syntax: hsl(204, 0%, 70%);
+        --colors-syntax: hsl(204, 0%, 60%);
     }
 }
 
